@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link href="/static/styles/homepage.css" rel="stylesheet">
+        {% block stylesheet %}{% endblock %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    </head>
+
+    <body class="p-3 m-0 border-0 bd-example m-0 border-0 bd-example-cssgrid">
+        <div class="header">
+            <a class="page-link" href="/cs50x/homepage">Home</a>
+            <a class="page-link" href="/homepage/me">Me</a>
+            <a class="page-link" href="/homepage/journey">Coding Journey</a>
+        </div>
+        <div class="sidebar">
+            <div class="icons">
+                <a class="link" href="https://www.facebook.com/christinejoybernal17/">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/facebook.png" alt="facebook icon">
+                        <p class="icon-text">Facebook</p>
+                    </div>
+                </a>
+
+                <a class="link" href="https://www.instagram.com/joyinalgorithm/">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/instagram.png" alt="instagram icon">
+                        <p class="icon-text">Instagram</p>
+                    </div>
+                </a>
+                <a class="link" href="https://twitter.com/co_isla74793">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/twitter.png" alt="x icon">
+                        <p class="icon-text">X</p>
+                    </div>
+                </a>
+                <a class="link" href="/cs50x/homepage">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/world.png" alt="website icon">
+                        <p class="icon-text">Website</p>
+                    </div>
+                </a>
+                <a class="link" href="https://www.linkedin.com/in/joy-bernal-390297369/">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/linkedin.png" alt="linkedin icon">
+                        <p class="icon-text">Linkedin</p>
+                    </div>
+                </a>
+                <a class="link" href="https://github.com/joyinalgorithms">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/github.png" alt="github icon">
+                        <p class="icon-text">Github</p>
+                    </div>
+                </a>
+                <a class="link" href="/homepage/email">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/gmail.png" alt="email icon">
+                        <p class="icon-text">Email</p>
+                    </div>
+                </a>
+                <a class="link" href="https://www.youtube.com/channel/UCW8m3FM9CPh5ygggB4lHeIA">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/youtube.png" alt="youtube icon">
+                        <p class="icon-text">Youtube</p>
+                    </div>
+                </a>
+                <a class="link" href="/homepage/gallery">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/gallery.png" alt="gallery icon">
+                        <p class="icon-text">Gallery</p>
+                    </div>
+                </a>
+                <a class="link" href="/homepage/feedback">
+                    <div class="icon-row">
+                        <img class="icon-img" src="/static/images/icons/feeback.png" alt="feedback icon">
+                        <p class="icon-text">Feeback</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% block main %}{% endblock %}
+        <div class="footer">
+            <div class="footer-text">
+                <h4>All rights reserved</h4>
+                <p>joyinalgorithm@gmail.com</p>
+                <p> &copy; 2024</p>
+            </div>
+        </div>
+        <script src="homepage.js"></script>
+        {% block scripts %}{% endblock %}
+    </body>
+
+</html>

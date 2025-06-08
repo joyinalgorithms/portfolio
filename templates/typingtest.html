@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block title %}Typing Test{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/typingtest.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="header">
+            <h1 class="title">⚡ Speed Type</h1>
+            <p class="subtitle">Test your typing speed and accuracy</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="wpm">0</div>
+                <div class="stat-label">WPM</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="accuracy">100</div>
+                <div class="stat-label">Accuracy %</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="errors">0</div>
+                <div class="stat-label">Errors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="time">60</div>
+                <div class="stat-label">Time Left</div>
+            </div>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+
+        <div class="text-display" id="textDisplay"></div>
+
+        <div class="input-area">
+            <input type="text" class="typing-input" id="typingInput" placeholder="Click here and start typing...">
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" id="startBtn">Start Test</button>
+            <button class="btn btn-secondary" id="resetBtn">Reset</button>
+            <button class="btn btn-secondary" id="newTextBtn">New Text</button>
+        </div>
+
+        <div class="leaderboard">
+            <h3 class="leaderboard-title">🏆 Your Best Scores</h3>
+            <div id="leaderboardList"></div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/typingtest.js"></script>{% endblock %}
+{% endblock %}

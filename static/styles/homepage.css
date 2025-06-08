@@ -1,0 +1,462 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap');
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 2rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.page-link:hover {
+    color: #ffd700;
+    text-decoration: underline;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 200px;
+    height: calc(100vh - 80px);
+    background: #2c3e50;
+    padding: 1rem;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+.link:hover {
+    background-color: #34495e;
+}
+
+.icon-row {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    gap: 0.75rem;
+}
+
+.icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.icon-text {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ecf0f1;
+}
+
+/* Main Content Styles */
+.main-section {
+    margin-left: 220px;
+    margin-top: 100px;
+    padding: 2rem;
+    min-height: calc(100vh - 180px);
+}
+
+/* Homepage Specific Styles */
+.header-name {
+    font-family: 'Grape Nuts', cursive;
+    font-size: 3.5rem;
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.self-description {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.pic {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
+}
+
+.self-description p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* Quotes Grid Styles */
+.grid {
+    display: grid;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.grid div {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-style: italic;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.grid div:hover {
+    transform: translateY(-5px);
+}
+
+.color div {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Word Collection Styles */
+.header-words {
+    font-family: 'Grape Nuts', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #2c3e50;
+    margin: 2rem 0;
+}
+
+.words {
+    margin-bottom: 2rem;
+}
+
+.words .col-4 {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    margin: 0.5rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.words .col-4:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Me Page Styles */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.top-section,
+.middletop-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.title-me {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.5rem;
+}
+
+.list-group-item {
+    border: none;
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+/* Hobbies Grid */
+.middletop-section .col div {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border-radius: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.middletop-section .col div:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Gallery Styles */
+.carousel {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.picture {
+    height: 500px;
+    object-fit: cover;
+}
+
+/* Feedback Page Styles */
+#input {
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+}
+
+#submit {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#comments-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+/* Email Page Styles */
+.email {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.email:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Journey Page Styles */
+.scrollspy-example {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.scrollspy-example h4 {
+    color: #2c3e50;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+}
+
+.scrollspy-example p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+/* Footer Styles */
+.footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-left: 200px;
+    margin-top: 2rem;
+}
+
+.footer-text h4 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.footer-text p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .main-section {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .footer {
+        margin-left: 0;
+    }
+
+    .header-name {
+        font-size: 2.5rem;
+    }
+
+    .pic {
+        float: none !important;
+        width: 100% !important;
+        margin: 0 0 1rem 0 !important;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .words .col-4 {
+        margin: 0.25rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0.5rem 1rem;
+    }
+
+    .page-link {
+        margin-right: 1rem;
+        font-size: 1rem;
+    }
+
+    .header-name {
+        font-size: 2rem;
+    }
+
+    .main-section {
+        margin-top: 80px;
+        padding: 0.5rem;
+    }
+
+    .self-description {
+        padding: 1rem;
+    }
+}
+
+/* Animation Classes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-section>* {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Custom Scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #34495e;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+.header {
+    display: flex;
+    padding-bottom: 50px;
+    padding-left: 45%;
+}
+
+.images {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Resume{% endblock %}
+
+{% block body %}
+<main class="main-content">
+    <section class="resume-section">
+        <h2 class="resume-title">RESUME</h2>
+        <div class="resume-content">
+            <div class="resume-preview">
+                <embed  id="resumeEmbed" src="{{ url_for('static', filename='files/resume.pdf') }}" type="application/pdf" width="100%" height="500px">
+            </div>
+
+            <div class="resume-actions">
+                <a class="resume-button" href="{{ url_for('static', filename='files/resume.pdf') }}" download>📥 Download Resume</a>
+                <a href="{{ url_for('static', filename='files/resume.pdf') }}" class="resume-button" target="_blank">👁️ View Full Screen</a>
+                <div class="social-section">
+                    <h3 class="social-title"><a class="text-link" href="/contact">Connect With Me</a></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    function viewResume() {
+        const resumeUrl = "{{ url_for('static', filename='files/resume.pdf') }}";
+        window.open(resumeUrl, '_blank');
+    }
+</script>
+
+{% endblock %}

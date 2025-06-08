@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}Credit{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/credit.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="card-validator">
+            <h1 class="title">💳 Card Validator</h1>
+            <p class="subtitle">Enter your credit card number to validate</p>
+
+            <div class="credit-card">
+                <div class="card-inner" id="cardInner">
+                    <div class="card-face front">
+                        <div class="card-chip"></div>
+                        <div class="card-number" id="cardDisplay">•••• •••• •••• ••••</div>
+                        <div class="card-brand" id="cardBrand">UNKNOWN</div>
+                    </div>
+                    <div class="card-face back">
+                        <div style="height: 40px; background: #000; margin: 20px -20px;"></div>
+                        <div style="text-align: right; margin-top: 40px;">
+                            <div style="font-size: 0.9rem; opacity: 0.7;">VALID THRU</div>
+                            <div style="font-size: 1.1rem;">••/••</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="validatorForm">
+                <div class="input-group">
+                    <input type="text" id="cardNumber" class="input-field" placeholder="Enter card number" maxlength="19" autocomplete="off">
+                </div>
+
+                <button type="submit" class="validate-btn" id="validateBtn">
+                    Validate Card
+                </button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+            </div>
+
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/credit.js"></script>{% endblock %}
+{% endblock %}

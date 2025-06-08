@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block title %}Plurality{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/plurality.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="voting-card">
+            <h1 class="title">🗳️ Plurality Voting</h1>
+            <p class="subtitle">Democratic election system with real-time results</p>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="step-indicator">
+                <div class="step active" id="step1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Setup Candidates</div>
+                </div>
+                <div class="step" id="step2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Set Voters</div>
+                </div>
+                <div class="step" id="step3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Voting</div>
+                </div>
+                <div class="step" id="step4">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Results</div>
+                </div>
+            </div>
+
+            <div class="section active" id="section1">
+                <div class="input-group">
+                    <label class="input-label" for="candidateInput">Add Candidate (Maximum 9)</label>
+                    <input type="text" id="candidateInput" class="input-field" placeholder="Enter candidate name..." maxlength="50">
+                    <div class="validation-message" id="candidateValidation"></div>
+                </div>
+
+                <button class="btn" id="addCandidateBtn" onclick="addCandidate()">
+                    ➕ Add Candidate
+                </button>
+
+                <div class="candidate-list" id="candidateList"></div>
+
+                <button class="btn" id="nextToVotersBtn" onclick="nextStep()" disabled>
+                    Next: Set Voters →
+                </button>
+            </div>
+
+            <div class="section" id="section2">
+                <div class="input-group">
+                    <label class="input-label" for="voterCountInput">Number of Voters</label>
+                    <input type="number" id="voterCountInput" class="input-field" placeholder="Enter number of voters..." min="1" max="1000">
+                    <div class="validation-message" id="voterValidation"></div>
+                </div>
+
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="btn btn-secondary" onclick="previousStep()">
+                        ← Back
+                    </button>
+                    <button class="btn" id="startVotingBtn" onclick="startVoting()" disabled>
+                        Start Voting →
+                    </button>
+                </div>
+            </div>
+
+            <div class="section" id="section3">
+                <div class="voter-info" id="voterInfo">
+                    <div class="voter-number" id="currentVoterNumber">1</div>
+                    <div class="voter-label">Current Voter</div>
+                </div>
+
+                <div style="color: black;" class="voting-options" id="votingOptions"></div>
+
+                <div class="validation-message" id="voteValidation"></div>
+
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="btn btn-secondary" onclick="previousStep()">
+                        ← Back
+                    </button>
+                    <button class="btn" id="submitVoteBtn" onclick="submitVote()" disabled>
+                        Submit Vote
+                    </button>
+                </div>
+            </div>
+
+            <div class="section" id="section4">
+                <h2 style="margin-bottom: 30px; color: #333;">🏆 Election Results</h2>
+
+                <div class="results-grid" id="resultsGrid"></div>
+
+                <button class="btn btn-success" onclick="resetElection()">
+                    🔄 New Election
+                </button>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/plurality.js"></script>{% endblock %}
+{% endblock %}

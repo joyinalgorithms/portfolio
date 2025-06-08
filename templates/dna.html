@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+{% block title %}DNA{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/dna.css">{% endblock %}
+{% block body %}
+    <div class="lab-background"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🧬 DNA Profiling Lab</h1>
+            <p class="subtitle">Advanced STR Analysis & Genetic Identification System</p>
+
+            <div class="dna-helix-container">
+                <div class="dna-helix">
+                    <div class="helix-strand"></div>
+                    <div class="helix-strand"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-card">
+                <h3 class="upload-title">📊 Database File</h3>
+                <div class="upload-area" id="csvUploadArea"> <!-- fixed ID -->
+                    <select id="csvDropdown" class="file-dropdown">
+                        <option value="">Select CSV file</option>
+                    </select>
+                </div>
+                <div class="file-info" id="csvFileInfo">
+                    <div class="file-name" id="csvFileName"></div>
+                </div>
+            </div>
+
+            <div class="upload-card">
+                <h3 class="upload-title">🧬 DNA Sequence</h3>
+                <div class="upload-area" id="dnaUploadArea">
+                    <select id="dnaDropdown" class="file-dropdown">
+                        <option value="">Select DNA file</option>
+                    </select>
+                </div>
+                <div class="file-info" id="dnaFileInfo">
+                    <div class="file-name" id="dnaFileName"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="analysis-section">
+            <h2 class="section-title">🔬 Analysis Control</h2>
+
+            <button id="analyzeBtn" class="analyze-btn" disabled>
+                🚀 Begin DNA Analysis
+            </button>
+
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Initializing analysis...</div>
+            </div>
+
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Processing DNA sequence...</p>
+            </div>
+        </div>
+
+        <div class="database-viewer" id="databaseViewer" style="display: none;">
+            <h3 class="section-title">📋 Database Profiles</h3>
+            <table class="database-table" id="databaseTable">
+            <!-- Database content will be inserted here -->
+            </table>
+        </div>
+
+        <div class="dna-sequence-viewer" id="sequenceViewer" style="display: none;">
+            <h3 class="section-title">🧬 DNA Sequence Analysis</h3>
+            <div class="sequence-display" id="sequenceDisplay">
+            <!-- DNA sequence will be displayed here -->
+            </div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="results-header">
+                <div class="match-status" id="matchStatus">Analysis Complete</div>
+                <div class="match-name" id="matchName"></div>
+            </div>
+
+            <div class="str-analysis" id="strAnalysis">
+            <!-- STR analysis results will be displayed here -->
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <h3 class="info-title">ℹ️ About STR Analysis</h3>
+            <div class="info-content">
+                <p><strong>Short Tandem Repeats (STRs)</strong> are short DNA sequences that repeat consecutively. They are highly variable between individuals, making them ideal for DNA profiling.</p>
+
+                <p><strong>How it works:</strong> The system analyzes the DNA sequence to find the longest consecutive runs of each STR pattern, then compares these counts against a database of known profiles.</p>
+
+                <p><strong>Applications:</strong> Forensic identification, paternity testing, missing persons cases, and genetic genealogy.</p>
+
+                <p><strong>File formats:</strong> Upload a CSV file containing STR profiles and a TXT file with the DNA sequence to analyze.</p>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/dna.js"></script>{% endblock %}
+{% endblock %}

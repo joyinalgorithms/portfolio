@@ -1,0 +1,296 @@
+body {
+    background-color: #000000;
+    font-family: "Nunito Sans";
+    height: 3000px;
+    color: white;
+    display: flex;
+}
+
+.sidebar-top {
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 270px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.sidebar-middle {
+    background-color: rgb(20, 20, 20);
+    border-radius: 5px;
+    position: fixed;
+    top: 140px;
+    height: 80px;
+    left: 10px;
+    width: 270px;
+    padding: 10px;
+}
+
+.sidebar-bottom {
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+    position: fixed;
+    top: 240px;
+    height: 530px;
+    left: 10px;
+    width: 270px;
+    overflow: auto;
+    padding: 10px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.font-30 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.font-16 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.big-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+.white-font {
+    color: white;
+    margin: 0;
+}
+
+.grey-font {
+    color: grey;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 5px;
+}
+
+.grey-shadow {
+    display: inline-block;
+    border-radius: 15px;
+    background-color: rgba(73, 73, 73, 0.438);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.black-shadow {
+    display: inline-block;
+    border-radius: 15px;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.menu {
+    margin-bottom: 20px;
+}
+
+.likedsongs {
+    width: 50px;
+    height: 50px;
+}
+
+.artist-profile-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-profile-row {
+    display: flex;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.artist-profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.artist-profile-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.details {
+    font-size: 14px;
+    margin: 0;
+    margin-left: 20px;
+    align-items: center;
+}
+
+.bold {
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.body-header {
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+    position: fixed;
+    top: 10px;
+    left: 310px;
+    width: 900px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: absolute;
+
+}
+
+.header1 {
+    display: flex;
+    padding-top: 0;
+}
+
+.header2 {
+    display: flex;
+}
+
+.margin-left {
+    margin-left: 450px;
+}
+
+.arrow-button {
+    height: 30px;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+.explore-button {
+    font-weight: bold;
+    height: 35px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: none;
+}
+
+.install-button {
+    font-weight: bold;
+    height: 35px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: black;
+}
+
+.body {
+    background-color: rgb(20, 20, 20);
+    border-radius: 10px;
+    position: absolute;
+    top: 130px;
+    left: 310px;
+    width: 900px;
+    height: 2900px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: absolute;
+}
+
+.category-title {
+    margin-top: 0;
+}
+
+.category-header {
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.category {
+    background-color: black;
+    height: 260px;
+    width: 175px;
+    margin-right: 10px;
+}
+
+.category-details {
+    padding: 10px;
+}
+
+.categories {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.footer {
+    background-color: black;
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 90px;
+    z-index: 100;
+    display: flex;
+}
+
+.left {
+    width: 400px;
+}
+
+.middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.right {
+    width: 250px;
+}
+
+.middle-row {
+    display: flex;
+    padding-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.margin-right {
+    margin-right: 10px;
+}
+
+.margin-lefty {
+    margin-left: 10px;
+}

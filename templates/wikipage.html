@@ -1,0 +1,10 @@
+{% extends "wikilayout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    {{ content | safe }}
+    <a href="{{ url_for('editpage', title=title) }}">Edit</a>
+{% endblock %}

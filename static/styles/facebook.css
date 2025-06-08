@@ -1,0 +1,445 @@
+body {
+    height: 1000px;
+}
+
+.header {
+    height: 60px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: white;
+}
+
+.header-left {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    margin-left: 18px;
+}
+
+.header-middle {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-right {
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.icons {
+    width: 30px;
+    height: 30px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.search {
+    width: 20px;
+    background-color: rgb(202, 201, 201);
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 10px;
+}
+
+.margin {
+    margin-right: 20px;
+}
+
+.profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.sidebar {
+    width: 300px;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.sidebar-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.text {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.texts {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.stories {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    gap: 17px;
+    height: 250px;
+    background-color: white;
+    padding: 5px;
+    display: flex;
+}
+
+.story {
+    width: 150px;
+    height: 200px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.other-story {
+    position: absolute;
+    width: 150px;
+    height: 250px;
+    border-radius: 15px;
+}
+
+.story-profile {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    border-color: rgb(24, 119, 242);
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 30px;
+}
+
+.story-box {
+    margin-left: 12px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    width: 150px;
+    height: 250px;
+    border-radius: 15px;
+}
+
+.add-story {
+    position: relative;
+    bottom: 30px;
+    left: 50px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border-color: white;
+    border-width: 5px;
+    border-style: solid;
+    background-color: rgb(24, 119, 242);
+}
+
+.create-story {
+    position: relative;
+    bottom: 45px;
+    left: 40px;
+}
+
+.body {
+    position: absolute;
+    top: 60px;
+    left: 300px;
+    right: 300px;
+    height: 3000px;
+    margin-top: 15px;
+
+}
+
+.create-post {
+    position: relative;
+    top: 250px;
+    height: 150px;
+    width: 730px;
+    background-color: white;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.woym {
+    margin-top: 15px;
+    display: flex;
+    padding: 30px;
+    padding-bottom: 10px;
+}
+
+.woym-input {
+    border: hidden;
+    margin-left: 15px;
+    font-size: 19px;
+    width: 500px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+    border-radius: 30px;
+    padding-left: 15px;
+}
+
+.woym:active {
+    border: none;
+}
+
+.woym2 {
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+}
+
+.left {
+    margin-right: 80px;
+}
+
+.facebook-posts {
+    position: relative;
+    top: 300px;
+    height: 3000px;
+    padding: 10px;
+}
+
+.facebook-posts-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-post-header {
+    color: grey;
+    font-size: 20px;
+}
+
+.more-line {
+    width: 30px;
+}
+
+.bigger {
+    width: 30px;
+    height: 30px;
+}
+
+.people-ymk {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-left: 20px;
+}
+
+.people-suggestion {
+    width: 200px;
+    height: 300px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    background-color: white;
+}
+
+.friend-suggestion {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.name {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.add-friend {
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 50px;
+    color: rgb(24, 119, 242);
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    padding: 7px;
+}
+
+.add-friend:active {
+    background-color: rgb(177, 206, 243);
+}
+
+.add-friend:hover {
+    background-color: rgb(195, 211, 233);
+}
+
+.see-all {
+    color: rgb(24, 119, 242);
+    text-align: center;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    margin-top: 15px;
+    padding: 10px;
+    width: 500px;
+    margin-left: 70px;
+}
+
+.post {
+    width: 620px;
+    height: 620px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.profile-container {
+    width: 50px;
+}
+
+.post-details {
+    flex: 1;
+}
+
+.ri-more-line {
+    margin-right: 10px;
+}
+
+.more-options {
+    width: 50px;
+    color: grey;
+    font-weight: bold;
+
+}
+
+.post-name {
+    font-weight: bold;
+}
+
+.post-time {
+    font-size: 14px;
+    color: grey;
+    margin-top: 5px;
+}
+
+.post-image {
+    margin-top: 20px;
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.post-interactions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 3px 1px -2px grey;
+}
+
+.like-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.likes {
+    flex: 1;
+}
+
+.comments-shares {
+    width: 200px;
+}
+
+.like-comment-share {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    box-shadow: 0 3px 1px -2px grey;
+    color: rgb(73, 73, 73);
+}
+
+.sidebar-right {
+    margin-top: 20px;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 280px;
+    height: 950px;
+    padding: 10px;
+
+}
+
+.sidebar-subtitle {
+    color: grey;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ads-row-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 1px -2px grey;
+}
+
+.ads {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
+
+.ads-col-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    font-size: 13px;
+    color: grey;
+    text-decoration: none;
+}
+
+.contacts {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.right {
+    margin-right: 140px;
+}
+
+.ri {
+    margin-left: 20px;
+}
+
+.contacts-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.names-row {
+    display: flex;
+}
+
+.names {
+    margin-left: 10px;
+}

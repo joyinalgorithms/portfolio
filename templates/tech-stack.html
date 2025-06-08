@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+{% block title %}Tech Stack{% endblock %}
+<link rel="stylesheet" href="/static/styles/techstack.css">
+{% block body %}
+    <main class="main-content">
+        <h1 class="page-title">TECH STACK</h1>
+
+        <div class="tech-category">
+            <h2 class="category-title">Programming Languages</h2>
+            <div class="tech-grid">
+                <div class="tech-item" onclick="animateTech(this)" style="--proficiency: 95%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/python.png" style="width: 30px; height: 30px; ">
+                        <h3 class="tech-name">Python</h3>
+                    </div>
+                    <p class="tech-description">Advanced proficiency in Python for web development, data analysis, and machine learning</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item javascript" onclick="animateTech(this)" style="--proficiency: 90%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/javascript.png" style="width: 30px; height: 30px; ;">
+                        <h3 class="tech-name">Javascript</h3>
+                    </div>
+                    <p class="tech-description">Modern ES6+ JavaScript for frontend and backend development</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item html" onclick="animateTech(this)" style="--proficiency: 95%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/html.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">HTML</h3>
+                    </div>
+                    <p class="tech-description">Semantic HTML5 markup for accessible and structured web content</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item css" onclick="animateTech(this)" style="--proficiency: 90%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/css.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">CSS</h3>
+                    </div>
+                    <p class="tech-description">Advanced CSS3, Flexbox, Grid, and responsive design principles</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item sql" onclick="animateTech(this)" style="--proficiency: 85%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/sql.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">SQL</h3>
+                    </div>
+                    <p class="tech-description">Database design, complex queries, and optimization techniques</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item c" onclick="animateTech(this)" style="--proficiency: 75%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/c.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">C</h3>
+                    </div>
+                    <p class="tech-description">System programming and understanding of low-level concepts</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item cpp" onclick="animateTech(this)" style="--proficiency: 80%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/cplus.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">C++</h3>
+                    </div>
+                    <p class="tech-description">Object-oriented programming and performance-critical applications</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item java" onclick="animateTech(this)" style="--proficiency: 70%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/java.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">Java</h3>
+                    </div>
+                    <p class="tech-description">Enterprise applications and object-oriented design patterns</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item vbnet" onclick="animateTech(this)" style="--proficiency: 65%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/vb.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">VB.NET</h3>
+                    </div>
+                    <p class="tech-description">Windows applications and .NET framework development</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h2 class="category-title" style="margin-top: 20px">Frameworks</h2>
+            <div class="tech-grid">
+                <div class="tech-item flask" onclick="animateTech(this)" style="--proficiency: 90%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/flask.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">Flask</h3>
+                    </div>
+                    <p class="tech-description">Lightweight Python web framework for rapid development</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item django" onclick="animateTech(this)" style="--proficiency: 85%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/django.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">Django</h3>
+                    </div>
+                    <p class="tech-description">Full-featured Python web framework with ORM and admin interface</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h2 class="category-title" style="margin-top: 20px">Tools & Technologies</h2>
+            <div class="tech-grid">
+                <div class="tech-item git" onclick="animateTech(this)" style="--proficiency: 90%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/git.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">Git/Github</h3>
+                    </div>
+                    <p class="tech-description">Version control, collaboration, and project management</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item colab" onclick="animateTech(this)" style="--proficiency: 85%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/colab.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">Google Colab</h3>
+                    </div>
+                    <p class="tech-description">Cloud-based Jupyter notebooks for data science and ML</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item" onclick="animateTech(this)" style="--proficiency: 80%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/sqlite.png" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">SQLite</h3>
+                    </div>
+                    <p class="tech-description">Lightweight database for development and small applications</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item" onclick="animateTech(this)" style="--proficiency: 85%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/bootstrap.jpg" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">Bootstrap</h3>
+                    </div>
+                    <p class="tech-description">CSS framework for responsive and mobile-first design</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+                <div class="tech-item" onclick="animateTech(this)" style="--proficiency: 85%">
+                    <div class="tech-stack-container" style="display: flex; gap: 10px; margin-top: 20px">
+                        <img src="/static/images/icons/api.webp" style="width: 30px; height: 30px;">
+                        <h3 class="tech-name">REST APIs</h3>
+                    </div>
+                    <p class="tech-description">Building and consuming RESTful web services</p>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

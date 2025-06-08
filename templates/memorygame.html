@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}Memory Game{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/memorygame.css">
+{% endblock %}
+{% block body %}
+    <div class="body">
+        <h1>🚀 Tech Memory Match</h1>
+        <p>Match the tech icons to win!</p>
+        <div class="game-stats">
+            <div class="stat">
+                <div>Time: <span id="timer">00:00</span></div>
+            </div>
+            <div class="stat">
+                <div>Moves: <span id="moves">0</span></div>
+            </div>
+            <div class="stat">
+                <div>Matches: <span id="matches">0</span></div>
+            </div>
+        </div>
+
+        <div class="game-board" id="gameBoard"></div>
+
+        <div class="controls">
+            <button class="btn primary" onclick="startNewGame()">New Game</button>
+            <button class="btn" onclick="resetStats()">Reset Stats</button>
+        </div>
+
+        <div class="high-scores">
+            <h3>🏆 High Scores</h3>
+            <div id="highScoresList"></div>
+        </div>
+
+        <div class="game-over" id="gameOverModal">
+            <div class="game-over-content">
+                <h2>🎉 Congratulations!</h2>
+                <p>Time: <span id="finalTime"></span></p>
+                <p>Moves: <span id="finalMoves"></span></p>
+                <p>Score: <span id="finalScore"></span></p>
+                <button class="btn primary" onclick="closeGameOver()">Play Again</button>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/memorygame.js"></script>{% endblock %}
+{% endblock %}

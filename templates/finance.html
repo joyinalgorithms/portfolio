@@ -1,0 +1,33 @@
+{% extends "financelayout.html" %}
+{% block title %}Finance{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/finance.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Symbols</th>
+                    <th scope="col">Shares</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in database %}
+                    <tr>
+                        <td>{{ row["symbol"] }}</td>
+                        <td>{{ row["shares"] }}</td>
+                        <td>{{ row["usd_price"] }}</td>
+                        <td>{{ row["usd_total"] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div style="text-align: right;">
+            <b>Cash:</b> {{ cash }}<br>
+            <b>Total Cash Balance:</b> {{ total_cash }}
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/finance.js"></script>{% endblock %}
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "homepage-layout.html" %}
+{% block title %}My Journey{% endblock %}
+{% block stylesheet %}{% endblock %}
+{% block main %}
+    <div class="main-section">
+        <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="#scrollspyHeading1">First</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#scrollspyHeading2">Second</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+                        <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+            <h4 id="scrollspyHeading1">Discovery</h4>
+            <p>I first discovered programming way back in 2022. It all started when I was trying to find what path should I take in college. Then this computer science course popped up. And the salary was so great. The salary was so fascinating for me that I started to research more about this job. I watch various videos of advice and reality in the field to get myself more familiar with it.</p>
+            <h4 id="scrollspyHeading2">First Six Months</h4>
+            <p>In the first six months of my coding journey, I don't have the motivation to study it. I feel like I don't understand anything. The doubt came again that maybe I really couldn't do that. But then, I am not someone who backs down just because I find something difficult to do. I learned my lesson a long time ago. So I persevered, took various online courses, and put my mind into programming. I began to understand the concepts. The first language that I learned was C++. I remember then that I was excited about building a calculator at that time. I felt proud of myself. I still remember the frustration when I encountered my first error. That was because I forgot the semicolon. Then from there, I built up my knowledge and discovered CS50 as well. And it completely changed my life.</p>
+            <h4 id="scrollspyHeading3">First Year</h4>
+            <p>I continue learning for a year. I learned Java because that was the language we used at school. Simultaneously, I am learning C as well in CS50. I continue learning all the basics and sometimes it feels like it was not enough. I feel like I am not going anywhere because all I learned was the basics. It was far from what I expected when I built apps and websites that looked really nice. It was frustrating back then. CS50 was my favorite course because it opened my mind to the possibilities of programming. It makes me think outside the box and really force my creativity to come into life. However, sometimes, it is really frustrating because the problem set is so difficult. But I continued learning nonetheless and completed them. And I felt proud of myself every time I complete a week.</p>
+            <h4 id="scrollspyHeading4">Present</h4>
+            <p>I think I have come so far when it comes to programming, but at the same time feels like I still have a long way to go. I have learned and become familiar with many languages including C++, C, Java, VB.NET, Javascript, Python, and SQL. Also, I learned HTML and CSS. I am familiar with the syntax and how they work but I still want to dig deeper and learn more. I plan to practice more HTML, CSS, and Javascript so that I can be a front-end developer. That was the plan for now. Then I will explore the back end after I master the front end.</p>
+        </div>
+    </div>
+    {% block scripts %}{% endblock %}
+{% endblock %}

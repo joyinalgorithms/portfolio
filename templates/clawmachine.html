@@ -1,0 +1,50 @@
+{% extends "general_layout.html" %}
+{% block title %}Claw Machine{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/clawmachine.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <div class="game-container">
+        <div class="status" id="status">Ready to play!</div>
+        <div class="machine">
+            <div class="machine-top">
+                <div>🎮 TECH CLAW MACHINE</div>
+                <div class="score-display">
+                    SCORE: <span id="score">0</span> | COINS: <span id="coins">10</span>
+                </div>
+            </div>
+
+            <div class="play-area">
+                <div class="claw-track"></div>
+                <div class="claw-container" id="clawContainer">
+                    <div class="claw-arm" id="clawArm"></div>
+                    <div class="claw" id="claw">
+                        <div class="claw-center"></div>
+                        <div class="claw-left"></div>
+                        <div class="claw-right"></div>
+                    </div>
+                </div>
+
+                <div class="items-container" id="itemsContainer">
+
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn move-left" id="moveLeft">←</button>
+                <button class="control-btn grab-btn" id="grabBtn">GRAB</button>
+                <button class="control-btn move-right" id="moveRight">→</button>
+            </div>
+        </div>
+        <div class="prize-slot"></div>
+        <div class="prizes-display">
+            <h3>YOUR PRIZES</h3>
+            <div class="prizes-list" id="prizesList"></div>
+        </div>
+        <div class="volume-control" id="volumeControl">🔊</div>
+    </div>
+
+
+    {% block scripts %}<script src="/static/scripts/clawmachine.js"></script>{% endblock %}
+{% endblock %}

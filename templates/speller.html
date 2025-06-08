@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% block title %}Speller{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/speller.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="app-header">
+            <h1 class="title">📝 Speller</h1>
+            <p class="subtitle">Advanced spell checking with hash table dictionary lookup</p>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="dictionary-panel">
+                    <h2 class="panel-title">Dictionary Management</h2>
+                    <select id="dictionarySelector" class="dictionary-selector">
+                        <option value="">Select a dictionary...</option>
+                    </select>
+                    <button id="loadDictionaryBtn" class="load-dictionary-btn">Load Dictionary</button>
+
+                    <div class="dictionary-stats" id="dictionaryStats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="wordCount">0</div>
+                            <div class="stat-label">Total Words</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="bucketCount">2053</div>
+                            <div class="stat-label">Hash Buckets</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="loadTime">0ms</div>
+                            <div class="stat-label">Load Time</div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-danger" id="unloadBtn" disabled>
+                        <span class="btn-icon">🗑️</span> Unload Dictionary
+                    </button>
+                </div>
+
+                <div class="word-checker">
+                    <h2 class="panel-title">Word Checker</h2>
+                    <div class="input-group">
+                        <label class="input-label" for="wordInput">Check Individual Word</label>
+                        <input type="text" id="wordInput" class="input-field" placeholder="Enter a word to check..." disabled>
+                    </div>
+
+                    <button class="btn" id="checkWordBtn" disabled>
+                        <span class="btn-icon">🔍</span> Check Word
+                    </button>
+
+                    <div class="check-result" id="wordResult"></div>
+                </div>
+            </div>
+
+        <!-- Main Spell Checker -->
+            <div class="spell-checker">
+                <h2 class="panel-title">Text Spell Checker</h2>
+
+                <div class="spell-check-controls">
+                    <button class="btn" id="checkTextBtn" disabled>
+                        <span class="btn-icon">✅</span> Check Spelling
+                    </button>
+                    <button class="btn btn-secondary" id="clearTextBtn">
+                        <span class="btn-icon">🗑️</span> Clear Text
+                    </button>
+                    <button class="btn btn-success" id="highlightBtn" disabled>
+                        <span class="btn-icon">🎨</span> Toggle Highlighting
+                    </button>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" for="textInput">Enter Text to Check</label>
+                    <textarea id="textInput" class="input-field text-area" placeholder="Type or paste your text here for spell checking..." disabled></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">Spell Check Results</label>
+                    <div class="spell-check-area" id="spellCheckArea">
+                        Load a dictionary to start spell checking...
+                    </div>
+                </div>
+
+                <div class="spell-check-results" id="spellCheckResults" style="display: none;">
+                    <div class="results-summary">
+                        <div class="error-count" id="errorCount">0</div>
+                        <div class="error-label">Spelling Errors Found</div>
+                    </div>
+
+                    <div class="error-list" id="errorList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="notification" id="notification">
+        <div class="notification-icon">✅</div>
+        <div class="notification-message">Dictionary loaded successfully!</div>
+    </div>
+
+    {% block scripts %}<script src="/static/scripts/speller.js"></script>{% endblock %}
+{% endblock %}

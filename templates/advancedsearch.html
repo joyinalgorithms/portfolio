@@ -1,0 +1,35 @@
+{% extends "general_layout.html" %}
+{% block title %}Advanced Search{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/advanced.css">{% endblock %}
+{% block body %}
+    <div class="header">
+        <img src="/static/images/google logo.png" alt="">
+        <a href="/cs50w/search">Google Search</a>
+    </div>
+    <h4>Advanced Search</h4>
+    <p>Find pages with...</p>
+    <form action="https://google.com/search">
+        <div class="container">
+            <div class="flex-row">
+                <p>all these words: </p>
+                <input type="text" id="allwords" autocomplete="off">
+            </div>
+            <div class="flex-row">
+                <p>this exact word or phrase: </p>
+                <input type="text" id="exactword" autocomplete="off">
+            </div>
+            <div class="flex-row">
+                <p>any of these words: </p>
+                <input type="text" id="anyword" autocomplete="off">
+            </div>
+            <div class="flex-row">
+                <p>none of these words: </p>
+                <input type="text" id="nonewords" autocomplete="off">
+            </div>
+            <button class="advanced-btn">Advanced Search</button>
+        </div>
+    </form>
+
+
+{% endblock %}

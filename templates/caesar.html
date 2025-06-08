@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block title %}Caesar{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/caesar.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="header">
+            <svg class="laurel laurel-left" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,10 C30,25 20,50 20,80 C35,65 45,40 50,10 Z" fill="#D4AF37" />
+                <path d="M50,10 C70,25 80,50 80,80 C65,65 55,40 50,10 Z" fill="#D4AF37" />
+            </svg>
+
+            <h1 class="title">Caesar Cipher</h1>
+            <p class="subtitle">Encrypt and Decrypt Messages Like Julius Caesar</p>
+
+            <svg class="laurel laurel-right" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,10 C30,25 20,50 20,80 C35,65 45,40 50,10 Z" fill="#D4AF37" />
+                <path d="M50,10 C70,25 80,50 80,80 C65,65 55,40 50,10 Z" fill="#D4AF37" />
+            </svg>
+        </div>
+
+        <div class="cipher-container">
+            <div class="input-section">
+                <h2 class="section-title">Plaintext</h2>
+                <textarea id="plaintextInput" class="text-area" placeholder="Enter your message here..."></textarea>
+            </div>
+
+            <div class="output-section">
+                <h2 class="section-title">Ciphertext</h2>
+                <textarea id="ciphertextOutput" class="text-area" placeholder="Encrypted message will appear here..." readonly></textarea>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="key-control">
+                <label class="key-label" for="keyInput">Shift Key:</label>
+                <input type="number" id="keyInput" class="key-input" value="3" min="0" max="25">
+                <div class="key-buttons">
+                    <div class="key-btn" id="decreaseKey">-</div>
+                    <div class="key-btn" id="increaseKey">+</div>
+                </div>
+            </div>
+
+            <button id="encryptBtn" class="action-btn">Encrypt</button>
+            <button id="decryptBtn" class="action-btn">Decrypt</button>
+        </div>
+
+        <div class="animation-container" id="animationContainer">
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processing your message...</p>
+        </div>
+
+        <div class="cipher-wheel-container">
+            <h2 class="wheel-title">Interactive Cipher Wheel</h2>
+            <div class="cipher-wheel" id="cipherWheel">
+                <div class="wheel-outer" id="wheelOuter">
+
+                </div>
+                <div class="wheel-inner" id="wheelInner">
+
+                </div>
+                <div class="wheel-center">
+                    <span id="wheelKeyDisplay">3</span>
+                </div>
+                <div class="wheel-indicator"></div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2 class="info-title">About Caesar Cipher</h2>
+            <div class="info-content">
+                <div class="info-text">
+                    <p>The <strong>Caesar Cipher</strong> is one of the earliest and simplest encryption techniques. Named after Julius Caesar, who used it to communicate with his generals, it is a type of substitution cipher where each letter in the plaintext is shifted a certain number of places down the alphabet.</p>
+                    <p>For example, with a shift of 3, A would be replaced by D, B would become E, and so on. The method is named after Julius Caesar, who used it with a shift of 3 to protect messages of military significance.</p>
+                </div>
+                <div class="info-text">
+                    <p>The encryption can be represented using modular arithmetic by first transforming the letters into numbers, according to the scheme: A = 0, B = 1, ..., Z = 25.</p>
+                    <div class="formula">
+                        Encryption: E(x) = (x + k) mod 26<br>
+                        Decryption: D(x) = (x - k) mod 26
+                    </div>
+                    <p>Where k is the key (shift) value, x is the letter's position in the alphabet (0-25), and mod is the modulo operation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block scripts %}<script src="/static/scripts/caesar.js"></script>{% endblock %}
+{% endblock %}

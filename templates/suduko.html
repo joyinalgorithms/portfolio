@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block title %}Suduko{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/suduko.css">{% endblock %}
+{% block body %}
+    <div class="game-container">
+        <div class="header">
+            <h1 class="title">Sudoku Master</h1>
+        </div>
+
+        <div class="game-info">
+            <div class="info-item">
+                <span>Time: </span>
+                <span id="timer">00:00</span>
+            </div>
+            <div class="info-item">
+                <span>Score: </span>
+                <span id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span>Mistakes: </span>
+                <span id="mistakes">0/3</span>
+            </div>
+        </div>
+
+        <div class="difficulty-selector">
+            <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+            <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+            <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+        </div>
+
+        <div class="sudoku-grid" id="sudoku-grid"></div>
+
+        <div class="number-pad">
+            <button class="number-btn" data-number="1">1</button>
+            <button class="number-btn" data-number="2">2</button>
+            <button class="number-btn" data-number="3">3</button>
+            <button class="number-btn" data-number="4">4</button>
+            <button class="number-btn" data-number="5">5</button>
+            <button class="number-btn" data-number="6">6</button>
+            <button class="number-btn" data-number="7">7</button>
+            <button class="number-btn" data-number="8">8</button>
+            <button class="number-btn" data-number="9">9</button>
+            <button class="action-btn" id="clear-btn">Clear</button>
+        </div>
+
+        <div class="controls">
+            <button class="action-btn" id="new-game-btn">New Game</button>
+            <button class="action-btn" id="hint-btn">Hint</button>
+            <button class="action-btn" id="check-btn">Check</button>
+            <button class="action-btn" id="solve-btn">Solve</button>
+        </div>
+
+        <div class="high-scores">
+            <h3>🏆 High Scores</h3>
+            <div id="high-scores-list"></div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/suduko.js"></script>{% endblock %}
+{% endblock %}

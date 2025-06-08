@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block title %}Inheritance{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/inheritance.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="header">
+            <div class="dna-helix">
+                <div class="dna-strand"></div>
+                <div class="dna-strand"></div>
+            </div>
+            <h1 class="title">🧬 Genetics Family Tree</h1>
+            <p class="subtitle">Explore Blood Type Inheritance Across Generations</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label class="control-label" for="generationsInput">Generations:</label>
+                <input type="number" id="generationsInput" class="generation-input" value="3" min="1" max="5">
+            </div>
+
+            <button id="generateBtn" class="btn btn-primary">🌳 Generate Family Tree</button>
+            <button id="clearBtn" class="btn btn-secondary">🗑️ Clear Tree</button>
+        </div>
+
+        <div class="tree-container">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Generating family tree...</p>
+            </div>
+
+            <div class="tree-wrapper" id="treeWrapper">
+                <div id="familyTree" class="family-tree">
+                <!-- Family tree will be generated here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-container" id="statsContainer" style="display: none;">
+            <div class="info-title">📊 Family Statistics</div>
+            <div class="stats-grid" id="statsGrid">
+            <!-- Statistics will be generated here -->
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div class="info-card">
+                <div class="info-title">🩸 Blood Type Legend</div>
+                <div style="color: black;" class="blood-type-legend">
+                    <div class="legend-item">
+                        <div class="legend-color type-A"></div>
+                        <span><strong>Type A:</strong> AA or AO</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color type-B"></div>
+                        <span><strong>Type B:</strong> BB or BO</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color type-AB"></div>
+                        <span><strong>Type AB:</strong> AB</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color type-O"></div>
+                        <span><strong>Type O:</strong> OO</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">🧬 Genetics Information</div>
+                <div class="genetics-info">
+                    <p><strong>Blood type inheritance</strong> follows Mendelian genetics principles. Each person inherits one allele from each parent.</p>
+
+                    <p><strong>Alleles:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li><span class="allele-combination">A</span> and <span class="allele-combination">B</span> are codominant</li>
+                        <li><span class="allele-combination">O</span> is recessive to both A and B</li>
+                    </ul>
+
+                    <p><strong>Possible combinations:</strong> AA, AO → Type A | BB, BO → Type B | AB → Type AB | OO → Type O</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/inheritance.js"></script>{% endblock %}
+{% endblock %}

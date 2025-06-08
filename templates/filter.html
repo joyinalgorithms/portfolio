@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block title %}Filter{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/filter.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="app-header">
+            <h1 class="title">🖼️ Image Filter Studio</h1>
+            <p class="subtitle">Upload an image and apply professional filters with real-time preview</p>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-text">Drag & Drop or Click to Upload</div>
+                        <div class="upload-subtext">Supports JPG, PNG, WEBP (Max 5MB)</div>
+                        <input type="file" id="fileInput" class="file-input" accept="image/*">
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn" id="resetBtn">
+                            <span class="btn-icon">🔄</span> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filters-container">
+                    <h2 class="filter-title">Image Filters</h2>
+                    <div class="filter-grid">
+                        <div class="filter-option" data-filter="original">
+                            <div class="filter-icon">🔍</div>
+                            <div class="filter-name">Original</div>
+                        </div>
+                        <div class="filter-option" data-filter="grayscale">
+                            <div class="filter-icon">⚪</div>
+                            <div class="filter-name">Grayscale</div>
+                        </div>
+                        <div class="filter-option" data-filter="sepia">
+                            <div class="filter-icon">🟤</div>
+                            <div class="filter-name">Sepia</div>
+                        </div>
+                        <div class="filter-option" data-filter="blur">
+                            <div class="filter-icon">💫</div>
+                            <div class="filter-name">Blur</div>
+                        </div>
+                        <div class="filter-option" data-filter="reflect">
+                            <div class="filter-icon">🪞</div>
+                            <div class="filter-name">Reflect</div>
+                        </div>
+                        <div class="filter-option" data-filter="edges">
+                            <div class="filter-icon">📐</div>
+                            <div class="filter-name">Edges</div>
+                        </div>
+                    </div>
+
+                    <div class="filter-controls" id="filterControls">
+                    <!-- Filter-specific controls will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-preview">
+                <h2 class="preview-title">Image Preview</h2>
+                <div class="image-comparison">
+                    <div class="comparison-container">
+                        <div class="comparison-label">Original</div>
+                        <div class="image-container" id="originalContainer">
+                            <div class="image-placeholder">Upload an image to see preview</div>
+                        </div>
+                    </div>
+                    <div class="comparison-container">
+                        <div class="comparison-label">Filtered</div>
+                        <div class="image-container" id="filteredContainer">
+                            <div class="image-placeholder">Filter preview will appear here</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-success" id="downloadBtn" disabled>
+                        <span class="btn-icon">💾</span> Download
+                    </button>
+                    <button class="btn btn-secondary" id="applyBtn" disabled>
+                        <span class="btn-icon">✅</span> Apply Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="notification" id="notification">
+        <div class="notification-icon">✅</div>
+        <div class="notification-message">Image downloaded successfully!</div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/filter.js"></script>{% endblock %}
+{% endblock %}

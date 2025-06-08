@@ -1,0 +1,35 @@
+{% extends 'base_layout.html' %}
+{% block title %}Red vs. Blue Team Training | BluRed AI{% endblock %}
+{% block stylesheet %}
+    <link rel=" stylesheet" href="/static/styles/red-blue-team-training.css">
+{% endblock %}
+
+{% block main %}
+    <header class="page-header">
+        <h1>Red Team vs. Blue Team AI-Driven Training</h1>
+        <p>Alternate between attacking and defending in simulated cyber scenarios to sharpen your skills.</p>
+    </header>
+
+    <main>
+        <section id="training-mode">
+            <button id="attacker-btn" class="btn">Start as Attacker</button>
+            <button id="defender-btn" class="btn">Start as Defender</button>
+        </section>
+
+        <section id="simulation-area">
+            <div id="attack-alert" class="hidden">
+                <h2>🚨 Incoming Cyber Attack!</h2>
+                <p id="attack-description">AI-generated attack incoming...</p>
+                <p>Time Left: <span id="attack-timer">10</span> seconds</p>
+                <button id="defend-btn" class="btn">Defend Now</button>
+            </div>
+
+            <div id="simulation-log">
+                <h3>Simulation Log</h3>
+                <ul id="log-list"></ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/scripts/red-blue-team-training.js"></script>
+{% endblock %}

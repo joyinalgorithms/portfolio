@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %}Trivia{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/trivia.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <div class="header">
+        <h1>Trivia!</h1>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Part 1: Multiple Choice </h2>
+            <hr>
+            <h3>Who is credited with developing the first compiler for a computer programming language and popularizing the term "debugging"?</h3>
+            <button class="button-1">Grace Hopper</button>
+            <button class="button-2">Alan Turing</button>
+            <button class="button-3">Ada Lovelace</button>
+            <button class="button-4">Tim Berners-Lee</button>
+            <p class="js-result"></p>
+        </div>
+
+        <div class="section">
+            <h2>Part 2: Free Response</h2>
+            <hr>
+            <h3>What was the first name of the internet that connect the first points on the internet to one another?</h3>
+            <input class="js-input" placeholder="Answer">
+            <button class="js-submit">Submit</button>
+            <p class="js-result2"></p>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/trivia.js"></script>{% endblock %}
+{% endblock %}

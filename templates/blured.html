@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The BluRed AI Difference | BluRed AI</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            body {
+                background-color: #111;
+                color: #00ffcc;
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 900px;
+                margin-top: 50px;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .alert-box {
+                background-color: rgba(255, 0, 0, 0.8);
+                color: white;
+                padding: 20px;
+                margin: 20px 0;
+                border-radius: 5px;
+                font-size: 1.2rem;
+            }
+
+            .ai-warning,
+            .breach-screen {
+                background-color: #222;
+                color: #ffcc00;
+                font-size: 1.2rem;
+                padding: 15px;
+                margin-top: 20px;
+                border-radius: 5px;
+                display: none;
+            }
+
+            .breach-screen {
+                color: red;
+                font-weight: bold;
+            }
+
+            .code-image {
+                width: 100%;
+                max-width: 750px;
+                border: 3px solid #00ffcc;
+                margin-top: 20px;
+                display: none;
+            }
+
+            .action-btn {
+                margin-top: 20px;
+                background-color: #ffcc00;
+                color: black;
+                font-size: 18px;
+                padding: 12px 25px;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                display: none;
+            }
+
+            .success {
+                font-size: 2rem;
+                color: #00ffcc;
+                font-weight: bold;
+                margin-top: 30px;
+                display: none;
+            }
+
+            .reset-btn {
+                margin-top: 20px;
+                background-color: #00ffcc;
+                color: black;
+                font-size: 18px;
+                padding: 12px 25px;
+                border: none;
+                cursor: pointer;
+                border-radius: 10px;
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <h1>REAL-WORLD CYBERATTACK SIMULATION</h1>
+            <p>Watch as the AI's guided training leads you to success in stopping the cyberattack.</p>
+
+            <div class="alert-box" id="initial-warning">
+                <p><strong>Warning:</strong> A cyberattack is imminent. The AI is analyzing the system...</p>
+            </div>
+
+            <div class="ai-warning" id="ai-warning">
+                <p><strong>AI Alert:</strong> Potential malware detected. Immediate action required.</p>
+            </div>
+
+            <div class="breach-screen" id="breach-screen">
+                <p>Unauthorized access detected! Malware infiltration in progress.</p>
+            </div>
+
+            <button id="identify-threat" class="action-btn">Identify Threat</button>
+            <button id="isolate-threat" class="action-btn">Isolate Threat</button>
+
+            <img src="/static/images/code-patch.png" alt="Code Patch Interface" class="code-image" id="code-image">
+            <button id="deploy-code" class="action-btn">Deploy Security Patch</button>
+
+            <div class="success" id="success-message">
+                <p><strong>Success!</strong> The attack has been neutralized. System is secure.</p>
+            </div>
+
+            <button class="reset-btn" id="reset-btn" onclick="restartSimulation()">Restart Simulation</button>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                setTimeout(function() {
+                    document.getElementById("initial-warning").style.display = "none";
+                    document.getElementById("ai-warning").style.display = "block";
+                }, 3000);
+
+                setTimeout(function() {
+                    document.getElementById("breach-screen").style.display = "block";
+                    document.getElementById("identify-threat").style.display = "inline-block";
+                }, 6000);
+
+                document.getElementById("identify-threat").addEventListener("click", function() {
+                    document.getElementById("breach-screen").innerHTML = "<p>Threat identified: Self-replicating malware script.</p>";
+                    document.getElementById("isolate-threat").style.display = "inline-block";
+                });
+
+                document.getElementById("isolate-threat").addEventListener("click", function() {
+                    document.getElementById("breach-screen").innerHTML = "<p>Threat isolated. Preparing countermeasures...</p>";
+                    document.getElementById("code-image").style.display = "block";
+                    document.getElementById("deploy-code").style.display = "inline-block";
+                });
+
+                document.getElementById("deploy-code").addEventListener("click", function() {
+                    document.getElementById("breach-screen").style.display = "none";
+                    document.getElementById("ai-warning").style.display = "none";
+                    document.getElementById("success-message").style.display = "block";
+                    document.getElementById("reset-btn").style.display = "block";
+                });
+            });
+
+            function restartSimulation() {
+                document.getElementById("ai-warning").style.display = "none";
+                document.getElementById("breach-screen").style.display = "none";
+                document.getElementById("identify-threat").style.display = "none";
+                document.getElementById("isolate-threat").style.display = "none";
+                document.getElementById("code-image").style.display = "none";
+                document.getElementById("deploy-code").style.display = "none";
+                document.getElementById("success-message").style.display = "none";
+                document.getElementById("reset-btn").style.display = "none";
+                document.getElementById("initial-warning").style.display = "block";
+            }
+        </script>
+
+    </body>
+
+</html>

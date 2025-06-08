@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 30px;
+}
+
+img {
+    width: 100px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h4 {
+    color: rgb(242, 139, 130);
+}
+
+.container {
+    width: 500px;
+    height: 400px;
+    position: relative;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+input {
+    height: 20px;
+    width: 310px;
+    padding: 5px;
+}
+
+.advanced-btn {
+    border: none;
+    background-color: rgb(48, 121, 237);
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    position: absolute;
+    right: 0;
+}

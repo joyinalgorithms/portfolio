@@ -1,0 +1,14 @@
+{% extends "homepage-layout.html" %}
+{% block title %}Feedback{% endblock %}
+{% block stylesheet %}{% endblock %}
+{% block main %}
+    <div class="main-section">
+        <textarea id="input" placeholder="Comment here..."></textarea>
+        <button id="submit">Submit</button>
+        <div id="comments-section">
+            <p id="dateTime"></p>
+            <p id="comments"></p>
+        </div>
+    </div>
+    {% block scripts %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}Certifications{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/certifications.css">
+{% endblock %}
+{% block body %}
+    <main class="main-content">
+        <h1 class="page-title">CERTIFICATIONS</h1>
+
+        <div class="certificate-card">
+            <div class="certificate-badge">Verified</div>
+            <h2 class="certificate-title">CS50x: CS50’s Introduction to Computer Science</h2>
+            <div class="certificate-image" onclick="enlargeImage(this)">
+                <img class="certificate-img" src="/static/images/certificates/cs50x.png">
+            </div>
+            <p class="certificate-description">
+                CS50 is Harvard’s introductory computer science course that teaches foundational programming skills and problem-solving, both with and without code, for students of all backgrounds. Covering languages like C, Python, SQL, HTML, CSS, and JavaScript, it emphasizes computational thinking, algorithmic design, and real-world application, culminating in a final project.
+            </p>
+        </div>
+
+        <div class="certificate-card">
+            <div class="certificate-badge">Verified</div>
+            <h2 class="certificate-title">Google Cybersecurity</h2>
+            <div class="certificate-image" onclick="enlargeImage(this)">
+                <img class="certificate-img" src="/static/images/certificates/google.jpg">
+            </div>
+            <p class="certificate-description">
+                The Google Cybersecurity Certificate on Coursera is an entry-level program designed to equip learners with the fundamentals of cybersecurity, including threat identification, risk management, and network security. It covers essential tools and practices such as Linux, SQL, and security information and event management (SIEM), preparing learners for roles like cybersecurity analyst with no prior experience required.
+            </p>
+        </div>
+
+        <div class="certificate-card">
+            <div class="certificate-badge">Verified</div>
+            <h2 class="certificate-title">Kaggle: Machine Learning Fundamentals</h2>
+            <div class="certificate-image" onclick="enlargeImage(this)">
+                <img class="certificate-img" src="/static/images/certificates/kaggle.png">
+            </div>
+            <p class="certificate-description">
+                The Kaggle Intro to Machine Learning course is a beginner-friendly program that teaches the fundamentals of machine learning through hands-on tutorials and exercises. It covers key concepts like model building, data exploration, validation, overfitting, and advanced algorithms like random forests, preparing learners to build and evaluate their own models.
+            </p>
+        </div>
+
+    </main>
+{% endblock %}

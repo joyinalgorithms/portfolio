@@ -1,0 +1,17 @@
+{% extends "financelayout.html" %}
+
+{% block title %}
+    Add Cash
+{% endblock %}
+
+{% block main %}
+    <form action="/cs50x/finance/addcash" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="cash_in" placeholder="Cash-in" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Cash In</button>
+    </form>
+{% endblock %}

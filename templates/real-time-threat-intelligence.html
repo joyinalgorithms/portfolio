@@ -1,0 +1,41 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Real-Time Threat Intelligence | BluRed AI{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/real-time-threat-intelligence.css">
+{% endblock %}
+
+{% block main %}
+    <header>
+        <h1>Real-Time Threat Intelligence</h1>
+        <p>Stay ahead of the game with up-to-the-minute cybersecurity intelligence and security alerts.</p>
+    </header>
+
+    <main>
+        <section id="current-threats">
+            <h2>Current Threat Landscape</h2>
+            <div id="threat-list">
+            </div>
+        </section>
+
+        <section id="security-alerts">
+            <h3>Security Alerts</h3>
+            <div id="alert-list">
+            </div>
+            <button id="more-alerts" class="btn">View More Alerts</button>
+        </section>
+
+        <section id="intelligence-sources">
+            <h3>Threat Intelligence Sources</h3>
+            <ul>
+                <li><a href="https://www.cisa.gov/" target="_blank">Cybersecurity & Infrastructure Security Agency (CISA)</a></li>
+                <li><a href="https://www.us-cert.cisa.gov/" target="_blank">US-CERT</a></li>
+                <li><a href="https://www.krebsOnSecurity.com" target="_blank">Krebs on Security</a></li>
+                <li><a href="https://www.darkreading.com/" target="_blank">Dark Reading</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="/static/scripts/real-time-threat-intelligence.js"></script>
+{% endblock %}

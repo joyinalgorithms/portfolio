@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}Is it New Year's?{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/newyear.css">{% endblock %}
+{% block body %}
+    <div class="stars"></div>
+
+    <div class="decoration">🎉</div>
+    <div class="decoration">✨</div>
+    <div class="decoration">🎊</div>
+    <div class="decoration">🌟</div>
+
+    <div class="container">
+        <h1 class="main-title">Is it New Year's? 🎆</h1>
+
+        <button class="check-button" onclick="checkNewYear()">
+            Find Out! ✨
+        </button>
+
+        <div class="result" id="result"></div>
+
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    {% block scripts %}<script src="/static/scripts/newyear.js"></script>{% endblock %}
+{% endblock %}

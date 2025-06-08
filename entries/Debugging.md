@@ -1,0 +1,2 @@
+# Debugging
+Debugging, or debug, is a process that aims to find and remove bugs from the source code of a program. Computer programmers use debugging to get rid of issues before the end user experiences any problems using a program. This process might occur during the quality assurance phase of software development.

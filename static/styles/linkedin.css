@@ -1,0 +1,325 @@
+body {
+    margin-bottom: 2000px;
+    font-family: Sans-Serif;
+}
+
+.header {
+    display: flex;
+    z-index: 100;
+    flex-direction: row;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+}
+
+.left-section {
+    width: 550px;
+    /*background-color: lightblue;*/
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+}
+
+.logo {
+    width: 40px;
+    height: 35px;
+    margin-left: 70px;
+}
+
+.search {
+    width: 17px;
+    height: 17px;
+}
+
+.input-search {
+    height: 20px;
+    width: 300px;
+    border: none;
+    font-size: 14px;
+}
+
+.right-section {
+    flex: 1;
+    /*background-color: brown;*/
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.notif-count {
+    background-color: red;
+    color: white;
+    position: absolute;
+    top: -20px;
+    right: 14px;
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.icons {
+    height: 25px;
+    width: 25px;
+}
+
+.premium {
+    color: goldenrod;
+    font-size: 12px;
+    width: 90px;
+    margin-right: 40px;
+}
+
+.description {
+    font-size: 12px;
+    color: grey;
+    margin: 0;
+}
+
+.sidebar {
+    width: 350px;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    /*background-color: lightpink;*/
+}
+
+.row-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 90px;
+    margin-top: 30px;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sidebar-icons {
+    width: 30px;
+    height: 30px;
+}
+
+.name {
+    font-size: 15px;
+    color: rgb(59, 59, 59);
+    margin-left: 10px;
+}
+
+.post-button {
+    border-color: rgb(10, 102, 194);
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 1px;
+    color: rgb(10, 102, 194);
+    padding: 15px 60px;
+    margin-top: 20px;
+}
+
+.post-button:hover {
+    background-color: rgb(175, 215, 255);
+}
+
+.exit {
+    position: absolute;
+    top: 0px;
+    right: 18px;
+    font-size: 20px;
+    border: none;
+}
+
+.close-btn {
+    width: 25px;
+    height: 25px;
+
+}
+
+.main-section {
+    padding-top: 70px;
+    padding-left: 400px;
+    margin-right: 360px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.suggested {
+    border-color: rgb(10, 102, 194);
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 1px;
+    color: rgb(10, 102, 194);
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+.suggested-section {
+    height: 200px;
+    position: relative;
+}
+
+.recommended {
+    height: 200px;
+}
+
+.sidebar-right {
+    width: 350px;
+    margin-right: 0px;
+    padding-top: 20px;
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.foryou {
+    margin-bottom: 0;
+}
+
+.upper-right {
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+    height: 270px;
+    margin-bottom: 50px;
+    padding: 10px 30px;
+}
+
+.details-link {
+    height: 200px;
+    /* background-color: pink;*/
+
+}
+
+.head {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 17px;
+}
+
+.text {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: grey;
+    font-size: 14px;
+}
+
+.head2 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.link {
+    color: rgb(51, 50, 50);
+}
+
+.logo-small {
+    width: 15px;
+    height: 15px;
+
+}
+
+.about {
+    margin: 0;
+    color: grey;
+    font-size: 13px;
+    flex: 1;
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    justify-content: center;
+}
+
+.last-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.left {
+    margin-left: 50px;
+    color: rgb(10, 102, 194);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.copyright {
+    flex: 1;
+    margin-right: 10px;
+    color: rgb(70, 70, 70);
+    font-size: 14px;
+}
+
+.jobs {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+
+    height: 150px;
+    padding: 10px;
+    position: relative;
+}
+
+.column1 {
+    width: 70px;
+}
+
+.column2 {
+    flex: 1;
+}
+
+.column3 {
+    width: 50px;
+}
+
+.company-logo {
+    width: 60px;
+    height: 60px;
+}
+
+.title {
+    color: rgb(10, 102, 194);
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.company {
+    font-size: 14px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.description {
+    color: grey;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

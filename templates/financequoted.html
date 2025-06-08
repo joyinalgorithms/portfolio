@@ -1,0 +1,11 @@
+{% extends "financelayout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <h2>Quoted Symbols</h2>
+    <h4>Symbol: {{ symbol }}</h4>
+    <h4>Price: {{ price | usd }}</h4>
+{% endblock %}

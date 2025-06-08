@@ -1,0 +1,508 @@
+body {
+    height: 800px;
+    font-family: Arial;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 170px;
+    right: 0;
+    height: 60px;
+    display: flex;
+    z-index: 100;
+    background-color: white;
+}
+
+.main {
+    width: 640px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.for-you {
+    flex: 1;
+    text-align: center;
+}
+
+.following {
+    flex: 1;
+    text-align: center;
+}
+
+.settings {
+    width: 50px;
+}
+
+.settings-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.search-bar {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+.search {
+    margin-top: 15px;
+    position: absolute;
+    right: 140px;
+    bottom: 15px;
+
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+
+}
+
+.search-input {
+    border: none;
+    padding: 10px 18px;
+    width: 250px;
+    border-radius: 20px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 170px;
+    margin-right: 200px;
+}
+
+.sidebar-row {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    align-items: center;
+}
+
+.sidebar-icons {
+    margin-bottom: 25px;
+
+}
+
+.icon {
+    width: 27px;
+    height: 27px;
+}
+
+.profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 30px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.post-icon {
+    background-color: #008AD8;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.body {
+    position: relative;
+    top: 50px;
+    bottom: 0;
+    left: 163px;
+    height: 1000px;
+    width: 640px;
+}
+
+.body-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-post {
+    height: 150px;
+    width: 640px;
+    background-color: white;
+    display: flex;
+
+
+}
+
+.profile-pic {
+    width: 50px;
+}
+
+.profile-post {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: top;
+    margin-top: 13px;
+}
+
+.post-details {
+    flex: 1;
+    margin-left: 6px;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+}
+
+.start {
+    flex: 1;
+    margin-top: 15px;
+}
+
+.happening {
+    border: none;
+    font-size: 20px;
+    outline: none;
+}
+
+.center {
+    height: 30px;
+    font-size: 14px;
+    margin: 0;
+}
+
+.end {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.post-icons {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+}
+
+.post-button {
+    width: 80px;
+    margin-top: 100px;
+}
+
+.who-to-follow {
+    height: 400px;
+    width: 640px;
+    position: relative;
+    background-color: white;
+}
+
+.show-more {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: grey;
+}
+
+.column-part {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.more {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.boxes {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-part {
+    width: 70px;
+    margin-left: 25px;
+}
+
+.center-part {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-part {
+    width: 90px;
+}
+
+.upper {
+    height: 20px;
+    font-weight: bold;
+}
+
+.middle {
+    height: 20px;
+    color: grey;
+}
+
+.lower {
+    flex: 1;
+    color: grey;
+}
+
+.follow-button {
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.btnPost {
+    background-color: rgb(0, 138, 216);
+    border-radius: 15px;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.sidebar-right {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    right: 50px;
+    width: 400px;
+    height: 1020px;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.subscribe {
+    height: 150px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.header-subscribe {
+    height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.text {
+    flex: 1;
+    color: grey;
+}
+
+.subscribe-button {
+    height: 50px;
+}
+
+.btnSubscribe {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+}
+
+.trends {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    height: 1100px;
+}
+
+.trendsforyou {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.trend {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.trend-details {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    flex: 1;
+}
+
+.trend-name {
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-weight: 17px;
+}
+
+.trend-stats {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: grey;
+}
+
+.trend-more {
+    width: 30px;
+}
+
+.more-button {
+    border: none;
+    border-radius: 10px;
+}
+
+.trends-show-more {
+    color: grey;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.follow-recommendation {
+    height: 250px;
+    margin-top: 50px;
+}
+
+.follow-row {
+    display: flex;
+    align-items: start;
+    margin-bottom: 15px;
+}
+
+.follow-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+}
+
+.profile-div {
+    width: 50px;
+}
+
+.profile-follow {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.btnFollow {
+    width: 80px;
+}
+
+.displayName {
+    font-weight: bold;
+    margin-bottom: 2px;
+    margin-top: 0;
+}
+
+.userName {
+    margin-top: 0;
+    color: grey;
+}
+
+.whotofollow {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.cs50-post {
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+}
+
+.post-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cs50-profile {
+    width: 50px;
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.cs50-post-upper {
+    display: flex;
+    flex-direction: row;
+}
+
+.cs50-picture {
+    width: 300px;
+    height: 450px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.link {
+    color: rgb(184, 71, 184);
+}
+
+.cs50-cat {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.cs50-post-upper {
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+.cs50-display {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.cs50-username {
+    color: grey;
+    margin-bottom: 0;
+    margin-right: 8px;
+}
+
+.cs50-header {
+    margin-top: 0;
+    margin-bottom: 3;
+    margin-left: 10px;
+}
+
+.cs50-text {
+    margin-top: 0;
+    margin-bottom: 3;
+    margin-left: 10px;
+}
+
+.icons-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-between;
+}

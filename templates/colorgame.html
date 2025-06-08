@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}Color Guessing Game{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/colorgame.css">{% endblock %}
+{% block body %}
+    <div class="game-container">
+        <h1 class="game-title">🎨 Color Master</h1>
+        <p class="game-subtitle">Can you guess the color from its code?</p>
+
+        <div class="score-board">
+            <div>Score: <span id="score">0</span></div>
+            <div>Round: <span id="round">1</span>/10</div>
+            <div>Streak: <span id="streak">0</span></div>
+        </div>
+
+        <div id="game-area">
+            <div class="target-color" id="targetColor"></div>
+            <div class="color-code" id="colorCode"></div>
+
+            <div class="options-grid" id="optionsGrid">
+                <button class="color-option" onclick="selectColor(0)"></button>
+                <button class="color-option" onclick="selectColor(1)"></button>
+                <button class="color-option" onclick="selectColor(2)"></button>
+                <button class="color-option" onclick="selectColor(3)"></button>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <button class="next-button" id="nextButton" onclick="nextRound()" disabled>
+                Next Round
+            </button>
+        </div>
+
+        <div class="game-over" id="gameOver">
+            <h2>🎉 Game Complete!</h2>
+            <div class="final-score" id="finalScore">0/10</div>
+            <p id="performanceMessage"></p>
+            <button class="restart-button" onclick="restartGame()">
+                🔄 Play Again
+            </button>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/colorgame.js"></script>{% endblock %}
+{% endblock %}

@@ -1,0 +1,73 @@
+#certifications {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+}
+
+.certification-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+main h2 {
+    text-align: center;
+}
+
+section button {
+    margin-left: 40%;
+}
+
+.certification {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.certification img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.certification h3 {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.certification p {
+    color: black;
+    font-size: 14px;
+}
+
+#career-opportunities {
+    padding: 40px 0;
+}
+
+#career-opportunities ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#career-opportunities li {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+#career-opportunities button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#career-opportunities button:hover {
+    background-color: #0056b3;
+}

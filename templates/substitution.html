@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}Substitution{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/substitution.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="cipher-card">
+            <h1 class="title">🔐 Substitution Cipher</h1>
+            <p class="subtitle">Encrypt your messages with a custom 26-letter key</p>
+
+            <div class="cipher-visual">
+                <div class="alphabet-display" id="alphabetDisplay">
+                </div>
+            </div>
+
+            <form id="cipherForm">
+                <div class="input-group">
+                    <label class="input-label" for="keyInput">Cipher Key (26 unique letters)</label>
+                    <input type="text" id="keyInput" class="input-field key-input" placeholder="QWERTYUIOPASDFGHJKLZXCVBNM" maxlength="26" autocomplete="off">
+                    <div class="key-progress">
+                        <div class="key-progress-bar" id="keyProgress"></div>
+                    </div>
+                    <div class="validation-message" id="keyValidation"></div>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label" for="plaintextInput">Plaintext Message</label>
+                    <textarea id="plaintextInput" class="input-field plaintext-input" placeholder="Enter your message to encrypt..." rows="4"></textarea>
+                    <div class="validation-message" id="plaintextValidation"></div>
+                </div>
+
+                <button type="submit" class="encrypt-btn" id="encryptBtn" disabled>
+                    🔒 Encrypt Message
+                </button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+            </div>
+
+            <div class="result-section" id="resultSection">
+                <label class="result-label">Encrypted Message:</label>
+                <textarea class="ciphertext-output" id="ciphertextOutput" readonly></textarea>
+                <button class="copy-btn" id="copyBtn">📋 Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/substitution.js"></script>{% endblock %}
+{% endblock %}

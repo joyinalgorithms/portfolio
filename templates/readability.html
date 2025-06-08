@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+{% block title %}Readability{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/readability.css">{% endblock %}
+{% block body %}
+    <div class="analyzer-container">
+        <div class="header">
+            <h1 class="title">📚 Readability Analyzer</h1>
+            <p class="subtitle">Coleman-Liau Index Calculator</p>
+            <p class="description">
+                Analyze the reading difficulty of any text using the Coleman-Liau readability formula.
+                Simply paste your text below and get instant grade-level analysis.
+            </p>
+        </div>
+
+        <div class="main-content">
+            <div class="text-input-section">
+                <label class="input-label" for="textInput">📝 Enter Your Text</label>
+                <textarea id="textInput" class="text-input" placeholder="Paste or type your text here to analyze its readability level. The analyzer will count letters, words, and sentences to determine the appropriate grade level using the Coleman-Liau formula..."></textarea>
+
+                <button class="analysis-button" id="analyzeBtn">
+                    🔍 Analyze Text
+                </button>
+            </div>
+
+            <div class="stats-panel">
+                <h3 class="stats-title">📊 Text Statistics</h3>
+
+                <div class="stat-item">
+                    <div class="stat-label">Letters</div>
+                    <div class="stat-value" id="letterCount">0</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-label">Words</div>
+                    <div class="stat-value" id="wordCount">0</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-label">Sentences</div>
+                    <div class="stat-value" id="sentenceCount">0</div>
+                </div>
+
+                <div class="progress-bars">
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Avg Letters/100 Words</span>
+                            <span id="avgLetters">0</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="lettersProgress"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>Avg Sentences/100 Words</span>
+                            <span id="avgSentences">0</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="sentencesProgress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grade-level-section" id="gradeSection">
+            <div class="grade-title">📖 Reading Grade Level</div>
+            <div class="grade-value" id="gradeValue">-</div>
+            <div class="grade-description" id="gradeDescription">Enter text to analyze</div>
+
+            <div class="grade-colors">
+                <div class="grade-indicator grade-elementary">K-5 Elementary</div>
+                <div class="grade-indicator grade-middle">6-8 Middle</div>
+                <div class="grade-indicator grade-high">9-12 High School</div>
+                <div class="grade-indicator grade-college">College+</div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Analyzing text readability...</p>
+        </div>
+
+        <div class="formula-section">
+            <h3 class="formula-title">🧮 Coleman-Liau Formula</h3>
+            <div class="formula">
+                Index = 0.0588 × L - 0.296 × S - 15.8
+            </div>
+            <div class="formula-explanation">
+                Where L = average letters per 100 words, and S = average sentences per 100 words
+            </div>
+        </div>
+    </div>
+    {% block scripts %}<script src="/static/scripts/readability.js"></script>{% endblock %}
+{% endblock %}

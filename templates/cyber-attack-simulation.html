@@ -1,0 +1,46 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Cyber Attack Simulation | BluRed AI{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/cyber-attack-simulation.css">
+{% endblock %}
+
+{% block main %}
+    <header>
+        <h1>Cyber Attack Simulation</h1>
+        <p>Experience realistic cyberattacks in a controlled, interactive environment. Defend your systems and sharpen your response skills.</p>
+    </header>
+
+    <main>
+        <section id="simulation-intro" class="main">
+            <h2>Simulate Real Cyberattacks</h2>
+            <p>Prepare for threats like ransomware, phishing, DDoS attacks, and more. Learn how to identify, contain, and neutralize attacks in real-time.</p>
+        </section>
+
+        <section id="simulation-actions">
+            <h3>Choose Your Attack Simulation</h3>
+            <div id="attack-options">
+                <button class="btn" id="ransomware-btn">Simulate Ransomware Attack</button>
+                <button class="btn" id="phishing-btn">Simulate Phishing Attack</button>
+                <button class="btn" id="ddos-btn">Simulate DDoS Attack</button>
+            </div>
+        </section>
+
+        <section id="simulation-status">
+            <h3>Simulation Status</h3>
+            <p id="status-message">Select an attack to begin your simulation.</p>
+            <div id="attack-details"></div>
+        </section>
+
+        <section id="response-actions">
+            <h3>Response Options</h3>
+            <div id="response-options" style="display: none;">
+                <button class="btn" id="contain-btn">Contain the Attack</button>
+                <button class="btn" id="neutralize-btn">Neutralize the Threat</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/scripts/cyber-attack-simulation.js"></script>
+{% endblock %}
