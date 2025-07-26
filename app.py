@@ -191,7 +191,7 @@ def amazon():
     number = len(cart)
 
     products = dbamazon.execute("SELECT * FROM products")
-    return render_template("amazon.html", products=products, number=number)
+    return render_template("frontend/amazon.html", products=products, number=number)
 
 
 @app.route("/amazon/add-to-cart", methods=["GET", "POST"])
@@ -230,7 +230,7 @@ def checkout():
     total_price = f"{total_price_cents / 100:.2f}"
 
     delivery_options = dbamazon.execute("SELECT * FROM delivery_options")
-    return render_template("checkout.html", cart=cart, delivery_date=delivery_date, delivery_options=delivery_options, number=number, total_price=total_price)
+    return render_template("frontend/checkout.html", cart=cart, delivery_date=delivery_date, delivery_options=delivery_options, number=number, total_price=total_price)
 
 
 @app.route("/cart/delete", methods=["POST"])
@@ -257,137 +257,137 @@ def place_order():
 
 @app.route("/minigames/tictactoe")
 def tictactoe():
-    return render_template("tictactoe.html")
+    return render_template("games/tictactoe.html")
 
 
 @app.route("/minigames/rockpaperscissors")
 def rockpaperscissors():
-    return render_template("rockpaperscissors.html")
+    return render_template("games/rockpaperscissors.html")
 
 
 @app.route("/minigames/clawmachine")
 def clawmachine():
-    return render_template("clawmachine.html")
+    return render_template("games/clawmachine.html")
 
 
 @app.route("/minigames/memorygame")
 def memorygame():
-    return render_template("memorygame.html")
+    return render_template("games/memorygame.html")
 
 
 @app.route("/minigames/snakegame")
 def snakegame():
-    return render_template("snakegame.html")
+    return render_template("games/snakegame.html")
 
 
 @app.route("/minigames/flappygame")
 def flappygame():
-    return render_template("flappygame.html")
+    return render_template("games/flappygame.html")
 
 
 @app.route("/minigames/colorgame")
 def colorgame():
-    return render_template("colorgame.html")
+    return render_template("games/colorgame.html")
 
 
 @app.route("/minigames/suduko")
 def suduko():
-    return render_template("suduko.html")
+    return render_template("games/suduko.html")
 
 
 @app.route("/minigames/typingtest")
 def typingtest():
-    return render_template("typingtest.html")
+    return render_template("games/typingtest.html")
 
 
 @app.route("/cs50x/credit")
 def credit():
-    return render_template("credit.html")
+    return render_template("cs50/credit.html")
 
 
 @app.route("/cs50x/scrabble")
 def scrabble():
-    return render_template("scrabble.html")
+    return render_template("cs50/scrabble.html")
 
 
 @app.route("/cs50x/readability")
 def readability():
-    return render_template("readability.html")
+    return render_template("cs50/readability.html")
 
 
 @app.route("/cs50x/caesar")
 def caesar():
-    return render_template("caesar.html")
+    return render_template("cs50/caesar.html")
 
 
 @app.route("/cs50x/substitution")
 def substitution():
-    return render_template("substitution.html")
+    return render_template("cs50/substitution.html")
 
 
 @app.route("/cs50x/plurality")
 def plurality():
-    return render_template("plurality.html")
+    return render_template("cs50/plurality.html")
 
 
 @app.route("/cs50x/runoff")
 def runoff():
-    return render_template("runoff.html")
+    return render_template("cs50/runoff.html")
 
 
 @app.route("/cs50x/filter")
 def filter():
-    return render_template("filter.html")
+    return render_template("cs50/filter.html")
 
 
 @app.route("/cs50x/inheritance")
 def inheritance():
-    return render_template("inheritance.html")
+    return render_template("cs50/inheritance.html")
 
 
 @app.route("/cs50x/speller")
 def speller():
-    return render_template("speller.html")
+    return render_template("cs50/speller.html")
 
 
 @app.route("/cs50x/dna")
 def dna():
-    return render_template("dna.html")
+    return render_template("cs50/dna.html")
 
 
 @app.route('/cs50x/homepage')
 def homepageindex():
-    return render_template("homepage-index.html")
+    return render_template("cs50/homepage-index.html")
 
 
 @app.route('/homepage/email')
 def homepageemail():
-    return render_template("homepage-email.html")
+    return render_template("cs50/homepage-email.html")
 
 
 @app.route('/homepage/feedback')
 def homepagefeedback():
-    return render_template("homepage-feedback.html")
+    return render_template("cs50/homepage-feedback.html")
 
 
 @app.route('/homepage/gallery')
 def gallery():
-    return render_template("homepage-gallery.html")
+    return render_template("cs50/homepage-gallery.html")
 
 
 @app.route('/homepage/journey')
 def homepagejourney():
-    return render_template("homepage-journey.html")
+    return render_template("cs50/homepage-journey.html")
 
 
 @app.route('/homepage/me')
 def homepageme():
-    return render_template("homepage-me.html")
+    return render_template("cs50/homepage-me.html")
 
 
 @app.route("/cs50x/trivia")
 def trivia():
-    return render_template("trivia.html")
+    return render_template("cs50/trivia.html")
 
 
 @app.route("/cs50x/birthday", methods=["GET", "POST"])
@@ -411,7 +411,7 @@ def birthday():
     else:
 
         rows = dbbirthdays.execute("SELECT * FROM birthdays")
-        return render_template("birthday.html", birthdays=rows)
+        return render_template("cs50/birthday.html", birthdays=rows)
 
 
 @app.route("/cs50x/finance")
@@ -431,7 +431,7 @@ def finance():
     total_cash = cash + sum(row["total"] for row in transaction)
     cash = usd(cash)
     total_cash = usd(total_cash)
-    return render_template("finance.html", database=transaction, cash=cash, total_cash=total_cash)
+    return render_template("cs50/finance.html", database=transaction, cash=cash, total_cash=total_cash)
 
 
 @app.route("/cs50x/finance/buy", methods=["GET", "POST"])
@@ -473,7 +473,7 @@ def buy():
                           action, user_id, symbol)
         flash("Bought!")
         return redirect("/cs50x/finance")
-    return render_template("financebuy.html")
+    return render_template("cs50/financebuy.html")
 
 
 @app.route("/cs50x/finance/history")
@@ -491,7 +491,7 @@ def history():
         row["usd_price"] = usd(row["price"])
         row["usd_total"] = usd(row["total"])
 
-    return render_template("financehistory.html", transactions=transactions)
+    return render_template("cs50/financehistory.html", transactions=transactions)
 
 
 @app.route("/cs50x/finance/login", methods=["GET", "POST"])
@@ -519,7 +519,7 @@ def login():
         return redirect("/cs50x/finance")
 
     else:
-        return render_template("financelogin.html")
+        return render_template("cs50/financelogin.html")
 
 
 @app.route("/cs50x/finance/logout")
@@ -541,8 +541,8 @@ def quote():
         if stock == None:
             return apology("Symbol does not exist", 400)
         price = float("{:.2f}".format(float(stock["price"])))
-        return render_template("financequoted.html", price=price, symbol=stock["symbol"])
-    return render_template("financequote.html")
+        return render_template("cs50/financequoted.html", price=price, symbol=stock["symbol"])
+    return render_template("cs50/financequote.html")
 
 
 @app.route("/cs50x/finance/register", methods=["GET", "POST"])
@@ -571,7 +571,7 @@ def register():
                               username, hashed_password)
         return redirect("/cs50x/finance")
     else:
-        return render_template("financeregister.html")
+        return render_template("cs50/financeregister.html")
 
 
 @app.route("/cs50x/finance/sell", methods=["GET", "POST"])
@@ -602,9 +602,9 @@ def sell():
         user_options = dbfinance.execute(
             "SELECT symbol FROM transactions WHERE user_id = ? GROUP BY symbol HAVING SUM(shares) > 0", user_id)
 
-        return render_template("financesell.html", user_options=[row["symbol"] for row in user_options])
+        return render_template("cs50/financesell.html", user_options=[row["symbol"] for row in user_options])
 
-    return render_template("financesell.html")
+    return render_template("cs50/financesell.html")
 
 
 @app.route("/cs50x/finance/addcash", methods=["GET", "POST"])
@@ -630,28 +630,28 @@ def cash_in():
         dbfinance.execute("UPDATE users SET cash = ? WHERE username = ?", cash_after, username)
         flash("Successfully cash in")
         return redirect("/cs50x/finance")
-    return render_template("financeaddcash.html")
+    return render_template("cs50/financeaddcash.html")
 
 
 @app.route("/cs50w/search")
 def search():
-    return render_template("search.html")
+    return render_template("cs50/search.html")
 
 
 @app.route("/cs50w/imagesearch")
 def imagesearch():
-    return render_template("imagesearch.html")
+    return render_template("cs50/imagesearch.html")
 
 
 @app.route("/cs50w/advancedsearch")
 def advancedsearch():
-    return render_template("advancedsearch.html")
+    return render_template("cs50/advancedsearch.html")
 
 
 @app.route("/cs50w/wiki")
 def wiki():
     entries = util.list_entries()
-    return render_template("wiki.html", entries=entries)
+    return render_template("cs50/wiki.html", entries=entries)
 
 
 @app.route("/cs50w/wiki/<string:title>")
@@ -660,7 +660,7 @@ def page(title):
     if entry is None:
         return render_template('404.html'), 404
     content = markdown2.markdown(entry)
-    return render_template("wikipage.html", content=content, title=title)
+    return render_template("cs50/wikipage.html", content=content, title=title)
 
 
 @app.route("/cs50w/wiki/search")
@@ -673,9 +673,9 @@ def result():
     if query in entries:
         return redirect(url_for("page", title=query))
     elif partial_matches:
-        return render_template("wiki.html", entries=partial_matches)
+        return render_template("cs50/wiki.html", entries=partial_matches)
     else:
-        return render_template("wiki.html", entries=[])
+        return render_template("cs50/wiki.html", entries=[])
 
 
 @app.route("/cs50w/wiki/new", methods=["GET", "POST"])
@@ -691,7 +691,7 @@ def newpage():
         util.save_entry(title, content)
         return redirect(url_for("page", title=title))
 
-    return render_template("wikinewpage.html")
+    return render_template("cs50/wikinewpage.html")
 
 
 @app.route("/cs50w/wiki/<string:title>/edit", methods=["GET", "POST"])
@@ -705,7 +705,7 @@ def editpage(title):
     if entry is None:
         return render_template('404.html'), 404
 
-    return render_template("wikiedit.html", title=title, content=entry)
+    return render_template("cs50/wikiedit.html", title=title, content=entry)
 
 
 @app.route("/cs50w/wiki/random")
