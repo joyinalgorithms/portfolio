@@ -1,0 +1,123 @@
+body {
+
+    background-color: #0a0a0a;
+    color: #00ffcc;
+    text-align: center;
+}
+
+main {
+    font-family: 'Courier New', monospace;
+}
+
+.page-header {
+    padding: 20px;
+    border-bottom: 2px solid #00ffcc;
+}
+
+.btn {
+    background: #00ffcc;
+    color: #000;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff0044;
+    color: white;
+}
+
+#simulation-area {
+    margin-top: 20px;
+}
+
+#attack-alert {
+    background: #1a1a1a;
+    border: 2px solid #ff0044;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+#simulation-log {
+    margin-top: 20px;
+    background: #111;
+    padding: 15px;
+    border: 1px solid #00ffcc;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #222;
+    padding: 10px;
+    margin: 5px;
+    border-left: 3px solid #00ffcc;
+    font-size: 14px;
+}
+/* Smooth fade-ins for UI animations */
+.page-header,
+#training-mode,
+#simulation-log {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+/* Styling for the alert box */
+#attack-alert {
+    background-color: #ffe5e5;
+    border: 2px solid #ff4d4d;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    display: none; /* overridden by JS when active */
+}
+
+#attack-alert h2 {
+    color: #d9534f;
+}
+
+#simulation-log {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+}
+
+/* Button consistency and visual cues */
+#training-mode .btn {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+#training-mode .btn:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    #training-mode {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #attack-alert,
+    #simulation-log {
+        padding: 15px;
+    }
+}

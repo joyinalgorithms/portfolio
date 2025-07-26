@@ -1,0 +1,45 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Red vs. Blue Team Training | BluRed AI{% endblock %}
+
+{% block stylesheet %}
+    <!-- Linking custom styles for the Red-Blue Team Training module -->
+    <link rel="stylesheet" href="/static/styles/frontend/red-blue-team-training.css">
+{% endblock %}
+
+{% block main %}
+    <!-- Page header introducing the training module -->
+    <header class="page-header animate__animated animate__fadeInDown">
+        <h1>Red Team vs. Blue Team AI-Driven Training</h1>
+        <p>Alternate between attacking and defending in simulated cyber scenarios to sharpen your skills.</p>
+    </header>
+
+    <main>
+        <!-- Buttons to choose attack or defend role -->
+        <section id="training-mode" class="animate__animated animate__fadeInUp">
+            <button id="attacker-btn" class="btn btn-danger">Start as Attacker</button>
+            <button id="defender-btn" class="btn btn-primary">Start as Defender</button>
+        </section>
+
+        <!-- Core simulation area that updates based on user role -->
+        <section id="simulation-area">
+            <!-- Attack alert box triggered dynamically -->
+            <div id="attack-alert" class="hidden animate__animated animate__pulse">
+                <h2>🚨 Incoming Cyber Attack!</h2>
+                <p id="attack-description">AI-generated attack incoming...</p>
+                <p>Time Left: <span id="attack-timer">10</span> seconds</p>
+                <button id="defend-btn" class="btn btn-success">Defend Now</button>
+            </div>
+
+            <!-- Log of user actions and events during simulation -->
+            <div id="simulation-log" class="animate__animated animate__fadeIn">
+                <h3>Simulation Log</h3>
+                <ul id="log-list"></ul>
+            </div>
+        </section>
+    </main>
+
+    {% block scripts %}
+        <script src="/static/scripts/frontend/red-blue-team-training.js"></script>
+    {% endblock %}
+{% endblock %}

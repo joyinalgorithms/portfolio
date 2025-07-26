@@ -1,0 +1,51 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Instructional Content | BluRed AI{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/frontend/instructional-content.css">
+{% endblock %}
+
+{% block main %}
+    <!-- Page header introducing the video-based learning section -->
+    <header class="animate__animated animate__fadeInDown">
+        <h1>Instructional Cybersecurity Content</h1>
+        <p>Watch short, interactive video lessons that cover the foundational concepts of cybersecurity.</p>
+    </header>
+
+    <main>
+        <!-- Intro section to provide context about what the user is about to learn -->
+        <section id="lesson-intro" class="animate__animated animate__fadeInUp">
+            <h2>Introduction to Cybersecurity</h2>
+            <p>Learn the basics of cybersecurity to start building your defense skills. These video lessons cover critical concepts like threat modeling, network security, and encryption.</p>
+        </section>
+
+        <!-- Actual lesson area with thumbnail that toggles to a real embedded video -->
+        <section id="lesson-video" class="animate__animated animate__fadeIn">
+            <h3>Lesson 1: What is Cybersecurity?</h3>
+
+            <div class="video-container">
+                <!-- Clicking thumbnail will hide it and show iframe -->
+                <img src="/static/images/video-thumbnail.png" alt="Cybersecurity Thumbnail" class="video-thumbnail" id="thumb-1">
+                <iframe
+                    id="video-1"
+                    class="hidden"
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+
+            <p>This video introduces the basics of cybersecurity, its importance, and the role it plays in modern society.</p>
+            <button id="next-lesson" class="btn btn-primary">Next Lesson: Threat Models</button>
+        </section>
+    </main>
+
+    {% block scripts %}
+        <!-- JS handles thumbnail click → video switch -->
+        <script src="/static/scripts/instructional-content.js"></script>
+    {% endblock %}
+{% endblock %}

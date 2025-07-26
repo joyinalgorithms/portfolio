@@ -1,0 +1,140 @@
+#current-threats {
+    background-color: #f8f9fa;
+    padding: 40px;
+    margin-bottom: 20px;
+}
+
+#current-threats h2 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#threat-list {
+    color: black;
+}
+
+#security-alerts {
+    color: black;
+}
+
+#threat-list {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#threat-list .threat-item {
+    padding: 15px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #dcdcdc;
+    display: flex;
+    justify-content: space-between;
+}
+
+#threat-list .threat-item h4 {
+    color: #dc3545;
+}
+
+#security-alerts {
+    background-color: #ffffff;
+    padding: 40px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#security-alerts h3 {
+    font-size: 22px;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#alert-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#alert-list .alert-item {
+    background-color: #f1f3f5;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+button#more-alerts {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 220px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#intelligence-sources ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#intelligence-sources ul li {
+    margin-bottom: 10px;
+}
+
+#intelligence-sources ul li a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+}
+
+#intelligence-sources ul li a:hover {
+    text-decoration: underline;
+}
+
+ @media (max-width: 768px) {
+      .badge {
+        width: 80px;
+        height: 80px;
+      }
+
+      .badge-container p {
+        font-size: 0.85rem;
+      }
+
+      .challenge-item h4 {
+        font-size: 1.1rem;
+      }
+
+      .challenge-item p {
+        font-size: 0.95rem;
+      }
+
+      .table-responsive table {
+        font-size: 0.9rem;
+      }
+
+      header.page-header h1,
+      header.page-header p {
+        text-align: center;
+        padding: 0 1rem;
+      }
+
+      .section {
+        padding: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        font-size: 1rem;
+      }
+    }

@@ -1,0 +1,54 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Real-Time Threat Intelligence | BluRed AI{% endblock %}
+
+{% block meta %}
+  <meta name="description" content="Stay updated with BluRed AI's real-time threat intelligence. Receive live updates on emerging cyber threats and countermeasures.">
+  <meta name="keywords" content="real-time threat intelligence, cybersecurity updates, live cyber threats, threat monitoring, BluRed AI">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/static/styles/frontend/realtime-threat.css">
+{% endblock %}
+
+{% block main %}
+<header class="page-header text-center">
+  <div class="container">
+    <h1 class="animate__animated animate__fadeInDown">Real-Time Threat Intelligence</h1>
+    <p class="animate__animated animate__fadeInUp">Stay informed with up-to-the-minute threat data powered by AI detection and monitoring systems.</p>
+  </div>
+</header>
+
+<main class="container py-5">
+  <section id="threat-feed" class="section mb-5">
+    <h2 class="text-center">Live Threat Feed</h2>
+    <p class="text-center">Get real-time insights into global cyber threats.</p>
+    <div id="live-feed" class="bg-light p-3 rounded shadow-sm overflow-auto" style="max-height: 300px;">
+      <!-- Feed will be populated dynamically -->
+      <p><em>Loading threat feed...</em></p>
+    </div>
+  </section>
+
+  <section id="threat-map" class="section mb-5">
+    <h2 class="text-center">Global Threat Map</h2>
+    <p class="text-center">Visualize live attack sources and targets globally.</p>
+    <div class="map-container rounded shadow-sm">
+      <iframe src="https://threatmap.checkpoint.com" title="Global Threat Map" style="width: 100%; height: 400px; border: none;"></iframe>
+    </div>
+  </section>
+
+  <section id="ai-response" class="section mb-5">
+    <h2 class="text-center">AI-Driven Response Tips</h2>
+    <p class="text-center">BluRed AI generates recommended steps for countering emerging threats.</p>
+    <ul class="list-group list-group-flush bg-white shadow-sm">
+      <li class="list-group-item">Update endpoint security tools with the latest threat signatures.</li>
+      <li class="list-group-item">Isolate vulnerable devices from the network immediately.</li>
+      <li class="list-group-item">Initiate phishing awareness drills for staff.</li>
+      <li class="list-group-item">Enable multi-factor authentication (MFA) organization-wide.</li>
+    </ul>
+  </section>
+</main>
+
+<script src="/static/scripts/frontend/realtime-threat.js"></script>
+{% endblock %}

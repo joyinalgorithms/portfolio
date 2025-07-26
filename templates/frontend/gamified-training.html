@@ -1,0 +1,109 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Gamified Cybersecurity Training | BluRed AI{% endblock %}
+
+{% block meta %}
+  <meta name="description" content="Engage in gamified cybersecurity training with BluRed AI. Complete Capture The Flag (CTF) challenges, earn points, and climb the leaderboard.">
+  <meta name="keywords" content="cybersecurity training, gamified CTF, BluRed AI, phishing challenge, malware detection, penetration testing, cybersecurity badges">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="/static/styles/frontend/gamified-training.css">
+{% endblock %}
+
+{% block main %}
+<header class="page-header">
+  <div class="container text-center">
+    <h1>Gamified Cybersecurity Training</h1>
+    <p>Engage in competitive cybersecurity challenges. Earn points, badges, and climb the leaderboards as you sharpen your skills.</p>
+  </div>
+</header>
+
+<main class="container">
+  <section id="training-intro" class="section">
+    <h2>Get Ready for the Challenge</h2>
+    <p>Complete Capture The Flag (CTF) challenges, rise through the ranks, and earn rewards!</p>
+    <p>Track your progress and compete with other learners to become the ultimate cybersecurity expert.</p>
+  </section>
+
+  <section id="challenge-list" class="section">
+    <h3>Available Challenges</h3>
+
+    <div class="challenge-item">
+      <h4>Challenge 1: Basic Phishing Attack</h4>
+      <p>Solve the phishing simulation to test your email filtering skills. Identify and avoid malicious emails to prevent attacks.</p>
+      <p><strong>Points: 100</strong></p>
+      <button class="btn start-challenge" data-challenge="1">Start Challenge</button>
+    </div>
+
+    <div class="challenge-item">
+      <h4>Challenge 2: Malware Detection</h4>
+      <p>Analyze a suspicious file and identify potential malware threats. Use analysis tools to discover the nature of the threat.</p>
+      <p><strong>Points: 150</strong></p>
+      <button class="btn start-challenge" data-challenge="2">Start Challenge</button>
+    </div>
+
+    <div class="challenge-item">
+      <h4>Challenge 3: Network Penetration</h4>
+      <p>Perform penetration testing to exploit a vulnerable system and gain access. Use network analysis and attack tools to simulate real-world attacks.</p>
+      <p><strong>Points: 200</strong></p>
+      <button class="btn start-challenge" data-challenge="3">Start Challenge</button>
+    </div>
+
+    <div class="challenge-item">
+      <h4>Challenge 4: Ransomware Analysis</h4>
+      <p>Decrypt a locked system affected by ransomware and determine how to mitigate the attack.</p>
+      <p><strong>Points: 250</strong></p>
+      <button class="btn start-challenge" data-challenge="4">Start Challenge</button>
+    </div>
+  </section>
+
+  <section id="leaderboard" class="section">
+    <h3>Leaderboard</h3>
+    <div class="table-responsive">
+      <table id="leaderboard-table" class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Name</th>
+            <th scope="col">Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Alice</td><td>700</td></tr>
+          <tr><td>2</td><td>Bob</td><td>600</td></tr>
+          <tr><td>3</td><td>Charlie</td><td>500</td></tr>
+          <tr><td>4</td><td>Dave</td><td>400</td></tr>
+          <tr><td>5</td><td>Eve</td><td>350</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="rewards" class="section">
+    <h3>Your Rewards</h3>
+    <p>Complete challenges to earn badges and unlock new training modules.</p>
+    <div id="reward-badges" class="d-flex flex-wrap justify-content-center gap-3">
+      <div class="badge-container text-center">
+        <img src="/static/images/badge-1.png" alt="Phishing Defender Badge" class="badge">
+        <p>Phishing Defender</p>
+      </div>
+      <div class="badge-container text-center">
+        <img src="/static/images/badge-2.png" alt="Malware Hunter Badge" class="badge">
+        <p>Malware Hunter</p>
+      </div>
+      <div class="badge-container text-center">
+        <img src="/static/images/badge-3.png" alt="Network Intrusion Expert Badge" class="badge">
+        <p>Network Intrusion Expert</p>
+      </div>
+      <div class="badge-container text-center">
+        <img src="/static/images/badge-4.png" alt="Ransomware Rescuer Badge" class="badge">
+        <p>Ransomware Rescuer</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="/static/scripts/frontend/gamified-training.js"></script>
+{% endblock %}

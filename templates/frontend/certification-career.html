@@ -1,0 +1,50 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Certification & Career | BluRed AI{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/frontend/certification-career.css">
+{% endblock %}
+
+{% block main %}
+    <header class="fade-in">
+        <h1>Certification & Career Advancement</h1>
+        <p>Prepare for professional cybersecurity certifications and connect with job opportunities through BluRed AI.</p>
+    </header>
+
+    <main>
+        <section id="certifications" class="slide-up">
+            <h2>Professional Cybersecurity Certifications</h2>
+            <div class="certification-list">
+                <div class="certification">
+                    <img src="/static/images/oscp.png" alt="OSCP - Offensive Security Certified Professional" />
+                    <h3>OSCP - Offensive Security Certified Professional</h3>
+                    <p>Prepare for the Offensive Security exam with our guided training sessions and real-time practice labs.</p>
+                </div>
+                <div class="certification">
+                    <img src="/static/images/cissp.png" alt="CISSP - Certified Information Systems Security Professional" />
+                    <h3>CISSP - Certified Information Systems Security Professional</h3>
+                    <p>Gain the knowledge and skills needed to pass the CISSP certification exam with BluRed AI’s tailored curriculum.</p>
+                </div>
+                <div class="certification">
+                    <img src="/static/images/ceh.png" alt="CEH - Certified Ethical Hacker" />
+                    <h3>CEH - Certified Ethical Hacker</h3>
+                    <p>Master ethical hacking concepts and techniques with practical labs and real-world attack simulations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="career-opportunities" class="fade-in-delay">
+            <h2>Cybersecurity Career Opportunities</h2>
+            <p>Our platform connects you with top cybersecurity employers seeking skilled professionals. Here's how we help:</p>
+            <ul>
+                <li>Access to exclusive job listings from leading companies in cybersecurity.</li>
+                <li>Direct interaction with recruiters and cybersecurity employers.</li>
+                <li>Personalized career advice and job-readiness assessments.</li>
+            </ul>
+            <button id="connect-recruiters-btn" class="btn">Connect with Recruiters</button>
+        </section>
+    </main>
+
+    <script src="/static/scripts/frontend/certification-career.js"></script>
+{% endblock %}

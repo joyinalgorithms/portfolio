@@ -41,146 +41,146 @@ def page_not_found(e):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("portfolio/index.html")
 
 
 @app.route("/aboutme")
 def aboutme():
-    return render_template("aboutme.html")
+    return render_template("portfolio/aboutme.html")
 
 
 @app.route("/resume")
 def resume():
-    return render_template("resume.html")
+    return render_template("portfolio/resume.html")
 
 
 @app.route("/projects")
 def projects():
-    return render_template("projects.html")
+    return render_template("portfolio/projects.html")
 
 
 @app.route("/certifications")
 def certifications():
-    return render_template("certifications.html")
+    return render_template("portfolio/certifications.html")
 
 
 @app.route("/tech-stack")
 def techstack():
-    return render_template("tech-stack.html")
+    return render_template("portfolio/tech-stack.html")
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("portfolio/contact.html")
 
 
 @app.route("/privacy")
 def privacy():
-    return render_template("privacy.html")
+    return render_template("portfolio/privacy.html")
 
 
 @app.route("/yesoryes")
 def yesoryes():
-    return render_template("yes.html")
+    return render_template("frontend/yes.html")
 
 
 @app.route("/bluredai")
 def home():
-    return render_template("home.html")
+    return render_template("frontend/home.html")
 
 
 @app.route("/red-blue-team-training")
 def red_blue_team_training():
-    return render_template("red-blue-team-training.html")
+    return render_template("frontend/red-blue-team-training.html")
 
 
 @app.route("/adaptive-learning")
 def adaptive_learning():
-    return render_template("adaptive-learning.html")
+    return render_template("frontend/adaptive-learning.html")
 
 
 @app.route("/cyber-attack-simulation")
 def cyber_attack_simulation():
-    return render_template("cyber-attack-simulation.html")
+    return render_template("frontend/cyber-attack-simulation.html")
 
 
 @app.route("/instructional-content")
 def instructional_content():
-    return render_template("instructional-content.html")
+    return render_template("frontend/instructional-content.html")
 
 
 @app.route("/gamified-training")
 def gamified_training():
-    return render_template("gamified-training.html")
+    return render_template("frontend/gamified-training.html")
 
 
 @app.route("/certification-career")
 def certification_career():
-    return render_template("certification-career.html")
+    return render_template("frontend/certification-career.html")
 
 
 @app.route("/real-time-threat-intelligence")
 def real_time_threat_intelligence():
-    return render_template("real-time-threat-intelligence.html")
+    return render_template("frontend/real-time-threat-intelligence.html")
 
 
 @app.route("/cloud-access")
 def cloud_access():
-    return render_template("cloud-access.html")
+    return render_template("frontend/cloud-access.html")
 
 
 @app.route("/profile")
 def profile():
-    return render_template("profile.html")
+    return render_template("frontend/profile.html")
 
 
 @app.route("/bluechallenge")
 def bluechallenge():
-    return render_template("bluechallenge.html")
+    return render_template("frontend/bluechallenge.html")
 
 
 @app.route("/isitchristmas")
 def isitchristmas():
     now = datetime.now()
     christmas = now.month == 12 and now.day == 25
-    return render_template("christmas.html", christmas=christmas)
+    return render_template("frontend/christmas.html", christmas=christmas)
 
 
 @app.route("/isitnewyears")
 def isitnewyears():
     now = datetime.now()
     newyear = now.month == 1 and now.day == 1
-    return render_template("newyear.html", newyear=newyear)
+    return render_template("frontend/newyear.html", newyear=newyear)
 
 
 @app.route("/facebook")
 def facebook():
-    return render_template("facebook.html")
+    return render_template("frontend/facebook.html")
 
 
 @app.route("/instagram")
 def instagram():
-    return render_template("instagram.html")
+    return render_template("frontend/instagram.html")
 
 
 @app.route("/spotify")
 def spotify():
-    return render_template("spotify.html")
+    return render_template("frontend/spotify.html")
 
 
 @app.route("/linkedin")
 def linkedin():
-    return render_template("linkedin.html")
+    return render_template("frontend/linkedin.html")
 
 
 @app.route("/x")
 def x():
-    return render_template("x.html")
+    return render_template("frontend/x.html")
 
 
 @app.route("/youtube")
 def youtube():
-    return render_template("youtube.html")
+    return render_template("frontend/youtube.html")
 
 
 @app.route("/amazon")

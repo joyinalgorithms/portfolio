@@ -1,0 +1,53 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Cyber Attack Simulation | BluRed AI{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/frontend/cyber-attack-simulation.css">
+{% endblock %}
+
+{% block main %}
+    <!-- Page intro with title and description -->
+    <header class="animate__animated animate__fadeInDown">
+        <h1>Cyber Attack Simulation</h1>
+        <p>Experience realistic cyberattacks in a controlled, interactive environment. Defend your systems and sharpen your response skills.</p>
+    </header>
+
+    <main>
+        <!-- Section that introduces users to types of attacks they'll simulate -->
+        <section id="simulation-intro" class="main animate__animated animate__fadeInUp">
+            <h2>Simulate Real Cyberattacks</h2>
+            <p>Prepare for threats like ransomware, phishing, DDoS attacks, and more. Learn how to identify, contain, and neutralize attacks in real-time.</p>
+        </section>
+
+        <!-- Buttons that let users trigger different attack scenarios -->
+        <section id="simulation-actions" class="animate__animated animate__fadeInUp">
+            <h3>Choose Your Attack Simulation</h3>
+            <div id="attack-options">
+                <button class="btn btn-danger" id="ransomware-btn">Simulate Ransomware Attack</button>
+                <button class="btn btn-warning" id="phishing-btn">Simulate Phishing Attack</button>
+                <button class="btn btn-info" id="ddos-btn">Simulate DDoS Attack</button>
+            </div>
+        </section>
+
+        <!-- This updates dynamically based on what attack was triggered -->
+        <section id="simulation-status" class="animate__animated animate__fadeIn">
+            <h3>Simulation Status</h3>
+            <p id="status-message">Select an attack to begin your simulation.</p>
+            <div id="attack-details"></div>
+        </section>
+
+        <!-- Buttons that appear during simulation so user can respond -->
+        <section id="response-actions" class="animate__animated animate__fadeIn">
+            <h3>Response Options</h3>
+            <div id="response-options" style="display: none;">
+                <button class="btn btn-primary" id="contain-btn">Contain the Attack</button>
+                <button class="btn btn-success" id="neutralize-btn">Neutralize the Threat</button>
+            </div>
+        </section>
+    </main>
+
+    {% block scripts %}
+        <script src="/static/scripts/frontend/cyber-attack-simulation.js"></script>
+    {% endblock %}
+{% endblock %}

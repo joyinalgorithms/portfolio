@@ -1,0 +1,152 @@
+#certifications {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+}
+
+.certification-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+main h2 {
+    text-align: center;
+}
+
+section button {
+    margin-left: 40%;
+}
+
+.certification {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 30%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.certification img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.certification h3 {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.certification p {
+    color: black;
+    font-size: 14px;
+}
+
+#career-opportunities {
+    padding: 40px 0;
+}
+
+#career-opportunities ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#career-opportunities li {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+#career-opportunities button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#career-opportunities button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Responsive layout tweaks */
+.certification-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.certification {
+  flex: 1 1 300px;
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.certification img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+/* Simple hover effect */
+.certification:hover {
+  transform: scale(1.05);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+.fade-in-delay {
+  animation: fadeIn 1.5s ease forwards;
+  opacity: 0;
+}
+
+.slide-up {
+  animation: slideUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .certification {
+    flex: 1 1 100%;
+  }
+
+  #career-opportunities ul {
+    padding-left: 1.2rem;
+  }
+
+  header h1,
+  main h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}

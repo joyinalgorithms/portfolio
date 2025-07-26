@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block title %}About Me{% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/portfolio/about.css">
+{% endblock %}
+{% block body %}
+    <main class="main-content">
+        <h1 class="page-title">ABOUT ME</h1>
+
+        <div class="about-container">
+            <div class="image-container">
+                <div class="profile-image-large" onclick="toggleImageEffect(this)">
+                    <img class="image-fit" src="/static/images/me.JPG">
+                    <div class="image-overlay">
+                        <img class="image-fit" src="/static/images/me2.JPG">
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-container">
+                <h2 class="description-title">Hello, I'm Joy!</h2>
+                <p class="description-text">
+                    I'm a passionate <span class="highlight-text">Full-Stack Web Developer</span> with a love for creating
+                    innovative and efficient solutions. My journey in programming started with curiosity and has evolved
+                    into a deep passion for building applications that make a difference.
+                </p>
+                <p class="description-text">
+                    I specialize in <span class="highlight-text">Python, JavaScript, and modern web frameworks</span>,
+                    with experience in machine learning and AI projects. I believe in writing clean, maintainable code
+                    and staying up-to-date with the latest technologies and best practices.
+                </p>
+                <p class="description-text">
+                    When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
+                    or sharing knowledge with the developer community.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">30+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Passion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-section">
+            <h2 class="interactive-title">My Core Interests</h2>
+            <div class="skills-container">
+                <div class="skill-item" onclick="animateSkill(this)">
+                    <span class="skill-icon">🌐</span>
+                    <span class="skill-name">Web Development</span>
+                </div>
+                <div class="skill-item" onclick="animateSkill(this)">
+                    <span class="skill-icon">🤖</span>
+                    <span class="skill-name">Machine Learning</span>
+                </div>
+                <div class="skill-item" onclick="animateSkill(this)">
+                    <span class="skill-icon">📱</span>
+                    <span class="skill-name">Mobile Apps</span>
+                </div>
+                <div class="skill-item" onclick="animateSkill(this)">
+                    <span class="skill-icon">🗄️</span>
+                    <span class="skill-name">Database Design</span>
+                </div>
+                <div class="skill-item" onclick="animateSkill(this)">
+                    <span class="skill-icon">☁️</span>
+                    <span class="skill-name">Cloud Computing</span>
+                </div>
+                <div class="skill-item" onclick="animateSkill(this)">
+                    <span class="skill-icon">🎮</span>
+                    <span class="skill-name">Game Development</span>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
