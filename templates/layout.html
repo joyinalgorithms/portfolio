@@ -1,61 +1,176 @@
 <!DOCTYPE html>
-<html>
-
-    <head lang="en">
+<html lang="en">
+    <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            {% block title %}
+        <meta name="description" content="{% block description %}Joy in Algorithm - Full Stack Developer Portfolio showcasing web development, machine learning, and software engineering projects{% endblock %}">
+        <meta name="keywords" content="{% block keywords %}full stack developer, web development, machine learning, portfolio, software engineer{% endblock %}">
+        <meta name="author" content="Joy in Algorithm">
+        <meta name="robots" content="index, follow">
+        <meta property="og:title" content="{% block og_title %}Joy in Algorithm - Developer Portfolio{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}Explore my journey in software development, web applications, and AI projects{% endblock %}">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ request.url }}">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{% block twitter_title %}Joy in Algorithm - Developer Portfolio{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}Full Stack Developer specializing in web development and machine learning{% endblock %}">
 
-            {% endblock %}
+
+
+        <title>
+            {% block title %}Joy in Algorithm - Full Stack Web Developer Portfolio{% endblock %}
         </title>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@400;500;700&display=swap"></noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         {% block stylesheet %}{% endblock %}
         <link rel="stylesheet" href="/static/styles/layout.css">
+        <link rel="stylesheet" href="/static/styles/portfolio/mobile-enhancements.css">
 
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Joy in Algorithm",
+            "jobTitle": "Full Stack Developer",
+            "description": "Experienced developer specializing in web applications, machine learning, and software engineering",
+            "url": "{{ request.url_root }}",
+            "sameAs": [
+                "https://github.com/joyinalgorithm",
+                "https://linkedin.com/in/joyinalgorithm"
+            ]
+        }
+        </script>
     </head>
-
     <body>
-        <div class="binary-bg" id="binaryBg"></div>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
 
-        <nav class="navbar">
+        <div class="binary-bg" id="binaryBg" aria-hidden="true"></div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/aboutme" class="nav-link">About me</a>
-                <a href="/resume" class="nav-link">Resume</a>
-
+                <a href="/" class="nav-link" aria-label="Home page">Home</a>
                 <div class="dropdown">
-                    <a href="/projects" class="nav-link">Projects</a>
-                    <div class="dropdown-content">
-                        <a href="/projects#frontend">Frontend Projects</a>
-                        <a href="/projects#web-applications">Web Applications</a>
-                        <a href="/projects#ml">Machine Learning / AI</a>
-                        <a href="/projects#games">Mini Games</a>
-                        <a href="/projects#cs50x">CS50 Web-Based Projects</a>
-                        <a href="/projects#cs50w">CS50W Projects</a>
-                        <a href="/projects#applications">Applications</a>
+                    <a href="/projects" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">Projects</a>
+                    <div class="dropdown-content" role="menu">
+                        <a href="/projects#frontend" role="menuitem">Frontend Projects</a>
+                        <a href="/projects#web-applications" role="menuitem">Web Applications</a>
+                        <a href="/projects#ml" role="menuitem">Machine Learning / AI</a>
+                        <a href="/projects#games" role="menuitem">Mini Games</a>
+                        <a href="/projects#cs50x" role="menuitem">CS50 Web-Based Projects</a>
+                        <a href="/projects#cs50w" role="menuitem">CS50W Projects</a>
+                        <a href="/projects#applications" role="menuitem">Applications</a>
                     </div>
                 </div>
-
+                <a href="/demo" class="nav-link">Demo</a>
+                <a href="/offers" class="nav-link">Offers</a>
                 <a href="/certifications" class="nav-link">Certifications</a>
                 <a href="/tech-stack" class="nav-link">Tech Stack</a>
-                <a href="/contact" class="nav-link">Contact Me</a>
             </div>
         </nav>
 
-        {% block body %}
+        <main id="main-content">
+            {% block body %}
+            {% endblock %}
+        </main>
 
-        {% endblock %}
+        <section class="about-footer-section" aria-labelledby="about-footer-heading">
+            <div class="container">
+                <div class="about-footer-content">
+                    <h2 id="about-footer-heading" class="gradient-text">About Joy in Algorithm</h2>
+                    <p class="about-description">
+                        Passionate full-stack developer with expertise in modern web technologies, machine learning, and software engineering.
+                        I create innovative solutions that bridge the gap between complex algorithms and user-friendly interfaces.
+                    </p>
+                    <div class="skills-highlight">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Full Stack</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <footer class="footer">
+        <footer class="footer" role="contentinfo">
             <div class="footer-content">
-                <p class="footer-text">
-                    <span class="footer-highlight">joyinalgorithm © 2025 </span>. All rights reserved. <a class="text-link" style="text-decoration: none;" href="/privacy">Privacy Policy</a>
-                </p>
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-section">
+                            <h5 class="gradient-text footer-brand">
+                                <i class="fas fa-code" aria-hidden="true"></i> joyinalgorithm
+                            </h5>
+                            <p class="footer-description">Crafting digital experiences through code and creativity.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="Twitter profile">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="GitHub profile">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="LinkedIn profile">
+                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="Instagram profile">
+                                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footer-section">
+                            <h6 class="footer-heading">Explore</h6>
+                            <ul class="footer-links">
+                                <li><a href="/projects">Projects</a></li>
+                                <li><a href="/tech-stack">Tech Stack</a></li>
+                                <li><a href="/certifications">Certifications</a></li>
+                                <li><a href="/demo">Demo</a></li>
+                                <li><a href="/offers">Offers</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h6 class="footer-heading">Connect</h6>
+                            <ul class="footer-links">
+                                <li><a href="/contact">Contact Me</a></li>
+                                <li><a href="/resume">Resume</a></li>
+                                <li><a href="/aboutme">About</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h6 class="footer-heading">Legal</h6>
+                            <ul class="footer-links">
+                                <li><a href="/privacy">Privacy Policy</a></li>
+                                <li><a href="/terms">Terms of Service</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section">
+                            <h6 class="footer-heading">Stay Updated</h6>
+                            <p class="footer-text small">Follow my journey in software development and latest project updates.</p>
+                        </div>
+                    </div>
+                    <hr class="footer-divider">
+                    <div class="footer-bottom">
+                        <div class="footer-copyright">
+                            <p class="footer-text">
+                                <span class="footer-highlight">joyinalgorithm © 2025</span>. All rights reserved.
+                                <a class="text-link" href="/privacy">Privacy Policy</a>
+                            </p>
+                        </div>
+                        <div class="footer-tagline">
+                            <p class="footer-text">From UI to AI — Fueled by Algorithms</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
+
         <script src="/static/scripts/layout.js"></script>
+        <script src="/static/scripts/portfolio/mobile-enhancements.js"></script>
         <script src="/static/scripts/portfolio/resume.js"></script>
     </body>
-
 </html>

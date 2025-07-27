@@ -1,0 +1,387 @@
+{% extends "layout.html" %}
+
+{% block title %}Project Demos - Joy in Algorithm | Live Project Demonstrations{% endblock %}
+
+{% block description %}Watch live demonstrations of my web applications, machine learning projects, and software solutions. See detailed project breakdowns with technology stacks and downloadable documentation.{% endblock %}
+
+{% block keywords %}project demos, web application demos, machine learning demos, live project showcase, software demonstrations, project documentation{% endblock %}
+
+{% block og_title %}Project Demos - Joy in Algorithm{% endblock %}
+{% block og_description %}Interactive demonstrations of web applications, ML projects, and software solutions with detailed technical documentation{% endblock %}
+
+{% block twitter_title %}Project Demos - Joy in Algorithm{% endblock %}
+{% block twitter_description %}Live demos of web apps, ML projects, and software solutions with full technical documentation{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/portfolio/demo.css">
+{% endblock %}
+
+{% block body %}
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">PROJECT DEMOS</h1>
+            <p class="page-subtitle">Interactive demonstrations of my featured projects</p>
+        </div>
+
+        <div class="demo-container">
+            <!-- Lemonaddie E-commerce Demo -->
+            <article class="demo-card" data-project="lemonaddie">
+                <div class="demo-header">
+                    <h2 class="demo-title">Lemonaddie E-commerce Platform</h2>
+                    <div class="demo-badges">
+                        <span class="badge featured">Featured</span>
+                        <span class="badge live">Live Demo</span>
+                    </div>
+                </div>
+
+                <div class="demo-content">
+                    <div class="demo-video-section">
+                        <div class="video-container">
+                            <video
+                                class="demo-video"
+                                poster="/static/images/demo/lemonaddie-poster.jpg"
+                                controls
+                                preload="metadata"
+                                aria-label="Lemonaddie project demonstration video">
+                                <source src="/static/videos/demo/lemonaddie-demo.mp4" type="video/mp4">
+                                <p>Your browser doesn't support video playback. <a href="/static/videos/demo/lemonaddie-demo.mp4">Download the video</a> instead.</p>
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-button" aria-label="Play demo video">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-details">
+                        <div class="demo-description">
+                            <h3>Project Overview</h3>
+                            <p>A full-stack e-commerce platform built with Flask and modern web technologies. Features include user authentication, product management, shopping cart functionality, secure payment processing, and an admin dashboard for inventory management.</p>
+
+                            <div class="demo-features">
+                                <h4>Key Features</h4>
+                                <ul>
+                                    <li>User registration and authentication system</li>
+                                    <li>Product catalog with search and filtering</li>
+                                    <li>Shopping cart and checkout process</li>
+                                    <li>Order management and tracking</li>
+                                    <li>Admin dashboard for inventory control</li>
+                                    <li>Responsive design for all devices</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack-section">
+                            <h4>Technology Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag python">Python</span>
+                                <span class="tech-tag flask">Flask</span>
+                                <span class="tech-tag sqlite">SQLite</span>
+                                <span class="tech-tag html">HTML5</span>
+                                <span class="tech-tag css">CSS3</span>
+                                <span class="tech-tag js">JavaScript</span>
+                                <span class="tech-tag bootstrap">Bootstrap</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-actions">
+                            <a href="https://lemonaddie.onrender.com" class="action-btn primary" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="/static/docs/lemonaddie-documentation.pdf" class="action-btn secondary" download>
+                                <i class="fas fa-download"></i>
+                                Download Paper
+                            </a>
+                            <a href="https://github.com/joyinalgorithms/lemonaddie" class="action-btn tertiary" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Journal Web App Demo -->
+            <article class="demo-card" data-project="journal">
+                <div class="demo-header">
+                    <h2 class="demo-title">Journal Web Application</h2>
+                    <div class="demo-badges">
+                        <span class="badge webapp">Web App</span>
+                        <span class="badge live">Live Demo</span>
+                    </div>
+                </div>
+
+                <div class="demo-content">
+                    <div class="demo-video-section">
+                        <div class="video-container">
+                            <video
+                                class="demo-video"
+                                poster="/static/images/demo/journal-poster.jpg"
+                                controls
+                                preload="metadata"
+                                aria-label="Journal application demonstration video">
+                                <source src="/static/videos/demo/journal-demo.mp4" type="video/mp4">
+                                <p>Your browser doesn't support video playback. <a href="/static/videos/demo/journal-demo.mp4">Download the video</a> instead.</p>
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-button" aria-label="Play demo video">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-details">
+                        <div class="demo-description">
+                            <h3>Project Overview</h3>
+                            <p>A comprehensive journaling platform that allows users to create, manage, and share personal entries. Built with Django, it features rich text editing, privacy controls, community features, and advanced search capabilities.</p>
+
+                            <div class="demo-features">
+                                <h4>Key Features</h4>
+                                <ul>
+                                    <li>Rich text editor for journal entries</li>
+                                    <li>Privacy settings and access controls</li>
+                                    <li>Community sharing and interaction</li>
+                                    <li>Advanced search and filtering</li>
+                                    <li>Mood tracking and analytics</li>
+                                    <li>Export functionality for backup</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack-section">
+                            <h4>Technology Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag python">Python</span>
+                                <span class="tech-tag django">Django</span>
+                                <span class="tech-tag postgresql">PostgreSQL</span>
+                                <span class="tech-tag html">HTML5</span>
+                                <span class="tech-tag css">CSS3</span>
+                                <span class="tech-tag js">JavaScript</span>
+                                <span class="tech-tag ajax">AJAX</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-actions">
+                            <a href="https://journal-e0vm.onrender.com" class="action-btn primary" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="/static/docs/journal-documentation.pdf" class="action-btn secondary" download>
+                                <i class="fas fa-download"></i>
+                                Download Paper
+                            </a>
+                            <a href="https://github.com/joyinalgorithms/journal" class="action-btn tertiary" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Employee Management System Demo -->
+            <article class="demo-card" data-project="ems">
+                <div class="demo-header">
+                    <h2 class="demo-title">Employee Management System</h2>
+                    <div class="demo-badges">
+                        <span class="badge enterprise">Enterprise</span>
+                        <span class="badge live">Live Demo</span>
+                    </div>
+                </div>
+
+                <div class="demo-content">
+                    <div class="demo-video-section">
+                        <div class="video-container">
+                            <video
+                                class="demo-video"
+                                poster="/static/images/demo/ems-poster.jpg"
+                                controls
+                                preload="metadata"
+                                aria-label="Employee Management System demonstration video">
+                                <source src="/static/videos/demo/ems-demo.mp4" type="video/mp4">
+                                <p>Your browser doesn't support video playback. <a href="/static/videos/demo/ems-demo.mp4">Download the video</a> instead.</p>
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-button" aria-label="Play demo video">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-details">
+                        <div class="demo-description">
+                            <h3>Project Overview</h3>
+                            <p>A comprehensive employee management system designed for small to mid-sized businesses. Handles employee onboarding, attendance tracking, role management, and administrative operations with a clean, intuitive interface.</p>
+
+                            <div class="demo-features">
+                                <h4>Key Features</h4>
+                                <ul>
+                                    <li>Employee onboarding and profile management</li>
+                                    <li>Attendance tracking and reporting</li>
+                                    <li>Role-based access control</li>
+                                    <li>Payroll integration capabilities</li>
+                                    <li>Performance evaluation system</li>
+                                    <li>Document management and storage</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack-section">
+                            <h4>Technology Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag python">Python</span>
+                                <span class="tech-tag flask">Flask</span>
+                                <span class="tech-tag mysql">MySQL</span>
+                                <span class="tech-tag html">HTML5</span>
+                                <span class="tech-tag css">CSS3</span>
+                                <span class="tech-tag js">JavaScript</span>
+                                <span class="tech-tag chart">Chart.js</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-actions">
+                            <a href="https://emsdeploy-t020.onrender.com" class="action-btn primary" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                            <a href="/static/docs/ems-documentation.pdf" class="action-btn secondary" download>
+                                <i class="fas fa-download"></i>
+                                Download Paper
+                            </a>
+                            <a href="https://github.com/joyinalgorithms/ems" class="action-btn tertiary" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-github"></i>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project LIF AI Demo -->
+            <article class="demo-card" data-project="project-lif">
+                <div class="demo-header">
+                    <h2 class="demo-title">Project LIF - AI Lipreading System</h2>
+                    <div class="demo-badges">
+                        <span class="badge ai">AI/ML</span>
+                        <span class="badge ongoing">Ongoing</span>
+                    </div>
+                </div>
+
+                <div class="demo-content">
+                    <div class="demo-video-section">
+                        <div class="video-container">
+                            <video
+                                class="demo-video"
+                                poster="/static/images/demo/project-lif-poster.jpg"
+                                controls
+                                preload="metadata"
+                                aria-label="Project LIF AI demonstration video">
+                                <source src="/static/videos/demo/project-lif-demo.mp4" type="video/mp4">
+                                <p>Your browser doesn't support video playback. <a href="/static/videos/demo/project-lif-demo.mp4">Download the video</a> instead.</p>
+                            </video>
+                            <div class="video-overlay">
+                                <button class="play-button" aria-label="Play demo video">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-details">
+                        <div class="demo-description">
+                            <h3>Project Overview</h3>
+                            <p>An innovative AI-powered lipreading system that uses 3D CNNs and BiLSTMs to classify Filipino syllables from video footage of mouth movements. This cutting-edge research project aims to improve accessibility for the hearing-impaired community.</p>
+
+                            <div class="demo-features">
+                                <h4>Key Features</h4>
+                                <ul>
+                                    <li>3D Convolutional Neural Networks for spatial-temporal analysis</li>
+                                    <li>BiLSTM networks for sequence modeling</li>
+                                    <li>Filipino syllable classification system</li>
+                                    <li>Real-time video processing capabilities</li>
+                                    <li>Advanced computer vision techniques</li>
+                                    <li>Accessibility-focused design</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack-section">
+                            <h4>Technology Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag python">Python</span>
+                                <span class="tech-tag tensorflow">TensorFlow</span>
+                                <span class="tech-tag opencv">OpenCV</span>
+                                <span class="tech-tag numpy">NumPy</span>
+                                <span class="tech-tag pandas">Pandas</span>
+                                <span class="tech-tag jupyter">Jupyter</span>
+                                <span class="tech-tag colab">Google Colab</span>
+                            </div>
+                        </div>
+
+                        <div class="demo-actions">
+                            <button class="action-btn primary disabled" disabled>
+                                <i class="fas fa-clock"></i>
+                                In Development
+                            </button>
+                            <a href="/static/docs/project-lif-research.pdf" class="action-btn secondary" download>
+                                <i class="fas fa-download"></i>
+                                Research Paper
+                            </a>
+                            <button class="action-btn tertiary disabled" disabled>
+                                <i class="fab fa-github"></i>
+                                Private Repo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Scroll to top button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Joy in Algorithm Project Demonstrations",
+        "creator": {
+            "@type": "Person",
+            "name": "Joy in Algorithm"
+        },
+        "description": "Interactive demonstrations of web applications, machine learning projects, and software solutions",
+        "hasPart": [
+            {
+                "@type": "SoftwareApplication",
+                "name": "Lemonaddie E-commerce Platform",
+                "applicationCategory": "E-commerce",
+                "operatingSystem": "Web Browser"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Journal Web Application",
+                "applicationCategory": "Productivity",
+                "operatingSystem": "Web Browser"
+            },
+            {
+                "@type": "SoftwareApplication",
+                "name": "Employee Management System",
+                "applicationCategory": "Business",
+                "operatingSystem": "Web Browser"
+            }
+        ]
+    }
+    </script>
+
+    <script src="/static/scripts/portfolio/demo.js"></script>
+{% endblock %}

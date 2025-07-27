@@ -1,0 +1,553 @@
+{% extends "layout.html" %}
+
+{% block title %}Website Offers - Joy in Algorithm | Ready-Made Web Solutions{% endblock %}
+
+{% block description %}Browse our collection of ready-made websites and web applications. Professional solutions with demos, documentation, competitive pricing, and fast delivery times.{% endblock %}
+
+{% block keywords %}ready made websites, web solutions, website templates, custom web applications, web development services, affordable websites{% endblock %}
+
+{% block og_title %}Website Offers - Joy in Algorithm{% endblock %}
+{% block og_description %}Professional ready-made websites and web applications with demos, documentation, and competitive pricing{% endblock %}
+
+{% block twitter_title %}Website Offers - Joy in Algorithm{% endblock %}
+{% block twitter_description %}Ready-made web solutions with live demos, full documentation, and fast delivery{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/portfolio/offers.css">
+{% endblock %}
+
+{% block body %}
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">WEBSITE OFFERS</h1>
+            <p class="page-subtitle">Professional ready-made web solutions for your business</p>
+        </div>
+
+        <div class="search-section">
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="Search for services, technologies, or features..."
+                        aria-label="Search services"
+                    >
+                    <button class="clear-search" id="clearSearch" aria-label="Clear search" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="search-filters">
+                    <div class="filter-group">
+                        <label class="filter-label">Category:</label>
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="portfolio">Portfolio</option>
+                            <option value="restaurant">Restaurant</option>
+                            <option value="custom">Custom Development</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Price Range:</label>
+                        <select id="priceFilter" class="filter-select">
+                            <option value="">Any Price</option>
+                            <option value="0-500">Under $500</option>
+                            <option value="500-1000">$500 - $1000</option>
+                            <option value="1000+">$1000+</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label class="filter-label">Technology:</label>
+                        <select id="techFilter" class="filter-select">
+                            <option value="">Any Technology</option>
+                            <option value="python">Python</option>
+                            <option value="flask">Flask</option>
+                            <option value="django">Django</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="html5">HTML5</option>
+                            <option value="bootstrap">Bootstrap</option>
+                        </select>
+                    </div>
+
+                    <button class="reset-filters" id="resetFilters">
+                        <i class="fas fa-undo"></i>
+                        Reset Filters
+                    </button>
+                </div>
+            </div>
+
+            <div class="search-results-info">
+                <span id="resultsCount">4 services found</span>
+                <div class="search-suggestions" id="searchSuggestions" style="display: none;">
+                    <span class="suggestions-label">Popular searches:</span>
+                    <button class="suggestion-tag" data-search="ecommerce">E-commerce</button>
+                    <button class="suggestion-tag" data-search="portfolio">Portfolio</button>
+                    <button class="suggestion-tag" data-search="restaurant">Restaurant</button>
+                    <button class="suggestion-tag" data-search="python">Python</button>
+                    <button class="suggestion-tag" data-search="responsive">Responsive</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="offers-container">
+            <!-- E-commerce Solution Offer -->
+            <article class="offer-card" data-offer="ecommerce" data-category="ecommerce" data-price="599" data-tech="python,flask,sqlite,bootstrap,javascript" data-keywords="ecommerce,shopping,cart,payment,inventory,admin,online,store,business">
+                <div class="offer-header">
+                    <div class="offer-preview">
+                        <img src="/static/images/offers/ecommerce-preview.jpg" alt="E-commerce website preview" class="preview-image" loading="lazy">
+                        <div class="preview-overlay">
+                            <button class="preview-btn" onclick="showDemo('ecommerce')" aria-label="View demo">
+                                <i class="fas fa-play"></i>
+                                View Demo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="offer-badge bestseller">
+                        <i class="fas fa-star"></i>
+                        Best Seller
+                    </div>
+                </div>
+
+                <div class="offer-content">
+                    <h2 class="offer-title">Complete E-commerce Solution</h2>
+                    <p class="offer-description">
+                        A fully functional e-commerce platform with modern design, secure payment integration, inventory management, and admin dashboard. Perfect for small to medium businesses looking to establish their online presence.
+                    </p>
+
+                    <div class="offer-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Responsive design for all devices</li>
+                            <li><i class="fas fa-check"></i> Product catalog with search & filters</li>
+                            <li><i class="fas fa-check"></i> Shopping cart and checkout system</li>
+                            <li><i class="fas fa-check"></i> User registration and authentication</li>
+                            <li><i class="fas fa-check"></i> Admin dashboard for management</li>
+                            <li><i class="fas fa-check"></i> Order tracking and notifications</li>
+                            <li><i class="fas fa-check"></i> SEO optimization</li>
+                            <li><i class="fas fa-check"></i> 6 months free support</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-info">
+                        <h4>Technology Stack:</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="offer-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Delivery Time</strong>
+                                <span>3-5 business days</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <div>
+                                <strong>Revisions</strong>
+                                <span>3 free revisions included</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <strong>Support</strong>
+                                <span>6 months premium support</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-tag">
+                            <span class="original-price">$899</span>
+                            <span class="current-price">$599</span>
+                            <span class="discount">33% OFF</span>
+                        </div>
+                    </div>
+
+                    <div class="offer-actions">
+                        <button class="action-btn primary" onclick="showDemo('ecommerce')">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </button>
+                        <a href="/static/docs/ecommerce-documentation.pdf" class="action-btn secondary" download>
+                            <i class="fas fa-download"></i>
+                            Documentation
+                        </a>
+                        <a href="/contact" class="action-btn tertiary">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Business Portfolio Offer -->
+            <article class="offer-card" data-offer="portfolio" data-category="portfolio" data-price="349" data-tech="html5,css3,javascript,bootstrap,php" data-keywords="portfolio,business,professional,showcase,services,testimonials,blog,contact">
+                <div class="offer-header">
+                    <div class="offer-preview">
+                        <img src="/static/images/offers/portfolio-preview.jpg" alt="Business portfolio website preview" class="preview-image" loading="lazy">
+                        <div class="preview-overlay">
+                            <button class="preview-btn" onclick="showDemo('portfolio')" aria-label="View demo">
+                                <i class="fas fa-play"></i>
+                                View Demo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="offer-badge popular">
+                        <i class="fas fa-fire"></i>
+                        Popular
+                    </div>
+                </div>
+
+                <div class="offer-content">
+                    <h2 class="offer-title">Professional Business Portfolio</h2>
+                    <p class="offer-description">
+                        A stunning business portfolio website designed to showcase your services, projects, and expertise. Includes contact forms, testimonials section, and blog functionality to establish your professional online presence.
+                    </p>
+
+                    <div class="offer-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Modern responsive design</li>
+                            <li><i class="fas fa-check"></i> About and services pages</li>
+                            <li><i class="fas fa-check"></i> Portfolio/projects showcase</li>
+                            <li><i class="fas fa-check"></i> Contact form with validation</li>
+                            <li><i class="fas fa-check"></i> Testimonials section</li>
+                            <li><i class="fas fa-check"></i> Blog/news functionality</li>
+                            <li><i class="fas fa-check"></i> Social media integration</li>
+                            <li><i class="fas fa-check"></i> 3 months free support</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-info">
+                        <h4>Technology Stack:</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">PHP</span>
+                        </div>
+                    </div>
+
+                    <div class="offer-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Delivery Time</strong>
+                                <span>2-3 business days</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <div>
+                                <strong>Revisions</strong>
+                                <span>2 free revisions included</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <strong>Support</strong>
+                                <span>3 months premium support</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-tag">
+                            <span class="original-price">$499</span>
+                            <span class="current-price">$349</span>
+                            <span class="discount">30% OFF</span>
+                        </div>
+                    </div>
+
+                    <div class="offer-actions">
+                        <button class="action-btn primary" onclick="showDemo('portfolio')">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </button>
+                        <a href="/static/docs/portfolio-documentation.pdf" class="action-btn secondary" download>
+                            <i class="fas fa-download"></i>
+                            Documentation
+                        </a>
+                        <a href="/contact" class="action-btn tertiary">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Restaurant Website Offer -->
+            <article class="offer-card" data-offer="restaurant" data-category="restaurant" data-price="299" data-tech="html5,css3,javascript,bootstrap,jquery" data-keywords="restaurant,food,menu,reservation,gallery,reviews,cafe,dining">
+                <div class="offer-header">
+                    <div class="offer-preview">
+                        <img src="/static/images/offers/restaurant-preview.jpg" alt="Restaurant website preview" class="preview-image" loading="lazy">
+                        <div class="preview-overlay">
+                            <button class="preview-btn" onclick="showDemo('restaurant')" aria-label="View demo">
+                                <i class="fas fa-play"></i>
+                                View Demo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="offer-badge new">
+                        <i class="fas fa-sparkles"></i>
+                        New
+                    </div>
+                </div>
+
+                <div class="offer-content">
+                    <h2 class="offer-title">Restaurant & Food Service Website</h2>
+                    <p class="offer-description">
+                        A delicious-looking website perfect for restaurants, cafes, and food services. Features online menu, reservation system, gallery, and location information to attract and serve your customers better.
+                    </p>
+
+                    <div class="offer-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Appetizing visual design</li>
+                            <li><i class="fas fa-check"></i> Interactive menu with prices</li>
+                            <li><i class="fas fa-check"></i> Online reservation system</li>
+                            <li><i class="fas fa-check"></i> Photo gallery showcase</li>
+                            <li><i class="fas fa-check"></i> Location and contact info</li>
+                            <li><i class="fas fa-check"></i> Customer reviews section</li>
+                            <li><i class="fas fa-check"></i> Social media integration</li>
+                            <li><i class="fas fa-check"></i> 3 months free support</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-info">
+                        <h4>Technology Stack:</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Bootstrap</span>
+                            <span class="tech-tag">jQuery</span>
+                        </div>
+                    </div>
+
+                    <div class="offer-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Delivery Time</strong>
+                                <span>2-4 business days</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <div>
+                                <strong>Revisions</strong>
+                                <span>2 free revisions included</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <strong>Support</strong>
+                                <span>3 months premium support</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-tag">
+                            <span class="original-price">$399</span>
+                            <span class="current-price">$299</span>
+                            <span class="discount">25% OFF</span>
+                        </div>
+                    </div>
+
+                    <div class="offer-actions">
+                        <button class="action-btn primary" onclick="showDemo('restaurant')">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </button>
+                        <a href="/static/docs/restaurant-documentation.pdf" class="action-btn secondary" download>
+                            <i class="fas fa-download"></i>
+                            Documentation
+                        </a>
+                        <a href="/contact" class="action-btn tertiary">
+                            <i class="fas fa-shopping-cart"></i>
+                            Order Now
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Custom Web App Offer -->
+            <article class="offer-card" data-offer="custom" data-category="custom" data-price="1999" data-tech="python,flask,django,javascript,react,postgresql,mongodb" data-keywords="custom,development,application,consultation,design,database,api,enterprise">
+                <div class="offer-header">
+                    <div class="offer-preview">
+                        <img src="/static/images/offers/custom-preview.jpg" alt="Custom web application preview" class="preview-image" loading="lazy">
+                        <div class="preview-overlay">
+                            <button class="preview-btn" onclick="showDemo('custom')" aria-label="View demo">
+                                <i class="fas fa-play"></i>
+                                View Demo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="offer-badge premium">
+                        <i class="fas fa-crown"></i>
+                        Premium
+                    </div>
+                </div>
+
+                <div class="offer-content">
+                    <h2 class="offer-title">Custom Web Application</h2>
+                    <p class="offer-description">
+                        A fully customized web application built specifically for your business needs. Includes consultation, custom design, development, testing, and deployment with ongoing support and maintenance.
+                    </p>
+
+                    <div class="offer-features">
+                        <h4>What's Included:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Initial consultation and planning</li>
+                            <li><i class="fas fa-check"></i> Custom UI/UX design</li>
+                            <li><i class="fas fa-check"></i> Full-stack development</li>
+                            <li><i class="fas fa-check"></i> Database design and setup</li>
+                            <li><i class="fas fa-check"></i> API integration if needed</li>
+                            <li><i class="fas fa-check"></i> Testing and quality assurance</li>
+                            <li><i class="fas fa-check"></i> Deployment and hosting setup</li>
+                            <li><i class="fas fa-check"></i> 12 months premium support</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-info">
+                        <h4>Technology Options:</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask/Django</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                    </div>
+
+                    <div class="offer-details">
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Delivery Time</strong>
+                                <span>2-4 weeks</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <div>
+                                <strong>Revisions</strong>
+                                <span>Unlimited during development</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-headset"></i>
+                            <div>
+                                <strong>Support</strong>
+                                <span>12 months premium support</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-section">
+                        <div class="price-tag">
+                            <span class="current-price">Starting at $1,999</span>
+                            <span class="price-note">*Final price depends on complexity</span>
+                        </div>
+                    </div>
+
+                    <div class="offer-actions">
+                        <button class="action-btn primary" onclick="showDemo('custom')">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </button>
+                        <a href="/static/docs/custom-development-guide.pdf" class="action-btn secondary" download>
+                            <i class="fas fa-download"></i>
+                            Development Guide
+                        </a>
+                        <a href="/contact" class="action-btn tertiary">
+                            <i class="fas fa-comments"></i>
+                            Get Quote
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Demo Modal -->
+        <div id="demoModal" class="modal" onclick="closeDemo()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span class="close" onclick="closeDemo()" aria-label="Close demo">&times;</span>
+                <div class="modal-header">
+                    <h3 id="modalTitle">Demo Video</h3>
+                </div>
+                <div class="modal-body">
+                    <video id="modalVideo" controls width="100%">
+                        <source src="/placeholder.svg" type="video/mp4">
+                        Your browser doesn't support video playback.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scroll to top button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Website Development Services",
+        "provider": {
+            "@type": "Person",
+            "name": "Joy in Algorithm"
+        },
+        "description": "Professional ready-made websites and custom web applications with competitive pricing and fast delivery",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Complete E-commerce Solution",
+                "price": "599",
+                "priceCurrency": "USD",
+                "description": "Fully functional e-commerce platform with payment integration and admin dashboard"
+            },
+            {
+                "@type": "Offer",
+                "name": "Professional Business Portfolio",
+                "price": "349",
+                "priceCurrency": "USD",
+                "description": "Stunning business portfolio website with contact forms and testimonials"
+            },
+            {
+                "@type": "Offer",
+                "name": "Restaurant Website",
+                "price": "299",
+                "priceCurrency": "USD",
+                "description": "Restaurant website with online menu and reservation system"
+            }
+        ]
+    }
+    </script>
+
+    <script src="/static/scripts/offers.js"></script>
+{% endblock %}

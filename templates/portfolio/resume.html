@@ -1,30 +1,232 @@
 {% extends "layout.html" %}
-{% block title %}Resume{% endblock %}
+
+{% block title %}Resume - Joy in Algorithm | Full Stack Developer CV{% endblock %}
+
+{% block description %}Download and view my professional resume showcasing full stack development experience, projects, and technical skills in Python, JavaScript, and web technologies.{% endblock %}
+
+{% block keywords %}resume, CV, full stack developer resume, python developer CV, web developer resume, software engineer resume{% endblock %}
+
+{% block og_title %}Resume - Joy in Algorithm{% endblock %}
+{% block og_description %}Professional resume of a full stack developer with expertise in Python, JavaScript, and modern web technologies{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/portfolio/resume-mobile.css">
+{% endblock %}
 
 {% block body %}
-<main class="main-content">
-    <section class="resume-section">
-        <h2 class="resume-title">RESUME</h2>
+<main class="main-content" id="resume-main">
+    <section class="resume-section" aria-labelledby="resume-title">
+        <div class="resume-header">
+            <h1 id="resume-title" class="resume-title">RESUME</h1>
+            <p class="resume-subtitle">Full Stack Developer | Python & JavaScript Specialist</p>
+        </div>
+
         <div class="resume-content">
-            <div class="resume-preview">
-                <embed  id="resumeEmbed" src="{{ url_for('static', filename='files/resume.pdf') }}" type="application/pdf" width="100%" height="500px">
+            <!-- PDF Preview Section -->
+            <div class="resume-preview-container">
+                <div class="resume-preview" id="resumePreview">
+                    <div class="pdf-loading" id="pdfLoading">
+                        <div class="loading-spinner"></div>
+                        <p>Loading resume...</p>
+                    </div>
+                    <embed
+                        id="resumeEmbed"
+                        src="{{ url_for('static', filename='files/resume.pdf') }}"
+                        type="application/pdf"
+                        width="100%"
+                        height="600px"
+                        aria-label="Resume PDF preview"
+                        onload="handlePdfLoad()"
+                        onerror="handlePdfError()">
+
+                    <!-- Fallback for mobile/unsupported browsers -->
+                    <div class="pdf-fallback" id="pdfFallback" style="display: none;">
+                        <div class="fallback-content">
+                            <i class="fas fa-file-pdf fallback-icon" aria-hidden="true"></i>
+                            <h3>PDF Preview Not Available</h3>
+                            <p>Your browser doesn't support PDF preview. Please download or view in a new tab.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
+            <!-- Action Buttons Section -->
             <div class="resume-actions">
-                <a class="resume-button" href="{{ url_for('static', filename='files/resume.pdf') }}" download>📥 Download Resume</a>
-                <a href="{{ url_for('static', filename='files/resume.pdf') }}" class="resume-button" target="_blank">👁️ View Full Screen</a>
+                <div class="action-buttons">
+                    <a
+                        class="resume-button primary"
+                        href="{{ url_for('static', filename='files/resume.pdf') }}"
+                        download="Joy_in_Algorithm_Resume.pdf"
+                        aria-label="Download resume as PDF">
+                        <i class="fas fa-download" aria-hidden="true"></i>
+                        <span>Download Resume</span>
+                    </a>
+
+                    <a
+                        href="{{ url_for('static', filename='files/resume.pdf') }}"
+                        class="resume-button secondary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View resume in full screen">
+                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        <span>View Full Screen</span>
+                    </a>
+                </div>
+
+                <!-- Quick Info Section -->
+                <div class="resume-quick-info">
+                    <h3 class="quick-info-title">Quick Overview</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                            <span>Full Stack Developer</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            <span>CS50 Certified</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-project-diagram" aria-hidden="true"></i>
+                            <span>15+ Projects</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-brain" aria-hidden="true"></i>
+                            <span>ML/AI Experience</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connect Section -->
                 <div class="social-section">
-                    <h3 class="social-title"><a class="text-link" href="/contact">Connect With Me</a></h3>
+                    <h3 class="social-title">
+                        <i class="fas fa-handshake" aria-hidden="true"></i>
+                        <a class="text-link" href="/contact">Let's Connect</a>
+                    </h3>
+                    <p class="social-description">
+                        Interested in working together? Let's discuss your next project.
+                    </p>
+                    <div class="connect-buttons">
+                        <a href="/contact" class="connect-btn">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            Contact Me
+                        </a>
+                        <a href="/projects" class="connect-btn">
+                            <i class="fas fa-folder-open" aria-hidden="true"></i>
+                            View Projects
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Mobile-specific resume actions -->
+        <div class="mobile-resume-actions">
+            <button class="mobile-action-btn" onclick="downloadResume()" aria-label="Download resume">
+                <i class="fas fa-download" aria-hidden="true"></i>
+                Download
+            </button>
+            <button class="mobile-action-btn" onclick="viewResume()" aria-label="View resume">
+                <i class="fas fa-eye" aria-hidden="true"></i>
+                View
+            </button>
+            <button class="mobile-action-btn" onclick="shareResume()" aria-label="Share resume">
+                <i class="fas fa-share" aria-hidden="true"></i>
+                Share
+            </button>
+        </div>
     </section>
 </main>
+
+<!-- Enhanced JavaScript for better functionality -->
 <script>
+    // PDF loading and error handling
+    function handlePdfLoad() {
+        const loading = document.getElementById('pdfLoading');
+        if (loading) loading.style.display = 'none';
+    }
+
+    function handlePdfError() {
+        const loading = document.getElementById('pdfLoading');
+        const fallback = document.getElementById('pdfFallback');
+        const embed = document.getElementById('resumeEmbed');
+
+        if (loading) loading.style.display = 'none';
+        if (embed) embed.style.display = 'none';
+        if (fallback) fallback.style.display = 'block';
+    }
+
+    // Enhanced resume viewing
     function viewResume() {
         const resumeUrl = "{{ url_for('static', filename='files/resume.pdf') }}";
-        window.open(resumeUrl, '_blank');
+        window.open(resumeUrl, '_blank', 'noopener,noreferrer');
     }
+
+    // Download functionality
+    function downloadResume() {
+        const link = document.createElement('a');
+        link.href = "{{ url_for('static', filename='files/resume.pdf') }}";
+        link.download = 'Joy_in_Algorithm_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Share functionality for mobile
+    function shareResume() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Joy in Algorithm - Resume',
+                text: 'Check out my professional resume',
+                url: window.location.href
+            }).catch(console.error);
+        } else {
+            // Fallback: copy to clipboard
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Resume link copied to clipboard!');
+            }).catch(() => {
+                alert('Unable to share. Please copy the URL manually.');
+            });
+        }
+    }
+
+    // Check if PDF is supported
+    document.addEventListener('DOMContentLoaded', function() {
+        // Simple PDF support detection
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        const isMobile = window.innerWidth <= 768;
+
+        if (isIOS || (isMobile && !navigator.pdfViewerEnabled)) {
+            handlePdfError();
+        }
+
+        // Add loading timeout
+        setTimeout(() => {
+            const loading = document.getElementById('pdfLoading');
+            if (loading && loading.style.display !== 'none') {
+                handlePdfError();
+            }
+        }, 5000);
+    });
 </script>
 
+<!-- Structured Data for Resume -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Joy in Algorithm",
+    "jobTitle": "Full Stack Developer",
+    "description": "Experienced full stack developer specializing in Python, JavaScript, and modern web technologies",
+    "url": "{{ request.url_root }}resume",
+    "sameAs": [
+        "https://github.com/joyinalgorithm",
+        "https://linkedin.com/in/joyinalgorithm"
+    ],
+    "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "CS50 Certificate",
+        "description": "Harvard CS50 Computer Science Certificate"
+    }
+}
+</script>
 {% endblock %}

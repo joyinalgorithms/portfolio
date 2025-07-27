@@ -1,0 +1,138 @@
+/* Enhanced contact section styles */
+
+.contact-section {
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 123, 255, 0.1));
+  border-radius: 20px;
+  padding: 50px 40px;
+  margin-top: 40px;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.contact-info h3 {
+  color: #00ff88;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.contact-info p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.contact-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.highlight-item i {
+  color: #00ff88;
+  width: 20px;
+  text-align: center;
+}
+
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  font-size: 1rem;
+}
+
+.contact-btn.primary {
+  background: linear-gradient(45deg, #00ff88, #007bff);
+  color: #fff;
+}
+
+.contact-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+.contact-btn.secondary {
+  background: transparent;
+  color: #00ff88;
+  border-color: #00ff88;
+}
+
+.contact-btn.secondary:hover {
+  background: rgba(0, 255, 136, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 30px 25px;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .contact-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .contact-info p {
+    font-size: 1rem;
+  }
+
+  .contact-highlights {
+    align-items: center;
+  }
+
+  .contact-actions {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .contact-btn {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-actions {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .contact-btn {
+    padding: 15px 25px;
+  }
+}

@@ -8,7 +8,9 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 from flask_session import Session
 from helpers import apology, login_required, lookup, usd
 from werkzeug.security import check_password_hash, generate_password_hash
-
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
@@ -64,6 +66,16 @@ def certifications():
     return render_template("portfolio/certifications.html")
 
 
+@app.route("/demo")
+def demo():
+    return render_template("portfolio/demo.html")
+
+
+@app.route("/offers")
+def offers():
+    return render_template("portfolio/offers.html")
+
+
 @app.route("/tech-stack")
 def techstack():
     return render_template("portfolio/tech-stack.html")
@@ -74,14 +86,99 @@ def contact():
     return render_template("portfolio/contact.html")
 
 
+@app.route('/api/contact', methods=['POST'])
+def contact_form():
+    try:
+        # Get form data
+        data = request.get_json()
+
+        # Validate required fields
+        required_fields = ['name', 'email', 'subject', 'message']
+        for field in required_fields:
+            if not data.get(field):
+                return jsonify({'error': f'{field} is required'}), 400
+
+        # Validate email format
+        import re
+        email_pattern = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
+        if not re.match(email_pattern, data['email']):
+            return jsonify({'error': 'Invalid email format'}), 400
+
+        # Send email
+        success = send_contact_email(data)
+
+        if success:
+            return jsonify({'message': 'Message sent successfully'}), 200
+        else:
+            return jsonify({'error': 'Failed to send message'}), 500
+
+    except Exception as e:
+        print(f"Error in contact form: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+def send_contact_email(data):
+    try:
+        # Email configuration - set these in your environment variables
+        smtp_server = "smtp.gmail.com"
+        smtp_port = 587
+        sender_email = os.getenv('SENDER_EMAIL', 'your-email@gmail.com')
+        sender_password = os.getenv('SENDER_PASSWORD', 'your-app-password')
+        recipient_email = "joyinalgorithm@gmail.com"
+
+        # Create message
+        msg = MIMEMultipart()
+        msg['From'] = sender_email
+        msg['To'] = recipient_email
+        msg['Subject'] = f"Portfolio Contact: {data['subject']}"
+
+        # Email body
+        body = f"""
+        New contact form submission from your portfolio:
+
+        Name: {data['name']}
+        Email: {data['email']}
+        Subject: {data['subject']}
+
+        Message:
+        {data['message']}
+
+        Sent at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+        """
+
+        msg.attach(MIMEText(body, 'plain'))
+
+        # Send email
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        text = msg.as_string()
+        server.sendmail(sender_email, recipient_email, text)
+        server.quit()
+
+        return True
+
+    except Exception as e:
+        print(f"Error sending email: {str(e)}")
+        return False
+
+
+
+
 @app.route("/privacy")
 def privacy():
     return render_template("portfolio/privacy.html")
 
 
+
+@app.route("/terms")
+def terms():
+    return render_template("portfolio/terms.html")
+
+
 @app.route("/yesoryes")
 def yesoryes():
     return render_template("frontend/yes.html")
+
 
 
 @app.route("/bluredai")

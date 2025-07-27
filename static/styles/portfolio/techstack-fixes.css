@@ -1,0 +1,34 @@
+/* Fix for tech stack image sizing and layout */
+
+.tech-icon {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.tech-stack-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.tech-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .tech-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .tech-name {
+    font-size: 1.1rem;
+  }
+}

@@ -1,44 +1,195 @@
 {% extends "layout.html" %}
-{% block title %}Certifications{% endblock %}
+
+{% block title %}Certifications - Joy in Algorithm | Professional Credentials{% endblock %}
+
+{% block description %}View my professional certifications including Harvard CS50x Computer Science, Google Cybersecurity, and Kaggle Machine Learning. Verified credentials showcasing continuous learning and expertise.{% endblock %}
+
+{% block keywords %}certifications, CS50x harvard, google cybersecurity certificate, kaggle machine learning, professional credentials, verified certificates, computer science education{% endblock %}
+
+{% block og_title %}Professional Certifications - Joy in Algorithm{% endblock %}
+{% block og_description %}Verified professional certifications in computer science, cybersecurity, and machine learning from Harvard, Google, and Kaggle.{% endblock %}
+
+{% block twitter_title %}Professional Certifications - Joy in Algorithm{% endblock %}
+{% block twitter_description %}Harvard CS50x, Google Cybersecurity, and Kaggle ML certifications - showcasing continuous learning in tech.{% endblock %}
+
 {% block stylesheet %}
     <link rel="stylesheet" href="/static/styles/portfolio/certifications.css">
+    <link rel="stylesheet" href="/static/styles/portfolio/certifications-enhanced.css">
 {% endblock %}
+
 {% block body %}
     <main class="main-content">
-        <h1 class="page-title">CERTIFICATIONS</h1>
-
-        <div class="certificate-card">
-            <div class="certificate-badge">Verified</div>
-            <h2 class="certificate-title">CS50x: CS50’s Introduction to Computer Science</h2>
-            <div class="certificate-image" onclick="enlargeImage(this)">
-                <img class="certificate-img" src="/static/images/certificates/cs50x.png">
-            </div>
-            <p class="certificate-description">
-                CS50 is Harvard’s introductory computer science course that teaches foundational programming skills and problem-solving, both with and without code, for students of all backgrounds. Covering languages like C, Python, SQL, HTML, CSS, and JavaScript, it emphasizes computational thinking, algorithmic design, and real-world application, culminating in a final project.
-            </p>
+        <div class="page-header">
+            <h1 class="page-title">CERTIFICATIONS</h1>
+            <p class="page-subtitle">Continuous learning and professional development</p>
         </div>
 
-        <div class="certificate-card">
-            <div class="certificate-badge">Verified</div>
-            <h2 class="certificate-title">Google Cybersecurity</h2>
-            <div class="certificate-image" onclick="enlargeImage(this)">
-                <img class="certificate-img" src="/static/images/certificates/google.jpg">
-            </div>
-            <p class="certificate-description">
-                The Google Cybersecurity Certificate on Coursera is an entry-level program designed to equip learners with the fundamentals of cybersecurity, including threat identification, risk management, and network security. It covers essential tools and practices such as Linux, SQL, and security information and event management (SIEM), preparing learners for roles like cybersecurity analyst with no prior experience required.
-            </p>
+        <div class="certifications-grid">
+            <article class="certificate-card" data-certificate="cs50x">
+                <div class="certificate-badge verified">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    Verified
+                </div>
+                <h2 class="certificate-title">CS50x: CS50's Introduction to Computer Science</h2>
+                <div class="certificate-meta">
+                    <span class="certificate-issuer">
+                        <i class="fas fa-university" aria-hidden="true"></i>
+                        Harvard University
+                    </span>
+                    <span class="certificate-date">
+                        <i class="fas fa-calendar" aria-hidden="true"></i>
+                        2024
+                    </span>
+                </div>
+                <div class="certificate-image" onclick="enlargeImage(this)" tabindex="0" role="button" aria-label="View CS50x certificate">
+                    <img class="certificate-img" src="/static/images/certificates/cs50x.png" alt="CS50x Certificate from Harvard University" loading="lazy">
+                    <div class="image-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <span>Click to enlarge</span>
+                    </div>
+                </div>
+                <p class="certificate-description">
+                    CS50 is Harvard's introductory computer science course that teaches foundational programming skills and problem-solving, both with and without code, for students of all backgrounds. Covering languages like C, Python, SQL, HTML, CSS, and JavaScript, it emphasizes computational thinking, algorithmic design, and real-world application, culminating in a final project.
+                </p>
+                <div class="certificate-skills">
+                    <span class="skill-tag">C Programming</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Web Development</span>
+                    <span class="skill-tag">Algorithms</span>
+                </div>
+            </article>
+
+            <article class="certificate-card" data-certificate="google-cyber">
+                <div class="certificate-badge verified">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    Verified
+                </div>
+                <h2 class="certificate-title">Google Cybersecurity Professional Certificate</h2>
+                <div class="certificate-meta">
+                    <span class="certificate-issuer">
+                        <i class="fas fa-building" aria-hidden="true"></i>
+                        Google
+                    </span>
+                    <span class="certificate-date">
+                        <i class="fas fa-calendar" aria-hidden="true"></i>
+                        2024
+                    </span>
+                </div>
+                <div class="certificate-image" onclick="enlargeImage(this)" tabindex="0" role="button" aria-label="View Google Cybersecurity certificate">
+                    <img class="certificate-img" src="/static/images/certificates/google.jpg" alt="Google Cybersecurity Professional Certificate" loading="lazy">
+                    <div class="image-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <span>Click to enlarge</span>
+                    </div>
+                </div>
+                <p class="certificate-description">
+                    The Google Cybersecurity Certificate on Coursera is an entry-level program designed to equip learners with the fundamentals of cybersecurity, including threat identification, risk management, and network security. It covers essential tools and practices such as Linux, SQL, and security information and event management (SIEM), preparing learners for roles like cybersecurity analyst with no prior experience required.
+                </p>
+                <div class="certificate-skills">
+                    <span class="skill-tag">Cybersecurity</span>
+                    <span class="skill-tag">Risk Management</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">SIEM</span>
+                    <span class="skill-tag">Network Security</span>
+                </div>
+            </article>
+
+            <article class="certificate-card" data-certificate="kaggle-ml">
+                <div class="certificate-badge verified">
+                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                    Verified
+                </div>
+                <h2 class="certificate-title">Kaggle: Machine Learning Fundamentals</h2>
+                <div class="certificate-meta">
+                    <span class="certificate-issuer">
+                        <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        Kaggle
+                    </span>
+                    <span class="certificate-date">
+                        <i class="fas fa-calendar" aria-hidden="true"></i>
+                        2024
+                    </span>
+                </div>
+                <div class="certificate-image" onclick="enlargeImage(this)" tabindex="0" role="button" aria-label="View Kaggle Machine Learning certificate">
+                    <img class="certificate-img" src="/static/images/certificates/kaggle.png" alt="Kaggle Machine Learning Fundamentals Certificate" loading="lazy">
+                    <div class="image-overlay">
+                        <i class="fas fa-search-plus"></i>
+                        <span>Click to enlarge</span>
+                    </div>
+                </div>
+                <p class="certificate-description">
+                    The Kaggle Intro to Machine Learning course is a beginner-friendly program that teaches the fundamentals of machine learning through hands-on tutorials and exercises. It covers key concepts like model building, data exploration, validation, overfitting, and advanced algorithms like random forests, preparing learners to build and evaluate their own models.
+                </p>
+                <div class="certificate-skills">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Data Science</span>
+                    <span class="skill-tag">Model Building</span>
+                    <span class="skill-tag">Random Forests</span>
+                    <span class="skill-tag">Data Analysis</span>
+                </div>
+            </article>
         </div>
 
-        <div class="certificate-card">
-            <div class="certificate-badge">Verified</div>
-            <h2 class="certificate-title">Kaggle: Machine Learning Fundamentals</h2>
-            <div class="certificate-image" onclick="enlargeImage(this)">
-                <img class="certificate-img" src="/static/images/certificates/kaggle.png">
+        <!-- Certificate Modal -->
+        <div id="certificateModal" class="modal" onclick="closeModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span class="close" onclick="closeModal()" aria-label="Close modal">&times;</span>
+                <img id="modalImage" src="/placeholder.svg" alt="Certificate enlarged view">
             </div>
-            <p class="certificate-description">
-                The Kaggle Intro to Machine Learning course is a beginner-friendly program that teaches the fundamentals of machine learning through hands-on tutorials and exercises. It covers key concepts like model building, data exploration, validation, overfitting, and advanced algorithms like random forests, preparing learners to build and evaluate their own models.
-            </p>
         </div>
-
     </main>
+
+    <!-- Scroll to top button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Joy in Algorithm",
+        "hasCredential": [
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "CS50x: Introduction to Computer Science",
+                "description": "Harvard University's introduction to computer science and programming",
+                "credentialCategory": "Certificate",
+                "recognizedBy": {
+                    "@type": "Organization",
+                    "name": "Harvard University"
+                },
+                "dateCreated": "2024"
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Google Cybersecurity Professional Certificate",
+                "description": "Professional certificate in cybersecurity fundamentals and practices",
+                "credentialCategory": "Professional Certificate",
+                "recognizedBy": {
+                    "@type": "Organization",
+                    "name": "Google"
+                },
+                "dateCreated": "2024"
+            },
+            {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Machine Learning Fundamentals",
+                "description": "Fundamentals of machine learning and data science",
+                "credentialCategory": "Certificate",
+                "recognizedBy": {
+                    "@type": "Organization",
+                    "name": "Kaggle"
+                },
+                "dateCreated": "2024"
+            }
+        ]
+    }
+    </script>
+
+    <script src="/static/scripts/portfolio/certifications-enhanced.js"></script>
 {% endblock %}

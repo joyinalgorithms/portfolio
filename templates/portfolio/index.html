@@ -1,11 +1,23 @@
 {% extends "layout.html" %}
-{% block title %}Home{% endblock %}
+
+{% block title %}Joy in Algorithm - Full Stack Developer Portfolio{% endblock %}
+
+{% block description %}Full Stack Developer specializing in Python, JavaScript, Flask, Django, and modern web technologies. Explore my projects, skills, and professional experience.{% endblock %}
+
+{% block keywords %}full stack developer, python developer, javascript developer, web development, portfolio, flask, django, machine learning{% endblock %}
+
+{% block og_title %}Joy in Algorithm - Full Stack Developer{% endblock %}
+{% block og_description %}Experienced full stack developer creating innovative web applications and AI solutions{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/portfolio/home-enhanced.css">
+{% endblock %}
 
 {% block body %}
     <main class="main-content">
         <header class="header">
             <div class="white-overlay"></div>
-            <div><img class="profile-image" src="/static/images/profile.png"></div>
+            <div><img class="profile-image" src="/static/images/profile.png" alt="Joy in Algorithm profile picture"></div>
             <div class="header-content">
                 <div class="header-text">
                     <h1>Hi, I'm Joy a Full-Stack Web Developer</h1>
@@ -43,12 +55,62 @@
             <a href="/resume" class="view-more">View Resume</a>
         </section>
 
-    <!-- Contact Section -->
-        <section class="section" id="contact">
-            <h2>CONTACT ME</h2>
-            <div class="social-section">
-                <h3 class="social-title"><a class="text-link" href="/contact">Connect With Me</a></h3>
+    <!-- Enhanced Contact Section -->
+        <section class="section contact-section" id="contact">
+            <h2>LET'S WORK TOGETHER</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Ready to start your next project?</h3>
+                    <p>I'm always interested in new opportunities and exciting projects. Whether you need a full-stack web application, want to discuss a collaboration, or just want to say hello, I'd love to hear from you.</p>
+
+                    <div class="contact-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Fast Response Time</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Collaborative Approach</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <span>Quality Solutions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="/contact" class="contact-btn primary">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                    <a href="mailto:joyinalgorithm@gmail.com" class="contact-btn secondary">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Email
+                    </a>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Joy in Algorithm",
+        "jobTitle": "Full Stack Developer",
+        "description": "Experienced full stack developer specializing in Python, JavaScript, and modern web technologies",
+        "url": "{{ request.url_root }}",
+        "email": "joyinalgorithm@gmail.com",
+        "knowsAbout": [
+            "Python Programming",
+            "JavaScript Development",
+            "Flask Framework",
+            "Django Framework",
+            "Web Development",
+            "Machine Learning"
+        ]
+    }
+    </script>
 {% endblock %}

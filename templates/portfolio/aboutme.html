@@ -1,55 +1,78 @@
 {% extends "layout.html" %}
-{% block title %}About Me{% endblock %}
+
+{% block title %}About Me - Joy in Algorithm | Full Stack Developer Story{% endblock %}
+
+{% block description %}Learn about Joy in Algorithm's journey as a full stack developer. Passionate about Python, JavaScript, machine learning, and creating innovative web solutions with 2+ years of experience.{% endblock %}
+
+{% block keywords %}about joy in algorithm, full stack developer story, python developer, javascript developer, web development experience, machine learning developer, programming journey{% endblock %}
+
+{% block og_title %}About Joy in Algorithm - Full Stack Developer{% endblock %}
+{% block og_description %}Passionate full stack developer specializing in Python, JavaScript, and modern web technologies. Discover my journey, skills, and passion for creating innovative solutions.{% endblock %}
+
+{% block twitter_title %}About Joy in Algorithm - Full Stack Developer{% endblock %}
+{% block twitter_description %}Full stack developer with 2+ years experience in Python, JavaScript, and machine learning. 30+ projects completed with 100% passion.{% endblock %}
+
 {% block stylesheet %}
     <link rel="stylesheet" href="/static/styles/portfolio/about.css">
+    <link rel="stylesheet" href="/static/styles/portfolio/about-mobile.css">
 {% endblock %}
+
 {% block body %}
     <main class="main-content">
-        <h1 class="page-title">ABOUT ME</h1>
+        <div class="page-header">
+            <h1 class="page-title">ABOUT ME</h1>
+            <p class="page-subtitle">Passionate developer crafting digital experiences</p>
+        </div>
 
         <div class="about-container">
             <div class="image-container">
-                <div class="profile-image-large" onclick="toggleImageEffect(this)">
-                    <img class="image-fit" src="/static/images/me.JPG">
+                <div class="profile-image-large" onclick="toggleImageEffect(this)" tabindex="0" role="button" aria-label="Toggle profile image effect">
+                    <img class="image-fit" src="/static/images/me.JPG" alt="Joy in Algorithm profile photo">
                     <div class="image-overlay">
-                        <img class="image-fit" src="/static/images/me2.JPG">
+                        <img class="image-fit" src="/static/images/me2.JPG" alt="Joy in Algorithm alternate profile photo">
                     </div>
+                </div>
+                <div class="image-caption">
+                    <p>Click to see the magic! ✨</p>
                 </div>
             </div>
 
             <div class="description-container">
                 <h2 class="description-title">Hello, I'm Joy!</h2>
-                <p class="description-text">
-                    I'm a passionate <span class="highlight-text">Full-Stack Web Developer</span> with a love for creating
-                    innovative and efficient solutions. My journey in programming started with curiosity and has evolved
-                    into a deep passion for building applications that make a difference.
-                </p>
-                <p class="description-text">
-                    I specialize in <span class="highlight-text">Python, JavaScript, and modern web frameworks</span>,
-                    with experience in machine learning and AI projects. I believe in writing clean, maintainable code
-                    and staying up-to-date with the latest technologies and best practices.
-                </p>
-                <p class="description-text">
-                    When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
-                    or sharing knowledge with the developer community.
-                </p>
+                <div class="description-content">
+                    <p class="description-text">
+                        I'm a passionate <span class="highlight-text">Full-Stack Web Developer</span> with a love for creating
+                        innovative and efficient solutions. My journey in programming started with curiosity and has evolved
+                        into a deep passion for building applications that make a difference.
+                    </p>
+                    <p class="description-text">
+                        I specialize in <span class="highlight-text">Python, JavaScript, and modern web frameworks</span>,
+                        with experience in machine learning and AI projects. I believe in writing clean, maintainable code
+                        and staying up-to-date with the latest technologies and best practices.
+                    </p>
+                    <p class="description-text">
+                        When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
+                        or sharing knowledge with the developer community. I'm always excited to take on new challenges and
+                        collaborate on meaningful projects.
+                    </p>
+                </div>
 
                 <div class="stats-grid">
-                    <div class="stat-item">
-                        <span class="stat-number">30+</span>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                        <span class="stat-number" data-target="30">0</span>
                         <span class="stat-label">Projects Completed</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">2+</span>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                        <span class="stat-number" data-target="2">0</span>
                         <span class="stat-label">Years Experience</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">15+</span>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                        <span class="stat-number" data-target="15">0</span>
                         <span class="stat-label">Technologies</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Passion</span>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-label">Passion %</span>
                     </div>
                 </div>
             </div>
@@ -57,32 +80,108 @@
 
         <div class="interactive-section">
             <h2 class="interactive-title">My Core Interests</h2>
+            <p class="interactive-subtitle">Areas where I love to innovate and create</p>
             <div class="skills-container">
-                <div class="skill-item" onclick="animateSkill(this)">
+                <div class="skill-item" onclick="animateSkill(this)" tabindex="0" role="button" aria-label="Web Development skill">
                     <span class="skill-icon">🌐</span>
                     <span class="skill-name">Web Development</span>
+                    <span class="skill-description">Building responsive, user-friendly web applications</span>
                 </div>
-                <div class="skill-item" onclick="animateSkill(this)">
+                <div class="skill-item" onclick="animateSkill(this)" tabindex="0" role="button" aria-label="Machine Learning skill">
                     <span class="skill-icon">🤖</span>
                     <span class="skill-name">Machine Learning</span>
+                    <span class="skill-description">Creating intelligent systems and AI solutions</span>
                 </div>
-                <div class="skill-item" onclick="animateSkill(this)">
+                <div class="skill-item" onclick="animateSkill(this)" tabindex="0" role="button" aria-label="Mobile Apps skill">
                     <span class="skill-icon">📱</span>
                     <span class="skill-name">Mobile Apps</span>
+                    <span class="skill-description">Developing cross-platform mobile experiences</span>
                 </div>
-                <div class="skill-item" onclick="animateSkill(this)">
+                <div class="skill-item" onclick="animateSkill(this)" tabindex="0" role="button" aria-label="Database Design skill">
                     <span class="skill-icon">🗄️</span>
                     <span class="skill-name">Database Design</span>
+                    <span class="skill-description">Architecting efficient data storage solutions</span>
                 </div>
-                <div class="skill-item" onclick="animateSkill(this)">
+                <div class="skill-item" onclick="animateSkill(this)" tabindex="0" role="button" aria-label="Cloud Computing skill">
                     <span class="skill-icon">☁️</span>
                     <span class="skill-name">Cloud Computing</span>
+                    <span class="skill-description">Deploying scalable cloud-based applications</span>
                 </div>
-                <div class="skill-item" onclick="animateSkill(this)">
+                <div class="skill-item" onclick="animateSkill(this)" tabindex="0" role="button" aria-label="Game Development skill">
                     <span class="skill-icon">🎮</span>
                     <span class="skill-name">Game Development</span>
+                    <span class="skill-description">Creating engaging interactive experiences</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Philosophy Section -->
+        <div class="philosophy-section">
+            <h2 class="philosophy-title">My Development Philosophy</h2>
+            <div class="philosophy-grid">
+                <div class="philosophy-item">
+                    <div class="philosophy-icon">💡</div>
+                    <h3>Innovation First</h3>
+                    <p>Always seeking creative solutions to complex problems</p>
+                </div>
+                <div class="philosophy-item">
+                    <div class="philosophy-icon">🤝</div>
+                    <h3>Collaboration</h3>
+                    <p>Believing in the power of teamwork and knowledge sharing</p>
+                </div>
+                <div class="philosophy-item">
+                    <div class="philosophy-icon">🎯</div>
+                    <h3>Quality Focus</h3>
+                    <p>Committed to writing clean, maintainable, and efficient code</p>
+                </div>
+                <div class="philosophy-item">
+                    <div class="philosophy-icon">📚</div>
+                    <h3>Continuous Learning</h3>
+                    <p>Staying current with emerging technologies and best practices</p>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Scroll to top button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Joy in Algorithm",
+        "jobTitle": "Full Stack Developer",
+        "description": "Passionate full stack developer with expertise in Python, JavaScript, machine learning, and modern web technologies",
+        "url": "{{ request.url }}",
+        "image": "{{ request.url_root }}static/images/me.JPG",
+        "knowsAbout": [
+            "Web Development",
+            "Machine Learning",
+            "Mobile App Development",
+            "Database Design",
+            "Cloud Computing",
+            "Game Development"
+        ],
+        "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Full Stack Developer",
+            "occupationLocation": {
+                "@type": "Place",
+                "name": "Remote"
+            }
+        },
+        "alumniOf": {
+            "@type": "Organization",
+            "name": "Harvard CS50"
+        }
+    }
+    </script>
+
+    <script src="/static/scripts/portfolio/about-enhanced.js"></script>
 {% endblock %}
