@@ -79,15 +79,3 @@
   box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
 }
 
-/* Loading animation for images */
-.project-image img {
-  transition: opacity 0.3s ease;
-}
-
-.project-image img[loading="lazy"] {
-  opacity: 0;
-}
-
-.project-image img[loading="lazy"].loaded {
-  opacity: 1;
-}

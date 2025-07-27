@@ -1,9 +1,51 @@
-{% extends "layout.html" %}
-{% block title %}Is it Christmas'?{% endblock %}
+{% extends "general_layout.html" %}
+
+{% block title %}Is it Christmas? - Interactive Christmas Countdown{% endblock %}
+
+{% block head %}
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Find out if it's Christmas Day! Interactive Christmas countdown with animated decorations, falling snow, and festive surprises.">
+    <meta name="keywords" content="Christmas, countdown, holiday, festive, interactive, Christmas Day, December 25">
+    <meta name="author" content="Christmas Countdown">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Is it Christmas? - Interactive Christmas Countdown">
+    <meta property="og:description" content="Find out if it's Christmas Day! Interactive Christmas countdown with animated decorations.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/static/images/christmas-og-image.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Is it Christmas? - Interactive Christmas Countdown">
+    <meta name="twitter:description" content="Find out if it's Christmas Day! Interactive Christmas countdown with animated decorations.">
+
+    <!-- Mobile Optimization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#e74c3c">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Christmas Countdown",
+        "description": "Interactive Christmas countdown application",
+        "applicationCategory": "Entertainment",
+        "operatingSystem": "Any"
+    }
+    </script>
+{% endblock %}
+
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/frontend/christmas.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/frontend/christmas.css">
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Fredoka+One:wght@400&display=swap" as="style">
+{% endblock %}
+
 {% block body %}
-    <div class="lights">
+    <!-- Decorative Elements -->
+    <div class="lights" role="presentation" aria-hidden="true">
         <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
@@ -16,43 +58,81 @@
         <div class="light"></div>
     </div>
 
-    <div class="holly">🎄</div>
-    <div class="holly">🎅</div>
-    <div class="holly">⛄</div>
+    <div class="holly-decorations" role="presentation" aria-hidden="true">
+        <div class="holly">🎄</div>
+        <div class="holly">🎅</div>
+        <div class="holly">⛄</div>
+    </div>
 
-    <div class="container">
-        <h1 class="question">Is it Christmas?</h1>
+    <!-- Main Content -->
+    <main class="container">
+        <header class="main-header">
+            <h1 class="question">Is it Christmas?</h1>
+        </header>
 
-        <div class="answer" id="answer">
-            <div class="answer-text" id="answerText">
-                {% if christmas %}
-                    <h1>YES</h1>
-                {% else %}
-                    <h1>NO</h1>
-                {% endif %}
+        <section class="answer-section" aria-live="polite">
+            <div class="answer" id="answer">
+                <div class="answer-text" id="answerText">
+                    {% if christmas %}
+                        <h2>YES</h2>
+                    {% else %}
+                        <h2>NO</h2>
+                    {% endif %}
+                </div>
+                <div class="answer-emoji" id="answerEmoji" role="img" aria-label="Christmas emoji">🎄</div>
             </div>
-            <div class="answer-emoji" id="answerEmoji">🎄</div>
-        </div>
+        </section>
 
-        <div class="christmas-tree" onclick="shakeTree()">
-            <div class="tree-star">⭐</div>
-            <div class="tree-part tree-top"></div>
-            <div class="tree-part tree-middle"></div>
-            <div class="tree-part tree-bottom"></div>
-            <div class="tree-trunk"></div>
-        </div>
+        <!-- Interactive Christmas Tree -->
+        <section class="tree-section">
+            <div class="christmas-tree"
+                 onclick="shakeTree()"
+                 onkeydown="handleTreeKeydown(event)"
+                 tabindex="0"
+                 role="button"
+                 aria-label="Click to shake the Christmas tree">
+                <div class="tree-star" role="img" aria-label="Christmas star">⭐</div>
+                <div class="tree-part tree-top"></div>
+                <div class="tree-part tree-middle"></div>
+                <div class="tree-part tree-bottom"></div>
+                <div class="tree-trunk"></div>
+            </div>
+        </section>
 
-        <div class="presents">
-            <div class="present" onclick="openPresent(this)"></div>
-            <div class="present" onclick="openPresent(this)"></div>
-            <div class="present" onclick="openPresent(this)"></div>
-        </div>
+        <!-- Interactive Presents -->
+        <section class="presents-section">
+            <div class="presents" role="group" aria-label="Christmas presents">
+                <div class="present"
+                     onclick="openPresent(this)"
+                     onkeydown="handlePresentKeydown(event, this)"
+                     tabindex="0"
+                     role="button"
+                     aria-label="Click to open present 1"></div>
+                <div class="present"
+                     onclick="openPresent(this)"
+                     onkeydown="handlePresentKeydown(event, this)"
+                     tabindex="0"
+                     role="button"
+                     aria-label="Click to open present 2"></div>
+                <div class="present"
+                     onclick="openPresent(this)"
+                     onkeydown="handlePresentKeydown(event, this)"
+                     tabindex="0"
+                     role="button"
+                     aria-label="Click to open present 3"></div>
+            </div>
+        </section>
 
-        <div class="countdown" id="countdown">
-            <div class="countdown-text">Days until Christmas:</div>
-            <div class="countdown-timer" id="countdownTimer">Loading...</div>
-        </div>
-    </div>
+        <!-- Countdown Timer -->
+        <section class="countdown-section">
+            <div class="countdown" id="countdown">
+                <div class="countdown-text">Days until Christmas:</div>
+                <div class="countdown-timer" id="countdownTimer" aria-live="polite">Loading...</div>
+            </div>
+        </section>
+    </main>
 
-    {% block scripts %}<script src="/static/scripts/frontend/christmas.js"></script>{% endblock %}
+    {% block scripts %}
+        <script src="/static/scripts/frontend/christmas.js"></script>
+    {% endblock %}
 {% endblock %}

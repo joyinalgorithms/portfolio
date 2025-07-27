@@ -13,7 +13,7 @@
 {% block twitter_description %}Live demos of web apps, ML projects, and software solutions with full technical documentation{% endblock %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="/static/styles/portfolio/demo.css">
+    <link rel="stylesheet" href="/static/styles/portfolio/demo.css">
 {% endblock %}
 
 {% block body %}
@@ -24,7 +24,6 @@
         </div>
 
         <div class="demo-container">
-            <!-- Lemonaddie E-commerce Demo -->
             <article class="demo-card" data-project="lemonaddie">
                 <div class="demo-header">
                     <h2 class="demo-title">Lemonaddie E-commerce Platform</h2>
@@ -37,12 +36,7 @@
                 <div class="demo-content">
                     <div class="demo-video-section">
                         <div class="video-container">
-                            <video
-                                class="demo-video"
-                                poster="/static/images/demo/lemonaddie-poster.jpg"
-                                controls
-                                preload="metadata"
-                                aria-label="Lemonaddie project demonstration video">
+                            <video class="demo-video" poster="/static/images/demo/lemonaddie-poster.jpg" controls preload="metadata" aria-label="Lemonaddie project demonstration video">
                                 <source src="/static/videos/demo/lemonaddie-demo.mp4" type="video/mp4">
                                 <p>Your browser doesn't support video playback. <a href="/static/videos/demo/lemonaddie-demo.mp4">Download the video</a> instead.</p>
                             </video>
@@ -103,7 +97,6 @@
                 </div>
             </article>
 
-            <!-- Journal Web App Demo -->
             <article class="demo-card" data-project="journal">
                 <div class="demo-header">
                     <h2 class="demo-title">Journal Web Application</h2>
@@ -116,12 +109,7 @@
                 <div class="demo-content">
                     <div class="demo-video-section">
                         <div class="video-container">
-                            <video
-                                class="demo-video"
-                                poster="/static/images/demo/journal-poster.jpg"
-                                controls
-                                preload="metadata"
-                                aria-label="Journal application demonstration video">
+                            <video class="demo-video" poster="/static/images/demo/journal-poster.jpg" controls preload="metadata" aria-label="Journal application demonstration video">
                                 <source src="/static/videos/demo/journal-demo.mp4" type="video/mp4">
                                 <p>Your browser doesn't support video playback. <a href="/static/videos/demo/journal-demo.mp4">Download the video</a> instead.</p>
                             </video>
@@ -182,7 +170,6 @@
                 </div>
             </article>
 
-            <!-- Employee Management System Demo -->
             <article class="demo-card" data-project="ems">
                 <div class="demo-header">
                     <h2 class="demo-title">Employee Management System</h2>
@@ -195,12 +182,7 @@
                 <div class="demo-content">
                     <div class="demo-video-section">
                         <div class="video-container">
-                            <video
-                                class="demo-video"
-                                poster="/static/images/demo/ems-poster.jpg"
-                                controls
-                                preload="metadata"
-                                aria-label="Employee Management System demonstration video">
+                            <video class="demo-video" poster="/static/images/demo/ems-poster.jpg" controls preload="metadata" aria-label="Employee Management System demonstration video">
                                 <source src="/static/videos/demo/ems-demo.mp4" type="video/mp4">
                                 <p>Your browser doesn't support video playback. <a href="/static/videos/demo/ems-demo.mp4">Download the video</a> instead.</p>
                             </video>
@@ -261,7 +243,6 @@
                 </div>
             </article>
 
-            <!-- Project LIF AI Demo -->
             <article class="demo-card" data-project="project-lif">
                 <div class="demo-header">
                     <h2 class="demo-title">Project LIF - AI Lipreading System</h2>
@@ -274,12 +255,7 @@
                 <div class="demo-content">
                     <div class="demo-video-section">
                         <div class="video-container">
-                            <video
-                                class="demo-video"
-                                poster="/static/images/demo/project-lif-poster.jpg"
-                                controls
-                                preload="metadata"
-                                aria-label="Project LIF AI demonstration video">
+                            <video class="demo-video" poster="/static/images/demo/project-lif-poster.jpg" controls preload="metadata" aria-label="Project LIF AI demonstration video">
                                 <source src="/static/videos/demo/project-lif-demo.mp4" type="video/mp4">
                                 <p>Your browser doesn't support video playback. <a href="/static/videos/demo/project-lif-demo.mp4">Download the video</a> instead.</p>
                             </video>
@@ -342,45 +318,36 @@
         </div>
     </main>
 
-    <!-- Scroll to top button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
-
-    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CreativeWork",
-        "name": "Joy in Algorithm Project Demonstrations",
-        "creator": {
-            "@type": "Person",
-            "name": "Joy in Algorithm"
-        },
-        "description": "Interactive demonstrations of web applications, machine learning projects, and software solutions",
-        "hasPart": [
-            {
+        {
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            "name": "Joy in Algorithm Project Demonstrations",
+            "creator": {
+                "@type": "Person",
+                "name": "Joy in Algorithm"
+            },
+            "description": "Interactive demonstrations of web applications, machine learning projects, and software solutions",
+            "hasPart": [{
                 "@type": "SoftwareApplication",
                 "name": "Lemonaddie E-commerce Platform",
                 "applicationCategory": "E-commerce",
                 "operatingSystem": "Web Browser"
             },
-            {
-                "@type": "SoftwareApplication",
-                "name": "Journal Web Application",
-                "applicationCategory": "Productivity",
-                "operatingSystem": "Web Browser"
-            },
-            {
-                "@type": "SoftwareApplication",
-                "name": "Employee Management System",
-                "applicationCategory": "Business",
-                "operatingSystem": "Web Browser"
-            }
-        ]
-    }
+                {
+                    "@type": "SoftwareApplication",
+                    "name": "Journal Web Application",
+                    "applicationCategory": "Productivity",
+                    "operatingSystem": "Web Browser"
+                },
+                {
+                    "@type": "SoftwareApplication",
+                    "name": "Employee Management System",
+                    "applicationCategory": "Business",
+                    "operatingSystem": "Web Browser"
+                }
+            ]
+        }
     </script>
 
     <script src="/static/scripts/portfolio/demo.js"></script>

@@ -1,412 +1,564 @@
-<html lang="en">
+{% extends "general_layout.html" %}
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/static/styles/frontend/spotify.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+{% block title %}Spotify Clone - Stream Music Online{% endblock %}
 
-        <title>Spotify</title>
-    </head>
+{% block meta %}
+<meta name="description" content="Experience music like never before with our Spotify clone. Discover new artists, create playlists, and enjoy unlimited streaming of your favorite songs.">
+<meta name="keywords" content="music streaming, spotify clone, online music, playlists, artists, songs, audio player">
+<meta name="author" content="Music Streaming Platform">
+<meta property="og:title" content="Spotify Clone - Stream Music Online">
+<meta property="og:description" content="Discover and stream millions of songs with our modern music platform">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/static/images/spotify-images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
 
-    <body>
-        <div class="sidebar-top">
-            <div class="flex-row">
-                <img class="big-icon" src="/static/images/spotify-images/home.png" alt="">
-                <h4 class="white-font">Home</h4>
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/frontend/spotify.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="app-container">
+    <!-- Left Sidebar -->
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+        <!-- Navigation Section -->
+        <nav class="sidebar-top">
+            <div class="nav-item active" role="button" tabindex="0" aria-label="Home">
+                <img class="nav-icon" src="/static/images/spotify-images/home.png" alt="Home icon">
+                <h4 class="nav-text">Home</h4>
             </div>
-            <div class="flex-row">
-                <img class="big-icon" src="/static/images/spotify-images/search-line.png" alt="">
-                <h4 class="grey-font">Search</h4>
+            <div class="nav-item" role="button" tabindex="0" aria-label="Search">
+                <img class="nav-icon" src="/static/images/spotify-images/search-line.png" alt="Search icon">
+                <h4 class="nav-text nav-text-inactive">Search</h4>
+            </div>
+        </nav>
+
+        <!-- Library Section -->
+        <section class="sidebar-middle">
+            <header class="section-header">
+                <img src="/static/images/spotify-images/library.png" alt="Library icon">
+                <p class="section-title">Your Library</p>
+                <button class="icon-button" aria-label="Add to library">
+                    <i class="ri-add-line"></i>
+                </button>
+                <button class="icon-button" aria-label="Expand library">
+                    <i class="ri-arrow-right-line"></i>
+                </button>
+            </header>
+            <div class="filter-chips">
+                <span class="filter-chip">Artists</span>
+            </div>
+        </section>
+
+        <!-- Recent Activity -->
+        <section class="sidebar-bottom">
+            <header class="section-header">
+                <img src="/static/images/spotify-images/search-line.png" alt="Recent icon">
+                <div class="header-controls">
+                    <p class="section-subtitle">Recents</p>
+                    <button class="icon-button" aria-label="More options">
+                        <i class="ri-more-2-line"></i>
+                    </button>
+                    <button class="icon-button" aria-label="List view">
+                        <i class="ri-menu-line"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="library-content">
+                <!-- Liked Songs -->
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image liked-songs" src="/static/images/spotify-images/likesongs.png" alt="Liked Songs playlist">
+                    <div class="library-details">
+                        <p class="library-title">Liked Songs</p>
+                        <p class="library-subtitle">
+                            <i class="ri-pushpin-fill"></i> Playlist • 6 songs
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artist List -->
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/umji.jpg" alt="Umji artist photo">
+                    <div class="library-details">
+                        <p class="library-title">Umji</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/sinb.jpg" alt="Sinb artist photo">
+                    <div class="library-details">
+                        <p class="library-title">Sinb</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/yuju.jpg" alt="Yuju artist photo">
+                    <div class="library-details">
+                        <p class="library-title">Yuju</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/eunha.jpg" alt="Eunha artist photo">
+                    <div class="library-details">
+                        <p class="library-title">Eunha</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/yerin.jpg" alt="Yerin artist photo">
+                    <div class="library-details">
+                        <p class="library-title">Yerin</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/viviz.jpg" alt="VIVIZ group photo">
+                    <div class="library-details">
+                        <p class="library-title">VIVIZ</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/aespa.jpeg" alt="aespa group photo">
+                    <div class="library-details">
+                        <p class="library-title">aespa</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/svt.jpg" alt="SEVENTEEN group photo">
+                    <div class="library-details">
+                        <p class="library-title">SEVENTEEN</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/kard.jpg" alt="KARD group photo">
+                    <div class="library-details">
+                        <p class="library-title">KARD</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+
+                <div class="library-item" role="button" tabindex="0">
+                    <img class="library-image artist-avatar" src="/static/images/spotify-images/gfriend.jpg" alt="GFriend group photo">
+                    <div class="library-details">
+                        <p class="library-title">GFriend</p>
+                        <p class="library-subtitle">Artist</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-navigation">
+                <button class="nav-button" aria-label="Go back">
+                    <i class="ri-arrow-left-s-line"></i>
+                </button>
+                <button class="nav-button" aria-label="Go forward">
+                    <i class="ri-arrow-right-s-line"></i>
+                </button>
             </div>
 
+            <div class="header-actions">
+                <button class="premium-button">Explore Premium</button>
+                <button class="action-button">
+                    <i class="ri-download-line"></i>
+                    <span class="button-text">Install App</span>
+                </button>
+                <button class="action-button icon-only" aria-label="Notifications">
+                    <i class="ri-notification-2-line"></i>
+                </button>
+                <button class="profile-button" aria-label="User profile">
+                    <img class="profile-avatar" src="/static/images/spotify-images/vinzhou6.jpg" alt="User profile picture">
+                </button>
+            </div>
+        </header>
+
+        <!-- Content Filters -->
+        <nav class="content-filters" role="tablist">
+            <button class="filter-tab active" role="tab" aria-selected="true">All</button>
+            <button class="filter-tab" role="tab" aria-selected="false">Music</button>
+            <button class="filter-tab" role="tab" aria-selected="false">Podcasts</button>
+        </nav>
+
+        <!-- Content Sections -->
+        <div class="content-body">
+            <!-- Today's Biggest Hits -->
+            <section class="content-section">
+                <header class="section-header-main">
+                    <h2 class="section-title-main">Today's biggest hits</h2>
+                    <button class="show-all-button">Show all</button>
+                </header>
+                <div class="content-grid">
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/biggesthits-1.jpg" alt="Today's Top Hits playlist cover">
+                            <button class="play-button" aria-label="Play Today's Top Hits">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Today's Top Hits</h3>
+                            <p class="card-description">Doja Cat is on top of the Hottest 50!</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/biggesthits-2.jpg" alt="Viral Hits playlist cover">
+                            <button class="play-button" aria-label="Play Viral Hits">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Viral Hits</h3>
+                            <p class="card-description">Viral, trending and taking off.</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/biggesthits-3.jpg" alt="K-Pop ON! playlist cover">
+                            <button class="play-button" aria-label="Play K-Pop ON!">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">K-Pop ON!</h3>
+                            <p class="card-description">Turn on the movement with the latest and ...</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/biggesthits-4.jpg" alt="Tatak Pinoy playlist cover">
+                            <button class="play-button" aria-label="Play Tatak Pinoy">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Tatak Pinoy</h3>
+                            <p class="card-description">Mga nangunguna sa mundo ng OPM. Cov...</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/biggesthits-5.jpg" alt="Viral Hits Philippines playlist cover">
+                            <button class="play-button" aria-label="Play Viral Hits Philippines">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Viral Hits Philippines</h3>
+                            <p class="card-description">Viral sa Pinas! Cover: Ariana Grande</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Recommended Radio -->
+            <section class="content-section">
+                <header class="section-header-main">
+                    <h2 class="section-title-main">Recommended radio</h2>
+                    <button class="show-all-button">Show all</button>
+                </header>
+                <div class="content-grid">
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/recommended-1.jpg" alt="SEVENTEEN Radio">
+                            <button class="play-button" aria-label="Play SEVENTEEN Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">SEVENTEEN Radio</h3>
+                            <p class="card-description">With BSS, THE BOYZ, MONSTA X and more</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/recommended-2.jpg" alt="Umji Radio">
+                            <button class="play-button" aria-label="Play Umji Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Umji Radio</h3>
+                            <p class="card-description">With EUNHA, SinB, Yerin and more</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/recommended-3.jpg" alt="aespa Radio">
+                            <button class="play-button" aria-label="Play aespa Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">aespa Radio</h3>
+                            <p class="card-description">With NMIXX, IVE, GOT the beat and more</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/recommended-4.jpg" alt="VIVIZ Radio">
+                            <button class="play-button" aria-label="Play VIVIZ Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">VIVIZ Radio</h3>
+                            <p class="card-description">With Yerin, YUJU, KWON EUNBI and...</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/recommended-5.jpg" alt="KARD Radio">
+                            <button class="play-button" aria-label="Play KARD Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">KARD Radio</h3>
+                            <p class="card-description">With CLC, HyunA, CHUNG HA and more</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Stay Updated -->
+            <section class="content-section">
+                <header class="section-header-main">
+                    <h2 class="section-title-main">Stay Updated</h2>
+                    <button class="show-all-button">Show all</button>
+                </header>
+                <div class="content-grid">
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/stayupdated-1.jpg" alt="The wRap podcast">
+                            <button class="play-button" aria-label="Play The wRap">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">The wRap | Rapple...</h3>
+                            <p class="card-description">Rappler</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/stayupdated-2.jpg" alt="ABS-CBN News Flash">
+                            <button class="play-button" aria-label="Play ABS-CBN News">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">ABS-CBN News ...</h3>
+                            <p class="card-description">ABS-CBN News Flash</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/stayupdated-3.jpg" alt="Teka Teka News">
+                            <button class="play-button" aria-label="Play Teka Teka News">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Teka Teka News</h3>
+                            <p class="card-description">PumaPodcast</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/stayupdated-4.jpg" alt="Today, Explained">
+                            <button class="play-button" aria-label="Play Today, Explained">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Today, Explained</h3>
+                            <p class="card-description">Vox</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/stayupdated-5.jpg" alt="The Howie Severino Podcast">
+                            <button class="play-button" aria-label="Play The Howie Severino Podcast">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">The Howie Severin...</h3>
+                            <p class="card-description">GMA Integrated News</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Popular Radio -->
+            <section class="content-section">
+                <header class="section-header-main">
+                    <h2 class="section-title-main">Popular radio</h2>
+                    <button class="show-all-button">Show all</button>
+                </header>
+                <div class="content-grid">
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/popular-1.jpg" alt="Hev Abi Radio">
+                            <button class="play-button" aria-label="Play Hev Abi Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Hev Abi Radio</h3>
+                            <p class="card-description">With gins&melodies, DEMI, Sica and more</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/popular-2.jpg" alt="Taylor Swift Radio">
+                            <button class="play-button" aria-label="Play Taylor Swift Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Taylor Swift Radio</h3>
+                            <p class="card-description">With Selena Gomez, Olivia Rodrigo, Katy...</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/popular-3.jpg" alt="Ben&Ben Radio">
+                            <button class="play-button" aria-label="Play Ben&Ben Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Ben&Ben Radio</h3>
+                            <p class="card-description">With I Belong to the Zoo, December...</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/popular-4.jpg" alt="Bruno Mars Radio">
+                            <button class="play-button" aria-label="Play Bruno Mars Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Bruno Mars Radio</h3>
+                            <p class="card-description">With Maroon 5, Jason Derulo, Ne-Yo and...</p>
+                        </div>
+                    </article>
+
+                    <article class="content-card" role="button" tabindex="0">
+                        <div class="card-image-container">
+                            <img class="card-image" src="/static/images/spotify-images/popular-5.jpg" alt="Air Supply Radio">
+                            <button class="play-button" aria-label="Play Air Supply Radio">
+                                <i class="ri-play-fill"></i>
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Air Supply Radio</h3>
+                            <p class="card-description">With Peter Cetera, Barry Manilow,...</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </div>
-        <div class="sidebar-middle">
-            <div class="sidebar-header">
-                <img src="/static/images/spotify-images/library.png" alt="">
-                <p class="grey-font">Your Library</p>
-                <p class="grey-font"><i class="ri-add-line font-30"></i></p>
-                <p class="grey-font"><i class="ri-arrow-right-line font-30"></i></p>
-            </div>
+    </main>
+</div>
 
-            <div>
-                <p class="grey-shadow">Artists</p>
-            </div>
+<!-- Media Player Footer -->
+<footer class="media-player" role="contentinfo">
+    <div class="player-left">
+        <!-- Currently playing info would go here -->
+    </div>
+
+    <div class="player-center">
+        <div class="player-controls">
+            <button class="control-button" aria-label="Shuffle">
+                <i class="ri-shuffle-line"></i>
+            </button>
+            <button class="control-button" aria-label="Previous track">
+                <i class="ri-skip-left-fill"></i>
+            </button>
+            <button class="control-button primary" aria-label="Pause">
+                <i class="ri-pause-circle-fill"></i>
+            </button>
+            <button class="control-button" aria-label="Next track">
+                <i class="ri-skip-right-fill"></i>
+            </button>
+            <button class="control-button" aria-label="Repeat">
+                <i class="ri-repeat-2-line"></i>
+            </button>
         </div>
-        <div class="sidebar-bottom">
-            <div class="sidebar-header">
-                <img src="/static/images/spotify-images/search-line.png" alt="">
-
-                <div class="menu">
-                    <p class="grey-font font-16">Recents</p>
-                    <p class="grey-font"><i class="ri-more-2-line font-16"></i></p>
-                    <p class="grey-font"><i class="ri-menu-line font-16"></i></p>
-                </div>
+        <div class="progress-bar-container">
+            <span class="time-display">0:00</span>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+                <div class="progress-handle"></div>
             </div>
-            <div class="artist-profile-col">
-                <div class="artist-profile-row">
-                    <img class="likedsongs" src="/static/images/spotify-images/likesongs.png" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">Liked Songs</p>
-                        <p class="details grey-font"><i class="ri-pushpin-fill"></i> Playlist &centerdot; 6 songs</p>
-                    </div>
-                </div>
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/umji.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">Umji</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/sinb.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">Sinb</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/yuju.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">Yuju</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/eunha.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">Eunha</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/yerin.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">Yerin</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/viviz.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">VIVIZ</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/aespa.jpeg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">aespa</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/svt.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">SEVENTEEN</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/kard.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">KARD</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-                <div class="artist-profile-row">
-                    <img class="artist-profile" src="/static/images/spotify-images/gfriend.jpg" alt="">
-                    <div class="artist-profile-details">
-                        <p class="details bold">GFriend</p>
-                        <p class="details grey-font">Artist</p>
-                    </div>
-                </div>
-
-
-
-            </div>
+            <span class="time-display">-:--</span>
         </div>
+    </div>
 
-
-        <div class="body-header">
-            <div class="header1">
-                <button class="arrow-button"><i class="ri-arrow-left-s-line grey-font"></i></button>
-                <button class="arrow-button"><i class="ri-arrow-right-s-line grey-font"></i></button>
-                <button class="explore-button  margin-left">Explore Premium</button>
-                <button class="install-button"><i class="ri-download-line"></i> Install App</button>
-                <button class="install-button"><i class="ri-notification-2-line"></i></button>
-                <img class="artist-profile" src="/static/images/spotify-images/vinzhou6.jpg" alt="">
+    <div class="player-right">
+        <div class="volume-controls">
+            <button class="control-button" aria-label="Now playing view">
+                <i class="ri-play-circle-line"></i>
+            </button>
+            <button class="control-button" aria-label="Queue">
+                <i class="ri-menu-line"></i>
+            </button>
+            <button class="control-button" aria-label="Connect to device">
+                <i class="ri-device-line"></i>
+            </button>
+            <button class="control-button" aria-label="Volume">
+                <i class="ri-volume-up-fill"></i>
+            </button>
+            <div class="volume-bar">
+                <div class="volume-fill"></div>
+                <div class="volume-handle"></div>
             </div>
-            <div class="header2">
-                <p class="grey-shadow">All</p>
-                <p class="grey-shadow">Music</p>
-                <p class="grey-shadow">Podcasts</p>
-            </div>
+            <button class="control-button" aria-label="Full screen">
+                <i class="ri-expand-diagonal-line"></i>
+            </button>
         </div>
+    </div>
+</footer>
 
-        <div class="body">
-
-            <div class="category-header">
-                <h2 class="category-title">Today's biggest hits</h2>
-                <p class="grey-font">Show all</p>
-            </div>
-            <div class="categories">
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/biggesthits-1.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Today's Top Hits</p>
-                        <p></p>
-                        <p class="grey-font">Doja Cat is on top of the Hottest 50!</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/biggesthits-2.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Viral Hits</p>
-                        <p></p>
-                        <p class="grey-font">Viral, trending and taking off.</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/biggesthits-3.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">K-Pop ON!</p>
-                        <p></p>
-                        <p class="grey-font">Turn on the movement with the latest and ...</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/biggesthits-4.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Tatak Pinoy</p>
-                        <p></p>
-                        <p class="grey-font">Mga nangunguna sa mundo ng OPM. Cov...</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/biggesthits-5.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Viral Hits Philippines</p>
-                        <p class="grey-font">Viral sa Pinas! Cover: Ariana Grande</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="category-header">
-                <h2 class="category-title">Recommended radio</h2>
-                <p class="grey-font">Show all</p>
-            </div>
-            <div class="categories">
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/recommended-1.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">SEVENTEEN Radio</p>
-                        <p></p>
-                        <p class="grey-font">With BSS, THE BOYZ, MONSTA X and more</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/recommended-2.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Umji Radio</p>
-                        <p></p>
-                        <p class="grey-font">With EUNHA, SinB, Yerin and more</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/recommended-3.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">aespa Radio</p>
-                        <p></p>
-                        <p class="grey-font">With NMIXX, IVE, GOT the beat and more</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/recommended-4.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">VIVIZ Radio</p>
-                        <p></p>
-                        <p class="grey-font">With Yerin, YUJU, KWON EUNBI and...</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/recommended-5.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">KARD Radio</p>
-                        <p></p>
-                        <p class="grey-font">With CLC, HyunA, CHUNG HA and more</p>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <div class="category-header">
-                <h2 class="category-title">Stay Updated</h2>
-                <p class="grey-font">Show all</p>
-            </div>
-            <div class="categories">
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/stayupdated-1.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">The wRap | Rapple...</p>
-                        <p></p>
-                        <p class="grey-font">Rappler</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/stayupdated-2.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">ABS-CBN News ...</p>
-                        <p></p>
-                        <p class="grey-font">ABS-CBN News Flash</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/stayupdated-3.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Teka Teka News</p>
-                        <p></p>
-                        <p class="grey-font">PumaPodcast</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/stayupdated-4.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Today, Explained</p>
-                        <p></p>
-                        <p class="grey-font">Vox</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/stayupdated-5.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">The Howie Severin...</p>
-                        <p></p>
-                        <p class="grey-font">GMA Integrated News</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="category-header">
-                <h2 class="category-title">Popular radio</h2>
-                <p class="grey-font">Show all</p>
-            </div>
-            <div class="categories">
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/popular-1.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Hev Abi Radio</p>
-                        <p></p>
-                        <p class="grey-font">With gins&melodies, DEMI, Sica and more</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/popular-2.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Taylor Swift Radio</p>
-                        <p></p>
-                        <p class="grey-font">With Selena Gomez, Olivia Rodrigo, Katy...</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/popular-3.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Ben&Ben Radio</p>
-                        <p></p>
-                        <p class="grey-font">With I Belong to the Zoo, December...</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/popular-4.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Bruno Mars Radio</p>
-                        <p></p>
-                        <p class="grey-font">With Maroon 5, Jason Derulo, Ne-Yo and...</p>
-                    </div>
-                </div>
-                <div class="category">
-                    <img class="picture" src="/static/images/spotify-images/popular-5.jpg" alt="">
-                    <div class="category-details">
-                        <p class="white-font">Air Supply Radio</p>
-                        <p></p>
-                        <p class="grey-font">With Peter Cetera, Barry Manilow,...</p>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-
-
-        <div class="footer">
-            <div class="left">
-
-            </div>
-            <div class="middle">
-                <div class="middle-row">
-                    <i style="font-size: 25px;" class="ri-shuffle-line grey-font margin-right"></i>
-                    <i style="font-size: 25px;" class="ri-skip-left-fill grey-font margin-right"></i>
-                    <i style="font-size: 25px;" class="ri-pause-circle-fill grey-font margin-right"></i>
-                    <i style="font-size: 25px;" class="ri-skip-right-fill grey-font margin-right"></i>
-                    <i style="font-size: 25px;" class="ri-repeat-2-line grey-font margin-right"></i>
-                </div>
-                <div class="middle-row">
-                    <div class="margin-right">
-                        <p class="grey-font">0.00</p>
-                    </div>
-                    <div>
-                        <hr style="width: 340px;">
-                    </div>
-                    <div class="margin-lefty">
-                        <p class="grey-font">.:..</p>
-                    </div>
-                </div>
-                <div>
-
-                </div>
-            </div>
-            <div class="right">
-                <div class="middle-row">
-                    <i style="font-size: 25px; padding-top: 10px" class="ri-play-circle-line grey-font margin-right"></i>
-                    <i style="font-size: 25px; padding-top: 10px" class="ri-menu-line grey-font margin-right"></i>
-                    <i style="font-size: 25px; padding-top: 10px" class="ri-device-line grey-font margin-right"></i>
-                    <i style="font-size: 25px; padding-top: 10px" class="ri-volume-up-fill grey-font margin-right"></i>
-                    <hr style="width: 70px; ">
-                    <i style="font-size: 25px; padding-top: 10px" class="ri-expand-diagonal-line grey-font margin-right"></i>
-                </div>
-            </div>
-        </div>
-    </body>
-
-</html>
+{% block scripts %}
+<script src="/static/scripts/spotify.js"></script>
+{% endblock %}
+{% endblock %}

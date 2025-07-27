@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block title %}Joy in Algorithm - Full Stack Developer Portfolio{% endblock %}
+{% block title %}Joy in Algorithm - Full Stack Web Developer Portfolio{% endblock %}
 
 {% block description %}Full Stack Developer specializing in Python, JavaScript, Flask, Django, and modern web technologies. Explore my projects, skills, and professional experience.{% endblock %}
 
@@ -10,7 +10,7 @@
 {% block og_description %}Experienced full stack developer creating innovative web applications and AI solutions{% endblock %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="/static/styles/portfolio/home-enhanced.css">
+    <link rel="stylesheet" href="/static/styles/portfolio/home-enhanced.css">
 {% endblock %}
 
 {% block body %}
@@ -38,7 +38,6 @@
             <a href="/projects" class="view-more">View more</a>
         </section>
 
-    <!-- Tech Stack Section -->
         <section class="section" id="tech-stack">
             <h2>TECH STACK</h2>
             <ul>
@@ -49,13 +48,11 @@
             <a href="/tech-stack" class="view-more">View more</a>
         </section>
 
-    <!-- Resume Section -->
         <section class="section" id="resume">
             <h2>RESUME</h2>
             <a href="/resume" class="view-more">View Resume</a>
         </section>
 
-    <!-- Enhanced Contact Section -->
         <section class="section contact-section" id="contact">
             <h2>LET'S WORK TOGETHER</h2>
             <div class="contact-content">
@@ -93,24 +90,23 @@
         </section>
     </main>
 
-    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Joy in Algorithm",
-        "jobTitle": "Full Stack Developer",
-        "description": "Experienced full stack developer specializing in Python, JavaScript, and modern web technologies",
-        "url": "{{ request.url_root }}",
-        "email": "joyinalgorithm@gmail.com",
-        "knowsAbout": [
-            "Python Programming",
-            "JavaScript Development",
-            "Flask Framework",
-            "Django Framework",
-            "Web Development",
-            "Machine Learning"
-        ]
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "joyinalgorithm",
+            "jobTitle": "Full Stack Web Developer",
+            "description": "Experienced full stack developer specializing in Python, JavaScript, and modern web technologies",
+            "url": "{{ request.url_root }}",
+            "email": "joyinalgorithm@gmail.com",
+            "knowsAbout": [
+                "Python Programming",
+                "JavaScript Development",
+                "Flask Framework",
+                "Django Framework",
+                "Web Development",
+                "Machine Learning"
+            ]
+        }
     </script>
 {% endblock %}

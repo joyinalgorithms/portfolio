@@ -1,200 +1,251 @@
-<!DOCTYPE html>
-<html>
+{% extends "general_layout.html" %}
 
-    <head>
-        <title>Linkedin</title>
-        <link rel="stylesheet" href="/static/styles/frontend/linkedin.css">
-    </head>
+{% block title %}LinkedIn Clone - Professional Job Search Platform{% endblock %}
 
-    <body>
-        <div class="header">
-            <div class="left-section">
-                <img class="logo" src="/static/images/linkedin-images/linkedin-logo.png">
-                <img class="search" src="/static/images/linkedin-images/search.png">
-                <input class="input-search" placeholder="Search by title, skill, or company">
+{% block meta %}
+    <meta name="description" content="Professional job search platform with personalized recommendations, networking opportunities, and career development tools.">
+    <meta name="keywords" content="jobs, career, professional networking, linkedin, job search, recruitment, hiring">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="LinkedIn Clone - Professional Networking">
+    <meta property="og:description" content="Find your next career opportunity with personalized job recommendations">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="{{ url_for('linkedin', _external=True) }}">
 
-            </div>
-            <div class="sidebar">
-                <div class="row-container">
-                    <div class="column-container">
-                        <img class="sidebar-icons" src="/static/images/linkedin-images/bookmark.png">
-                        <p class="name">My jobs</p>
-                    </div>
-                    <div class="column-container">
-                        <img class="sidebar-icons" src="/static/images/linkedin-images/menu.png">
-                        <p class="name">Preferences</p>
-                    </div>
-                    <div class="column-container">
-                        <img class="sidebar-icons" src="/static/images/linkedin-images/check_mark.png">
-                        <p class="name">Demonstrate skills</p>
-                    </div>
-                    <div class="column-container">
-                        <img class="sidebar-icons" src="/static/images/linkedin-images/interview.png">
-                        <p class="name">Interview prep</p>
-                    </div>
-                    <div class="column-container">
-                        <img class="sidebar-icons" src="/static/images/linkedin-images/resume.png">
-                        <p class="name">Resume Builder</p>
-                    </div>
-                    <div class="column-container">
-                        <img class="sidebar-icons" src="/static/images/linkedin-images/youtube.png">
-                        <p class="name">Job seeker guidance</p>
-                    </div>
-                    <div class="column-container">
-                        <img class="sidebar-icons" src="/static/images/linkedin-images/settings.png">
-                        <p class="name">Application settings</p>
-                    </div>
-                    <div class="column-container">
-                        <button class="post-button">Post a free job</button>
-                    </div>
-                </div>
-            </div>
-            <div class="right-section">
-                <div class="icon-container">
-                    <img class="icons home-icon" src="/static/images/linkedin-images/home.png">
-                    <p class="description">Home</p>
-                </div>
-                <div class="icon-container">
-                    <img class="icons network-icon" src="/static/images/linkedin-images/myNetwork.png">
-                    <p class="description">My Network</p>
-                </div>
-                <div class="icon-container">
-                    <img class="icons jobs-icon" src="/static/images/linkedin-images/jobs.png">
-                    <p class="description">Jobs</p>
-                </div>
-                <div class="icon-container">
-                    <img class="icons message-icon" src="/static/images/linkedin-images/message.png">
-                    <p class="description">Messaging</p>
-                </div>
-                <div class="icon-container">
-                    <img class="icons notif-icon" src="/static/images/linkedin-images/bell.png">
-                    <p class="description">Notifications</p>
-                    <p class="notif-count">25</p>
-                </div>
-                <div class="icon-container">
-                    <img class="icons profile-icon" src="/static/images/linkedin-images/user.png">
-                    <p class="description">Me &#11167;</p>
-                </div>
-                <div class="icon-container">
-                    <img class="icons apps-icon" src="/static/images/linkedin-images/apps.png">
-                    <p class="description">For Business &#11167;</p>
-                </div>
+    <!-- Structured Data for Job Listings -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "LinkedIn Clone",
+        "description": "Professional networking and job search platform",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{{ url_for('linkedin', _external=True) }}?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+{% endblock %}
 
-                <p class="premium"><u>Try premium for PHP0</u></p>
-            </div>
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/frontend/linkedin.css">
+{% endblock %}
+
+{% block body %}
+<!-- Main header navigation -->
+<header class="header" role="banner">
+    <div class="left-section">
+        <img class="logo" src="/static/images/linkedin-images/linkedin-logo.png" alt="LinkedIn Logo">
+        <div class="search-container">
+            <img class="search" src="/static/images/linkedin-images/search.png" alt="Search">
+            <input class="input-search" placeholder="Search by title, skill, or company"
+                   aria-label="Search jobs by title, skill, or company" type="search">
         </div>
-        <div class="main-section">
-            <div class="suggested-section">
-                <h4>Suggested job searches</h4>
-                <button class="exit">
-                    <img class="close-btn" src="/static/images/linkedin-images/cross.png">
-                </button>
-                <button class="suggested">&#128269;marketing manager</button>
-                <button class="suggested">&#128269;hr</button>
-                <button class="suggested">&#128269;legal</button>
-                <button class="suggested">&#128269;sales</button>
-                <button class="suggested">&#128269;amazon</button>
-                <button class="suggested">&#128269;google</button>
-                <button class="suggested">&#128269;analyst</button>
-            </div>
-            <div class="recommended">
-                <h4 class="foryou">Recommended for you</h4>
-                <p class="text">Based on your profile and search history</p>
-                <div class="jobs">
-                    <div class="job-container">
-                        <div class="column1">
-                            <img class="company-logo" src="/static/images/linkedin-images/revtra.jpg">
-                        </div>
-                        <div class="column2">
-                            <p class="title">PHP Developer (Part-time)</p>
-                            <p class="company">Revtra Pro. Inc</p>
-                            <p class="description">Philippines (Remote)</p>
-                            <p class="description">PHP360K/yr - PHP420K/yr</p>
-                            <p class="description">Actively recruiting</p>
-                            <p class="description">4 months ago</p>
-                        </div>
-                        <div class="column3">
-                            <button class="exit">
-                                <img class="close-btn" src="/static/images/linkedin-images/cross.png">
-                            </button>
-                        </div>
-                    </div>
+    </div>
 
-                    <div class="job-container">
-                        <div class="column1">
-                            <img class="company-logo" src="/static/images/linkedin-images/knots.png">
-                        </div>
-                        <div class="column2">
-                            <p class="title">Wordpress Developer</p>
-                            <p class="company">55 KNOTS</p>
-                            <p class="description">Philippines (Remote)</p>
-                            <p class="description">Actively recruiting</p>
-                            <p class="description">1 day ago</p>
-                        </div>
-                        <div class="column3">
-                            <button class="exit">
-                                <img class="close-btn" src="/static/images/linkedin-images/cross.png">
-                            </button>
-                        </div>
-                    </div>
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-                    <div class="job-container">
-                        <div class="column1">
-                            <img class="company-logo" src="/static/images/linkedin-images/ripped.jpg">
-                        </div>
-                        <div class="column2">
-                            <p class="title">Front End Developer</p>
-                            <p class="company">RippedBoxStation</p>
-                            <p class="description">Manila, National Capital Region, Philippines (Remote)</p>
-                            <p class="description">Your profile matches this job</p>
-                            <p class="description">1 months ago</p>
-                        </div>
-                        <div class="column3">
-                            <button class="exit">
-                                <img class="close-btn" src="/static/images/linkedin-images/cross.png">
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
+    <nav class="right-section" role="navigation" aria-label="Main navigation">
+        <div class="icon-container">
+            <img class="icons home-icon" src="/static/images/linkedin-images/home.png" alt="Home">
+            <p class="description">Home</p>
         </div>
-        <div class="sidebar-right">
-            <div class="upper-right">
-                <h4 class="head">Job seeker guidance</h4>
-                <p class="text">
-                    Recommended based on your activity</p>
-                <h4 class="head2">I want to improve my resume</h4>
-                <p class="text">Explore our curated guide of expert-led courses, such as how to improve your resume and grow your network, to help you land your next opportunity.</p>
-                <p class="link">Show more &#8594;</p>
-            </div>
-            <div class="details-link">
-                <div class="row">
-                    <p class="about">About</p>
-                    <p class="about">Accessibility</p>
-                    <p class="about">Help Center</p>
-                </div>
-                <div class="row">
-                    <p class="about">Privacy & Terms &#11167;</p>
-                    <p class="about">Ad Choices</p>
-                </div>
-                <div class="row">
-                    <p class="about">Advertising</p>
-                    <p class="about">Business Services &#11167;</p>
-                </div>
-                <div class="row">
-                    <p class="about">Get the Linkedin app</p>
-                    <p class="about">More</p>
-                </div>
-                <div class="last-row">
-                    <p class="left">Linked
-                        <img class="logo-small" src="/static/images/linkedin-images/linkedin-logo.png">
-                    </p>
-                    <p class="copyright">Linkedin Corporation &copy; 2024</p>
-                </div>
-            </div>
+        <div class="icon-container">
+            <img class="icons network-icon" src="/static/images/linkedin-images/myNetwork.png" alt="My Network">
+            <p class="description">My Network</p>
         </div>
-    </body>
+        <div class="icon-container">
+            <img class="icons jobs-icon" src="/static/images/linkedin-images/jobs.png" alt="Jobs">
+            <p class="description">Jobs</p>
+        </div>
+        <div class="icon-container">
+            <img class="icons message-icon" src="/static/images/linkedin-images/message.png" alt="Messages">
+            <p class="description">Messaging</p>
+        </div>
+        <div class="icon-container">
+            <img class="icons notif-icon" src="/static/images/linkedin-images/bell.png" alt="Notifications">
+            <p class="description">Notifications</p>
+            <span class="notif-count" aria-label="25 notifications">25</span>
+        </div>
+        <div class="icon-container">
+            <img class="icons profile-icon" src="/static/images/linkedin-images/user.png" alt="Profile">
+            <p class="description">Me &#11167;</p>
+        </div>
+        <div class="icon-container">
+            <img class="icons apps-icon" src="/static/images/linkedin-images/apps.png" alt="Business Apps">
+            <p class="description">For Business &#11167;</p>
+        </div>
+        <p class="premium"><u>Try premium for PHP0</u></p>
+    </nav>
+</header>
 
-</html>
+<!-- Left sidebar navigation -->
+<aside class="sidebar" role="complementary" aria-label="Job tools and settings">
+    <div class="row-container">
+        <div class="column-container">
+            <img class="sidebar-icons" src="/static/images/linkedin-images/bookmark.png" alt="My Jobs">
+            <p class="name">My jobs</p>
+        </div>
+        <div class="column-container">
+            <img class="sidebar-icons" src="/static/images/linkedin-images/menu.png" alt="Preferences">
+            <p class="name">Preferences</p>
+        </div>
+        <div class="column-container">
+            <img class="sidebar-icons" src="/static/images/linkedin-images/check_mark.png" alt="Skills">
+            <p class="name">Demonstrate skills</p>
+        </div>
+        <div class="column-container">
+            <img class="sidebar-icons" src="/static/images/linkedin-images/interview.png" alt="Interview Prep">
+            <p class="name">Interview prep</p>
+        </div>
+        <div class="column-container">
+            <img class="sidebar-icons" src="/static/images/linkedin-images/resume.png" alt="Resume Builder">
+            <p class="name">Resume Builder</p>
+        </div>
+        <div class="column-container">
+            <img class="sidebar-icons" src="/static/images/linkedin-images/youtube.png" alt="Job Guidance">
+            <p class="name">Job seeker guidance</p>
+        </div>
+        <div class="column-container">
+            <img class="sidebar-icons" src="/static/images/linkedin-images/settings.png" alt="Settings">
+            <p class="name">Application settings</p>
+        </div>
+        <div class="column-container">
+            <button class="post-button">Post a free job</button>
+        </div>
+    </div>
+</aside>
+
+<!-- Main content area -->
+<main class="main-section" role="main">
+    <!-- Job search suggestions -->
+    <section class="suggested-section" aria-labelledby="suggested-heading">
+        <h2 id="suggested-heading" class="section-title">Suggested job searches</h2>
+        <button class="exit" aria-label="Close suggestions">
+            <img class="close-btn" src="/static/images/linkedin-images/cross.png" alt="Close">
+        </button>
+        <div class="suggested-tags">
+            <button class="suggested" aria-label="Search marketing manager jobs">&#128269;marketing manager</button>
+            <button class="suggested" aria-label="Search HR jobs">&#128269;hr</button>
+            <button class="suggested" aria-label="Search legal jobs">&#128269;legal</button>
+            <button class="suggested" aria-label="Search sales jobs">&#128269;sales</button>
+            <button class="suggested" aria-label="Search Amazon jobs">&#128269;amazon</button>
+            <button class="suggested" aria-label="Search Google jobs">&#128269;google</button>
+            <button class="suggested" aria-label="Search analyst jobs">&#128269;analyst</button>
+        </div>
+    </section>
+
+    <!-- Job recommendations -->
+    <section class="recommended" aria-labelledby="recommended-heading">
+        <h2 id="recommended-heading" class="foryou">Recommended for you</h2>
+        <p class="text">Based on your profile and search history</p>
+
+        <div class="jobs" role="list" aria-label="Job recommendations">
+            <!-- Job listing 1 -->
+            <article class="job-container" role="listitem">
+                <div class="column1">
+                    <img class="company-logo" src="/static/images/linkedin-images/revtra.jpg" alt="Revtra Pro Inc Logo">
+                </div>
+                <div class="column2">
+                    <h3 class="title">PHP Developer (Part-time)</h3>
+                    <p class="company">Revtra Pro. Inc</p>
+                    <p class="job-location">Philippines (Remote)</p>
+                    <p class="salary">PHP360K/yr - PHP420K/yr</p>
+                    <p class="status">Actively recruiting</p>
+                    <p class="posted-date">4 months ago</p>
+                </div>
+                <div class="column3">
+                    <button class="exit" aria-label="Remove this job recommendation">
+                        <img class="close-btn" src="/static/images/linkedin-images/cross.png" alt="Remove">
+                    </button>
+                </div>
+            </article>
+
+            <!-- Job listing 2 -->
+            <article class="job-container" role="listitem">
+                <div class="column1">
+                    <img class="company-logo" src="/static/images/linkedin-images/knots.png" alt="55 KNOTS Logo">
+                </div>
+                <div class="column2">
+                    <h3 class="title">Wordpress Developer</h3>
+                    <p class="company">55 KNOTS</p>
+                    <p class="job-location">Philippines (Remote)</p>
+                    <p class="status">Actively recruiting</p>
+                    <p class="posted-date">1 day ago</p>
+                </div>
+                <div class="column3">
+                    <button class="exit" aria-label="Remove this job recommendation">
+                        <img class="close-btn" src="/static/images/linkedin-images/cross.png" alt="Remove">
+                    </button>
+                </div>
+            </article>
+
+            <!-- Job listing 3 -->
+            <article class="job-container" role="listitem">
+                <div class="column1">
+                    <img class="company-logo" src="/static/images/linkedin-images/ripped.jpg" alt="RippedBoxStation Logo">
+                </div>
+                <div class="column2">
+                    <h3 class="title">Front End Developer</h3>
+                    <p class="company">RippedBoxStation</p>
+                    <p class="job-location">Manila, National Capital Region, Philippines (Remote)</p>
+                    <p class="match-indicator">Your profile matches this job</p>
+                    <p class="posted-date">1 months ago</p>
+                </div>
+                <div class="column3">
+                    <button class="exit" aria-label="Remove this job recommendation">
+                        <img class="close-btn" src="/static/images/linkedin-images/cross.png" alt="Remove">
+                    </button>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<!-- Right sidebar -->
+<aside class="sidebar-right" role="complementary" aria-label="Job guidance and links">
+    <div class="upper-right">
+        <h3 class="head">Job seeker guidance</h3>
+        <p class="text">Recommended based on your activity</p>
+        <h4 class="head2">I want to improve my resume</h4>
+        <p class="text">Explore our curated guide of expert-led courses, such as how to improve your resume and grow your network, to help you land your next opportunity.</p>
+        <a href="#" class="link">Show more &#8594;</a>
+    </div>
+
+    <!-- Footer links -->
+    <footer class="details-link" role="contentinfo">
+        <div class="row">
+            <a href="#" class="about">About</a>
+            <a href="#" class="about">Accessibility</a>
+            <a href="#" class="about">Help Center</a>
+        </div>
+        <div class="row">
+            <a href="#" class="about">Privacy & Terms &#11167;</a>
+            <a href="#" class="about">Ad Choices</a>
+        </div>
+        <div class="row">
+            <a href="#" class="about">Advertising</a>
+            <a href="#" class="about">Business Services &#11167;</a>
+        </div>
+        <div class="row">
+            <a href="#" class="about">Get the Linkedin app</a>
+            <a href="#" class="about">More</a>
+        </div>
+        <div class="last-row">
+            <p class="left">Linked
+                <img class="logo-small" src="/static/images/linkedin-images/linkedin-logo.png" alt="LinkedIn">
+            </p>
+            <p class="copyright">Linkedin Corporation &copy; 2024</p>
+        </div>
+    </footer>
+</aside>
+
+{% block scripts %}
+<script src="/static/scripts/frontend/linkedin.js"></script>
+{% endblock %}
+{% endblock %}

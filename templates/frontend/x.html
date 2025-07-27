@@ -1,488 +1,558 @@
-<!DOCTYPE html>
-<html>
+{% extends "general_layout.html" %}
 
-    <head>
-        <title>X</title>
-        <link rel="stylesheet" href="/static/styles/frontend/x.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/2.5.0/remixicon.css" />
+{% block title %}X Clone - Social Media Platform{% endblock %}
 
-    </head>
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/frontend/x.css">
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
 
-    <body>
-        <div class="header">
-            <div class="main">
-                <div class="for-you">
-                    <p>For you</p>
-                </div>
-                <div class="following">
-                    <p>Following</p>
-                </div>
-                <div class="settings">
-                    <img class="settings-icon" src="/static/images/x-images/settings.png">
-                </div>
+{% block body %}
+    <!-- SEO Meta Tags via JavaScript -->
+    <script>
+        // Add SEO meta tags without affecting general_layout.html
+        if (document.head) {
+            const metaTags = [
+                { name: 'description', content: 'X Clone - A responsive social media platform for sharing thoughts, following trends, and connecting with people worldwide.' },
+                { name: 'keywords', content: 'x, twitter, social media, tweets, trending, social network, microblogging' },
+                { property: 'og:title', content: 'X Clone - Social Media Platform' },
+                { property: 'og:description', content: 'Share your thoughts and connect with the world on this X-inspired social platform.' },
+                { name: 'theme-color', content: '#1DA1F2' }
+            ];
+
+            metaTags.forEach(tag => {
+                const meta = document.createElement('meta');
+                if (tag.name) meta.name = tag.name;
+                if (tag.property) meta.setAttribute('property', tag.property);
+                meta.content = tag.content;
+                document.head.appendChild(meta);
+            });
+        }
+    </script>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-content">
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <i class="ri-menu-line"></i>
+            </button>
+
+            <!-- Logo for Mobile -->
+            <div class="mobile-logo">
+                <img src="/static/images/x-images/x-logo.png" alt="X Logo">
             </div>
-            <div class="search-bar">
-                <div class="search">
-                    <i class="ri-search-line"></i>
-                    <input class="search-input" type="text" placeholder="Search">
-                </div>
-            </div>
-        </div>
-        <div class="sidebar">
-            <div class="sidebar-row">
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/x-logo.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/home.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/search.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/notif.jpg">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/messages.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/grok.jpg">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/lists.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/bookmark.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/community.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/x-logo.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/profile.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon" src="/static/images/x-images/more.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="icon post-icon" src="/static/images/x-images/post.png">
-                </div>
-                <div class="sidebar-icons">
-                    <img class="profile" src="/static/images/users/zheyuan.jpg">
-                </div>
+
+            <!-- Main Navigation Tabs -->
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <button class="nav-tab active" data-tab="for-you">
+                    <span>For you</span>
+                </button>
+                <button class="nav-tab" data-tab="following">
+                    <span>Following</span>
+                </button>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <button class="header-action-btn" aria-label="Settings">
+                    <i class="ri-settings-3-line"></i>
+                </button>
             </div>
         </div>
 
-
-        <div class="body">
-            <div class="body-row">
-                <div class="tweet-post">
-                    <div class="profile-pic">
-                        <img class="profile-post" src="/static/images/users/zheyuan.jpg">
-                    </div>
-                    <div class="post-details">
-                        <div class="start">
-                            <input class="happening" type="text" placeholder="What is happening?">
-                        </div>
-                        <div class="center">
-                            <p><i class="ri-earth-line"></i> Everyone can reply</p>
-                        </div>
-                        <div class="end">
-                            <img class="post-icons" src="/static/images/x-images/gallery.png">
-                            <img class="post-icons" src="/static/images/x-images/gif.png">
-                            <img class="post-icons" src="/static/images/x-images/poll.png">
-                            <img class="post-icons" src="/static/images/x-images/emoji.png">
-                            <img class="post-icons" src="/static/images/x-images/schedule.png">
-                            <img class="post-icons" src="/static/images/x-images/location.png">
-                        </div>
-                    </div>
-                    <div class="post-button">
-                        <button class="btnPost">Post</button>
-                    </div>
-                </div>
-
-                <div class="who-to-follow">
-                    <div class="column-part">
-                        <div class="title">
-                            Who to follow
-                            <div class="more"><i class="ri-more-line"></i></div>
-                        </div>
-                        <div class="boxes">
-                            <div class="left-part">
-                                <img class="profile-post" src="/static/images/users/eunha.jpg">
-                            </div>
-                            <div class="center-part">
-                                <div class="upper">
-                                    <p>daily.dev &#10003;</p>
-                                </div>
-                                <div class="middle">
-                                    <p>@dailydotdev</p>
-                                </div>
-                                <div class="lower">
-                                    <p>http://daily.dev for developer inspiration, information and perspective. It's also where we suffer together.</p>
-                                </div>
-                            </div>
-                            <div class="right-part">
-                                <button class="follow-button">Follow</button>
-                            </div>
-                        </div>
-
-                        <div class="boxes">
-                            <div class="left-part">
-                                <img class="profile-post" src="/static/images/users/sinb.jpg">
-                            </div>
-                            <div class="center-part">
-                                <div class="upper">
-                                    <p>Florin Pop &#10003;</p>
-                                </div>
-                                <div class="middle">
-                                    <p>@florinpop1705</p>
-                                </div>
-                                <div class="lower">
-                                    <p>Helping developers learn faster @iCodeThis- 💻 YouTube: http://youtube.com/florinpop</p>
-                                </div>
-                            </div>
-                            <div class="right-part">
-                                <button class="follow-button">Follow</button>
-                            </div>
-                        </div>
-
-                        <div class="boxes">
-                            <div class="left-part">
-                                <img class="profile-post" src="/static/images/users/umji.jpg">
-                            </div>
-                            <div class="center-part">
-                                <div class="upper">
-                                    <p>Quincy Larson &#10003;</p>
-                                </div>
-                                <div class="middle">
-                                    <p>@ossia</p>
-                                </div>
-                                <div class="lower">
-                                    <p>Teacher and founder of http://freeCodeCamp.org. Host of The freeCodeCamp Podcast. Find it in your podcast player and learn about tech from insightful developers.</p>
-                                </div>
-                            </div>
-                            <div class="right-part">
-                                <button class="follow-button">Follow</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="show-more">
-                        Show more
-                    </div>
-                </div>
-
-
-                <div class="who-to-follow">
-                    <div class="column-part">
-                        <div class="title">
-                            Creators for you
-                            <div class="more"><i class="ri-more-line"></i></div>
-                        </div>
-                        <div class="boxes">
-                            <div class="left-part">
-                                <img class="profile-post" src="/static/images/users/yangyang.jpg">
-                            </div>
-                            <div class="center-part">
-                                <div class="upper">
-                                    <p>your thoughts &#10003;</p>
-                                </div>
-                                <div class="middle">
-                                    <p>@ohthoughtsquote</p>
-                                </div>
-                                <div class="lower">
-                                    <p>(Telegram :https://t.me/ohthoughtsquote)random thoughts & word DM FOR ,RT& PROMO</p>
-                                </div>
-                            </div>
-                            <div class="right-part">
-                                <button class="follow-button">Subscribe</button>
-                            </div>
-                        </div>
-
-                        <div class="boxes">
-                            <div class="left-part">
-                                <img class="profile-post" src="/static/images/images/img2.jpg">
-                            </div>
-                            <div class="center-part">
-                                <div class="upper">
-                                    <p>Elon Musk &#10003;</p>
-                                </div>
-                                <div class="middle">
-                                    <p>@elonmusk</p>
-                                </div>
-                                <div class="lower">
-                                    <p></p>
-                                </div>
-                            </div>
-                            <div class="right-part">
-                                <button class="follow-button">Subscribe</button>
-                            </div>
-                        </div>
-
-                        <div class="boxes">
-                            <div class="left-part">
-                                <img class="profile-post" src="/static/images/images/img18.jpg">
-                            </div>
-                            <div class="center-part">
-                                <div class="upper">
-                                    <p>Inspirational Quotes &#10003;</p>
-                                </div>
-                                <div class="middle">
-                                    <p>@SeffSaid</p>
-                                </div>
-                                <div class="lower">
-                                    <p>Inspirational quotes and sayings on life, love, friendship, best friends, happiness, motivational, relationships, smile, karma & more.</p>
-                                </div>
-                            </div>
-                            <div class="right-part">
-                                <button class="follow-button">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="show-more">
-                        Show more
-                    </div>
-                </div>
-
-                <div class="cs50-post">
-                    <div class="post-row">
-                        <div class="cs50-profile">
-                            <img class="cs50-cat" src="/static/images/x-images/cat.jpg">
-                        </div>
-                        <div class="post-content">
-                            <div class="cs50-post-upper">
-                                <p class="cs50-display">CS50 </p>
-                                <p class="cs50-username"> @cs50</p>
-                                <p class="cs50-username"> Feb 3</p>
-                            </div>
-                            <p class="cs50-header">CS50R's Lecture 2 goes live in 10 minutes! 🤓</p>
-                            <p class="cs50-header link">youtube.com/live/dr1Ig8Sbq</p>
-                            <p class="cs50-text">CS50R is @CS50's new introduction to programming with R, a popular language for statistical computing and graphics in data science and other domains. Enroll (for free) in advance at http://cs50.edx.org/r.</p>
-                            <img class="cs50-picture" src="/static/images/x-images/cs50.jpg">
-                            <div class="icons-row">
-                                <i class="ri-chat-3-line"></i>
-                                <i class="ri-repeat-fill"></i>
-                                <i class="ri-heart-line"></i>
-                                <i class="ri-bar-chart-line"></i>
-                                <i class="ri-bookmark-line"></i>
-                                <i class="ri-upload-2-line"></i>
-                            </div>
-                        </div>
-                        <div class="post-more">
-                            <button class="more-button">•••</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="sidebar-right">
-            <div class="subscribe">
-                <div class="header-subscribe">
-                    <p>Subscribe to Premium</p>
-                </div>
-                <div class="text">
-                    <p>Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p>
-                </div>
-                <div class="subscribe-button">
-                    <button class="btnSubscribe">Subscribe</button>
-                </div>
-            </div>
-            <div class="trends">
-                <p class="trendsforyou">Trends for you</p>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#SEVENTEEN</p>
-                        <p class="trend-stats">500k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#SCOUPS</p>
-                        <p class="trend-stats">130k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#JEONGHAN</p>
-                        <p class="trend-stats">125k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#JOSHUA</p>
-                        <p class="trend-stats">231k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#JUN</p>
-                        <p class="trend-stats">313k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#HOSHI</p>
-                        <p class="trend-stats">312k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#WONWOO</p>
-                        <p class="trend-stats">321k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#WOOZI</p>
-                        <p class="trend-stats">215k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#THE8</p>
-                        <p class="trend-stats">128k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#MINGYU</p>
-                        <p class="trend-stats">309k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#DOKYEOM</p>
-                        <p class="trend-stats">396k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#SEUNGKWAN</p>
-                        <p class="trend-stats">315k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#VERNON</p>
-                        <p class="trend-stats">305k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <div class="trend">
-                    <div class="trend-details">
-                        <p class="trend-stats">Trending in Philippines</p>
-                        <p class="trend-name">#DINO</p>
-                        <p class="trend-stats">390k posts</p>
-                    </div>
-                    <div class="trend-more">
-                        <button class="more-button">•••</button>
-                    </div>
-                </div>
-                <p class="trends-show-more">Show more</p>
-
-
-
-            </div>
-
-
-
-            <div class="follow-recommendation">
-                <p class="whotofollow">Who to follow</p>
-                <div class="follow-row">
-                    <div class="profile-div">
-                        <img class="profile-follow" src="/static/images/images/img3.jpg">
-                    </div>
-                    <div class="follow-column">
-                        <p class="displayName">GitHub</p>
-                        <p class="userName">@github</p>
-                    </div>
-                    <div class="btnFollow">
-                        <button class="follow-button">Follow</button>
-                    </div>
-                </div>
-
-                <div class="follow-row">
-                    <div class="profile-div">
-                        <img class="profile-follow" src="/static/images/images/img19.jpg">
-                    </div>
-                    <div class="follow-column">
-                        <p class="displayName">MINIMALIST BAKER</p>
-                        <p class="userName">@minimalistbaker</p>
-                    </div>
-                    <div class="btnFollow">
-                        <button class="follow-button">Follow</button>
-                    </div>
-                </div>
-                <div class="follow-row">
-                    <div class="profile-div">
-                        <img class="profile-follow" src="/static/images/images/img8.jpg">
-                    </div>
-                    <div class="follow-column">
-                        <p class="displayName">SEVENTEEN</p>
-                        <p class="userName">@pledis_17</p>
-                    </div>
-                    <div class="btnFollow">
-                        <button class="follow-button">Follow</button>
-                    </div>
-                </div>
+        <!-- Search Bar -->
+        <div class="search-section">
+            <div class="search-container">
+                <i class="ri-search-line search-icon"></i>
+                <input class="search-input" type="text" placeholder="Search" aria-label="Search">
             </div>
         </div>
-    </body>
+    </header>
 
-</html>
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+        <div class="sidebar-content">
+            <!-- Close button for mobile -->
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close menu">
+                <i class="ri-close-line"></i>
+            </button>
+
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                <img src="/static/images/x-images/x-logo.png" alt="X Logo">
+            </div>
+
+            <!-- Navigation Items -->
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" aria-label="Home">
+                    <i class="ri-home-5-fill nav-icon"></i>
+                    <span class="nav-text">Home</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Explore">
+                    <i class="ri-search-line nav-icon"></i>
+                    <span class="nav-text">Explore</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Notifications">
+                    <i class="ri-notification-3-line nav-icon"></i>
+                    <span class="nav-text">Notifications</span>
+                    <span class="notification-badge">3</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Messages">
+                    <i class="ri-mail-line nav-icon"></i>
+                    <span class="nav-text">Messages</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Grok">
+                    <i class="ri-robot-line nav-icon"></i>
+                    <span class="nav-text">Grok</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Lists">
+                    <i class="ri-list-unordered nav-icon"></i>
+                    <span class="nav-text">Lists</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Bookmarks">
+                    <i class="ri-bookmark-line nav-icon"></i>
+                    <span class="nav-text">Bookmarks</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Communities">
+                    <i class="ri-group-line nav-icon"></i>
+                    <span class="nav-text">Communities</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Premium">
+                    <i class="ri-vip-crown-line nav-icon"></i>
+                    <span class="nav-text">Premium</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="Profile">
+                    <i class="ri-user-line nav-icon"></i>
+                    <span class="nav-text">Profile</span>
+                </a>
+                <a href="#" class="nav-item" aria-label="More">
+                    <i class="ri-more-line nav-icon"></i>
+                    <span class="nav-text">More</span>
+                </a>
+            </nav>
+
+            <!-- Post Button -->
+            <button class="post-btn" aria-label="Create post">
+                <i class="ri-add-line"></i>
+                <span>Post</span>
+            </button>
+
+            <!-- User Profile -->
+            <div class="user-profile">
+                <img class="profile-avatar" src="/static/images/users/zheyuan.jpg" alt="Your profile">
+                <div class="profile-info">
+                    <div class="profile-name">Zhe Yuan</div>
+                    <div class="profile-username">@zheyuan</div>
+                </div>
+                <button class="profile-more" aria-label="Profile options">
+                    <i class="ri-more-line"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" role="main">
+        <div class="content-wrapper">
+            <!-- Tweet Composer -->
+            <section class="tweet-composer" aria-label="Create tweet">
+                <div class="composer-header">
+                    <img class="composer-avatar" src="/static/images/users/zheyuan.jpg" alt="Your profile">
+                    <div class="composer-content">
+                        <textarea class="composer-input" placeholder="What is happening?!" aria-label="Tweet content" maxlength="280"></textarea>
+
+                        <div class="composer-options">
+                            <div class="reply-settings">
+                                <i class="ri-earth-line"></i>
+                                <span>Everyone can reply</span>
+                            </div>
+                        </div>
+
+                        <div class="composer-actions">
+                            <div class="composer-tools">
+                                <button class="tool-btn" aria-label="Add media" title="Media">
+                                    <i class="ri-image-line"></i>
+                                </button>
+                                <button class="tool-btn" aria-label="Add GIF" title="GIF">
+                                    <i class="ri-file-gif-line"></i>
+                                </button>
+                                <button class="tool-btn" aria-label="Create poll" title="Poll">
+                                    <i class="ri-bar-chart-horizontal-line"></i>
+                                </button>
+                                <button class="tool-btn" aria-label="Add emoji" title="Emoji">
+                                    <i class="ri-emotion-line"></i>
+                                </button>
+                                <button class="tool-btn" aria-label="Schedule" title="Schedule">
+                                    <i class="ri-calendar-line"></i>
+                                </button>
+                                <button class="tool-btn" aria-label="Add location" title="Location">
+                                    <i class="ri-map-pin-line"></i>
+                                </button>
+                            </div>
+
+                            <div class="composer-submit">
+                                <div class="character-count">
+                                    <span class="count">280</span>
+                                </div>
+                                <button class="post-submit-btn" disabled>Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Who to Follow Section -->
+            <section class="who-to-follow-section" aria-label="Who to follow">
+                <div class="section-header">
+                    <h2 class="section-title">Who to follow</h2>
+                    <button class="section-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="follow-suggestions">
+                    <div class="suggestion-item">
+                        <img class="suggestion-avatar" src="/static/images/users/eunha.jpg" alt="daily.dev profile">
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">
+                                daily.dev <i class="ri-verified-badge-fill verified"></i>
+                            </div>
+                            <div class="suggestion-username">@dailydotdev</div>
+                            <div class="suggestion-bio">daily.dev for developer inspiration, information and perspective. It's also where we suffer together.</div>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+
+                    <div class="suggestion-item">
+                        <img class="suggestion-avatar" src="/static/images/users/sinb.jpg" alt="Florin Pop profile">
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">
+                                Florin Pop <i class="ri-verified-badge-fill verified"></i>
+                            </div>
+                            <div class="suggestion-username">@florinpop1705</div>
+                            <div class="suggestion-bio">Helping developers learn faster @iCodeThis- 💻 YouTube: youtube.com/florinpop</div>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+
+                    <div class="suggestion-item">
+                        <img class="suggestion-avatar" src="/static/images/users/umji.jpg" alt="Quincy Larson profile">
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">
+                                Quincy Larson <i class="ri-verified-badge-fill verified"></i>
+                            </div>
+                            <div class="suggestion-username">@ossia</div>
+                            <div class="suggestion-bio">Teacher and founder of freeCodeCamp.org. Host of The freeCodeCamp Podcast.</div>
+                        </div>
+                        <button class="follow-btn">Follow</button>
+                    </div>
+                </div>
+
+                <button class="show-more-btn">Show more</button>
+            </section>
+
+            <!-- Creators Section -->
+            <section class="creators-section" aria-label="Creators for you">
+                <div class="section-header">
+                    <h2 class="section-title">Creators for you</h2>
+                    <button class="section-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="creator-suggestions">
+                    <div class="suggestion-item">
+                        <img class="suggestion-avatar" src="/static/images/users/yangyang.jpg" alt="your thoughts profile">
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">
+                                your thoughts <i class="ri-verified-badge-fill verified"></i>
+                            </div>
+                            <div class="suggestion-username">@ohthoughtsquote</div>
+                            <div class="suggestion-bio">(Telegram: https://t.me/ohthoughtsquote) random thoughts & word DM FOR, RT & PROMO</div>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+
+                    <div class="suggestion-item">
+                        <img class="suggestion-avatar" src="/static/images/images/img2.jpg" alt="Elon Musk profile">
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">
+                                Elon Musk <i class="ri-verified-badge-fill verified"></i>
+                            </div>
+                            <div class="suggestion-username">@elonmusk</div>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+
+                    <div class="suggestion-item">
+                        <img class="suggestion-avatar" src="/static/images/images/img18.jpg" alt="Inspirational Quotes profile">
+                        <div class="suggestion-info">
+                            <div class="suggestion-name">
+                                Inspirational Quotes <i class="ri-verified-badge-fill verified"></i>
+                            </div>
+                            <div class="suggestion-username">@SeffSaid</div>
+                            <div class="suggestion-bio">Inspirational quotes and sayings on life, love, friendship, best friends, happiness, motivational, relationships, smile, karma & more.</div>
+                        </div>
+                        <button class="subscribe-btn">Subscribe</button>
+                    </div>
+                </div>
+
+                <button class="show-more-btn">Show more</button>
+            </section>
+
+            <!-- Tweet Feed -->
+            <section class="tweet-feed" aria-label="Tweet feed">
+                <!-- Sample Tweet -->
+                <article class="tweet">
+                    <div class="tweet-content">
+                        <img class="tweet-avatar" src="/static/images/x-images/cat.jpg" alt="CS50 profile">
+                        <div class="tweet-body">
+                            <div class="tweet-header">
+                                <span class="tweet-name">CS50</span>
+                                <span class="tweet-username">@cs50</span>
+                                <span class="tweet-time">Feb 3</span>
+                            </div>
+
+                            <div class="tweet-text">
+                                <p>CS50R's Lecture 2 goes live in 10 minutes! 🤓</p>
+                                <p><a href="#" class="tweet-link">youtube.com/live/dr1Ig8Sbq</a></p>
+                                <p>CS50R is @CS50's new introduction to programming with R, a popular language for statistical computing and graphics in data science and other domains. Enroll (for free) in advance at cs50.edx.org/r.</p>
+                            </div>
+
+                            <div class="tweet-media">
+                                <img src="/static/images/x-images/cs50.jpg" alt="CS50 lecture preview" loading="lazy">
+                            </div>
+
+                            <div class="tweet-actions">
+                                <button class="action-btn reply-btn" aria-label="Reply">
+                                    <i class="ri-chat-3-line"></i>
+                                    <span class="action-count">12</span>
+                                </button>
+                                <button class="action-btn retweet-btn" aria-label="Retweet">
+                                    <i class="ri-repeat-fill"></i>
+                                    <span class="action-count">45</span>
+                                </button>
+                                <button class="action-btn like-btn" aria-label="Like">
+                                    <i class="ri-heart-line"></i>
+                                    <span class="action-count">128</span>
+                                </button>
+                                <button class="action-btn analytics-btn" aria-label="Analytics">
+                                    <i class="ri-bar-chart-line"></i>
+                                    <span class="action-count">1.2K</span>
+                                </button>
+                                <button class="action-btn bookmark-btn" aria-label="Bookmark">
+                                    <i class="ri-bookmark-line"></i>
+                                </button>
+                                <button class="action-btn share-btn" aria-label="Share">
+                                    <i class="ri-upload-2-line"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="tweet-more" aria-label="More options">
+                            <i class="ri-more-line"></i>
+                        </button>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="sidebar-right" role="complementary" aria-label="Trending and suggestions">
+        <!-- Premium Subscription -->
+        <section class="premium-section">
+            <div class="premium-content">
+                <h3 class="premium-title">Subscribe to Premium</h3>
+                <p class="premium-text">Subscribe to unlock new features and if eligible, receive a share of ads revenue.</p>
+                <button class="premium-btn">Subscribe</button>
+            </div>
+        </section>
+
+        <!-- Trends -->
+        <section class="trends-section">
+            <div class="trends-header">
+                <h3 class="trends-title">Trends for you</h3>
+                <button class="trends-settings" aria-label="Trends settings">
+                    <i class="ri-settings-3-line"></i>
+                </button>
+            </div>
+
+            <div class="trends-list">
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#SEVENTEEN</div>
+                        <div class="trend-posts">500K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#SCOUPS</div>
+                        <div class="trend-posts">130K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#JEONGHAN</div>
+                        <div class="trend-posts">125K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#JOSHUA</div>
+                        <div class="trend-posts">231K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#JUN</div>
+                        <div class="trend-posts">313K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#HOSHI</div>
+                        <div class="trend-posts">312K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#WONWOO</div>
+                        <div class="trend-posts">321K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#WOOZI</div>
+                        <div class="trend-posts">215K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#THE8</div>
+                        <div class="trend-posts">128K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+
+                <div class="trend-item">
+                    <div class="trend-info">
+                        <div class="trend-location">Trending in Philippines</div>
+                        <div class="trend-hashtag">#MINGYU</div>
+                        <div class="trend-posts">309K posts</div>
+                    </div>
+                    <button class="trend-more" aria-label="More options">
+                        <i class="ri-more-line"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button class="show-more-trends">Show more</button>
+        </section>
+
+        <!-- Who to Follow -->
+        <section class="follow-section">
+            <h3 class="follow-title">Who to follow</h3>
+
+            <div class="follow-list">
+                <div class="follow-item">
+                    <img class="follow-avatar" src="/static/images/images/img3.jpg" alt="GitHub profile">
+                    <div class="follow-info">
+                        <div class="follow-name">GitHub</div>
+                        <div class="follow-username">@github</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+                <div class="follow-item">
+                    <img class="follow-avatar" src="/static/images/images/img19.jpg" alt="Minimalist Baker profile">
+                    <div class="follow-info">
+                        <div class="follow-name">MINIMALIST BAKER</div>
+                        <div class="follow-username">@minimalistbaker</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+
+                <div class="follow-item">
+                    <img class="follow-avatar" src="/static/images/images/img8.jpg" alt="SEVENTEEN profile">
+                    <div class="follow-info">
+                        <div class="follow-name">SEVENTEEN</div>
+                        <div class="follow-username">@pledis_17</div>
+                    </div>
+                    <button class="follow-btn">Follow</button>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav" role="navigation" aria-label="Mobile navigation">
+        <a href="#" class="mobile-nav-item active" aria-label="Home">
+            <i class="ri-home-5-line"></i>
+        </a>
+        <a href="#" class="mobile-nav-item" aria-label="Search">
+            <i class="ri-search-line"></i>
+        </a>
+        <a href="#" class="mobile-nav-item" aria-label="Notifications">
+            <i class="ri-notification-3-line"></i>
+        </a>
+        <a href="#" class="mobile-nav-item" aria-label="Messages">
+            <i class="ri-mail-line"></i>
+        </a>
+    </nav>
+
+    {% block scripts %}
+        <script src="/static/scripts/frontend/x.js"></script>
+    {% endblock %}
+{% endblock %}

@@ -115,7 +115,6 @@
             </div>
         </div>
 
-        <!-- Personal Philosophy Section -->
         <div class="philosophy-section">
             <h2 class="philosophy-title">My Development Philosophy</h2>
             <div class="philosophy-grid">
@@ -143,44 +142,38 @@
         </div>
     </main>
 
-    <!-- Scroll to top button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
 
-    <!-- Structured Data for SEO -->
+
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Joy in Algorithm",
-        "jobTitle": "Full Stack Developer",
-        "description": "Passionate full stack developer with expertise in Python, JavaScript, machine learning, and modern web technologies",
-        "url": "{{ request.url }}",
-        "image": "{{ request.url_root }}static/images/me.JPG",
-        "knowsAbout": [
-            "Web Development",
-            "Machine Learning",
-            "Mobile App Development",
-            "Database Design",
-            "Cloud Computing",
-            "Game Development"
-        ],
-        "hasOccupation": {
-            "@type": "Occupation",
-            "name": "Full Stack Developer",
-            "occupationLocation": {
-                "@type": "Place",
-                "name": "Remote"
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Joy in Algorithm",
+            "jobTitle": "Full Stack Developer",
+            "description": "Passionate full stack developer with expertise in Python, JavaScript, machine learning, and modern web technologies",
+            "url": "{{ request.url }}",
+            "image": "{{ request.url_root }}static/images/me.JPG",
+            "knowsAbout": [
+                "Web Development",
+                "Machine Learning",
+                "Mobile App Development",
+                "Database Design",
+                "Cloud Computing",
+                "Game Development"
+            ],
+            "hasOccupation": {
+                "@type": "Occupation",
+                "name": "Full Stack Developer",
+                "occupationLocation": {
+                    "@type": "Place",
+                    "name": "Remote"
+                }
+            },
+            "alumniOf": {
+                "@type": "Organization",
+                "name": "Harvard CS50"
             }
-        },
-        "alumniOf": {
-            "@type": "Organization",
-            "name": "Harvard CS50"
         }
-    }
     </script>
 
     <script src="/static/scripts/portfolio/about-enhanced.js"></script>

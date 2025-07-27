@@ -1,20 +1,39 @@
-{% extends 'base_layout.html' %}
-
-{% block title %}BluRed AI Dashboard{% endblock %}
-
+{% extends "general_layout.html" %}
+{% block title %}BluRed AI - Cybersecurity Training{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/frontend/dashboard.css">
+<link rel="stylesheet" href="/static/styles/frontend/dashboard.css">
 {% endblock %}
 
-{% block main %}
-    <!-- Header section with welcome message -->
-    <header class="dashboard-header animate__animated animate__fadeInDown">
+
+{% block body %}
+
+<div class="sidebar">
+            <img class="logo-small" src="/static/images/logo.jpg" alt="BluRed AI Logo">
+            <a href="/bluredai">Dashboard</a>
+            <a href="/red-blue-team-training">Red vs Blue Team</a>
+            <a href="/adaptive-learning">Adaptive Learning</a>
+            <a href="/cyber-attack-simulation">Cyber Attack Simulation</a>
+            <a href="/instructional-content">Lessons and Modules</a>
+            <a href="/gamified-training">Challenges</a>
+            <a href="/certification-career">Certification & Career</a>
+            <a href="/real-time-threat-intelligence">Real-Time Threat Intelligence</a>
+            <a href="/cloud-access">Cloud Access</a>
+
+        </div>
+
+
+        <div class="content-wrapper">
+            {% block main %}
+
+            {% endblock %}
+        </div>
+
+<header class="dashboard-header animate__animated animate__fadeInDown">
         <h1>Welcome to BluRed AI Dashboard</h1>
         <p>Your comprehensive cybersecurity training and intelligence platform powered by AI.</p>
     </header>
 
     <main>
-        <!-- Quick intro cards for the two most important user paths -->
         <section class="intro-section">
             <div class="intro-card animate__animated animate__fadeInLeft">
                 <h2>AI-Powered Cybersecurity Training</h2>
@@ -63,7 +82,10 @@
         </section>
     </main>
 
-    {% block scripts %}
-        <script src="/static/scripts/frontend/dashboard.js"></script>
-    {% endblock %}
+
+{% block scripts %}
+<script src="/static/scripts/frontend/dashboard.js"></script>
 {% endblock %}
+{% endblock %}
+
+

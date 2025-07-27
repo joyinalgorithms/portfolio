@@ -1,6 +1,69 @@
-/* Mobile enhancements for tech stack page */
+h1 {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
 
-/* Page header improvements */
+h2 {
+    margin-top: 20px;
+}
+
+body {
+    height: 600px;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.category-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #4a9eff;
+    border-bottom: 2px solid #4a9eff;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.tech-description {
+    margin-bottom: 40px;
+}
+.tech-name {
+    margin: 0;
+    font-size: 1.1rem;
+}
+.tech-icon {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.tech-stack-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.tech-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .tech-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .tech-name {
+    font-size: 1.1rem;
+  }
+}
 .page-header {
   text-align: center;
   margin-bottom: 50px;
@@ -14,7 +77,6 @@
   font-weight: 300;
 }
 
-/* Enhanced tech grid for mobile */
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -22,7 +84,6 @@
   margin-top: 30px;
 }
 
-/* Improved tech items */
 .tech-item {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -55,7 +116,6 @@
   box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
 }
 
-/* Tech stack container improvements */
 .tech-stack-container {
   display: flex;
   align-items: center;
@@ -88,7 +148,6 @@
   font-size: 0.95rem;
 }
 
-/* Enhanced proficiency bars */
 .proficiency-container {
   display: flex;
   align-items: center;
@@ -132,7 +191,6 @@
   min-width: 40px;
 }
 
-/* Tech tags */
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
@@ -156,7 +214,6 @@
   transform: translateY(-1px);
 }
 
-/* Category titles with icons */
 .category-title {
   display: flex;
   align-items: center;
@@ -174,7 +231,6 @@
   font-size: 1.8rem;
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
   .tech-grid {
     grid-template-columns: 1fr;
@@ -234,7 +290,6 @@
   }
 }
 
-/* Animations */
 @keyframes shimmer {
   0% {
     left: -100%;
@@ -255,9 +310,7 @@
   }
 }
 
-/* Intersection observer animation */
 .tech-item {
-  opacity: 0;
   transform: translateY(30px);
   transition: all 0.6s ease;
 }
@@ -274,7 +327,6 @@
   outline-offset: 2px;
 }
 
-/* Loading state for proficiency bars */
 .proficiency-fill {
   width: 0;
 }

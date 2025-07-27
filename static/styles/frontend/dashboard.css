@@ -136,36 +136,3 @@ main p {
 #start-demo:hover {
     background-color: #0056b3;
 }
-/* Animate.css animation timing */
-.intro-card,
-.overview-card,
-#demo-container {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-}
-
-/* Card hover effects */
-.intro-card:hover,
-.overview-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Smooth button transitions */
-.btn {
-    transition: all 0.2s ease-in-out;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-/* Make demo content responsive */
-#demo-container {
-    margin-top: 40px;
-    padding: 30px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}

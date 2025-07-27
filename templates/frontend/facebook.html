@@ -1,522 +1,524 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "general_layout.html" %}
 
-    <head>
-        <title>Facebook</title>
-        <meta name="viewport" content="initial-scale=1, width=device-width">
-        <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
-        <link rel="stylesheet" href="/static/styles/frontend/facebook.css">
+{% block title %}Facebook Clone - Social Media Platform{% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/static/styles/frontend/facebook.css">
+    <!-- Remix Icons for better icon support -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+{% endblock %}
 
-    </head>
+{% block body %}
+    <!-- SEO Meta Tags via JavaScript -->
+    <script>
+        // Add SEO meta tags without affecting general_layout.html
+        if (document.head) {
+            const metaTags = [
+                { name: 'description', content: 'Facebook Clone - A responsive social media platform with news feed, stories, friend suggestions, and real-time messaging.' },
+                { name: 'keywords', content: 'facebook, social media, news feed, stories, friends, posts, social network' },
+                { property: 'og:title', content: 'Facebook Clone - Social Media Platform' },
+                { property: 'og:description', content: 'Experience a modern Facebook clone with responsive design and interactive features.' },
+                { name: 'theme-color', content: '#1877f2' }
+            ];
 
-    <body>
-        <div class="header">
-            <div class="header-left">
-                <img class="logo" src="/static/images/Facebook-icons/facebook-logo.png" alt="">
-                <img class="search" src="/static/images/Facebook-icons/search-line.png" alt="">
-            </div>
-            <div class="header-middle">
-                <img class="icons" src="/static/images/Facebook-icons/home-4-fill.png">
-                <img class="icons" src="/static/images/Facebook-icons/video-fill.png">
-                <img class="icons" src="/static/images/Facebook-icons/store-2-line.png">
-                <img class="icons" src="/static/images/Facebook-icons/group-line.png">
-                <img class="icons" src="/static/images/Facebook-icons/gamepad-line.png">
-            </div>
-            <div class="header-right">
-                <img class="icons margin" src="/static/images/Facebook-icons/apps.png">
-                <img class="icons margin" src="/static/images/Facebook-icons/messenger.png">
-                <img class="icons margin" src="/static/images/Facebook-icons/bell.png">
-                <img class="profile margin" src="/static/images/users/pic3.jpg">
+            metaTags.forEach(tag => {
+                const meta = document.createElement('meta');
+                if (tag.name) meta.name = tag.name;
+                if (tag.property) meta.setAttribute('property', tag.property);
+                meta.content = tag.content;
+                document.head.appendChild(meta);
+            });
+        }
+    </script>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Header Navigation -->
+    <header class="header" role="banner">
+        <div class="header-left">
+            <img class="logo" src="/static/images/Facebook-icons/facebook-logo.png" alt="Facebook Logo">
+            <div class="search-container">
+                <img class="search-icon" src="/static/images/Facebook-icons/search-line.png" alt="Search">
+                <input type="search" class="search-input" placeholder="Search Facebook" aria-label="Search Facebook">
             </div>
         </div>
 
-        <div class="sidebar">
-            <div class="sidebar-col">
-                <img class="profile" src="/static/images/users/pic3.jpg">
-                <p class="texts">Joy Bernal</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/classmate.png">
-                <p class="text">Friends</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/memories.png">
-                <p class="text">Memories</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/bookmark.png">
-                <p class="text">Saved</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/groups.png">
-                <p class="text">Groups</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/video-stream.png">
-                <p class="text">Video</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/shop.png">
-                <p class="text">Marketplace</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/feed.png">
-                <p class="text">Feeds</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/events.jpg">
-                <p class="text">Events</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/bar-chart.png">
-                <p class="text">Ads Manager</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/classmate.png">
-                <p class="text">Friends</p>
-            </div>
-            <div class="sidebar-col">
-                <img class="icons" src="/static/images/Facebook-icons/arrow-down-wide-fill.png">
-                <p class="text">See more</p>
-            </div>
+        <nav class="header-middle" role="navigation" aria-label="Main navigation">
+            <button class="nav-icon-btn active" aria-label="Home">
+                <img class="icons" src="/static/images/Facebook-icons/home-4-fill.png" alt="Home">
+            </button>
+            <button class="nav-icon-btn" aria-label="Watch">
+                <img class="icons" src="/static/images/Facebook-icons/video-fill.png" alt="Watch">
+            </button>
+            <button class="nav-icon-btn" aria-label="Marketplace">
+                <img class="icons" src="/static/images/Facebook-icons/store-2-line.png" alt="Marketplace">
+            </button>
+            <button class="nav-icon-btn" aria-label="Groups">
+                <img class="icons" src="/static/images/Facebook-icons/group-line.png" alt="Groups">
+            </button>
+            <button class="nav-icon-btn" aria-label="Gaming">
+                <img class="icons" src="/static/images/Facebook-icons/gamepad-line.png" alt="Gaming">
+            </button>
+        </nav>
+
+        <div class="header-right">
+            <button class="header-icon-btn" aria-label="Menu">
+                <img class="icons" src="/static/images/Facebook-icons/apps.png" alt="Menu">
+            </button>
+            <button class="header-icon-btn" aria-label="Messenger">
+                <img class="icons" src="/static/images/Facebook-icons/messenger.png" alt="Messenger">
+            </button>
+            <button class="header-icon-btn" aria-label="Notifications">
+                <img class="icons" src="/static/images/Facebook-icons/bell.png" alt="Notifications">
+            </button>
+            <button class="profile-btn" aria-label="Profile menu">
+                <img class="profile" src="/static/images/users/pic3.jpg" alt="Joy Bernal Profile">
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+                <i class="ri-menu-line"></i>
+            </button>
         </div>
-        <div class="main-content">
-            <div class="body">
-                <div class="stories">
-                    <div class="story-box">
-                        <img class="story" src="/static/images/users/pic3.jpg">
-                        <div class="add-story">+</div>
-                        <p class="create-story">Create story</p>
-                    </div>
-                    <div class="story-box">
-                        <img class="other-story" src="/static/images/users/heluoluo.jpg">
-                        <img class="story-profile" src="/static/images/users/heluoluo.jpg">
-                    </div>
-                    <div class="story-box">
-                        <img class="other-story" src="/static/images/users/vinzhou.jpg">
-                        <img class="story-profile" src="/static/images/users/nannan.jpg">
-                    </div>
-                    <div class="story-box">
-                        <img class="other-story" src="/static/images/users/yaochen.jpg">
-                        <img class="story-profile" src="/static/images/users/yao chen.jpg">
-                    </div>
+    </header>
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar" id="sidebar" role="complementary" aria-label="Navigation menu">
+        <div class="sidebar-content">
+            <div class="sidebar-col user-profile">
+                <img class="profile" src="/static/images/users/pic3.jpg" alt="Joy Bernal">
+                <p class="user-name">Joy Bernal</p>
+            </div>
+
+            <nav class="sidebar-nav" role="navigation" aria-label="Sidebar navigation">
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/classmate.png" alt="">
+                    <p class="text">Friends</p>
+                </a>
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/memories.png" alt="">
+                    <p class="text">Memories</p>
+                </a>
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/bookmark.png" alt="">
+                    <p class="text">Saved</p>
+                </a>
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/groups.png" alt="">
+                    <p class="text">Groups</p>
+                </a>
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/video-stream.png" alt="">
+                    <p class="text">Video</p>
+                </a>
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/shop.png" alt="">
+                    <p class="text">Marketplace</p>
+                </a>
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/feed.png" alt="">
+                    <p class="text">Feeds</p>
+                </a>
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/events.jpg" alt="">
+                    <p class="text">Events</p>
+                </a>
+                <a href="#" class="sidebar-col">
+                    <img class="icons" src="/static/images/Facebook-icons/bar-chart.png" alt="">
+                    <p class="text">Ads Manager</p>
+                </a>
+                <button class="sidebar-col see-more-btn">
+                    <img class="icons" src="/static/images/Facebook-icons/arrow-down-wide-fill.png" alt="">
+                    <p class="text">See more</p>
+                </button>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" role="main">
+        <div class="content-wrapper">
+            <!-- Stories Section -->
+            <section class="stories" aria-label="Stories">
+                <div class="story-box create-story-box">
+                    <img class="story" src="/static/images/users/pic3.jpg" alt="Your story background">
+                    <button class="add-story" aria-label="Create story">+</button>
+                    <p class="create-story">Create story</p>
                 </div>
 
-
-                <div class="create-post">
-                    <div class="woym">
-                        <img class="profile" src="/static/images/users/pic3.jpg" alt="">
-                        <input class="woym-input" type="text" placeholder="What's on your mind, Joy?">
-                    </div>
-                    <div class="woym2">
-                        <img class="icons" src="/static/images/Facebook-icons/video-stream.png">
-                        <p class="left">Live video</p>
-                        <img class="icons" src="/static/images/Facebook-icons/images.png">
-                        <p class="left">Photo/video</p>
-                        <img class="icons" src="/static/images/Facebook-icons/smile.png">
-                        <p class="left">Feeling/activity</p>
-                    </div>
+                <div class="story-box">
+                    <img class="other-story" src="/static/images/users/heluoluo.jpg" alt="Story background">
+                    <img class="story-profile" src="/static/images/users/heluoluo.jpg" alt="User profile">
                 </div>
 
+                <div class="story-box">
+                    <img class="other-story" src="/static/images/users/vinzhou.jpg" alt="Story background">
+                    <img class="story-profile" src="/static/images/users/nannan.jpg" alt="User profile">
+                </div>
 
+                <div class="story-box">
+                    <img class="other-story" src="/static/images/users/yaochen.jpg" alt="Story background">
+                    <img class="story-profile" src="/static/images/users/yao chen.jpg" alt="User profile">
+                </div>
+            </section>
 
-                <div class="facebook-posts">
-                    <div class="facebook-posts-header">
-                        <p class="text-post-header">People You May Know</p>
-                        <p class="bigger"><i class="ri-more-line"></i></p>
+            <!-- Create Post Section -->
+            <section class="create-post" aria-label="Create post">
+                <div class="post-input-section">
+                    <img class="profile" src="/static/images/users/pic3.jpg" alt="Your profile">
+                    <input class="post-input" type="text" placeholder="What's on your mind, Joy?" aria-label="Create a post">
+                </div>
+                <div class="post-actions">
+                    <button class="post-action-btn">
+                        <img class="icons" src="/static/images/Facebook-icons/video-stream.png" alt="">
+                        <span>Live video</span>
+                    </button>
+                    <button class="post-action-btn">
+                        <img class="icons" src="/static/images/Facebook-icons/images.png" alt="">
+                        <span>Photo/video</span>
+                    </button>
+                    <button class="post-action-btn">
+                        <img class="icons" src="/static/images/Facebook-icons/smile.png" alt="">
+                        <span>Feeling/activity</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Posts Feed -->
+            <section class="facebook-posts" aria-label="News feed">
+                <!-- People You May Know Section -->
+                <div class="suggestions-section">
+                    <div class="section-header">
+                        <h2 class="section-title">People You May Know</h2>
+                        <button class="more-options-btn" aria-label="More options">
+                            <i class="ri-more-line"></i>
+                        </button>
                     </div>
-                    <div class="people-ymk">
+
+                    <div class="people-suggestions">
                         <div class="people-suggestion">
-                            <img class="friend-suggestion" src="/static/images/users/jiajia.jpg" alt="">
-                            <div class="name">Yan Xujia</div>
-                            <button class="add-friend"><i class="ri-user-add-fill"></i> Add friend</button>
-                        </div>
-                        <div class="people-suggestion">
-                            <img class="friend-suggestion" src="/static/images/users/renhao.jpg" alt="">
-                            <div class="name">Ren Hao</div>
-                            <button class="add-friend"><i class="ri-user-add-fill"></i> Add friend</button>
-                        </div>
-                        <div class="people-suggestion">
-                            <img class="friend-suggestion" src="/static/images/users/liuye.jpg" alt="">
-                            <div class="name">Liu Ye</div>
-                            <button class="add-friend"><i class="ri-user-add-fill"></i> Add friend</button>
+                            <img class="friend-suggestion" src="/static/images/users/jiajia.jpg" alt="Yan Xujia">
+                            <div class="suggestion-info">
+                                <div class="name">Yan Xujia</div>
+                                <button class="add-friend-btn">
+                                    <i class="ri-user-add-fill"></i> Add friend
+                                </button>
+                            </div>
                         </div>
 
+                        <div class="people-suggestion">
+                            <img class="friend-suggestion" src="/static/images/users/renhao.jpg" alt="Ren Hao">
+                            <div class="suggestion-info">
+                                <div class="name">Ren Hao</div>
+                                <button class="add-friend-btn">
+                                    <i class="ri-user-add-fill"></i> Add friend
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="people-suggestion">
+                            <img class="friend-suggestion" src="/static/images/users/liuye.jpg" alt="Liu Ye">
+                            <div class="suggestion-info">
+                                <div class="name">Liu Ye</div>
+                                <button class="add-friend-btn">
+                                    <i class="ri-user-add-fill"></i> Add friend
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="see-all">See all</div>
 
+                    <button class="see-all-btn">See all</button>
+                </div>
 
-                    <div class="post">
-                        <div class="post-header">
-                            <div class="profile-container">
-                                <img class="profile" src="/static/images/users/sinb.jpg" alt="">
+                <!-- Individual Posts -->
+                <article class="post">
+                    <header class="post-header">
+                        <div class="profile-container">
+                            <img class="profile" src="/static/images/users/sinb.jpg" alt="Sinb profile">
+                        </div>
+                        <div class="post-details">
+                            <h3 class="post-name">Sinb</h3>
+                            <div class="post-time">
+                                17h · <i class="ri-earth-line"></i>
                             </div>
-                            <div class="post-details">
-                                <div class="post-name">
-                                    Sinb
-                                </div>
-                                <div class="post-time">
-                                    17h &middot; <i class="ri-earth-line"></i>
-                                </div>
-                            </div>
-                            <div class="more-options">
+                        </div>
+                        <div class="more-options">
+                            <button class="post-option-btn" aria-label="More options">
                                 <i class="ri-more-line"></i>
+                            </button>
+                            <button class="post-option-btn" aria-label="Close">
                                 <i class="ri-close-large-line"></i>
-                            </div>
+                            </button>
                         </div>
-                        <div class="post-captions">
-                            [#VIVIZ] ⏰
-                            9 o'clock in a little while! MBC M, wavve 2024 Universal Superstar Awards> #BBG will appear 📺
+                    </header>
+
+                    <div class="post-content">
+                        <p class="post-caption">
+                            [#VIVIZ] ⏰ 9 o'clock in a little while! MBC M, wavve 2024 Universal Superstar Awards> #BBG will appear 📺
                             Let butterflies be with you for unforgettable precious moments🦋
-                            #EUNHA #은하
-                            #SINB #신비
-                            #UMJI #엄지
-                            #KM차트 #2024USA
-                        </div>
-                        <div>
-                            <img class="post-image" src="/static/images/users/viviz.jpg">
-                        </div>
-
-                        <div class="post-interactions">
-                            <img class="like-icon" src="/static/images/Facebook-icons/like.png">
-                            <p class="likes"> 10K </p>
-                            <p class="comments-shares">5.3K comments 5.7K shares</p>
-                        </div>
-                        <div class="like-comment-share">
-                            <div>
-                                <i class="ri-thumb-up-line"></i> Like
-                            </div>
-                            <div>
-                                <i class="ri-chat-1-line"></i> Comment
-                            </div>
-                            <div>
-                                <i class="ri-share-forward-line"></i> Share
-                            </div>
-                        </div>
+                            #EUNHA #은하 #SINB #신비 #UMJI #엄지 #KM차트 #2024USA
+                        </p>
+                        <img class="post-image" src="/static/images/users/viviz.jpg" alt="VIVIZ performance">
                     </div>
 
+                    <div class="post-interactions">
+                        <div class="interaction-summary">
+                            <img class="like-icon" src="/static/images/Facebook-icons/like.png" alt="Like">
+                            <span class="likes">10K</span>
+                        </div>
+                        <div class="comments-shares">5.3K comments 5.7K shares</div>
+                    </div>
 
-                    <div class="post">
-                        <div class="post-header">
-                            <div class="profile-container">
-                                <img class="profile" src="/static/images/users/zhaixiaowen.jpg" alt="">
-                            </div>
-                            <div class="post-details">
-                                <div class="post-name">
-                                    Zhai Xiaowen
-                                </div>
-                                <div class="post-time">
-                                    1d &middot; <i class="ri-earth-line"></i>
-                                </div>
-                            </div>
-                            <div class="more-options">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="ri-thumb-up-line"></i> Like
+                        </button>
+                        <button class="action-btn">
+                            <i class="ri-chat-1-line"></i> Comment
+                        </button>
+                        <button class="action-btn">
+                            <i class="ri-share-forward-line"></i> Share
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Additional posts with same structure -->
+                <article class="post">
+                    <header class="post-header">
+                        <div class="profile-container">
+                            <img class="profile" src="/static/images/users/zhaixiaowen.jpg" alt="Zhai Xiaowen profile">
+                        </div>
+                        <div class="post-details">
+                            <h3 class="post-name">Zhai Xiaowen</h3>
+                            <div class="post-time">1d · <i class="ri-earth-line"></i></div>
+                        </div>
+                        <div class="more-options">
+                            <button class="post-option-btn" aria-label="More options">
                                 <i class="ri-more-line"></i>
+                            </button>
+                            <button class="post-option-btn" aria-label="Close">
                                 <i class="ri-close-large-line"></i>
-                            </div>
+                            </button>
                         </div>
-                        <div class="post-captions">
-                            太一进天都，
-                            连山到海雨。
-                            白云会王鹤，
-                        </div>
-                        <div>
-                            <img class="post-image" src="/static/images/users/img2.jpg">
-                        </div>
+                    </header>
 
-                        <div class="post-interactions">
-                            <img class="like-icon" src="/static/images/Facebook-icons/like.png">
-                            <p class="likes"> 7K </p>
-                            <p class="comments-shares">6.7K comments 8.9K shares</p>
-                        </div>
-                        <div class="like-comment-share">
-                            <div>
-                                <i class="ri-thumb-up-line"></i> Like
-                            </div>
-                            <div>
-                                <i class="ri-chat-1-line"></i> Comment
-                            </div>
-                            <div>
-                                <i class="ri-share-forward-line"></i> Share
-                            </div>
-                        </div>
+                    <div class="post-content">
+                        <p class="post-caption">太一进天都，连山到海雨。白云会王鹤，</p>
+                        <img class="post-image" src="/static/images/users/img2.jpg" alt="Scenic view">
                     </div>
 
+                    <div class="post-interactions">
+                        <div class="interaction-summary">
+                            <img class="like-icon" src="/static/images/Facebook-icons/like.png" alt="Like">
+                            <span class="likes">7K</span>
+                        </div>
+                        <div class="comments-shares">6.7K comments 8.9K shares</div>
+                    </div>
 
-                    <div class="post">
-                        <div class="post-header">
-                            <div class="profile-container">
-                                <img class="profile" src="/static/images/users/nannan.jpg" alt="">
-                            </div>
-                            <div class="post-details">
-                                <div class="post-name">
-                                    Vin Zhou
-                                </div>
-                                <div class="post-time">
-                                    1d &middot; <i class="ri-earth-line"></i>
-                                </div>
-                            </div>
-                            <div class="more-options">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="ri-thumb-up-line"></i> Like
+                        </button>
+                        <button class="action-btn">
+                            <i class="ri-chat-1-line"></i> Comment
+                        </button>
+                        <button class="action-btn">
+                            <i class="ri-share-forward-line"></i> Share
+                        </button>
+                    </div>
+                </article>
+
+                <!-- More posts following the same pattern -->
+                <article class="post">
+                    <header class="post-header">
+                        <div class="profile-container">
+                            <img class="profile" src="/static/images/users/nannan.jpg" alt="Vin Zhou profile">
+                        </div>
+                        <div class="post-details">
+                            <h3 class="post-name">Vin Zhou</h3>
+                            <div class="post-time">1d · <i class="ri-earth-line"></i></div>
+                        </div>
+                        <div class="more-options">
+                            <button class="post-option-btn" aria-label="More options">
                                 <i class="ri-more-line"></i>
+                            </button>
+                            <button class="post-option-btn" aria-label="Close">
                                 <i class="ri-close-large-line"></i>
-                            </div>
+                            </button>
                         </div>
-                        <div class="post-captions">
-                            钱唐湖春行
+                    </header>
 
-                            孤山寺北贾亭西
-                            水面初平云脚低
-                            几处早莺争暖树
-                            谁家新燕啄春泥
-                            乱花渐欲迷人眼
-                            浅草才能没马蹄
-                            最爱湖东行不足
-                            绿杨阴里白沙堤
-                        </div>
-                        <div>
-                            <img class="post-image" src="/static/images/users/bg.jpg">
-                        </div>
-
-                        <div class="post-interactions">
-                            <img class="like-icon" src="/static/images/Facebook-icons/like.png">
-                            <p class="likes"> 20K </p>
-                            <p class="comments-shares">18.1K comments 11.9K shares</p>
-                        </div>
-                        <div class="like-comment-share">
-                            <div>
-                                <i class="ri-thumb-up-line"></i> Like
-                            </div>
-                            <div>
-                                <i class="ri-chat-1-line"></i> Comment
-                            </div>
-                            <div>
-                                <i class="ri-share-forward-line"></i> Share
-                            </div>
-                        </div>
+                    <div class="post-content">
+                        <p class="post-caption">
+                            钱唐湖春行 孤山寺北贾亭西 水面初平云脚低 几处早莺争暖树 谁家新燕啄春泥
+                            乱花渐欲迷人眼 浅草才能没马蹄 最爱湖东行不足 绿杨阴里白沙堤
+                        </p>
+                        <img class="post-image" src="/static/images/users/bg.jpg" alt="Lake scenery">
                     </div>
 
+                    <div class="post-interactions">
+                        <div class="interaction-summary">
+                            <img class="like-icon" src="/static/images/Facebook-icons/like.png" alt="Like">
+                            <span class="likes">20K</span>
+                        </div>
+                        <div class="comments-shares">18.1K comments 11.9K shares</div>
+                    </div>
 
-                    <div class="post">
-                        <div class="post-header">
-                            <div class="profile-container">
-                                <img class="profile" src="/static/images/users/yaochen.jpg" alt="">
-                            </div>
-                            <div class="post-details">
-                                <div class="post-name">
-                                    Yao Chen
-                                </div>
-                                <div class="post-time">
-                                    3d &middot; <i class="ri-earth-line"></i>
-                                </div>
-                            </div>
-                            <div class="more-options">
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="ri-thumb-up-line"></i> Like
+                        </button>
+                        <button class="action-btn">
+                            <i class="ri-chat-1-line"></i> Comment
+                        </button>
+                        <button class="action-btn">
+                            <i class="ri-share-forward-line"></i> Share
+                        </button>
+                    </div>
+                </article>
+
+                <article class="post">
+                    <header class="post-header">
+                        <div class="profile-container">
+                            <img class="profile" src="/static/images/users/yaochen.jpg" alt="Yao Chen profile">
+                        </div>
+                        <div class="post-details">
+                            <h3 class="post-name">Yao Chen</h3>
+                            <div class="post-time">3d · <i class="ri-earth-line"></i></div>
+                        </div>
+                        <div class="more-options">
+                            <button class="post-option-btn" aria-label="More options">
                                 <i class="ri-more-line"></i>
+                            </button>
+                            <button class="post-option-btn" aria-label="Close">
                                 <i class="ri-close-large-line"></i>
-                            </div>
+                            </button>
                         </div>
-                        <div class="post-captions">
-                            宫词
-                            泪尽罗巾梦不成
-                            夜深前殿按歌声
-                            红颜未老恩先断
-                            斜倚薰笼坐到明
-                        </div>
-                        <div>
-                            <img class="post-image" src="/static/images/images/background.jpg">
-                        </div>
+                    </header>
 
-                        <div class="post-interactions">
-                            <img class="like-icon" src="/static/images/Facebook-icons/like.png">
-                            <p class="likes"> 17K </p>
-                            <p class="comments-shares">13K comments 13.7K shares</p>
-                        </div>
-                        <div class="like-comment-share">
-                            <div>
-                                <i class="ri-thumb-up-line"></i> Like
-                            </div>
-                            <div>
-                                <i class="ri-chat-1-line"></i> Comment
-                            </div>
-                            <div>
-                                <i class="ri-share-forward-line"></i> Share
-                            </div>
-                        </div>
+                    <div class="post-content">
+                        <p class="post-caption">
+                            宫词 泪尽罗巾梦不成 夜深前殿按歌声 红颜未老恩先断 斜倚薰笼坐到明
+                        </p>
+                        <img class="post-image" src="/static/images/images/background.jpg" alt="Traditional scene">
                     </div>
-                </div>
-            </div>
+
+                    <div class="post-interactions">
+                        <div class="interaction-summary">
+                            <img class="like-icon" src="/static/images/Facebook-icons/like.png" alt="Like">
+                            <span class="likes">17K</span>
+                        </div>
+                        <div class="comments-shares">13K comments 13.7K shares</div>
+                    </div>
+
+                    <div class="post-actions">
+                        <button class="action-btn">
+                            <i class="ri-thumb-up-line"></i> Like
+                        </button>
+                        <button class="action-btn">
+                            <i class="ri-chat-1-line"></i> Comment
+                        </button>
+                        <button class="action-btn">
+                            <i class="ri-share-forward-line"></i> Share
+                        </button>
+                    </div>
+                </article>
+            </section>
         </div>
-        <div class="sidebar-right">
-            <div class="sidebar-subtitle">Sponsored</div>
-            <div class="ads-row-container">
-                <div class="ads-col-container">
-                    <img class="ads" src="/static/images/Facebook-icons/ads1.jpg">
-                    <div class="row">
-                        <p>The Juicy Bite Burger Delight! </p>
-                        <a class="link" href="www.JuicyBiteBurgerDelight.com">www.JuicyBiteBurgerDelight.com</a>
-                    </div>
+    </main>
 
-                </div>
-                <div class="ads-col-container">
-                    <img class="ads" src="/static/images/Facebook-icons/ads3.webp">
-                    <div class="row">
-                        <p>Taste the Sparkling Sensation - Coke Classic!</p>
-                        <a class="link" href="www.CokeClassicSparkle.com">www.CokeClassicSparkle.com</a>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="contacts-container">
-                <div class="contacts">
-                    <div class="sidebar-subtitle right">Contacts</div>
-                    <div><i class="ri ri-search-line"></i></div>
-                    <div><i class="ri ri-more-fill"></i></div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/seungcheol.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Choi Seungcheol</p>
-                        </div>
+    <!-- Right Sidebar -->
+    <aside class="sidebar-right" role="complementary" aria-label="Sponsored content and contacts">
+        <!-- Sponsored Section -->
+        <section class="sponsored-section">
+            <h2 class="sidebar-subtitle">Sponsored</h2>
+            <div class="ads-container">
+                <div class="ad-item">
+                    <img class="ad-image" src="/static/images/Facebook-icons/ads1.jpg" alt="Burger advertisement">
+                    <div class="ad-content">
+                        <p class="ad-title">The Juicy Bite Burger Delight!</p>
+                        <a class="ad-link" href="#" aria-label="Visit JuicyBiteBurgerDelight.com">www.JuicyBiteBurgerDelight.com</a>
                     </div>
                 </div>
 
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/jeonghan.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Yoon Jeonghan</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/joshua.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Hong Jisoo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/jun.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Wen Junhui</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/hoshikwon.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Kwon Soonyoung</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/wonu.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Jeon Wonwoo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/woozi.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Lee Jihoon</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/the8.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Xu Minghao</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/mingyu.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Kim Mingyu</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/dk.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Lee Seokmin</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/seungkwan.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Boo Seungkwan</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/vernon.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Chwe Hansol</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contacts-row">
-                    <div class="names-row">
-                        <div>
-                            <img class="profile" src="/static/images/users/lee.jpg" alt="">
-                        </div>
-                        <div>
-                            <p class="names">Lee Chan</p>
-                        </div>
+                <div class="ad-item">
+                    <img class="ad-image" src="/static/images/Facebook-icons/ads3.webp" alt="Coke advertisement">
+                    <div class="ad-content">
+                        <p class="ad-title">Taste the Sparkling Sensation - Coke Classic!</p>
+                        <a class="ad-link" href="#" aria-label="Visit CokeClassicSparkle.com">www.CokeClassicSparkle.com</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </body>
+        </section>
 
-</html>
+        <!-- Contacts Section -->
+        <section class="contacts-section">
+            <div class="contacts-header">
+                <h2 class="sidebar-subtitle">Contacts</h2>
+                <div class="contacts-actions">
+                    <button class="contact-action-btn" aria-label="Search contacts">
+                        <i class="ri-search-line"></i>
+                    </button>
+                    <button class="contact-action-btn" aria-label="More options">
+                        <i class="ri-more-fill"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="contacts-list">
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/seungcheol.jpg" alt="Choi Seungcheol">
+                    <span class="contact-name">Choi Seungcheol</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/jeonghan.jpg" alt="Yoon Jeonghan">
+                    <span class="contact-name">Yoon Jeonghan</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/joshua.jpg" alt="Hong Jisoo">
+                    <span class="contact-name">Hong Jisoo</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/jun.jpg" alt="Wen Junhui">
+                    <span class="contact-name">Wen Junhui</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/hoshikwon.jpg" alt="Kwon Soonyoung">
+                    <span class="contact-name">Kwon Soonyoung</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/wonu.jpg" alt="Jeon Wonwoo">
+                    <span class="contact-name">Jeon Wonwoo</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/woozi.jpg" alt="Lee Jihoon">
+                    <span class="contact-name">Lee Jihoon</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/the8.jpg" alt="Xu Minghao">
+                    <span class="contact-name">Xu Minghao</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/mingyu.jpg" alt="Kim Mingyu">
+                    <span class="contact-name">Kim Mingyu</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/dk.jpg" alt="Lee Seokmin">
+                    <span class="contact-name">Lee Seokmin</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/seungkwan.jpg" alt="Boo Seungkwan">
+                    <span class="contact-name">Boo Seungkwan</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/vernon.jpg" alt="Chwe Hansol">
+                    <span class="contact-name">Chwe Hansol</span>
+                </div>
+                <div class="contact-item">
+                    <img class="profile" src="/static/images/users/lee.jpg" alt="Lee Chan">
+                    <span class="contact-name">Lee Chan</span>
+                </div>
+            </div>
+        </section>
+    </aside>
+    <script src="/static/scripts/frontend/facebook.js"></script>
+{% endblock %}

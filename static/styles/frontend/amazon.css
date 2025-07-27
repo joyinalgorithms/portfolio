@@ -1,160 +1,625 @@
+/* Enhanced Amazon Clone Styles with Mobile-First Approach */
+
+/* Base styles - mobile first */
 .main {
-    margin-top: 60px;
+  margin-top: 60px;
+  padding: 0 10px;
 }
 
+/* Smooth transitions for better UX */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Products grid with improved responsive design */
 .products-grid {
-    display: grid;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background-color: rgb(231, 231, 231);
+}
 
-    /* - In CSS Grid, 1fr means a column will take up the
-       remaining space in the grid.
-     - If we write 1fr 1fr ... 1fr; 8 times, this will
-       divide the grid into 8 columns, each taking up an
-       equal amount of the space.
-     - repeat(8, 1fr); is a shortcut for repeating "1fr"
-       8 times (instead of typing out "1fr" 8 times).
-       repeat(...) is a special property that works with
-       display: grid; */
+/* Progressive enhancement for larger screens */
+@media (min-width: 480px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .main {
+    padding: 0 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .main {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .main {
+    padding: 0 25px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .products-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .products-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+@media (min-width: 1800px) {
+  .products-grid {
     grid-template-columns: repeat(8, 1fr);
+  }
 }
 
-/* @media is used to create responsive design (making the
-   website look good on any screen size). This @media
-   means when the screen width is 2000px or less, we
-   will divide the grid into 7 columns instead of 8. */
-@media (max-width: 2000px) {
-    .products-grid {
-        grid-template-columns: repeat(7, 1fr);
-    }
-}
-
-/* This @media means when the screen width is 1600px or
-   less, we will divide the grid into 6 columns. */
-@media (max-width: 1600px) {
-    .products-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
-}
-
-@media (max-width: 1300px) {
-    .products-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
-}
-
-@media (max-width: 1000px) {
-    .products-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 800px) {
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 575px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 450px) {
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
+/* Enhanced product container with hover effects */
 .product-container {
-    padding-top: 40px;
-    padding-bottom: 25px;
-    padding-left: 25px;
-    padding-right: 25px;
-
-    border-right: 1px solid rgb(231, 231, 231);
-    border-bottom: 1px solid rgb(231, 231, 231);
-
-    display: flex;
-    flex-direction: column;
+  background-color: white;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.product-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.product-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
 
+/* Improved product image container */
+.product-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .product-image-container {
     height: 180px;
     margin-bottom: 20px;
+  }
 }
 
 .product-image {
-    /* Images will overflow their container by default. To
-    prevent this, we set max-width and max-height to 100%
-    so they stay inside their container. */
-    max-width: 100%;
-    max-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
+.product-container:hover .product-image {
+  transform: scale(1.05);
+}
+
+/* Enhanced typography */
 .product-name {
-    height: 40px;
-    margin-bottom: 5px;
+  height: auto;
+  min-height: 40px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.product-rating-container {
-    display: flex;
-    align-items: center;
+@media (min-width: 768px) {
+  .product-name {
+    font-size: 15px;
     margin-bottom: 10px;
+  }
+}
+
+/* Rating improvements */
+.product-rating-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 6px;
 }
 
 .product-rating-stars {
+  width: 80px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .product-rating-stars {
     width: 100px;
-    margin-right: 6px;
+  }
 }
 
 .product-rating-count {
-    color: rgb(1, 124, 182);
-    cursor: pointer;
-    margin-top: 3px;
+  color: rgb(1, 124, 182);
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
 }
 
+.product-rating-count:hover {
+  color: rgb(196, 80, 0);
+  text-decoration: underline;
+}
+
+/* Price styling */
 .product-price {
-    font-weight: 700;
-    margin-bottom: 10px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: rgb(177, 39, 4);
 }
 
+@media (min-width: 768px) {
+  .product-price {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+}
+
+/* Quantity selector improvements */
 .product-quantity-container {
-    margin-bottom: 17px;
+  margin-bottom: 15px;
 }
 
+.js-product-quantity {
+  width: 100%;
+  max-width: 80px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgb(213, 217, 217);
+  background-color: rgb(240, 240, 240);
+  font-size: 14px;
+}
+
+/* Spacer for flex layout */
 .product-spacer {
-    flex: 1;
+  flex: 1;
 }
 
+/* Enhanced add to cart feedback */
 .added-to-cart {
-    color: rgb(6, 125, 98);
-    font-size: 16px;
-
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-
-    /* At first, the "Added to cart" message will
-     be invisible. Use JavaScript to change the
-     opacity and make it visible. */
-    opacity: 0;
+  color: rgb(6, 125, 98);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  gap: 5px;
 }
 
 .added-to-cart-visible {
-    opacity: 1;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .added-to-cart img {
-    height: 20px;
-    margin-right: 5px;
+  height: 16px;
+  width: 16px;
 }
 
+/* Enhanced button styling */
 .add-to-cart-button {
-    width: 100%;
-    padding: 8px;
-    border-radius: 50px;
+  width: 100%;
+  padding: 10px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-to-cart-button:hover {
+  transform: translateY(-1px);
+}
+
+.add-to-cart-button:active {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .add-to-cart-button {
+    padding: 12px 8px;
+    font-size: 15px;
+  }
+}
+
+/* Header enhancements */
+.amazon-header {
+  background-color: rgb(19, 25, 33);
+  color: white;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .amazon-header {
+    padding: 0 15px;
+  }
+}
+
+/* Logo section improvements */
+.amazon-header-left-section {
+  width: auto;
+  flex-shrink: 0;
+}
+
+.header-link {
+  display: inline-block;
+  padding: 6px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.header-link:hover {
+  border-color: white;
+}
+
+.header-link:focus {
+  outline: 2px solid rgb(255, 153, 0);
+  outline-offset: 2px;
+}
+
+/* Logo responsive behavior */
+.amazon-logo {
+  width: 80px;
+  height: auto;
+  margin-top: 5px;
+}
+
+.amazon-mobile-logo {
+  display: block;
+  height: 30px;
+  width: auto;
+  margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+  .amazon-logo {
+    display: block;
+    width: 100px;
+  }
+  .amazon-mobile-logo {
+    display: none;
+  }
+}
+
+/* Search section improvements */
+.amazon-header-middle-section {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 10px;
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .amazon-header-middle-section {
+    max-width: 850px;
+    margin: 0 15px;
+  }
+}
+
+.search-form {
+  display: flex;
+  width: 100%;
+}
+
+.search-bar {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search-bar:focus {
+  box-shadow: 0 0 0 2px rgb(255, 153, 0);
+}
+
+@media (min-width: 768px) {
+  .search-bar {
+    font-size: 16px;
+    height: 38px;
+    padding: 0 15px;
+  }
+}
+
+.search-button {
+  background-color: rgb(254, 189, 105);
+  border: none;
+  width: 40px;
+  height: 38px;
+  border-radius: 0 4px 4px 0;
+  flex-shrink: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button:hover {
+  background-color: rgb(247, 202, 0);
+}
+
+@media (min-width: 768px) {
+  .search-button {
+    width: 45px;
+    height: 40px;
+  }
+}
+
+.search-icon {
+  height: 18px;
+  width: 18px;
+}
+
+@media (min-width: 768px) {
+  .search-icon {
+    height: 22px;
+    width: 22px;
+  }
+}
+
+/* Right section improvements */
+.amazon-header-right-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .amazon-header-right-section {
+    gap: 10px;
+  }
+}
+
+/* Orders link styling */
+.orders-link {
+  color: white;
+  text-decoration: none;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .orders-link {
+    display: block;
+  }
+}
+
+.returns-text {
+  display: block;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.orders-text {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Cart link improvements */
+.cart-link {
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  padding: 4px;
+}
+
+.cart-icon {
+  width: 40px;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .cart-icon {
+    width: 50px;
+  }
+}
+
+.cart-text {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .cart-text {
+    display: block;
+    font-size: 15px;
+    margin-top: 12px;
+  }
+}
+
+.cart-quantity {
+  color: rgb(240, 136, 4);
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  top: 2px;
+  left: 18px;
+  width: 24px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .cart-quantity {
+    font-size: 16px;
+    top: 4px;
+    left: 22px;
+    width: 26px;
+    min-height: 22px;
+  }
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus indicators */
+button:focus,
+select:focus,
+input:focus,
+a:focus {
+  outline: 2px solid rgb(255, 153, 0);
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.product-image[loading="lazy"] {
+  background-color: rgb(240, 240, 240);
+}
+
+/* Animation for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced form styling */
+.add-to-cart-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Improved select styling */
+select {
+  color: rgb(33, 33, 33);
+  background-color: rgb(240, 240, 240);
+  border: 1px solid rgb(213, 217, 217);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(213, 217, 217, 0.3);
+}
+
+select:hover {
+  border-color: rgb(180, 180, 180);
+}
+
+/* Button enhancements */
+.button-primary {
+  color: rgb(33, 33, 33);
+  background-color: rgb(255, 216, 20);
+  border: 1px solid rgb(252, 210, 0);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.button-primary:hover {
+  background-color: rgb(247, 202, 0);
+  border-color: rgb(242, 194, 0);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(213, 217, 217, 0.6);
+}
+
+.button-primary:active {
+  background: rgb(255, 216, 20);
+  border-color: rgb(252, 210, 0);
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(213, 217, 217, 0.5);
+}
+
+/* Link styling */
+.link-primary {
+  color: rgb(1, 124, 182);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.link-primary:hover {
+  color: rgb(196, 80, 0);
+  text-decoration: underline;
+}
+
+/* Performance optimizations */
+.product-image {
+  will-change: transform;
+}
+
+.product-container {
+  will-change: transform, box-shadow;
+}
+
+/* Print styles */
+@media print {
+  .amazon-header,
+  .add-to-cart-button,
+  .search-form {
+    display: none;
+  }
+
+  .main {
+    margin-top: 0;
+  }
+
+  .product-container {
+    break-inside: avoid;
+  }
 }

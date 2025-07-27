@@ -13,7 +13,7 @@
 {% block twitter_description %}Ready-made web solutions with live demos, full documentation, and fast delivery{% endblock %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="/static/styles/portfolio/offers.css">
+    <link rel="stylesheet" href="/static/styles/portfolio/offers.css">
 {% endblock %}
 
 {% block body %}
@@ -27,13 +27,7 @@
             <div class="search-container">
                 <div class="search-input-wrapper">
                     <i class="fas fa-search search-icon"></i>
-                    <input
-                        type="text"
-                        id="searchInput"
-                        class="search-input"
-                        placeholder="Search for services, technologies, or features..."
-                        aria-label="Search services"
-                    >
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search for services, technologies, or features..." aria-label="Search services">
                     <button class="clear-search" id="clearSearch" aria-label="Clear search" style="display: none;">
                         <i class="fas fa-times"></i>
                     </button>
@@ -95,7 +89,6 @@
         </div>
 
         <div class="offers-container">
-            <!-- E-commerce Solution Offer -->
             <article class="offer-card" data-offer="ecommerce" data-category="ecommerce" data-price="599" data-tech="python,flask,sqlite,bootstrap,javascript" data-keywords="ecommerce,shopping,cart,payment,inventory,admin,online,store,business">
                 <div class="offer-header">
                     <div class="offer-preview">
@@ -193,7 +186,6 @@
                 </div>
             </article>
 
-            <!-- Business Portfolio Offer -->
             <article class="offer-card" data-offer="portfolio" data-category="portfolio" data-price="349" data-tech="html5,css3,javascript,bootstrap,php" data-keywords="portfolio,business,professional,showcase,services,testimonials,blog,contact">
                 <div class="offer-header">
                     <div class="offer-preview">
@@ -291,7 +283,6 @@
                 </div>
             </article>
 
-            <!-- Restaurant Website Offer -->
             <article class="offer-card" data-offer="restaurant" data-category="restaurant" data-price="299" data-tech="html5,css3,javascript,bootstrap,jquery" data-keywords="restaurant,food,menu,reservation,gallery,reviews,cafe,dining">
                 <div class="offer-header">
                     <div class="offer-preview">
@@ -389,7 +380,6 @@
                 </div>
             </article>
 
-            <!-- Custom Web App Offer -->
             <article class="offer-card" data-offer="custom" data-category="custom" data-price="1999" data-tech="python,flask,django,javascript,react,postgresql,mongodb" data-keywords="custom,development,application,consultation,design,database,api,enterprise">
                 <div class="offer-header">
                     <div class="offer-preview">
@@ -488,7 +478,6 @@
             </article>
         </div>
 
-        <!-- Demo Modal -->
         <div id="demoModal" class="modal" onclick="closeDemo()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <span class="close" onclick="closeDemo()" aria-label="Close demo">&times;</span>
@@ -505,48 +494,39 @@
         </div>
     </main>
 
-    <!-- Scroll to top button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
-
-    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Website Development Services",
-        "provider": {
-            "@type": "Person",
-            "name": "Joy in Algorithm"
-        },
-        "description": "Professional ready-made websites and custom web applications with competitive pricing and fast delivery",
-        "offers": [
-            {
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Website Development Services",
+            "provider": {
+                "@type": "Person",
+                "name": "Joy in Algorithm"
+            },
+            "description": "Professional ready-made websites and custom web applications with competitive pricing and fast delivery",
+            "offers": [{
                 "@type": "Offer",
                 "name": "Complete E-commerce Solution",
                 "price": "599",
                 "priceCurrency": "USD",
                 "description": "Fully functional e-commerce platform with payment integration and admin dashboard"
             },
-            {
-                "@type": "Offer",
-                "name": "Professional Business Portfolio",
-                "price": "349",
-                "priceCurrency": "USD",
-                "description": "Stunning business portfolio website with contact forms and testimonials"
-            },
-            {
-                "@type": "Offer",
-                "name": "Restaurant Website",
-                "price": "299",
-                "priceCurrency": "USD",
-                "description": "Restaurant website with online menu and reservation system"
-            }
-        ]
-    }
+                {
+                    "@type": "Offer",
+                    "name": "Professional Business Portfolio",
+                    "price": "349",
+                    "priceCurrency": "USD",
+                    "description": "Stunning business portfolio website with contact forms and testimonials"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "Restaurant Website",
+                    "price": "299",
+                    "priceCurrency": "USD",
+                    "description": "Restaurant website with online menu and reservation system"
+                }
+            ]
+        }
     </script>
 
     <script src="/static/scripts/offers.js"></script>

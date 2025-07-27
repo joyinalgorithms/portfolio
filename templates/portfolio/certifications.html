@@ -131,7 +131,6 @@
             </article>
         </div>
 
-        <!-- Certificate Modal -->
         <div id="certificateModal" class="modal" onclick="closeModal()">
             <div class="modal-content" onclick="event.stopPropagation()">
                 <span class="close" onclick="closeModal()" aria-label="Close modal">&times;</span>
@@ -140,21 +139,12 @@
         </div>
     </main>
 
-    <!-- Scroll to top button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
-
-    <!-- Structured Data for SEO -->
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Joy in Algorithm",
-        "hasCredential": [
-            {
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Joy in Algorithm",
+            "hasCredential": [{
                 "@type": "EducationalOccupationalCredential",
                 "name": "CS50x: Introduction to Computer Science",
                 "description": "Harvard University's introduction to computer science and programming",
@@ -165,30 +155,30 @@
                 },
                 "dateCreated": "2024"
             },
-            {
-                "@type": "EducationalOccupationalCredential",
-                "name": "Google Cybersecurity Professional Certificate",
-                "description": "Professional certificate in cybersecurity fundamentals and practices",
-                "credentialCategory": "Professional Certificate",
-                "recognizedBy": {
-                    "@type": "Organization",
-                    "name": "Google"
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Google Cybersecurity Professional Certificate",
+                    "description": "Professional certificate in cybersecurity fundamentals and practices",
+                    "credentialCategory": "Professional Certificate",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Google"
+                    },
+                    "dateCreated": "2024"
                 },
-                "dateCreated": "2024"
-            },
-            {
-                "@type": "EducationalOccupationalCredential",
-                "name": "Machine Learning Fundamentals",
-                "description": "Fundamentals of machine learning and data science",
-                "credentialCategory": "Certificate",
-                "recognizedBy": {
-                    "@type": "Organization",
-                    "name": "Kaggle"
-                },
-                "dateCreated": "2024"
-            }
-        ]
-    }
+                {
+                    "@type": "EducationalOccupationalCredential",
+                    "name": "Machine Learning Fundamentals",
+                    "description": "Fundamentals of machine learning and data science",
+                    "credentialCategory": "Certificate",
+                    "recognizedBy": {
+                        "@type": "Organization",
+                        "name": "Kaggle"
+                    },
+                    "dateCreated": "2024"
+                }
+            ]
+        }
     </script>
 
     <script src="/static/scripts/portfolio/certifications-enhanced.js"></script>

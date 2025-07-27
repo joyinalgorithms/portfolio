@@ -1,43 +1,81 @@
-{% extends "layout.html" %}
-{% block title %}Is it New Year's?{% endblock %}
+{% extends "general_layout.html" %}
+
+{% block title %}Is it New Year's? - Interactive New Year Countdown{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="Find out if it's New Year's Day with our interactive countdown timer. Features real-time countdown, fireworks, and festive animations.">
+    <meta name="keywords" content="new year, countdown, timer, celebration, fireworks, interactive">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Is it New Year's? - Interactive Countdown">
+    <meta property="og:description" content="Interactive New Year countdown with fireworks and celebrations">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="{{ url_for('newyear', _external=True) }}">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "New Year Countdown",
+        "description": "Interactive New Year countdown application",
+        "applicationCategory": "Entertainment",
+        "operatingSystem": "Web Browser"
+    }
+    </script>
+{% endblock %}
+
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/frontend/newyear.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/frontend/newyear.css">
+{% endblock %}
+
 {% block body %}
-    <div class="stars"></div>
+    <!-- Background stars animation -->
+    <div class="stars" aria-hidden="true"></div>
 
-    <div class="decoration">🎉</div>
-    <div class="decoration">✨</div>
-    <div class="decoration">🎊</div>
-    <div class="decoration">🌟</div>
+    <!-- Floating decorative elements -->
+    <div class="decoration" aria-hidden="true">🎉</div>
+    <div class="decoration" aria-hidden="true">✨</div>
+    <div class="decoration" aria-hidden="true">🎊</div>
+    <div class="decoration" aria-hidden="true">🌟</div>
 
+    <!-- Main content container -->
     <div class="container">
-        <h1 class="main-title">Is it New Year's? 🎆</h1>
+        <header class="header-section">
+            <h1 class="main-title">Is it New Year's? 🎆</h1>
+        </header>
 
-        <button class="check-button" onclick="checkNewYear()">
-            Find Out! ✨
-        </button>
+        <main class="main-content">
+            <section class="interaction-section">
+                <button class="check-button" onclick="checkNewYear()" aria-label="Check if it's New Year's Day">
+                    Find Out! ✨
+                </button>
 
-        <div class="result" id="result"></div>
+                <div class="result" id="result" role="status" aria-live="polite"></div>
 
-        <div class="countdown" id="countdown">
-            <div class="countdown-item">
-                <span class="countdown-number" id="days">00</span>
-                <span class="countdown-label">Days</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="hours">00</span>
-                <span class="countdown-label">Hours</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="minutes">00</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span class="countdown-number" id="seconds">00</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
-        </div>
+                <!-- Countdown timer section -->
+                <section class="countdown" id="countdown" aria-label="Countdown to New Year">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days" aria-label="Days remaining">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours" aria-label="Hours remaining">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes" aria-label="Minutes remaining">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds" aria-label="Seconds remaining">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </section>
+            </section>
+        </main>
     </div>
 
-    {% block scripts %}<script src="/static/scripts/frontend/newyear.js"></script>{% endblock %}
+    {% block scripts %}
+    <script src="/static/scripts/frontend/newyear.js"></script>
+    {% endblock %}
 {% endblock %}

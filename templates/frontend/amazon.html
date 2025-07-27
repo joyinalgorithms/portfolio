@@ -1,65 +1,91 @@
-{% extends "amazonlayout.html" %}
-{% block title %}Amazon{% endblock %}
-{% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/frontend/amazon-header.css">
-    <link rel="stylesheet" href="/static/styles/frontend/amazon.css">
+{% extends "general_layout.html" %}
+{% block title %}Amazon Clone - Shop Online{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Shop thousands of products online with fast delivery. Find electronics, books, clothing and more at great prices.">
+<meta name="keywords" content="online shopping, electronics, books, clothing, deals, fast delivery">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Amazon Clone - Shop Online">
+<meta property="og:description" content="Shop thousands of products online with fast delivery">
+<meta property="og:type" content="website">
+<link rel="canonical" href="/amazon">
 {% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/frontend/amazon.css">
+{% endblock %}
+
 {% block body %}
-    <div class="amazon-header">
-        <div class="amazon-header-left-section">
-            <a href="/amazon" class="header-link">
-                <img class="amazon-logo" src="/static/images/amazon-logo-white.png">
-                <img class="amazon-mobile-logo" src="/static/images/amazon-mobile-logo-white.png">
-            </a>
-        </div>
-
-        <div class="amazon-header-middle-section">
-            <input class="search-bar" type="text" placeholder="Search">
-
-            <button class="search-button">
-                <img class="search-icon" src="/static/images/icons/search-icon.png">
-            </button>
-        </div>
-
-        <div class="amazon-header-right-section">
-            <a class="orders-link header-link" href="/amazon">
-                <span class="returns-text">Returns</span>
-                <span class="orders-text">& Orders</span>
-            </a>
-
-            <a class="cart-link header-link" href="/amazon/checkout">
-                <img class="cart-icon" src="/static/images/icons/cart-icon.png">
-                <div class="cart-quantity js-cart-quantity">{{ number }}</div>
-                <div class="cart-text">Cart</div>
-            </a>
-        </div>
+<header class="amazon-header" role="banner">
+    <div class="amazon-header-left-section">
+        <a href="/amazon" class="header-link" aria-label="Amazon Home">
+            <img class="amazon-logo" src="/static/images/amazon-logo-white.png" alt="Amazon Logo">
+            <img class="amazon-mobile-logo" src="/static/images/amazon-mobile-logo-white.png" alt="Amazon Mobile Logo">
+        </a>
     </div>
 
-    <div class="main">
+    <div class="amazon-header-middle-section">
+        <form class="search-form" role="search">
+            <input class="search-bar" type="text" placeholder="Search products..." aria-label="Search products">
+            <button class="search-button" type="submit" aria-label="Search">
+                <img class="search-icon" src="/static/images/icons/search-icon.png" alt="Search">
+            </button>
+        </form>
+    </div>
 
+    <nav class="amazon-header-right-section" role="navigation">
+        <a class="orders-link header-link" href="/amazon" aria-label="Returns and Orders">
+            <span class="returns-text">Returns</span>
+            <span class="orders-text">& Orders</span>
+        </a>
+        <a class="cart-link header-link" href="/amazon/checkout" aria-label="Shopping Cart">
+            <img class="cart-icon" src="/static/images/icons/cart-icon.png" alt="Cart">
+            <div class="cart-quantity js-cart-quantity" aria-label="Cart items">{{ number }}</div>
+            <div class="cart-text">Cart</div>
+        </a>
+    </nav>
+</header>
+
+<main class="main" role="main">
+    <section class="products-section">
+        <h1 class="sr-only">Product Catalog</h1>
         <div class="products-grid js-products-grid">
             {% for product in products %}
-                <div class="product-container">
+                <article class="product-container" itemscope itemtype="http://schema.org/Product">
                     <div class="product-image-container">
-                        <img class="product-image" src="{{ product.image }}">
-                    </div>
-                    <div class="product-name limit-text-to-2-lines">
-                        {{ product.name }}
+                        <img class="product-image"
+                             src="{{ product.image }}"
+                             alt="{{ product.name }}"
+                             itemprop="image"
+                             loading="lazy">
                     </div>
 
-                    <div class="product-rating-container">
+                    <h2 class="product-name limit-text-to-2-lines" itemprop="name">
+                        {{ product.name }}
+                    </h2>
+
+                    <div class="product-rating-container" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                         {% set rating_suffix = (((product.rating_stars * 2) | round) * 5) | int %}
-                        <img class="product-rating-stars" src="/static/images/ratings/rating-{{ rating_suffix }}.png">
-                        <div class="product-rating-count link-primary">
+                        <img class="product-rating-stars"
+                             src="/static/images/ratings/rating-{{ rating_suffix }}.png"
+                             alt="{{ product.rating_stars }} out of 5 stars">
+                        <div class="product-rating-count link-primary" itemprop="reviewCount">
                             {{ product.rating_count }}
                         </div>
+                        <meta itemprop="ratingValue" content="{{ product.rating_stars }}">
+                        <meta itemprop="bestRating" content="5">
                     </div>
-                    <div class="product-price">
-                        {{ product.price_cents }}
+
+                    <div class="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <span itemprop="price">{{ product.price_cents }}</span>
+                        <meta itemprop="priceCurrency" content="USD">
+                        <meta itemprop="availability" content="http://schema.org/InStock">
                     </div>
-                    <form action="/amazon/add-to-cart" method="POST">
+
+                    <form action="/amazon/add-to-cart" method="POST" class="add-to-cart-form">
                         <div class="product-quantity-container">
-                            <select name="quantity" class="js-product-quantity">
+                            <label for="quantity-{{ product.id }}" class="sr-only">Quantity</label>
+                            <select name="quantity" id="quantity-{{ product.id }}" class="js-product-quantity" aria-label="Select quantity">
                                 <option selected value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -72,23 +98,34 @@
                                 <option value="10">10</option>
                             </select>
                         </div>
+
                         <div class="product-spacer"></div>
-                        <div class="added-to-cart">
-                            <img src="/static/images/icons/checkmark.png">
-                            Added
+
+                        <div class="added-to-cart" role="status" aria-live="polite">
+                            <img src="/static/images/icons/checkmark.png" alt="Success">
+                            Added to cart
                         </div>
-                        <button type="submit" class="add-to-cart-button button-primary js-add-to-cart" data-product-id="{{product.id}}">
+
+                        <button type="submit"
+                                class="add-to-cart-button button-primary js-add-to-cart"
+                                data-product-id="{{product.id}}"
+                                aria-label="Add {{ product.name }} to cart">
                             Add to Cart
                         </button>
-                    </div>
-                    <input type="hidden" name="product-name" value="{{ product.name }}">
-                    <input type="hidden" name="product-id" value="{{ product.id }}">
-                    <input type="hidden" name="product-image" value="{{ product.image }}">
-                    <input type="hidden" name="price" value="{{ product.price_cents }}">
-                </form>
+
+                        <!-- Hidden form fields for product data -->
+                        <input type="hidden" name="product-name" value="{{ product.name }}">
+                        <input type="hidden" name="product-id" value="{{ product.id }}">
+                        <input type="hidden" name="product-image" value="{{ product.image }}">
+                        <input type="hidden" name="price" value="{{ product.price_cents }}">
+                    </form>
+                </article>
             {% endfor %}
         </div>
-    </div>
+    </section>
+</main>
 
-    {% block scripts %}<script type="module" src="/static/scripts/frontend/amazon.js"></script>{% endblock %}
+{% block scripts %}
+<script type="module" src="/static/scripts/frontend/amazon.js"></script>
+{% endblock %}
 {% endblock %}

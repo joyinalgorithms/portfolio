@@ -1,131 +1,157 @@
-{% extends "amazonlayout.html" %}
-{% block title %}Checkout{% endblock %}
-{% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/frontend/checkout-header.css">
-    <link rel="stylesheet" href="/static/styles/frontend/checkout.css">
+{% extends "general_layout.html" %}
+{% block title %}Checkout - Amazon Clone{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Review and complete your order. Secure checkout with multiple delivery options.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="/amazon/checkout">
 {% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/frontend/checkout.css">
+{% endblock %}
+
 {% block body %}
-    <div class="checkout-header js-checkout-header">
-        <div class="header-content">
-            <div class="checkout-header-left-section">
-                <a href="/amazon">
-                    <img class="amazon-logo" src="/static/images/amazon-logo.png">
-                    <img class="amazon-mobile-logo" src="/static/images/amazon-mobile-logo.png">
-                </a>
-            </div>
-            <div class="checkout-header-middle-section">
-                Checkout (<a href="/amazon">{{ number }} items</a>)
-            </div>
-            <div class="checkout-header-right-section">
-                <img src="/static/images/icons/checkout-lock-icon.png">
-            </div>
+<header class="checkout-header js-checkout-header" role="banner">
+    <div class="header-content">
+        <div class="checkout-header-left-section">
+            <a href="/amazon" aria-label="Return to Amazon home">
+                <img class="amazon-logo" src="/static/images/amazon-logo.png" alt="Amazon Logo">
+                <img class="amazon-mobile-logo" src="/static/images/amazon-mobile-logo.png" alt="Amazon Mobile Logo">
+            </a>
+        </div>
+
+        <div class="checkout-header-middle-section">
+            <h1>Checkout (<a href="/amazon" class="return-to-home-link">{{ number }} items</a>)</h1>
+        </div>
+
+        <div class="checkout-header-right-section">
+            <img src="/static/images/icons/checkout-lock-icon.png" alt="Secure checkout" aria-label="Secure checkout">
         </div>
     </div>
-    <div class="main">
-        <div class="page-title">Review your order</div>
+</header>
 
-        <div class="checkout-grid">
-            <div class="order-summary js-order-summary">
-                <div class="cart-item-container">
-                    <div class="delivery-date">
-                        Delivery date: {{ delivery_date.strftime('%A, %B %d, %Y') }}
-                    </div>
-                    {% for item in cart %}
-                        <div class="cart-item-details-grid">
-                            <img class="product-image" src="{{ item.image }}">
-                            <div class="cart-item-details">
-                                <div class="product-name">
-                                    {{ item.name }}
-                                </div>
-                                <div class="product-price">
-                                    ${{ '%.2f' | format(item.price_cents / 100) }}
-                                </div>
-                                <div class="product-quantity
-                                            js-product-quantity-${matchingProduct.id}">
-                                    <span>
-                                        Quantity: <span class="quantity-label">{{ item.quantity }}</span>
-                                    </span>
-                                    <form method="POST" action="/cart/delete" style="display:inline;">
-                                        <input type="hidden" name="product_id" value="{{ item.id }}">
-                                        <button type="submit" class="delete-quantity-link link-primary js-delete-link" style="background:none; border:none; padding:0; cursor:pointer;">
-                                            Delete
-                                        </button>
-                                    </form>
+<main class="main" role="main">
+    <div class="page-title">
+        <h2>Review your order</h2>
+    </div>
 
-                                </div>
+    <div class="checkout-grid">
+        <section class="order-summary js-order-summary" aria-label="Order summary">
+            <div class="cart-item-container">
+                <div class="delivery-date" role="status">
+                    Delivery date: {{ delivery_date.strftime('%A, %B %d, %Y') }}
+                </div>
+
+                {% for item in cart %}
+                    <article class="cart-item-details-grid" itemscope itemtype="http://schema.org/Product">
+                        <img class="product-image"
+                             src="{{ item.image }}"
+                             alt="{{ item.name }}"
+                             itemprop="image"
+                             loading="lazy">
+
+                        <div class="cart-item-details">
+                            <h3 class="product-name" itemprop="name">
+                                {{ item.name }}
+                            </h3>
+
+                            <div class="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                <span itemprop="price">${{ '%.2f' | format(item.price_cents / 100) }}</span>
+                                <meta itemprop="priceCurrency" content="USD">
                             </div>
-                            <div class="delivery-options">
-                                <div class="delivery-options-title">
-                                    Choose a delivery option:
-                                </div>
-                                <div class="delivery-option js-delivery-option">
-                                    {% for delivery in delivery_options %}
 
-                                        <input type="radio" name="delivery-{{ item.id }}" value="{{ delivery.delivery_fee }}" class="js-delivery-radio" data-fee="{{ delivery.delivery_fee }}">
-                                        <div>
-                                            <div class="delivery-option-date">
-                                                {{ delivery.delivery_days }} days
-                                            </div>
-                                            <div class="delivery-option-price">
-                                                ${{ '%.2f' | format(delivery.delivery_fee / 100) }}
-                                            </div>
-                                        </div>
-
-                                    {% endfor %}
-
-                                </div>
-
+                            <div class="product-quantity js-product-quantity-${matchingProduct.id}">
+                                <span>
+                                    Quantity: <span class="quantity-label">{{ item.quantity }}</span>
+                                </span>
+                                <form method="POST" action="/cart/delete" style="display:inline;">
+                                    <input type="hidden" name="product_id" value="{{ item.id }}">
+                                    <button type="submit"
+                                            class="delete-quantity-link link-primary js-delete-link"
+                                            aria-label="Remove {{ item.name }} from cart">
+                                        Delete
+                                    </button>
+                                </form>
                             </div>
                         </div>
+
+                        <fieldset class="delivery-options">
+                            <legend class="delivery-options-title">Choose a delivery option:</legend>
+
+                            {% for delivery in delivery_options %}
+                                <div class="delivery-option js-delivery-option">
+                                    <input type="radio"
+                                           name="delivery-{{ item.id }}"
+                                           value="{{ delivery.delivery_fee }}"
+                                           class="js-delivery-radio"
+                                           data-fee="{{ delivery.delivery_fee }}"
+                                           id="delivery-{{ item.id }}-{{ loop.index }}">
+                                    <label for="delivery-{{ item.id }}-{{ loop.index }}" class="delivery-option-label">
+                                        <div class="delivery-option-date">
+                                            {{ delivery.delivery_days }} days
+                                        </div>
+                                        <div class="delivery-option-price">
+                                            ${{ '%.2f' | format(delivery.delivery_fee / 100) }}
+                                        </div>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </fieldset>
+
+                        <!-- Hidden fields for calculations -->
                         <input name="item-quantity" type="hidden" value="{{ item.quantity }}">
                         <input name="item-price" type="hidden" value="{{ item.price }}">
-                    {% endfor %}
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+
+        <aside class="payment-summary js-payment-summary" role="complementary" aria-label="Payment summary">
+            <h3 class="payment-summary-title">Order Summary</h3>
+
+            <div class="payment-summary-row">
+                <div>Items ({{ number }}):</div>
+                <div class="payment-summary-money" id="itemprice">
+                    ${{ total_price }}
                 </div>
             </div>
 
-            <div class="payment-summary js-payment-summary">
-                <div class="payment-summary-title">
-                    Order Summary
+            <div class="payment-summary-row">
+                <div>Shipping &amp; handling:</div>
+                <div class="payment-summary-money" id="shipping-total">
+                    $0.00
                 </div>
-                <div class="payment-summary-row">
-                    <div>Items ({{ number }}):</div>
-                    <div class="payment-summary-money" id="itemprice">
-                        ${{ total_price }}
-                    </div>
-                </div>
-                <div class="payment-summary-row">
-                    <div>Shipping &amp; handling:</div>
-                    <div class="payment-summary-money" id="shipping-total">
-                        $0.00
-                    </div>
-                </div>
-
-                <div class="payment-summary-row subtotal-row">
-                    <div>Total before tax:</div>
-                    <div class="payment-summary-money" id="totalbeforetax">
-
-                    </div>
-                </div>
-                <div class="payment-summary-row">
-                    <div>Estimated tax (10%):</div>
-                    <div class="payment-summary-money" id="tax">
-
-                    </div>
-                </div>
-                <div class="payment-summary-row total-row">
-                    <div>Order total:</div>
-                    <div class="payment-summary-money" id="grandtotal">
-
-                    </div>
-                </div>
-                <form action="/amazon/place-order" method="get">
-                    <button class="place-order-button button-primary" type="submit">
-                        Place your order
-                    </button>
-                </form>
-                <div id="order-flash-message" class="flash-message" style="display: none;"></div>
             </div>
-        </div>
+
+            <div class="payment-summary-row subtotal-row">
+                <div>Total before tax:</div>
+                <div class="payment-summary-money" id="totalbeforetax"></div>
+            </div>
+
+            <div class="payment-summary-row">
+                <div>Estimated tax (10%):</div>
+                <div class="payment-summary-money" id="tax"></div>
+            </div>
+
+            <div class="payment-summary-row total-row">
+                <div>Order total:</div>
+                <div class="payment-summary-money" id="grandtotal"></div>
+            </div>
+
+            <form action="/amazon/place-order" method="get">
+                <button class="place-order-button button-primary" type="submit">
+                    Place your order
+                </button>
+            </form>
+
+            <div id="order-flash-message" class="flash-message" role="alert" aria-live="assertive" style="display: none;"></div>
+        </aside>
     </div>
-    {% block scripts %}<script type="module" src="/static/scripts/frontend/checkout.js"></script>{% endblock %}
+</main>
+
+{% block scripts %}
+<script type="module" src="/static/scripts/frontend/checkout.js"></script>
+{% endblock %}
 {% endblock %}

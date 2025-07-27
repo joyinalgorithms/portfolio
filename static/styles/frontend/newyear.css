@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Poppins:wght@300;400;600&display=swap');
 
+body {
+    background: linear-gradient(135deg, #feda75, #d62976, #4f5bd5, #00c4cc);
+}
 .stars {
     position: fixed;
     top: 0;
@@ -22,13 +25,13 @@
         opacity: 0.3;
         transform: scale(1);
     }
-
     100% {
         opacity: 1;
         transform: scale(1.2);
     }
 }
 
+/* Main container with improved mobile support */
 .container {
     position: relative;
     z-index: 10;
@@ -37,43 +40,72 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 1.25rem;
     text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Header section for better semantic structure */
+.header-section {
+    margin-bottom: 1rem;
+}
+
+/* Enhanced main title with better mobile scaling */
 .main-title {
     font-family: 'Fredoka One', cursive;
-    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-size: clamp(2rem, 6vw, 4.5rem);
     color: #fff;
     margin-bottom: 2rem;
     text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     animation: glow 2s ease-in-out infinite alternate;
+    line-height: 1.2;
 }
 
 @keyframes glow {
     from {
         text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
-
     to {
         text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6);
     }
 }
 
+/* Main content wrapper */
+.main-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Interaction section container */
+.interaction-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Enhanced button with better mobile touch targets */
 .check-button {
     background: linear-gradient(45deg, #ff6b6b, #ffd93d);
     border: none;
-    padding: 20px 40px;
-    font-size: 1.5rem;
+    padding: 1.25rem 2.5rem;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
     font-weight: 600;
     color: white;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
     margin: 2rem 0;
     position: relative;
     overflow: hidden;
+    min-height: 44px; /* Minimum touch target for mobile */
+    min-width: 44px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .check-button:hover {
@@ -85,13 +117,21 @@
     transform: translateY(-2px);
 }
 
+.check-button:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Result display with improved mobile scaling */
 .result {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     color: #fff;
     margin: 2rem 0;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.5s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    line-height: 1.3;
 }
 
 .result.show {
@@ -109,14 +149,17 @@
     text-shadow: 0 0 20px rgba(255, 159, 243, 0.5);
 }
 
+/* Responsive countdown grid with better mobile layout */
 .countdown {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 1rem;
     margin: 2rem 0;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.5s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    max-width: 500px;
 }
 
 .countdown.show {
@@ -124,27 +167,38 @@
     transform: translateY(0);
 }
 
+/* Enhanced countdown items with hover effects */
 .countdown-item {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
 }
 
 .countdown-number {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 600;
     color: #ffd93d;
     display: block;
+    line-height: 1;
 }
 
 .countdown-label {
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
     color: #fff;
     opacity: 0.8;
+    margin-top: 0.5rem;
+    display: block;
 }
 
+/* Animation effects */
 .firework {
     position: fixed;
     pointer-events: none;
@@ -164,7 +218,6 @@
         opacity: 1;
         transform: scale(0);
     }
-
     100% {
         opacity: 0;
         transform: scale(1);
@@ -185,67 +238,140 @@
         transform: translateY(-100vh) rotate(0deg);
         opacity: 1;
     }
-
     100% {
         transform: translateY(100vh) rotate(360deg);
         opacity: 0;
     }
 }
 
+/* Floating decorations with responsive sizing */
 .decoration {
     position: absolute;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     animation: float 3s ease-in-out infinite;
     pointer-events: none;
+    z-index: 2;
 }
 
 @keyframes float {
-
     0%,
     100% {
         transform: translateY(0px) rotate(0deg);
     }
-
     50% {
         transform: translateY(-20px) rotate(10deg);
     }
 }
 
-.decoration:nth-child(1) {
+.decoration:nth-child(2) {
     top: 10%;
     left: 10%;
     animation-delay: 0s;
 }
 
-.decoration:nth-child(2) {
+.decoration:nth-child(3) {
     top: 20%;
     right: 10%;
     animation-delay: 1s;
 }
 
-.decoration:nth-child(3) {
+.decoration:nth-child(4) {
     bottom: 20%;
     left: 15%;
     animation-delay: 2s;
 }
 
-.decoration:nth-child(4) {
+.decoration:nth-child(5) {
     bottom: 10%;
     right: 15%;
     animation-delay: 0.5s;
 }
 
+/* Mobile-specific improvements */
 @media (max-width: 768px) {
-    .countdown {
-        grid-template-columns: repeat(2, 1fr);
+    .container {
+        padding: 1rem 0.75rem;
     }
 
-    .countdown-number {
-        font-size: 1.5rem;
+    .countdown {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        max-width: 320px;
+    }
+
+    .countdown-item {
+        padding: 0.75rem 0.5rem;
     }
 
     .check-button {
-        padding: 15px 30px;
-        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        margin: 1.5rem 0;
     }
+
+    .main-title {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .countdown {
+        gap: 0.5rem;
+        max-width: 280px;
+    }
+
+    .countdown-item {
+        padding: 0.5rem 0.25rem;
+        border-radius: 10px;
+    }
+
+    .result {
+        margin: 1.5rem 0;
+    }
+
+    .decoration {
+        font-size: 1.25rem;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .star,
+    .decoration,
+    .main-title,
+    .firework-particle,
+    .confetti {
+        animation: none;
+    }
+
+    .check-button:hover,
+    .countdown-item:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .main-title {
+        text-shadow: none;
+        color: #ffffff;
+    }
+
+    .result {
+        text-shadow: none;
+    }
+
+    .countdown-item {
+        border: 2px solid #ffffff;
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* Focus management for keyboard navigation */
+.check-button:focus-visible {
+    outline: 3px solid #ffd93d;
+    outline-offset: 2px;
 }

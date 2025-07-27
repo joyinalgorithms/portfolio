@@ -10,7 +10,7 @@
 {% block og_description %}Ready to work together? Get in touch for web development projects and collaborations{% endblock %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="/static/styles/portfolio/contact-enhanced.css">
+    <link rel="stylesheet" href="/static/styles/portfolio/contact-enhanced.css">
 {% endblock %}
 
 {% block body %}
@@ -21,7 +21,6 @@
         </div>
 
         <div class="contact-container">
-            <!-- Contact Form Section -->
             <div class="contact-form-section">
                 <h2 class="form-title">Send Me a Message</h2>
                 <form id="contactForm" class="contact-form">
@@ -58,11 +57,9 @@
                     </button>
                 </form>
 
-                <!-- Success/Error Messages -->
                 <div id="formMessage" class="form-message" style="display: none;"></div>
             </div>
 
-            <!-- Contact Info & Social Links Section -->
             <div class="contact-info-section">
                 <div class="contact-info-card">
                     <h3>Let's Connect</h3>
@@ -131,13 +128,5 @@
             </div>
         </div>
     </main>
-
-    <!-- Scroll to top button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
-
     <script src="/static/scripts/contact-form.js"></script>
 {% endblock %}
