@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,9 @@
         </title>
 
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@400;500;700&display=swap"></noscript>
+        <noscript>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@400;500;700&display=swap">
+        </noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
         <link rel="stylesheet" href="/static/styles/layout.css">
@@ -28,20 +31,21 @@
         {% block stylesheet %}{% endblock %}
 
         <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Joy in Algorithm",
-            "jobTitle": "Full Stack Developer",
-            "description": "Experienced developer specializing in web applications, machine learning, and software engineering",
-            "url": "{{ request.url_root }}",
-            "sameAs": [
-                "https://github.com/joyinalgorithm",
-                "https://linkedin.com/in/joyinalgorithm"
-            ]
-        }
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Joy in Algorithm",
+                "jobTitle": "Full Stack Developer",
+                "description": "Experienced developer specializing in web applications, machine learning, and software engineering",
+                "url": "{{ request.url_root }}",
+                "sameAs": [
+                    "https://github.com/joyinalgorithm",
+                    "https://linkedin.com/in/joyinalgorithm"
+                ]
+            }
         </script>
     </head>
+
     <body>
         <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -173,4 +177,5 @@
         <script src="/static/scripts/portfolio/resume.js"></script>
         {% block scripts %}{% endblock %}
     </body>
+
 </html>

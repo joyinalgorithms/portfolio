@@ -11,7 +11,7 @@
         </div>
 
         <div class="main-content">
-            <!-- Mobile Navigation Tabs -->
+
             <div class="mobile-tabs">
                 <button class="tab-btn active" data-tab="dictionary">Dictionary</button>
                 <button class="tab-btn" data-tab="checker">Word Check</button>
@@ -57,7 +57,6 @@
                 </div>
             </div>
 
-            <!-- Main Spell Checker -->
             <div class="spell-checker tab-content" data-content="speller">
                 <h2 class="panel-title">Text Spell Checker</h2>
                 <div class="spell-check-controls">
@@ -102,27 +101,27 @@
     </div>
 
     {% block scripts %}
-    <script src="/static/scripts/cs50/speller.js"></script>
-    <script>
-        // Mobile tab functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
+        <script src="/static/scripts/cs50/speller.js"></script>
+        <script>
+    // Mobile tab functionality
+            document.addEventListener('DOMContentLoaded', function() {
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                const tabContents = document.querySelectorAll('.tab-content');
 
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const targetTab = this.dataset.tab;
+                tabBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const targetTab = this.dataset.tab;
 
-                    // Remove active class from all tabs and contents
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
+                // Remove active class from all tabs and contents
+                        tabBtns.forEach(b => b.classList.remove('active'));
+                        tabContents.forEach(c => c.classList.remove('active'));
 
-                    // Add active class to clicked tab and corresponding content
-                    this.classList.add('active');
-                    document.querySelector(`[data-content="${targetTab}"]`).classList.add('active');
+                // Add active class to clicked tab and corresponding content
+                        this.classList.add('active');
+                        document.querySelector(`[data-content="${targetTab}"]`).classList.add('active');
+                    });
                 });
             });
-        });
-    </script>
+        </script>
     {% endblock %}
 {% endblock %}

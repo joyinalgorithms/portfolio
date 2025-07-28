@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-// Add smooth scrolling to anchor links
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -152,7 +152,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add IDs to category sections for anchor linking
 document.addEventListener('DOMContentLoaded', function() {
     const categories = document.querySelectorAll('.category');
     const categoryIds = [
@@ -171,19 +170,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-// Scroll to Top Button Functionality
+
 document.addEventListener('DOMContentLoaded', function() {
     const scrollToTopBtn = document.getElementById('scrollToTop');
 
-    if (!scrollToTopBtn) return; // Exit if button doesn't exist
+    if (!scrollToTopBtn) return;
 
     let isScrolling = false;
     let scrollTimeout;
 
-    // Show/hide button based on scroll position
     function toggleScrollButton() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const shouldShow = scrollTop > 300; // Show after scrolling 300px
+        const shouldShow = scrollTop > 300;
 
         if (shouldShow) {
             scrollToTopBtn.classList.add('show');
@@ -192,34 +190,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Smooth scroll to top function
     function scrollToTop() {
-        if (isScrolling) return; // Prevent multiple clicks
+        if (isScrolling) return;
 
         isScrolling = true;
-        scrollToTopBtn.style.pointerEvents = 'none'; // Disable button during scroll
+        scrollToTopBtn.style.pointerEvents = 'none';
 
-        // Add a little bounce effect
         scrollToTopBtn.style.transform = 'translateY(0) scale(0.9)';
 
         setTimeout(() => {
             scrollToTopBtn.style.transform = '';
         }, 150);
 
-        // Smooth scroll to top
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
 
-        // Re-enable button after scroll completes
         setTimeout(() => {
             isScrolling = false;
             scrollToTopBtn.style.pointerEvents = 'auto';
         }, 1000);
     }
 
-    // Throttled scroll event listener for better performance
     function throttledScrollHandler() {
         if (scrollTimeout) {
             clearTimeout(scrollTimeout);
@@ -228,16 +221,12 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollTimeout = setTimeout(toggleScrollButton, 10);
     }
 
-    // Event listeners
     window.addEventListener('scroll', throttledScrollHandler, {
         passive: true
     });
     scrollToTopBtn.addEventListener('click', scrollToTop);
 
-    // Initial check
     toggleScrollButton();
-
-    // Optional: Add keyboard support
     scrollToTopBtn.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
@@ -245,7 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Optional: Hide button when reaching top
     window.addEventListener('scroll', function() {
         if (window.pageYOffset === 0) {
             scrollToTopBtn.classList.remove('show');
@@ -255,7 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Optional: Add progress indicator
 function addScrollProgress() {
     const progressRing = document.createElement('div');
     progressRing.className = 'scroll-progress-ring';
@@ -290,5 +277,4 @@ function addScrollProgress() {
     }
 }
 
-// Uncomment the line below to add scroll progress indicator
 addScrollProgress();
