@@ -1,13 +1,16 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Memory Game{% endblock %}
 {% block stylesheet %}
     <link rel="stylesheet" href="/static/styles/games/memorygame.css">
 {% endblock %}
 {% block body %}
-    <div class="body">
-        <h1>🚀 Tech Memory Match</h1>
-        <p>Match the tech icons to win!</p>
-        <div class="game-stats">
+    <main class="container">
+        <header class="header">
+            <h1>🚀 Tech Memory Match</h1>
+            <p>Match the tech icons to win!</p>
+        </header>
+
+        <section class="game-stats" aria-label="Game Statistics">
             <div class="stat">
                 <div>Time: <span id="timer">00:00</span></div>
             </div>
@@ -17,29 +20,29 @@
             <div class="stat">
                 <div>Matches: <span id="matches">0</span></div>
             </div>
-        </div>
+        </section>
 
-        <div class="game-board" id="gameBoard"></div>
+        <section class="game-board" id="gameBoard" aria-label="Memory Game Board"></section>
 
-        <div class="controls">
+        <section class="controls" aria-label="Game Controls">
             <button class="btn primary" onclick="startNewGame()">New Game</button>
-            <button class="btn" onclick="resetStats()">Reset Stats</button>
-        </div>
+            <button class="btn" onclick="resetStats()">Reset High Scores</button>
+        </section>
 
-        <div class="high-scores">
+        <section class="high-scores" aria-label="High Scores">
             <h3>🏆 High Scores</h3>
             <div id="highScoresList"></div>
-        </div>
+        </section>
 
-        <div class="game-over" id="gameOverModal">
+        <div class="game-over" id="gameOverModal" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
             <div class="game-over-content">
-                <h2>🎉 Congratulations!</h2>
+                <h2 id="gameOverTitle">🎉 Congratulations!</h2>
                 <p>Time: <span id="finalTime"></span></p>
                 <p>Moves: <span id="finalMoves"></span></p>
                 <p>Score: <span id="finalScore"></span></p>
                 <button class="btn primary" onclick="closeGameOver()">Play Again</button>
             </div>
         </div>
-    </div>
+    </main>
     {% block scripts %}<script src="/static/scripts/games/memorygame.js"></script>{% endblock %}
 {% endblock %}

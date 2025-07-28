@@ -1,39 +1,35 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Rock Paper Scissors{% endblock %}
 {% block stylesheet %}
     <link rel="stylesheet" href="/static/styles/games/rockpaperscissors.css">{% endblock %}
 {% block body %}
-    <div class="container">
-        <h1>Rock Paper Scissors</h1>
-        <div class="images-container">
-            <img style="background-color: black;
-                        padding: 0px;
-                        margin-top: 30px;
-                        cursor: pointer;" class="images js-rock-btn" src="/static/images/minigames/Rock-emoji.jpg">
-            <img style="background-color: black;
-                        padding: 0px;
-                        margin-top: 30px;
-                        cursor: pointer;" class="images js-paper-btn" src="/static/images/minigames/Paper-emoji.jpg">
-            <img style="background-color: black;
-                        padding: 0px;
-                        margin-top: 30px;
-                        cursor: pointer;" class="images js-scissors-btn" src="/static/images/minigames/Scissors-emoji.jpg">
-        </div>
-        <p class="js-result result"></p>
-        <p class="js-moves"></p>
-        <p class="js-score"></p>
+ <div class="background-animation"></div>
+  <main class="container">
+      <header>
+          <h1>Rock Paper Scissors</h1>
+      </header>
+      <section class="choices-section">
+          <button class="choice-btn js-rock-btn" aria-label="Choose Rock">
+              <img class="choice-image" src="/static/images/minigames/Rock-emoji.jpg" alt="Rock hand emoji">
+          </button>
+          <button class="choice-btn js-paper-btn" aria-label="Choose Paper">
+              <img class="choice-image" src="/static/images/minigames/Paper-emoji.jpg" alt="Paper hand emoji">
+          </button>
+          <button class="choice-btn js-scissors-btn" aria-label="Choose Scissors">
+              <img class="choice-image" src="/static/images/minigames/Scissors-emoji.jpg" alt="Scissors hand emoji">
+          </button>
+      </section>
 
+      <section class="results-section">
+          <p class="js-result result"></p>
+          <p class="js-moves moves"></p>
+          <p class="js-score score"></p>
+      </section>
 
-        <button class="reset-btn" onclick="
-                                           score.wins = 0;
-                                           score.losses = 0;
-                                           score.ties = 0;
-                                           localStorage.removeItem('score')
-                                           updateScore();
-                                          ">Reset Score</button>
-        <button class="auto-play" onclick="
-                                           autoplay()
-                                          ">Auto Play</button>
-    </div>
+      <section class="controls-section">
+          <button class="action-btn reset-btn">Reset Score</button>
+          <button class="action-btn auto-play-btn">Auto Play</button>
+      </section>
+  </main>
     {% block scripts %}<script src="/static/scripts/games/rockpaperscissors.js"></script>{% endblock %}
 {% endblock %}

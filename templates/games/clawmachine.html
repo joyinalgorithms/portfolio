@@ -1,17 +1,47 @@
 {% extends "general_layout.html" %}
-{% block title %}Claw Machine{% endblock %}
-{% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/games/clawmachine.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+{% block title %}Tech Claw Machine - Arcade Game Online{% endblock %}
+
+{% block meta %}
+<meta name="description" content="Play the ultimate tech claw machine game online! Grab laptops, phones, and gadgets in this addictive arcade-style browser game with realistic physics.">
+<meta name="keywords" content="claw machine game, arcade game, tech prizes, online game, browser game, mobile game">
+<meta name="author" content="Tech Arcade Games">
+<meta property="og:title" content="Tech Claw Machine - Arcade Game Online">
+<meta property="og:description" content="Experience the thrill of a real claw machine with tech prizes. Play now in your browser!">
+<meta property="og:type" content="game">
+<meta property="og:image" content="/static/images/claw-machine-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 {% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/static/styles/games/clawmachine.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
-    <div class="game-container">
-        <div class="status" id="status">Ready to play!</div>
-        <div class="machine">
+<div class="game-wrapper">
+    <header class="game-header">
+        <h1 class="game-title">Tech Claw Machine</h1>
+        <p class="game-subtitle">Grab amazing tech prizes!</p>
+    </header>
+
+    <main class="game-container" role="main">
+        <div class="status-container">
+            <div class="status" id="status" role="status" aria-live="polite">Ready to play!</div>
+        </div>
+
+        <div class="machine" role="application" aria-label="Claw machine game">
             <div class="machine-top">
-                <div>🎮 TECH CLAW MACHINE</div>
+                <div class="machine-title">
+                    <span class="machine-icon">🎮</span>
+                    <span class="machine-text">TECH CLAW MACHINE</span>
+                </div>
                 <div class="score-display">
-                    SCORE: <span id="score">0</span> | COINS: <span id="coins">10</span>
+                    <span class="score-label">SCORE:</span>
+                    <span class="score-value" id="score">0</span>
+                    <span class="coins-label">COINS:</span>
+                    <span class="coins-value" id="coins">10</span>
                 </div>
             </div>
 
@@ -25,26 +55,48 @@
                         <div class="claw-right"></div>
                     </div>
                 </div>
-
-                <div class="items-container" id="itemsContainer">
-
+                <div class="items-container" id="itemsContainer" role="region" aria-label="Prize items">
                 </div>
             </div>
 
-            <div class="controls">
-                <button class="control-btn move-left" id="moveLeft">←</button>
-                <button class="control-btn grab-btn" id="grabBtn">GRAB</button>
-                <button class="control-btn move-right" id="moveRight">→</button>
+            <div class="controls" role="group" aria-label="Game controls">
+                <button class="control-btn move-left" id="moveLeft" aria-label="Move claw left">
+                    <span class="control-icon">←</span>
+                    <span class="control-text">LEFT</span>
+                </button>
+                <button class="control-btn grab-btn" id="grabBtn" aria-label="Grab item">
+                    <span class="control-icon">🎯</span>
+                    <span class="control-text">GRAB</span>
+                </button>
+                <button class="control-btn move-right" id="moveRight" aria-label="Move claw right">
+                    <span class="control-icon">→</span>
+                    <span class="control-text">RIGHT</span>
+                </button>
             </div>
         </div>
-        <div class="prize-slot"></div>
-        <div class="prizes-display">
-            <h3>YOUR PRIZES</h3>
-            <div class="prizes-list" id="prizesList"></div>
+
+        <div class="prize-slot" aria-hidden="true"></div>
+
+        <aside class="prizes-display" role="complementary" aria-label="Your prizes">
+            <h3 class="prizes-title">YOUR PRIZES</h3>
+            <div class="prizes-list" id="prizesList" role="list"></div>
+            <div class="prizes-count">
+                <span id="prizesCount">0</span> items collected
+            </div>
+        </aside>
+
+        <button class="volume-control" id="volumeControl" aria-label="Toggle sound">
+            <span class="volume-icon">🔊</span>
+        </button>
+
+        <div class="mobile-instructions">
+            <p>Tap controls or use arrow keys + spacebar</p>
         </div>
-        <div class="volume-control" id="volumeControl">🔊</div>
-    </div>
+    </main>
 
+</div>
 
-    {% block scripts %}<script src="/static/scripts/games/clawmachine.js"></script>{% endblock %}
+{% block scripts %}
+<script src="/static/scripts/games/clawmachine.js"></script>
+{% endblock %}
 {% endblock %}
