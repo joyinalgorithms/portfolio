@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Plurality{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/plurality.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/cs50/plurality.css">{% endblock %}
 {% block body %}
     <div class="container">
         <div class="voting-card">
@@ -97,5 +97,5 @@
             </div>
         </div>
     </div>
-    {% block scripts %}<script src="/static/scripts/plurality.js"></script>{% endblock %}
+    {% block scripts %}<script src="/static/scripts/cs50/plurality.js"></script>{% endblock %}
 {% endblock %}

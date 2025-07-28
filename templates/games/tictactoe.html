@@ -1,18 +1,23 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Tic Tac Toe Game{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/games/tictactoe.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/games/tictactoe.css">
+{% endblock %}
 {% block body %}
-    <h1>Tic Tac Toe</h1>
-    <div id="game-board">
-        {% for i in range(9) %}
-            <div class="cell" data-cell></div>
-        {% endfor %}
-    </div>
-    <div id="message-container" class="hidden">
-        <h2 id="message-text"></h2>
-        <button id="restart-button">Play Again</button>
-    </div>
-
+    <div class="game-background"></div>
+    <main class="container">
+        <header>
+            <h1>Tic Tac Toe</h1>
+        </header>
+        <section id="game-board">
+            {% for i in range(9) %}
+                <div class="cell" data-cell></div>
+            {% endfor %}
+        </section>
+        <section id="message-container" class="hidden">
+            <h2 id="message-text"></h2>
+            <button id="restart-button" class="action-btn">Play Again</button>
+        </section>
+    </main>
     {% block scripts %}<script src="/static/scripts/games/tictactoe.js"></script>{% endblock %}
 {% endblock %}

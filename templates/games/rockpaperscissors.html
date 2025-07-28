@@ -3,33 +3,33 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="/static/styles/games/rockpaperscissors.css">{% endblock %}
 {% block body %}
- <div class="background-animation"></div>
-  <main class="container">
-      <header>
-          <h1>Rock Paper Scissors</h1>
-      </header>
-      <section class="choices-section">
-          <button class="choice-btn js-rock-btn" aria-label="Choose Rock">
-              <img class="choice-image" src="/static/images/Rock-emoji.png" alt="Rock hand emoji">
-          </button>
-          <button class="choice-btn js-paper-btn" aria-label="Choose Paper">
-              <img class="choice-image" src="/static/images/Paper-emoji.png" alt="Paper hand emoji">
-          </button>
-          <button class="choice-btn js-scissors-btn" aria-label="Choose Scissors">
-              <img class="choice-image" src="/static/images/Scissors-emoji.png" alt="Scissors hand emoji">
-          </button>
-      </section>
+    <div class="background-animation"></div>
+    <main class="container">
+        <header>
+            <h1>Rock Paper Scissors</h1>
+        </header>
+        <section class="choices-section">
+            <button class="choice-btn js-rock-btn" aria-label="Choose Rock">
+                <img class="choice-image" src="/static/images/Rock-emoji.png" alt="Rock hand emoji">
+            </button>
+            <button class="choice-btn js-paper-btn" aria-label="Choose Paper">
+                <img class="choice-image" src="/static/images/Paper-emoji.png" alt="Paper hand emoji">
+            </button>
+            <button class="choice-btn js-scissors-btn" aria-label="Choose Scissors">
+                <img class="choice-image" src="/static/images/Scissors-emoji.png" alt="Scissors hand emoji">
+            </button>
+        </section>
 
-      <section class="results-section">
-          <p class="js-result result"></p>
-          <p class="js-moves moves"></p>
-          <p class="js-score score"></p>
-      </section>
+        <section class="results-section">
+            <p class="js-result result"></p>
+            <p class="js-moves moves"></p>
+            <p class="js-score score"></p>
+        </section>
 
-      <section class="controls-section">
-          <button class="action-btn reset-btn">Reset Score</button>
-          <button class="action-btn auto-play-btn">Auto Play</button>
-      </section>
-  </main>
+        <section class="controls-section">
+            <button class="action-btn reset-btn">Reset Score</button>
+            <button class="action-btn auto-play-btn">Auto Play</button>
+        </section>
+    </main>
     {% block scripts %}<script src="/static/scripts/games/rockpaperscissors.js"></script>{% endblock %}
 {% endblock %}

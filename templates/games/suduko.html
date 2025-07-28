@@ -1,59 +1,97 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Suduko{% endblock %}
 {% block stylesheet %}
     <link rel="stylesheet" href="/static/styles/games/suduko.css">{% endblock %}
 {% block body %}
-    <div class="game-container">
-        <div class="header">
-            <h1 class="title">Sudoku Master</h1>
+    <div class="background">
+        <div class="floating-numbers">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>🧩 Sudoku Master</h1>
+            <p>Challenge Your Mind</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat">
+                <span>⏱️</span>
+                <div>
+                    <div>Time</div>
+                    <div id="timer">00:00</div>
+                </div>
+            </div>
+            <div class="stat">
+                <span>🎯</span>
+                <div>
+                    <div>Score</div>
+                    <div id="score">0</div>
+                </div>
+            </div>
+            <div class="stat">
+                <span>❌</span>
+                <div>
+                    <div>Mistakes</div>
+                    <div id="mistakes">0/3</div>
+                </div>
+            </div>
         </div>
 
-        <div class="game-info">
-            <div class="info-item">
-                <span>Time: </span>
-                <span id="timer">00:00</span>
-            </div>
-            <div class="info-item">
-                <span>Score: </span>
-                <span id="score">0</span>
-            </div>
-            <div class="info-item">
-                <span>Mistakes: </span>
-                <span id="mistakes">0/3</span>
-            </div>
+        <div class="difficulty">
+            <button class="diff-btn active" data-level="easy">Easy</button>
+            <button class="diff-btn" data-level="medium">Medium</button>
+            <button class="diff-btn" data-level="hard">Hard</button>
         </div>
 
-        <div class="difficulty-selector">
-            <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
-            <button class="difficulty-btn" data-difficulty="medium">Medium</button>
-            <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+        <div class="game-board">
+            <div class="grid" id="grid"></div>
         </div>
-
-        <div class="sudoku-grid" id="sudoku-grid"></div>
 
         <div class="number-pad">
-            <button class="number-btn" data-number="1">1</button>
-            <button class="number-btn" data-number="2">2</button>
-            <button class="number-btn" data-number="3">3</button>
-            <button class="number-btn" data-number="4">4</button>
-            <button class="number-btn" data-number="5">5</button>
-            <button class="number-btn" data-number="6">6</button>
-            <button class="number-btn" data-number="7">7</button>
-            <button class="number-btn" data-number="8">8</button>
-            <button class="number-btn" data-number="9">9</button>
-            <button class="action-btn" id="clear-btn">Clear</button>
+            <button class="num-btn" data-num="1">1</button>
+            <button class="num-btn" data-num="2">2</button>
+            <button class="num-btn" data-num="3">3</button>
+            <button class="num-btn" data-num="4">4</button>
+            <button class="num-btn" data-num="5">5</button>
+            <button class="num-btn" data-num="6">6</button>
+            <button class="num-btn" data-num="7">7</button>
+            <button class="num-btn" data-num="8">8</button>
+            <button class="num-btn" data-num="9">9</button>
+            <button class="clear-btn" id="clear">Clear</button>
         </div>
-
         <div class="controls">
-            <button class="action-btn" id="new-game-btn">New Game</button>
-            <button class="action-btn" id="hint-btn">Hint</button>
-            <button class="action-btn" id="check-btn">Check</button>
-            <button class="action-btn" id="solve-btn">Solve</button>
+            <button class="btn primary" id="new-game">New Game</button>
+            <button class="btn secondary" id="hint">Hint</button>
+            <button class="btn info" id="check">Check</button>
+            <button class="btn warning" id="solve">Solve</button>
         </div>
-
-        <div class="high-scores">
+        <div class="scores">
             <h3>🏆 High Scores</h3>
-            <div id="high-scores-list"></div>
+            <div class="score-tabs">
+                <button class="tab active" onclick="showScores('easy')">Easy</button>
+                <button class="tab" onclick="showScores('medium')">Medium</button>
+                <button class="tab" onclick="showScores('hard')">Hard</button>
+            </div>
+            <div id="scores-list"></div>
+        </div>
+    </div>
+
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>🎉 Congratulations!</h2>
+            <div class="final-stats">
+                <div>Time: <span id="final-time">00:00</span></div>
+                <div>Score: <span id="final-score">0</span></div>
+                <div>Mistakes: <span id="final-mistakes">0</span></div>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn primary" onclick="closeModal()">Play Again</button>
+                <button class="btn secondary" onclick="shareScore()">Share</button>
+            </div>
         </div>
     </div>
     {% block scripts %}<script src="/static/scripts/games/suduko.js"></script>{% endblock %}

@@ -4,15 +4,43 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-bg: #f0f2f5;
+    --secondary-bg: #ffffff;
+    --accent-color: #eeeeee;
+    --accent-light: #aaaaaa;
+    --text-dark: #333;
+    --text-light: #f8f8f8;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --gradient-main: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-color) 100%);
+    --gradient-btn-secondary: linear-gradient(135deg, #6c757d, #495057);
+    --gradient-btn-success: linear-gradient(135deg, #4caf50, #45a049);
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--gradient-main);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    color: #333;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
 
 .container {
@@ -20,25 +48,28 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 900px;
     gap: 20px;
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
 }
 
 .app-header {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--secondary-bg);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-light);
     backdrop-filter: blur(10px);
     text-align: center;
+    animation: slideInTop 0.7s ease-out forwards;
+    opacity: 0;
+    transform: translateY(-20px);
 }
 
 .title {
     font-size: 2.8rem;
     font-weight: 700;
-    color: #333;
     margin-bottom: 10px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: var(--gradient-main);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -54,6 +85,8 @@ body {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    animation: fadeIn 1s ease-out 0.2s forwards;
+    opacity: 0;
 }
 
 .sidebar {
@@ -67,28 +100,29 @@ body {
 .image-preview {
     flex: 2;
     min-width: 500px;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--secondary-bg);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-light);
     backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.upload-container {
-    background: rgba(255, 255, 255, 0.95);
+.upload-container,
+.filters-container {
+    background: var(--secondary-bg);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-light);
     backdrop-filter: blur(10px);
     text-align: center;
     transition: all 0.3s ease;
 }
 
 .upload-area {
-    border: 3px dashed #ccc;
+    border: 3px dashed var(--border-color);
     border-radius: 15px;
     padding: 40px 20px;
     text-align: center;
@@ -100,8 +134,10 @@ body {
 }
 
 .upload-area:hover {
-    border-color: #667eea;
+    border-color: var(--accent-light);
     background-color: rgba(102, 126, 234, 0.05);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px var(--shadow-medium);
 }
 
 .upload-area.drag-over {
@@ -112,8 +148,9 @@ body {
 
 .upload-icon {
     font-size: 3rem;
-    color: #667eea;
+    color: var(--accent-light);
     margin-bottom: 15px;
+    animation: bounceIn 0.8s ease-out;
 }
 
 .upload-text {
@@ -138,18 +175,14 @@ body {
 }
 
 .filters-container {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
 }
 
 .filter-title {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--text-dark);
     text-align: center;
 }
 
@@ -170,31 +203,43 @@ body {
     border: 3px solid transparent;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .filter-option:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px var(--shadow-medium);
 }
 
 .filter-option.active {
-    border-color: #667eea;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-color: var(--accent-light);
+    background: var(--gradient-main);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.filter-option.active .filter-icon,
+.filter-option.active .filter-name {
     color: white;
 }
 
 .filter-icon {
     font-size: 2rem;
     margin-bottom: 10px;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
 }
 
 .filter-name {
     font-size: 0.9rem;
     font-weight: 600;
+    color: var(--text-dark);
+    transition: color 0.3s ease;
 }
 
 .filter-option::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -210,6 +255,8 @@ body {
 
 .filter-controls {
     margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
 }
 
 .control-group {
@@ -220,7 +267,7 @@ body {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-dark);
 }
 
 .slider-container {
@@ -233,8 +280,11 @@ body {
     flex: 1;
     height: 8px;
     border-radius: 4px;
-    background: #e0e0e0;
+    background: var(--border-color);
     outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background 0.3s ease;
 }
 
 .slider::-webkit-slider-thumb {
@@ -243,27 +293,29 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    cursor: pointer;
+    background: var(--gradient-main);
+    cursor: grab;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .slider::-webkit-slider-thumb:hover {
     transform: scale(1.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .slider-value {
     width: 40px;
     text-align: center;
     font-weight: 600;
-    color: #667eea;
+    color: var(--accent-color);
 }
 
 .preview-title {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--text-dark);
     text-align: center;
 }
 
@@ -271,12 +323,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-@media (min-width: 768px) {
-    .image-comparison {
-        flex-direction: row;
-    }
+    flex-grow: 1;
 }
 
 .comparison-container {
@@ -289,7 +336,7 @@ body {
 
 .comparison-label {
     font-weight: 600;
-    color: #333;
+    color: var(--text-dark);
 }
 
 .image-container {
@@ -298,18 +345,21 @@ body {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    background-color: #f8f9fa;
+    background-color: var(--primary-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--border-color);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.image-container img {
+.image-container img,
+.image-container canvas {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
     transition: all 0.5s ease;
+    display: block;
 }
 
 .image-placeholder {
@@ -324,6 +374,7 @@ body {
     gap: 15px;
     margin-top: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -331,7 +382,7 @@ body {
     font-size: 1rem;
     font-weight: 600;
     color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-main);
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -339,6 +390,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
@@ -350,12 +402,19 @@ body {
     transform: translateY(-1px);
 }
 
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 .btn-secondary {
-    background: linear-gradient(135deg, #6c757d, #495057);
+    background: var(--gradient-btn-secondary);
 }
 
 .btn-success {
-    background: linear-gradient(135deg, #4caf50, #45a049);
+    background: var(--gradient-btn-success);
 }
 
 .btn-icon {
@@ -370,6 +429,7 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -392,10 +452,10 @@ body {
     animation: spin 1s ease-in-out infinite;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+.loading-text {
+    color: white;
+    margin-top: 15px;
+    font-size: 1.2rem;
 }
 
 .notification {
@@ -403,7 +463,7 @@ body {
     bottom: 30px;
     right: 30px;
     padding: 15px 25px;
-    background: linear-gradient(135deg, #4caf50, #45a049);
+    background: var(--gradient-btn-success);
     color: white;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -429,16 +489,218 @@ body {
     font-weight: 600;
 }
 
-@media (max-width: 768px) {
+.hidden {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1024px) {
+    .title {
+        font-size: 2.4rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
     .main-content {
         flex-direction: column;
+    }
+
+    .sidebar,
+    .image-preview {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .image-preview {
+        padding: 20px;
+    }
+
+    .upload-container,
+    .filters-container {
+        padding: 20px;
+    }
+
+    .filter-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .image-container {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        gap: 15px;
+    }
+
+    .app-header {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .main-content {
+        gap: 15px;
+    }
+
+    .upload-container,
+    .filters-container,
+    .image-preview {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .upload-area {
+        padding: 30px 15px;
+    }
+
+    .upload-icon {
+        font-size: 2.5rem;
+    }
+
+    .upload-text {
+        font-size: 1.1rem;
+    }
+
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .filter-option {
+        padding: 12px 8px;
+    }
+
+    .filter-icon {
+        font-size: 1.8rem;
+    }
+
+    .filter-name {
+        font-size: 0.85rem;
     }
 
     .image-container {
         height: 200px;
     }
 
+    .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .notification {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .notification-icon {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .app-header {
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .upload-area {
+        padding: 25px 10px;
+    }
+
+    .upload-icon {
+        font-size: 2rem;
+    }
+
+    .upload-text {
+        font-size: 1rem;
+    }
+
     .filter-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+    }
+
+    .image-container {
+        height: 180px;
     }
 }

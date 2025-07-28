@@ -1,15 +1,17 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Typing Test{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/games/typingtest.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/games/typingtest.css">
+{% endblock %}
 {% block body %}
-    <div class="container">
-        <div class="header">
+    <div class="background-animation"></div>
+    <main class="container">
+        <header class="header">
             <h1 class="title">⚡ Speed Type</h1>
             <p class="subtitle">Test your typing speed and accuracy</p>
-        </div>
+        </header>
 
-        <div class="stats">
+        <section class="stats">
             <div class="stat-card">
                 <div class="stat-value" id="wpm">0</div>
                 <div class="stat-label">WPM</div>
@@ -26,28 +28,28 @@
                 <div class="stat-value" id="time">60</div>
                 <div class="stat-label">Time Left</div>
             </div>
-        </div>
+        </section>
 
         <div class="progress-bar">
             <div class="progress-fill" id="progress"></div>
         </div>
 
-        <div class="text-display" id="textDisplay"></div>
+        <section class="text-display" id="textDisplay" aria-live="polite"></section>
 
         <div class="input-area">
-            <input type="text" class="typing-input" id="typingInput" placeholder="Click here and start typing...">
+            <input type="text" class="typing-input" id="typingInput" placeholder="Click here and start typing..." aria-label="Typing input field">
         </div>
 
-        <div class="controls">
+        <section class="controls">
             <button class="btn btn-primary" id="startBtn">Start Test</button>
             <button class="btn btn-secondary" id="resetBtn">Reset</button>
             <button class="btn btn-secondary" id="newTextBtn">New Text</button>
-        </div>
+        </section>
 
-        <div class="leaderboard">
+        <section class="leaderboard">
             <h3 class="leaderboard-title">🏆 Your Best Scores</h3>
             <div id="leaderboardList"></div>
-        </div>
-    </div>
+        </section>
+    </main>
     {% block scripts %}<script src="/static/scripts/games/typingtest.js"></script>{% endblock %}
 {% endblock %}

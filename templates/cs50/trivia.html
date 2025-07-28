@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Trivia{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/trivia.css">
+    <link rel="stylesheet" href="/static/styles/cs50/trivia.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 {% endblock %}
 {% block body %}
@@ -30,5 +30,5 @@
             <p class="js-result2"></p>
         </div>
     </div>
-    {% block scripts %}<script src="/static/scripts/trivia.js"></script>{% endblock %}
+    {% block scripts %}<script src="/static/scripts/cs50/trivia.js"></script>{% endblock %}
 {% endblock %}

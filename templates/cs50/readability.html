@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Readability{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/readability.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/cs50/readability.css">{% endblock %}
 {% block body %}
     <div class="analyzer-container">
         <div class="header">
@@ -93,5 +93,5 @@
             </div>
         </div>
     </div>
-    {% block scripts %}<script src="/static/scripts/readability.js"></script>{% endblock %}
+    {% block scripts %}<script src="/static/scripts/cs50/readability.js"></script>{% endblock %}
 {% endblock %}

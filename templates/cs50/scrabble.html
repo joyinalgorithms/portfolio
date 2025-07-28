@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Scrabble{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/scrabble.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/cs50/scrabble.css">{% endblock %}
 {% block body %}
     <div class="game-container">
         <h1 class="game-title">🎯 SCRABBLE SCORER</h1>
@@ -46,5 +46,5 @@
         </div>
     </div>
 
-    {% block scripts %}<script src="/static/scripts/scrabble.js"></script>{% endblock %}
+    {% block scripts %}<script src="/static/scripts/cs50/scrabble.js"></script>{% endblock %}
 {% endblock %}

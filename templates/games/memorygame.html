@@ -2,47 +2,166 @@
 {% block title %}Memory Game{% endblock %}
 {% block stylesheet %}
     <link rel="stylesheet" href="/static/styles/games/memorygame.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 {% endblock %}
 {% block body %}
-    <main class="container">
+    <div class="background-animation">
+        <div class="floating-icons">
+            <span class="floating-icon">⚛️</span>
+            <span class="floating-icon">🐍</span>
+            <span class="floating-icon">☕</span>
+            <span class="floating-icon">🔥</span>
+            <span class="floating-icon">⚡</span>
+            <span class="floating-icon">🌐</span>
+            <span class="floating-icon">💾</span>
+            <span class="floating-icon">🖥️</span>
+            <span class="floating-icon">📱</span>
+            <span class="floating-icon">🔧</span>
+            <span class="floating-icon">🚀</span>
+            <span class="floating-icon">💻</span>
+        </div>
+        <div class="gradient-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+    </div>
+
+    <main class="container" role="main">
         <header class="header">
-            <h1>🚀 Tech Memory Match</h1>
-            <p>Match the tech icons to win!</p>
+            <h1>Tech Memory Match</h1>
+            <p class="subtitle">Match the tech icons to win!</p>
+            <div class="difficulty-selector">
+                <label for="difficulty">Difficulty:</label>
+                <select id="difficulty" onchange="changeDifficulty()">
+                    <option value="easy">Easy (3x4)</option>
+                    <option value="medium" selected>Medium (4x4)</option>
+                    <option value="hard">Hard (5x4)</option>
+                </select>
+            </div>
         </header>
 
         <section class="game-stats" aria-label="Game Statistics">
-            <div class="stat">
-                <div>Time: <span id="timer">00:00</span></div>
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-content">
+                    <div class="stat-label">Time</div>
+                    <div class="stat-value" id="timer">00:00</div>
+                </div>
             </div>
-            <div class="stat">
-                <div>Moves: <span id="moves">0</span></div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-content">
+                    <div class="stat-label">Moves</div>
+                    <div class="stat-value" id="moves">0</div>
+                </div>
             </div>
-            <div class="stat">
-                <div>Matches: <span id="matches">0</span></div>
+            <div class="stat-card">
+                <div class="stat-icon">✨</div>
+                <div class="stat-content">
+                    <div class="stat-label">Matches</div>
+                    <div class="stat-value" id="matches">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-content">
+                    <div class="stat-label">Score</div>
+                    <div class="stat-value" id="currentScore">0</div>
+                </div>
             </div>
         </section>
 
-        <section class="game-board" id="gameBoard" aria-label="Memory Game Board"></section>
+        <section class="game-container">
+            <div class="game-board" id="gameBoard" aria-label="Memory Game Board"></div>
+        </section>
 
         <section class="controls" aria-label="Game Controls">
-            <button class="btn primary" onclick="startNewGame()">New Game</button>
-            <button class="btn" onclick="resetStats()">Reset High Scores</button>
+            <button class="btn btn-primary" onclick="startNewGame()" aria-label="Start a new game">
+                <span class="btn-icon">🎮</span>
+                New Game
+            </button>
+            <button class="btn btn-secondary" onclick="pauseGame()" id="pauseBtn" aria-label="Pause or resume game">
+                <span class="btn-icon">⏸️</span>
+                Pause
+            </button>
+            <button class="btn btn-outline" onclick="resetStats()" aria-label="Reset high scores">
+                <span class="btn-icon">🗑️</span>
+                Reset Scores
+            </button>
         </section>
 
         <section class="high-scores" aria-label="High Scores">
             <h3>🏆 High Scores</h3>
-            <div id="highScoresList"></div>
+            <div class="scores-container">
+                <div class="scores-tabs">
+                    <button class="tab-btn active" onclick="showScores('easy')">Easy</button>
+                    <button class="tab-btn" onclick="showScores('medium')">Medium</button>
+                    <button class="tab-btn" onclick="showScores('hard')">Hard</button>
+                </div>
+                <div id="highScoresList" class="scores-list"></div>
+            </div>
         </section>
+    </main>
 
-        <div class="game-over" id="gameOverModal" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
-            <div class="game-over-content">
+    <div class="modal-overlay" id="gameOverModal" role="dialog" aria-modal="true" aria-labelledby="gameOverTitle">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h2 id="gameOverTitle">🎉 Congratulations!</h2>
-                <p>Time: <span id="finalTime"></span></p>
-                <p>Moves: <span id="finalMoves"></span></p>
-                <p>Score: <span id="finalScore"></span></p>
-                <button class="btn primary" onclick="closeGameOver()">Play Again</button>
+                <div class="celebration-animation">
+                    <span class="confetti">🎊</span>
+                    <span class="confetti">🎉</span>
+                    <span class="confetti">✨</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="final-stats">
+                    <div class="final-stat">
+                        <span class="final-stat-label">Time:</span>
+                        <span class="final-stat-value" id="finalTime">00:00</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="final-stat-label">Moves:</span>
+                        <span class="final-stat-value" id="finalMoves">0</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="final-stat-label">Score:</span>
+                        <span class="final-stat-value highlight" id="finalScore">0</span>
+                    </div>
+                </div>
+                <div class="achievement" id="achievement"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeGameOver()">
+                    <span class="btn-icon">🎮</span>
+                    Play Again
+                </button>
+                <button class="btn btn-outline" onclick="shareScore()">
+                    <span class="btn-icon">📤</span>
+                    Share Score
+                </button>
             </div>
         </div>
-    </main>
+    </div>
+    <div class="modal-overlay" id="pauseModal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>⏸️ Game Paused</h2>
+            </div>
+            <div class="modal-body">
+                <p>Take a break! Your progress is saved.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="resumeGame()">
+                    <span class="btn-icon">▶️</span>
+                    Resume
+                </button>
+                <button class="btn btn-outline" onclick="startNewGame()">
+                    <span class="btn-icon">🎮</span>
+                    New Game
+                </button>
+            </div>
+        </div>
+    </div>
     {% block scripts %}<script src="/static/scripts/games/memorygame.js"></script>{% endblock %}
 {% endblock %}

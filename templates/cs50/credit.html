@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Credit{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/credit.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/cs50/credit.css">{% endblock %}
 {% block body %}
     <div class="container">
         <div class="card-validator">
@@ -42,5 +42,5 @@
             <div class="result" id="result"></div>
         </div>
     </div>
-    {% block scripts %}<script src="/static/scripts/credit.js"></script>{% endblock %}
+    {% block scripts %}<script src="/static/scripts/cs50/credit.js"></script>{% endblock %}
 {% endblock %}

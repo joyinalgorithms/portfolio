@@ -1,287 +1,295 @@
 :root {
-  --primary-color: #3498db; /* Blue */
-  --secondary-color: #2ecc71; /* Green */
-  --accent-color: #e74c3c; /* Red */
-  --text-color: #ecf0f1; /* Light gray */
-  --bg-color: #2c3e50; /* Dark blue */
-  --dark-bg-color: #1a252f; /* Even darker blue */
-  --border-color: #34495e; /* Slightly lighter dark blue */
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --text-color: #ecf0f1;
+    --bg-color: #2c3e50;
+    --dark-bg-color: #1a252f;
+    --border-color: #34495e;
 }
 
 body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  overflow: hidden; /* Hide overflow from background animation */
-  position: relative;
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
-/* Background Animation */
 .background-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
 }
 
 .background-animation::before,
 .background-animation::after {
-  content: "";
-  position: absolute;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 50%;
-  animation: moveShapes 15s infinite ease-in-out alternate;
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: moveShapes 15s infinite ease-in-out alternate;
 }
 
 .background-animation::before {
-  width: 150px;
-  height: 150px;
-  top: 10%;
-  left: 5%;
-  animation-delay: 0s;
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
 }
 
 .background-animation::after {
-  width: 200px;
-  height: 200px;
-  bottom: 15%;
-  right: 10%;
-  animation-delay: 7.5s;
+    width: 200px;
+    height: 200px;
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 7.5s;
 }
 
 @keyframes moveShapes {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.5;
-  }
-  25% {
-    transform: translate(50px, -50px) scale(1.1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translate(100px, 0) scale(1.2);
-    opacity: 0.7;
-  }
-  75% {
-    transform: translate(50px, 50px) scale(1.1);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.5;
-  }
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
+
+    25% {
+        transform: translate(50px, -50px) scale(1.1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(100px, 0) scale(1.2);
+        opacity: 0.7;
+    }
+
+    75% {
+        transform: translate(50px, 50px) scale(1.1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;
+    }
 }
 
 .container {
-  background-color: var(--dark-bg-color);
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  max-width: 500px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  position: relative; /* Ensure it's above the background */
-  z-index: 1;
+    background-color: var(--dark-bg-color);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  font-size: 2.5em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .choices-section {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap; /* Allow choices to wrap on smaller screens */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .choice-btn {
-  background-color: var(--border-color);
-  border: 3px solid var(--primary-color);
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
-  padding: 0; /* Remove default button padding */
-  overflow: hidden; /* Ensure image stays within bounds */
+    background-color: var(--border-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    padding: 0;
+    overflow: hidden;
 }
 
 .choice-btn:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-  border-color: var(--secondary-color);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: var(--secondary-color);
 }
 
 .choice-btn:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .choice-image {
-  width: 80%;
-  height: 80%;
-  object-fit: contain; /* Ensure image scales properly */
-  border-radius: 50%; /* Keep image circular */
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 .results-section {
-  margin-top: 20px;
-  min-height: 120px; /* Prevent layout shift */
+    margin-top: 20px;
+    min-height: 120px;
 }
 
 .result {
-  font-size: 2.2em;
-  font-weight: bold;
-  color: var(--accent-color);
-  margin-bottom: 10px;
-  animation: fadeIn 0.5s ease-out;
+    font-size: 2.2em;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    animation: fadeIn 0.5s ease-out;
 }
 
 .result.win {
-  color: var(--secondary-color);
+    color: var(--secondary-color);
 }
+
 .result.lose {
-  color: var(--accent-color);
+    color: var(--accent-color);
 }
+
 .result.tie {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .moves {
-  font-size: 1.2em;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  min-height: 60px; /* Prevent layout shift */
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    min-height: 60px;
 }
 
 .move-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--primary-color);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .score {
-  font-size: 1.1em;
-  color: var(--text-color);
+    font-size: 1.1em;
+    color: var(--text-color);
 }
 
 .controls-section {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .action-btn {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .action-btn:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-2px);
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 .action-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
-  h1 {
-    font-size: 2em;
-  }
+    h1 {
+        font-size: 2em;
+    }
 
-  .container {
-    padding: 30px 20px;
-    gap: 20px;
-  }
+    .container {
+        padding: 30px 20px;
+        gap: 20px;
+    }
 
-  .choice-btn {
-    width: 80px;
-    height: 80px;
-  }
+    .choice-btn {
+        width: 80px;
+        height: 80px;
+    }
 
-  .choice-image {
-    width: 70%;
-    height: 70%;
-  }
+    .choice-image {
+        width: 70%;
+        height: 70%;
+    }
 
-  .result {
-    font-size: 1.8em;
-  }
+    .result {
+        font-size: 1.8em;
+    }
 
-  .moves {
-    font-size: 1em;
-    flex-direction: column; /* Stack moves vertically on small screens */
-  }
+    .moves {
+        font-size: 1em;
+        flex-direction: column;
+    }
 
-  .move-icon {
-    width: 40px;
-    height: 40px;
-  }
+    .move-icon {
+        width: 40px;
+        height: 40px;
+    }
 
-  .action-btn {
-    padding: 10px 20px;
-    font-size: 0.9em;
-  }
+    .action-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
 }
 
 @media (max-width: 400px) {
-  .choices-section {
-    gap: 10px;
-  }
-  .choice-btn {
-    width: 70px;
-    height: 70px;
-  }
-  .action-btn {
-    width: 100%; /* Full width buttons */
-  }
-  .controls-section {
-    flex-direction: column;
-  }
+    .choices-section {
+        gap: 10px;
+    }
+
+    .choice-btn {
+        width: 70px;
+        height: 70px;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+
+    .controls-section {
+        flex-direction: column;
+    }
 }

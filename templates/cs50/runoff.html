@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Runoff{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/runoff.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/cs50/runoff.css">{% endblock %}
 {% block body %}
     <div class="container">
         <div class="voting-card">
@@ -118,5 +118,5 @@
             </div>
         </div>
     </div>
-    {% block scripts %}<script src="/static/scripts/runoff.js"></script>{% endblock %}
+    {% block scripts %}<script src="/static/scripts/cs50/runoff.js"></script>{% endblock %}
 {% endblock %}

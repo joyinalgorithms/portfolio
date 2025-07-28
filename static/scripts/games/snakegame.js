@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const gridSize = 20
     const initialSpeed = 200
     const speedIncrease = 5
+
     let snake = []
     let food = {}
     let direction = "right"
@@ -20,10 +21,22 @@ document.addEventListener("DOMContentLoaded", () => {
     let highScore = localStorage.getItem("snakeHighScore") || 0
     let gameSpeed = initialSpeed
     let gameActive = false
+
     let touchStartX = 0
     let touchStartY = 0
 
     highScoreElement.textContent = highScore
+
+    function createGameElement(tag, className) {
+        const element = document.createElement(tag)
+        element.className = className
+        return element
+    }
+
+    function setPosition(element, position) {
+        element.style.gridColumn = position.x
+        element.style.gridRow = position.y
+    }
 
     function initGame() {
         snake = [{
@@ -44,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
         direction = "right"
         nextDirection = "right"
         scoreElement.textContent = "0"
-
         gameBoard.innerHTML = ""
 
         snake.forEach((segment, index) => {
@@ -54,20 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
 
         createFood()
-
         gameActive = true
         gameInterval = setInterval(moveSnake, gameSpeed)
-    }
-
-    function createGameElement(tag, className) {
-        const element = document.createElement(tag)
-        element.className = className
-        return element
-    }
-
-    function setPosition(element, position) {
-        element.style.gridColumn = position.x
-        element.style.gridRow = position.y
     }
 
     function createFood() {
@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
         } while (snake.some((segment) => segment.x === foodPosition.x && segment.y === foodPosition.y))
 
         food = foodPosition
-
-        const foodElement = createGameElement("div", "food food-appear")
+        const foodElement = createGameElement("div", "food")
         setPosition(foodElement, foodPosition)
         gameBoard.appendChild(foodElement)
     }
+
 
     function moveSnake() {
         if (!gameActive) return
@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const head = {
             ...snake[0]
         }
+
         switch (direction) {
             case "up":
                 head.y--
@@ -128,11 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (foodElement) {
                 foodElement.remove()
             }
-
             score += 10
             scoreElement.textContent = score
-
             createFood()
+
 
             gameSpeed = Math.max(50, gameSpeed - speedIncrease)
             clearInterval(gameInterval)
@@ -145,14 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateSnakeDisplay() {
-        const snakeElements = document.querySelectorAll(".snake, .snake-head")
-        snakeElements.forEach((element) => element.remove())
+        const existingSnakeElements = document.querySelectorAll(".snake, .snake-head")
+        existingSnakeElements.forEach((element) => element.remove())
 
         snake.forEach((segment, index) => {
             const snakeElement = createGameElement("div", index === 0 ? "snake-head" : "snake")
-            if (index === snake.length - 1) {
-                snakeElement.classList.add("snake-grow")
-            }
             setPosition(snakeElement, segment)
             gameBoard.appendChild(snakeElement)
         })
@@ -170,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         finalScoreElement.textContent = score
         gameOverScreen.classList.remove("hidden")
+        gameOverScreen.classList.add("visible")
     }
 
     document.addEventListener("keydown", (e) => {
@@ -201,23 +199,23 @@ document.addEventListener("DOMContentLoaded", () => {
     )
 
     gameBoard.addEventListener(
-        "touchend",
-        (e) => {
-            if (!gameActive) return
+            "touchend",
+            (e) => {
+                if (!gameActive) return
 
-            const touchEndX = e.changedTouches[0].screenX
-            const touchEndY = e.changedTouches[0].screenY
+                const touchEndX = e.changedTouches[0].screenX
+                const touchEndY = e.changedTouches[0].screenY
 
-            const deltaX = touchEndX - touchStartX
-            const deltaY = touchEndY - touchStartY
+                const deltaX = touchEndX - touchStartX
+                const deltaY = touchEndY - touchStartY
 
-            if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                if (deltaX > 0 && direction !== "left") {
-                    nextDirection = "right"
-                } else if (deltaX < 0 && direction !== "right") {
-                    nextDirection = "left"
-                }
-            } else {
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    if (deltaX > 0 && direction !== "left") {
+                        nextDirection = "right"
+                    } else if (deltaX < 0 && direction !== "right") {
+                        nextDirection = "left"
+                    }
+                } else
                 if (deltaY > 0 && direction !== "up") {
                     nextDirection = "down"
                 } else if (deltaY < 0 && direction !== "down") {
@@ -226,26 +224,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         },
         false,
-    )
+)
 
-    gameBoard.addEventListener(
-        "touchmove",
-        (e) => {
-            if (gameActive) {
-                e.preventDefault()
-            }
-        }, {
-            passive: false
-        },
-    )
+gameBoard.addEventListener(
+    "touchmove",
+    (e) => {
+        if (gameActive) {
+            e.preventDefault()
+        }
+    }, {
+        passive: false
+    },
+)
 
-    startBtn.addEventListener("click", () => {
-        startScreen.classList.add("hidden")
-        initGame()
-    })
+startBtn.addEventListener("click", () => {
+    startScreen.classList.add("hidden")
+    startScreen.classList.remove("visible")
+    initGame()
+})
 
-    restartBtn.addEventListener("click", () => {
-        gameOverScreen.classList.add("hidden")
-        initGame()
-    })
+restartBtn.addEventListener("click", () => {
+    gameOverScreen.classList.add("hidden")
+    gameOverScreen.classList.remove("visible")
+    initGame()
+})
 })

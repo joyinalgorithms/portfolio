@@ -1,464 +1,452 @@
+const DIFFICULTY = {
+    easy: {
+        name: "Easy",
+        remove: 40,
+        multiplier: 1
+    },
+    medium: {
+        name: "Medium",
+        remove: 50,
+        multiplier: 1.5
+    },
+    hard: {
+        name: "Hard",
+        remove: 60,
+        multiplier: 2
+    },
+}
+
 class SudokuGame {
     constructor() {
-        this.grid = Array(9).fill().map(() => Array(9).fill(0));
-        this.solution = Array(9).fill().map(() => Array(9).fill(0));
-        this.selectedCell = null;
-        this.timer = 0;
-        this.timerInterval = null;
-        this.score = 0;
-        this.mistakes = 0;
-        this.maxMistakes = 3;
-        this.difficulty = 'easy';
-        this.gameStarted = false;
-        this.gameCompleted = false;
+        this.grid = Array(9)
+            .fill()
+            .map(() => Array(9).fill(0))
+        this.solution = Array(9)
+            .fill()
+            .map(() => Array(9).fill(0))
+        this.selectedCell = null
+        this.timer = 0
+        this.score = 0
+        this.mistakes = 0
+        this.difficulty = "easy"
+        this.gameStarted = false
+        this.gameCompleted = false
+        this.hintsUsed = 0
 
-        this.initializeElements();
-        this.attachEventListeners();
-        this.loadHighScores();
-        this.generateNewPuzzle();
+        this.init()
     }
 
-    initializeElements() {
-        this.gridElement = document.getElementById('sudoku-grid');
-        this.timerElement = document.getElementById('timer');
-        this.scoreElement = document.getElementById('score');
-        this.mistakesElement = document.getElementById('mistakes');
-        this.highScoresElement = document.getElementById('high-scores-list');
-
-        this.createGrid();
+    init() {
+        this.createGrid()
+        this.attachEvents()
+        this.loadScores()
+        this.newGame()
     }
 
     createGrid() {
-        this.gridElement.innerHTML = '';
+        const grid = document.getElementById("grid")
+        grid.innerHTML = ""
+
         for (let i = 0; i < 81; i++) {
-            const cell = document.createElement('input');
-            cell.type = 'text';
-            cell.className = 'cell';
-            cell.maxLength = 1;
-            cell.dataset.index = i;
-            this.gridElement.appendChild(cell);
+            const cell = document.createElement("input")
+            cell.type = "text"
+            cell.className = "cell"
+            cell.maxLength = 1
+            cell.dataset.index = i
+            grid.appendChild(cell)
         }
     }
 
-    attachEventListeners() {
-        // Grid cell clicks
-        this.gridElement.addEventListener('click', (e) => {
-            if (e.target.classList.contains('cell')) {
-                this.selectCell(e.target);
+    attachEvents() {
+        document.getElementById("grid").addEventListener("click", (e) => {
+            if (e.target.classList.contains("cell")) {
+                this.selectCell(e.target)
             }
-        });
+        })
 
-        // Number pad
-        document.querySelectorAll('.number-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const number = e.target.dataset.number;
-                this.inputNumber(number);
-            });
-        });
+        document.querySelectorAll(".num-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                this.inputNumber(e.target.dataset.num)
+            })
+        })
 
-        // Action buttons
-        document.getElementById('clear-btn').addEventListener('click', () => this.clearCell());
-        document.getElementById('new-game-btn').addEventListener('click', () => this.newGame());
-        document.getElementById('hint-btn').addEventListener('click', () => this.giveHint());
-        document.getElementById('check-btn').addEventListener('click', () => this.checkSolution());
-        document.getElementById('solve-btn').addEventListener('click', () => this.solvePuzzle());
+        document.getElementById("clear").addEventListener("click", () => this.clearCell())
+        document.getElementById("new-game").addEventListener("click", () => this.newGame())
+        document.getElementById("hint").addEventListener("click", () => this.giveHint())
+        document.getElementById("check").addEventListener("click", () => this.checkSolution())
+        document.getElementById("solve").addEventListener("click", () => this.solvePuzzle())
 
-        // Difficulty selector
-        document.querySelectorAll('.difficulty-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                this.difficulty = e.target.dataset.difficulty;
-                this.newGame();
-            });
-        });
+        document.querySelectorAll(".diff-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                this.changeDifficulty(e.target.dataset.level)
+            })
+        })
 
-        // Keyboard input
-        document.addEventListener('keydown', (e) => {
-            if (e.key >= '1' && e.key <= '9') {
-                this.inputNumber(e.key);
-            } else if (e.key === 'Backspace' || e.key === 'Delete') {
-                this.clearCell();
+        document.addEventListener("keydown", (e) => {
+            if (e.key >= "1" && e.key <= "9") {
+                this.inputNumber(e.key)
+            } else if (e.key === "Backspace" || e.key === "Delete") {
+                this.clearCell()
             }
-        });
+        })
     }
 
-    generateNewPuzzle() {
-        // Generate a complete valid Sudoku solution
-        this.solution = this.generateCompleteSudoku();
+    generatePuzzle() {
+        this.solution = this.generateComplete()
+        this.grid = this.solution.map((row) => [...row])
 
-        // Create puzzle by removing numbers based on difficulty
-        this.grid = this.solution.map(row => [...row]);
-        const cellsToRemove = this.getCellsToRemove();
+        const toRemove = DIFFICULTY[this.difficulty].remove
+        const positions = []
 
-        const positions = [];
         for (let i = 0; i < 9; i++) {
             for (let j = 0; j < 9; j++) {
-                positions.push([i, j]);
+                positions.push([i, j])
             }
         }
 
-        // Shuffle positions
-        for (let i = positions.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [positions[i], positions[j]] = [positions[j], positions[i]];
+        positions.sort(() => Math.random() - 0.5)
+        for (let i = 0; i < toRemove; i++) {
+            const [row, col] = positions[i]
+            this.grid[row][col] = 0
         }
 
-        // Remove numbers
-        for (let i = 0; i < cellsToRemove && i < positions.length; i++) {
-            const [row, col] = positions[i];
-            this.grid[row][col] = 0;
-        }
-
-        this.updateDisplay();
+        this.updateDisplay()
     }
 
-    generateCompleteSudoku() {
-        const grid = Array(9).fill().map(() => Array(9).fill(0));
-        this.solveSudoku(grid);
-        return grid;
+    generateComplete() {
+        const grid = Array(9)
+            .fill()
+            .map(() => Array(9).fill(0))
+        this.solve(grid)
+        return grid
     }
 
-    solveSudoku(grid) {
+    solve(grid) {
         for (let row = 0; row < 9; row++) {
             for (let col = 0; col < 9; col++) {
                 if (grid[row][col] === 0) {
-                    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-                    // Shuffle numbers for randomness
-                    for (let i = numbers.length - 1; i > 0; i--) {
-                        const j = Math.floor(Math.random() * (i + 1));
-                        [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
-                    }
+                    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9].sort(() => Math.random() - 0.5)
 
                     for (const num of numbers) {
-                        if (this.isValidMove(grid, row, col, num)) {
-                            grid[row][col] = num;
-                            if (this.solveSudoku(grid)) {
-                                return true;
-                            }
-                            grid[row][col] = 0;
+                        if (this.isValid(grid, row, col, num)) {
+                            grid[row][col] = num
+                            if (this.solve(grid)) return true
+                            grid[row][col] = 0
                         }
                     }
-                    return false;
+                    return false
                 }
             }
         }
-        return true;
+        return true
     }
 
-    getCellsToRemove() {
-        switch (this.difficulty) {
-            case 'easy':
-                return 40;
-            case 'medium':
-                return 50;
-            case 'hard':
-                return 60;
-            default:
-                return 40;
+    isValid(grid, row, col, num) {
+        for (let x = 0; x < 9; x++) {
+            if (grid[row][x] === num) return false
         }
+
+        for (let x = 0; x < 9; x++) {
+            if (grid[x][col] === num) return false
+        }
+
+        const startRow = row - (row % 3)
+        const startCol = col - (col % 3)
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (grid[i + startRow][j + startCol] === num) return false
+            }
+        }
+
+        return true
     }
 
     updateDisplay() {
-        const cells = document.querySelectorAll('.cell');
+        const cells = document.querySelectorAll(".cell")
         cells.forEach((cell, index) => {
-            const row = Math.floor(index / 9);
-            const col = index % 9;
-            const value = this.grid[row][col];
+            const row = Math.floor(index / 9)
+            const col = index % 9
+            const value = this.grid[row][col]
 
-            cell.value = value === 0 ? '' : value;
-            cell.classList.remove('given', 'error', 'correct');
+            cell.value = value === 0 ? "" : value
+            cell.classList.remove("given", "error", "correct", "hint")
 
             if (value !== 0) {
-                cell.classList.add('given');
-                cell.readOnly = true;
+                cell.classList.add("given")
+                cell.readOnly = true
             } else {
-                cell.readOnly = false;
+                cell.readOnly = false
             }
-        });
+        })
     }
 
     selectCell(cell) {
-        if (cell.readOnly) return;
+        if (cell.readOnly || this.gameCompleted) return
 
-        document.querySelectorAll('.cell').forEach(c => c.classList.remove('selected'));
-        cell.classList.add('selected');
-        this.selectedCell = cell;
-        cell.focus();
+        document.querySelectorAll(".cell").forEach((c) => c.classList.remove("selected"))
+        cell.classList.add("selected")
+        this.selectedCell = cell
+        cell.focus()
     }
 
     inputNumber(number) {
-        if (!this.selectedCell || this.selectedCell.readOnly || this.gameCompleted) return;
+        if (!this.selectedCell || this.selectedCell.readOnly || this.gameCompleted) return
 
-        if (!this.gameStarted) {
-            this.startGame();
-        }
+        if (!this.gameStarted) this.startGame()
 
-        const index = parseInt(this.selectedCell.dataset.index);
-        const row = Math.floor(index / 9);
-        const col = index % 9;
+        const index = Number.parseInt(this.selectedCell.dataset.index)
+        const row = Math.floor(index / 9)
+        const col = index % 9
 
-        this.selectedCell.value = number;
+        this.selectedCell.value = number
 
-        // Check if the move is valid
-        if (parseInt(number) === this.solution[row][col]) {
-            this.selectedCell.classList.remove('error');
-            this.selectedCell.classList.add('correct');
-            this.score += 10;
-            this.updateScore();
+        if (Number.parseInt(number) === this.solution[row][col]) {
+            this.selectedCell.classList.remove("error")
+            this.selectedCell.classList.add("correct")
+            this.score += 10 * DIFFICULTY[this.difficulty].multiplier
+            this.updateScore()
 
-            // Check if puzzle is completed
             setTimeout(() => {
-                if (this.isPuzzleComplete()) {
-                    this.completePuzzle();
-                }
-            }, 100);
+                if (this.isComplete()) this.completeGame()
+            }, 100)
         } else {
-            this.selectedCell.classList.remove('correct');
-            this.selectedCell.classList.add('error');
-            this.mistakes++;
-            this.updateMistakes();
+            this.selectedCell.classList.remove("correct")
+            this.selectedCell.classList.add("error")
+            this.mistakes++
+            this.updateMistakes()
 
-            if (this.mistakes >= this.maxMistakes) {
-                this.gameOver();
-            }
+            if (this.mistakes >= 3) this.gameOver()
         }
     }
 
     clearCell() {
-        if (!this.selectedCell || this.selectedCell.readOnly) return;
-
-        this.selectedCell.value = '';
-        this.selectedCell.classList.remove('error', 'correct');
-    }
-
-    isValidMove(grid, row, col, num) {
-        // Check row
-        for (let x = 0; x < 9; x++) {
-            if (grid[row][x] === num) return false;
-        }
-
-        // Check column
-        for (let x = 0; x < 9; x++) {
-            if (grid[x][col] === num) return false;
-        }
-
-        // Check 3x3 box
-        const startRow = row - row % 3;
-        const startCol = col - col % 3;
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                if (grid[i + startRow][j + startCol] === num) return false;
-            }
-        }
-
-        return true;
+        if (!this.selectedCell || this.selectedCell.readOnly) return
+        this.selectedCell.value = ""
+        this.selectedCell.classList.remove("error", "correct", "hint")
     }
 
     startGame() {
-        this.gameStarted = true;
+        this.gameStarted = true
         this.timerInterval = setInterval(() => {
-            this.timer++;
-            this.updateTimer();
-        }, 1000);
+            this.timer++
+            this.updateTimer()
+        }, 1000)
     }
 
     updateTimer() {
-        const minutes = Math.floor(this.timer / 60);
-        const seconds = this.timer % 60;
-        this.timerElement.textContent =
-            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        const minutes = Math.floor(this.timer / 60)
+        const seconds = this.timer % 60
+        document.getElementById("timer").textContent =
+            `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
     }
 
     updateScore() {
-        this.scoreElement.textContent = this.score;
+        document.getElementById("score").textContent = this.score
     }
 
     updateMistakes() {
-        this.mistakesElement.textContent = `${this.mistakes}/${this.maxMistakes}`;
+        document.getElementById("mistakes").textContent = `${this.mistakes}/3`
     }
 
-    isPuzzleComplete() {
-        const cells = document.querySelectorAll('.cell');
-        return Array.from(cells).every(cell => cell.value !== '');
+    isComplete() {
+        return Array.from(document.querySelectorAll(".cell")).every((cell) => cell.value !== "")
     }
 
-    completePuzzle() {
-        this.gameCompleted = true;
-        clearInterval(this.timerInterval);
+    completeGame() {
+        this.gameCompleted = true
+        clearInterval(this.timerInterval)
 
-        // Calculate final score
-        const timeBonus = Math.max(0, 1000 - this.timer);
-        const mistakesPenalty = this.mistakes * 50;
-        const finalScore = this.score + timeBonus - mistakesPenalty;
-
-        this.saveHighScore(finalScore);
-        this.showCelebration(finalScore);
+        const finalScore = this.score + Math.max(0, 1000 - this.timer) - this.mistakes * 50 - this.hintsUsed * 20
+        this.saveScore(finalScore)
+        this.showModal(finalScore)
     }
 
     gameOver() {
-        this.gameCompleted = true;
-        clearInterval(this.timerInterval);
-        alert('Game Over! Too many mistakes. Try again!');
+        this.gameCompleted = true
+        clearInterval(this.timerInterval)
+        alert("Game Over! Too many mistakes.")
     }
 
-    showCelebration(finalScore) {
-        const overlay = document.createElement('div');
-        overlay.className = 'overlay';
+    showModal(finalScore) {
+        document.getElementById("final-time").textContent = document.getElementById("timer").textContent
+        document.getElementById("final-score").textContent = finalScore
+        document.getElementById("final-mistakes").textContent = this.mistakes
+        document.getElementById("modal").classList.add("show")
+    }
 
-        const celebration = document.createElement('div');
-        celebration.className = 'celebration';
-        celebration.innerHTML = `
-            <h2>🎉 Congratulations! 🎉</h2>
-            <p>You completed the puzzle!</p>
-            <p><strong>Final Score: ${finalScore}</strong></p>
-            <p>Time: ${this.timerElement.textContent}</p>
-            <p>Mistakes: ${this.mistakes}</p>
-            <button class="action-btn" onclick="this.parentElement.parentElement.remove(); this.parentElement.remove();">Close</button>
-        `;
-
-        document.body.appendChild(overlay);
-        document.body.appendChild(celebration);
-
-        // Auto close after 5 seconds
-        setTimeout(() => {
-            if (overlay.parentElement) overlay.remove();
-            if (celebration.parentElement) celebration.remove();
-        }, 5000);
+    changeDifficulty(level) {
+        document.querySelectorAll(".diff-btn").forEach((btn) => btn.classList.remove("active"))
+        document.querySelector(`[data-level="${level}"]`).classList.add("active")
+        this.difficulty = level
+        this.newGame()
     }
 
     newGame() {
-        this.resetGame();
-        this.generateNewPuzzle();
+        this.resetGame()
+        this.generatePuzzle()
     }
 
     resetGame() {
-        this.gameStarted = false;
-        this.gameCompleted = false;
-        this.timer = 0;
-        this.score = 0;
-        this.mistakes = 0;
-        this.selectedCell = null;
-
-        clearInterval(this.timerInterval);
-        this.updateTimer();
-        this.updateScore();
-        this.updateMistakes();
+        this.gameStarted = false
+        this.gameCompleted = false
+        this.timer = 0
+        this.score = 0
+        this.mistakes = 0
+        this.hintsUsed = 0
+        this.selectedCell = null
+        clearInterval(this.timerInterval)
+        this.updateTimer()
+        this.updateScore()
+        this.updateMistakes()
+        document.getElementById("modal").classList.remove("show")
     }
 
     giveHint() {
-        if (this.gameCompleted) return;
+        if (this.gameCompleted) return
 
-        const emptyCells = [];
-        const cells = document.querySelectorAll('.cell');
+        const emptyCells = Array.from(document.querySelectorAll(".cell"))
+            .map((cell, index) => ({
+                cell,
+                index
+            }))
+            .filter(({
+                cell
+            }) => cell.value === "" && !cell.readOnly)
 
-        cells.forEach((cell, index) => {
-            if (cell.value === '' && !cell.readOnly) {
-                emptyCells.push({
-                    cell,
-                    index
-                });
-            }
-        });
+        if (emptyCells.length === 0) return
 
-        if (emptyCells.length === 0) return;
+        const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
+        const row = Math.floor(randomCell.index / 9)
+        const col = randomCell.index % 9
 
-        const randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-        const row = Math.floor(randomCell.index / 9);
-        const col = randomCell.index % 9;
+        randomCell.cell.value = this.solution[row][col]
+        randomCell.cell.classList.add("hint")
+        randomCell.cell.readOnly = true
 
-        randomCell.cell.value = this.solution[row][col];
-        randomCell.cell.classList.add('correct');
-        randomCell.cell.readOnly = true;
+        this.hintsUsed++
+        this.score = Math.max(0, this.score - 20)
+        this.updateScore()
 
-        this.score = Math.max(0, this.score - 20); // Penalty for hint
-        this.updateScore();
+        setTimeout(() => {
+            if (this.isComplete()) this.completeGame()
+        }, 100)
     }
 
     checkSolution() {
-        const cells = document.querySelectorAll('.cell');
-        let correct = 0;
-        let total = 0;
+        if (this.gameCompleted) return
+
+        const cells = document.querySelectorAll(".cell")
+        let correct = 0
+        let total = 0
 
         cells.forEach((cell, index) => {
-            if (!cell.readOnly && cell.value !== '') {
-                total++;
-                const row = Math.floor(index / 9);
-                const col = index % 9;
-
-                if (parseInt(cell.value) === this.solution[row][col]) {
-                    correct++;
-                }
+            if (!cell.readOnly && cell.value !== "") {
+                total++
+                const row = Math.floor(index / 9)
+                const col = index % 9
+                if (Number.parseInt(cell.value) === this.solution[row][col]) correct++
             }
-        });
+        })
 
-        const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
-        alert(`Current accuracy: ${percentage}% (${correct}/${total} correct)`);
+        const percentage = total > 0 ? Math.round((correct / total) * 100) : 0
+        alert(`Accuracy: ${percentage}% (${correct}/${total} correct)`)
     }
 
     solvePuzzle() {
-        if (confirm('Are you sure you want to solve the puzzle? This will end the current game.')) {
-            const cells = document.querySelectorAll('.cell');
-            cells.forEach((cell, index) => {
-                const row = Math.floor(index / 9);
-                const col = index % 9;
-                cell.value = this.solution[row][col];
-                cell.classList.add('correct');
-            });
+        if (confirm("Solve the puzzle? This will end the game.")) {
+            document.querySelectorAll(".cell").forEach((cell, index) => {
+                const row = Math.floor(index / 9)
+                const col = index % 9
+                cell.value = this.solution[row][col]
+                cell.classList.add("correct")
+                cell.readOnly = true
+            })
 
-            this.gameCompleted = true;
-            clearInterval(this.timerInterval);
+            this.gameCompleted = true
+            clearInterval(this.timerInterval)
         }
     }
 
-    saveHighScore(score) {
-        const highScores = this.getHighScores();
-        const newScore = {
-            score: score,
-            time: this.timerElement.textContent,
-            difficulty: this.difficulty,
-            date: new Date().toLocaleDateString()
-        };
+    saveScore(score) {
+        const scores = this.getScores(this.difficulty)
+        scores.push({
+            score,
+            time: document.getElementById("timer").textContent,
+            mistakes: this.mistakes,
+            date: new Date().toLocaleDateString(),
+        })
 
-        highScores.push(newScore);
-        highScores.sort((a, b) => b.score - a.score);
-        highScores.splice(5); // Keep only top 5
+        scores.sort((a, b) => b.score - a.score)
+        scores.splice(5)
 
-        localStorage.setItem('sudokuHighScores', JSON.stringify(highScores));
-        this.displayHighScores();
+        localStorage.setItem(`sudoku_${this.difficulty}`, JSON.stringify(scores))
+        this.displayScores()
     }
 
-    getHighScores() {
-        const scores = localStorage.getItem('sudokuHighScores');
-        return scores ? JSON.parse(scores) : [];
+    getScores(difficulty) {
+        const scores = localStorage.getItem(`sudoku_${difficulty}`)
+        return scores ? JSON.parse(scores) : []
     }
 
-    loadHighScores() {
-        this.displayHighScores();
+    loadScores() {
+        this.displayScores()
     }
 
-    displayHighScores() {
-        const highScores = this.getHighScores();
-        this.highScoresElement.innerHTML = '';
-
-        if (highScores.length === 0) {
-            this.highScoresElement.innerHTML = '<p>No high scores yet!</p>';
-            return;
-        }
-
-        highScores.forEach((score, index) => {
-            const scoreItem = document.createElement('div');
-            scoreItem.className = 'score-item';
-            scoreItem.innerHTML = `
-                <span>#${index + 1} - ${score.difficulty}</span>
-                <span>${score.score} pts (${score.time})</span>
-            `;
-            this.highScoresElement.appendChild(scoreItem);
-        });
+    displayScores() {
+        showScores(this.difficulty)
     }
 }
 
-// Initialize the game when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    new SudokuGame();
-});
+function closeModal() {
+    document.getElementById("modal").classList.remove("show")
+    game.newGame()
+}
+
+function showScores(difficulty) {
+    document.querySelectorAll(".tab").forEach((tab) => tab.classList.remove("active"))
+    document.querySelector(`[onclick="showScores('${difficulty}')"]`).classList.add("active")
+
+    const scores = game.getScores(difficulty)
+    const list = document.getElementById("scores-list")
+
+    if (scores.length === 0) {
+        list.innerHTML = '<div class="score-item"><span>No scores yet</span><span>-</span></div>'
+        return
+    }
+
+    list.innerHTML = scores
+        .map(
+            (score, index) => `
+    <div class="score-item">
+      <div>
+        <span class="score-rank">#${index + 1}</span>
+        <span>${score.date} • ${score.time} • ${score.mistakes} mistakes</span>
+      </div>
+      <span class="score-value">${score.score}</span>
+    </div>
+  `,
+        )
+        .join("")
+}
+
+function shareScore() {
+    const score = document.getElementById("final-score").textContent
+    const time = document.getElementById("final-time").textContent
+    const text = `🧩 I scored ${score} points in Sudoku Master! Time: ${time}. Can you beat it?`
+
+    if (navigator.share) {
+        navigator.share({
+            title: "Sudoku Master",
+            text,
+            url: window.location.href
+        })
+    } else {
+        navigator.clipboard.writeText(text).then(() => alert("Score copied!"))
+    }
+}
+
+// Initialize
+let game
+document.addEventListener("DOMContentLoaded", () => {
+    game = new SudokuGame()
+})

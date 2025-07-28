@@ -1,7 +1,8 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Speller{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/speller.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/cs50/speller.css">
+{% endblock %}
 {% block body %}
     <div class="container">
         <div class="app-header">
@@ -10,14 +11,20 @@
         </div>
 
         <div class="main-content">
+            <!-- Mobile Navigation Tabs -->
+            <div class="mobile-tabs">
+                <button class="tab-btn active" data-tab="dictionary">Dictionary</button>
+                <button class="tab-btn" data-tab="checker">Word Check</button>
+                <button class="tab-btn" data-tab="speller">Text Check</button>
+            </div>
+
             <div class="sidebar">
-                <div class="dictionary-panel">
+                <div class="dictionary-panel tab-content active" data-content="dictionary">
                     <h2 class="panel-title">Dictionary Management</h2>
                     <select id="dictionarySelector" class="dictionary-selector">
                         <option value="">Select a dictionary...</option>
                     </select>
                     <button id="loadDictionaryBtn" class="load-dictionary-btn">Load Dictionary</button>
-
                     <div class="dictionary-stats" id="dictionaryStats">
                         <div class="stat-item">
                             <div class="stat-number" id="wordCount">0</div>
@@ -32,31 +39,27 @@
                             <div class="stat-label">Load Time</div>
                         </div>
                     </div>
-
                     <button class="btn btn-danger" id="unloadBtn" disabled>
                         <span class="btn-icon">🗑️</span> Unload Dictionary
                     </button>
                 </div>
 
-                <div class="word-checker">
+                <div class="word-checker tab-content" data-content="checker">
                     <h2 class="panel-title">Word Checker</h2>
                     <div class="input-group">
                         <label class="input-label" for="wordInput">Check Individual Word</label>
                         <input type="text" id="wordInput" class="input-field" placeholder="Enter a word to check..." disabled>
                     </div>
-
                     <button class="btn" id="checkWordBtn" disabled>
                         <span class="btn-icon">🔍</span> Check Word
                     </button>
-
                     <div class="check-result" id="wordResult"></div>
                 </div>
             </div>
 
-        <!-- Main Spell Checker -->
-            <div class="spell-checker">
+            <!-- Main Spell Checker -->
+            <div class="spell-checker tab-content" data-content="speller">
                 <h2 class="panel-title">Text Spell Checker</h2>
-
                 <div class="spell-check-controls">
                     <button class="btn" id="checkTextBtn" disabled>
                         <span class="btn-icon">✅</span> Check Spelling
@@ -68,25 +71,21 @@
                         <span class="btn-icon">🎨</span> Toggle Highlighting
                     </button>
                 </div>
-
                 <div class="input-group">
                     <label class="input-label" for="textInput">Enter Text to Check</label>
                     <textarea id="textInput" class="input-field text-area" placeholder="Type or paste your text here for spell checking..." disabled></textarea>
                 </div>
-
                 <div class="input-group">
                     <label class="input-label">Spell Check Results</label>
                     <div class="spell-check-area" id="spellCheckArea">
                         Load a dictionary to start spell checking...
                     </div>
                 </div>
-
                 <div class="spell-check-results" id="spellCheckResults" style="display: none;">
                     <div class="results-summary">
                         <div class="error-count" id="errorCount">0</div>
                         <div class="error-label">Spelling Errors Found</div>
                     </div>
-
                     <div class="error-list" id="errorList"></div>
                 </div>
             </div>
@@ -102,5 +101,28 @@
         <div class="notification-message">Dictionary loaded successfully!</div>
     </div>
 
-    {% block scripts %}<script src="/static/scripts/speller.js"></script>{% endblock %}
+    {% block scripts %}
+    <script src="/static/scripts/cs50/speller.js"></script>
+    <script>
+        // Mobile tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetTab = this.dataset.tab;
+
+                    // Remove active class from all tabs and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.querySelector(`[data-content="${targetTab}"]`).classList.add('active');
+                });
+            });
+        });
+    </script>
+    {% endblock %}
 {% endblock %}

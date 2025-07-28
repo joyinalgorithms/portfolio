@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "general_layout.html" %}
 {% block title %}Caesar{% endblock %}
 {% block stylesheet %}
-    <link rel="stylesheet" href="/static/styles/caesar.css">{% endblock %}
+    <link rel="stylesheet" href="/static/styles/cs50/caesar.css">{% endblock %}
 {% block body %}
     <div class="container">
         <div class="header">
@@ -88,5 +88,5 @@
         </div>
     </div>
 
-    {% block scripts %}<script src="/static/scripts/caesar.js"></script>{% endblock %}
+    {% block scripts %}<script src="/static/scripts/cs50/caesar.js"></script>{% endblock %}
 {% endblock %}

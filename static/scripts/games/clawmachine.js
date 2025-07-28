@@ -33,8 +33,8 @@ class ClawMachine {
 
     detectMobile() {
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-               ('ontouchstart' in window) ||
-               (navigator.maxTouchPoints > 0);
+            ('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0);
     }
 
     initializeSounds() {
@@ -49,7 +49,7 @@ class ClawMachine {
     createBeepSound(frequency, duration) {
         return () => {
             if (!this.soundEnabled) return;
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const audioContext = new(window.AudioContext || window.webkitAudioContext)();
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
 
@@ -70,7 +70,7 @@ class ClawMachine {
     createSuccessSound() {
         return () => {
             if (!this.soundEnabled) return;
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const audioContext = new(window.AudioContext || window.webkitAudioContext)();
             const frequencies = [523, 659, 784, 1047];
 
             frequencies.forEach((freq, index) => {
@@ -96,7 +96,7 @@ class ClawMachine {
     createFailSound() {
         return () => {
             if (!this.soundEnabled) return;
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const audioContext = new(window.AudioContext || window.webkitAudioContext)();
             const frequencies = [200, 150, 100];
 
             frequencies.forEach((freq, index) => {
@@ -120,17 +120,56 @@ class ClawMachine {
     }
 
     initializeItems() {
-        const itemTypes = [
-            { emoji: '💻', class: 'laptop', points: 100 },
-            { emoji: '📱', class: 'phone', points: 80 },
-            { emoji: '⌨️', class: 'keyboard', points: 60 },
-            { emoji: '🖱️', class: 'mouse', points: 40 },
-            { emoji: '🎧', class: 'headphones', points: 70 },
-            { emoji: '📱', class: 'tablet', points: 90 },
-            { emoji: '⌚', class: 'smartwatch', points: 85 },
-            { emoji: '📶', class: 'router', points: 65 },
-            { emoji: '🔊', class: 'speaker', points: 75 },
-            { emoji: '🎮', class: 'gamepad', points: 95 }
+        const itemTypes = [{
+                emoji: '💻',
+                class: 'laptop',
+                points: 100
+            },
+            {
+                emoji: '📱',
+                class: 'phone',
+                points: 80
+            },
+            {
+                emoji: '⌨️',
+                class: 'keyboard',
+                points: 60
+            },
+            {
+                emoji: '🖱️',
+                class: 'mouse',
+                points: 40
+            },
+            {
+                emoji: '🎧',
+                class: 'headphones',
+                points: 70
+            },
+            {
+                emoji: '📱',
+                class: 'tablet',
+                points: 90
+            },
+            {
+                emoji: '⌚',
+                class: 'smartwatch',
+                points: 85
+            },
+            {
+                emoji: '📶',
+                class: 'router',
+                points: 65
+            },
+            {
+                emoji: '🔊',
+                class: 'speaker',
+                points: 75
+            },
+            {
+                emoji: '🎮',
+                class: 'gamepad',
+                points: 95
+            }
         ];
 
         const containerWidth = this.itemsContainer.offsetWidth - 20;
@@ -172,7 +211,9 @@ class ClawMachine {
         this.itemsContainer.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
             touchStartY = e.touches[0].clientY;
-        }, { passive: true });
+        }, {
+            passive: true
+        });
 
         this.itemsContainer.addEventListener('touchend', (e) => {
             const touchEndX = e.changedTouches[0].clientX;
@@ -189,22 +230,30 @@ class ClawMachine {
             } else if (Math.abs(deltaY) > 30 && deltaY < 0) {
                 this.grab();
             }
-        }, { passive: true });
+        }, {
+            passive: true
+        });
 
         let longPressTimer;
         this.itemsContainer.addEventListener('touchstart', (e) => {
             longPressTimer = setTimeout(() => {
                 this.grab();
             }, 500);
-        }, { passive: true });
+        }, {
+            passive: true
+        });
 
         this.itemsContainer.addEventListener('touchend', () => {
             clearTimeout(longPressTimer);
-        }, { passive: true });
+        }, {
+            passive: true
+        });
 
         this.itemsContainer.addEventListener('touchmove', () => {
             clearTimeout(longPressTimer);
-        }, { passive: true });
+        }, {
+            passive: true
+        });
     }
 
     bindEvents() {

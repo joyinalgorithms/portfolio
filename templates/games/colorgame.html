@@ -5,83 +5,83 @@
 {% block meta_description %}Play the ultimate color guessing game! Test your skills with hex and RGB color codes in this challenging and fun interactive game.{% endblock %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/games/colorgame.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/games/colorgame.css') }}">
 {% endblock %}
 
 {% block body %}
-<div class="game-wrapper">
-    <div class="game-container">
-        <header class="game-header">
-            <h1 class="game-title">🎨 Color Master</h1>
-            <p class="game-subtitle">Can you guess the color from its code?</p>
-        </header>
+    <div class="game-wrapper">
+        <div class="game-container">
+            <header class="game-header">
+                <h1 class="game-title">🎨 Color Master</h1>
+                <p class="game-subtitle">Can you guess the color from its code?</p>
+            </header>
 
-        <div class="score-board">
-            <div class="score-item">
-                <span class="score-label">Score</span>
-                <span class="score-value" id="score">0</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Round</span>
-                <span class="score-value"><span id="round">1</span>/10</span>
-            </div>
-            <div class="score-item">
-                <span class="score-label">Streak</span>
-                <span class="score-value" id="streak">0</span>
-            </div>
-        </div>
-
-        <div id="game-area" class="game-area">
-            <div class="target-color-container">
-                <div class="target-color" id="targetColor" role="img" aria-label="Target color to guess"></div>
-                <div class="color-code" id="colorCode" role="text" aria-live="polite"></div>
-            </div>
-
-            <div class="options-container">
-                <h3 class="options-title">Choose the matching color:</h3>
-                <div class="options-grid" id="optionsGrid" role="group" aria-label="Color options">
-                    <button class="color-option" onclick="selectColor(0)" aria-label="Color option 1"></button>
-                    <button class="color-option" onclick="selectColor(1)" aria-label="Color option 2"></button>
-                    <button class="color-option" onclick="selectColor(2)" aria-label="Color option 3"></button>
-                    <button class="color-option" onclick="selectColor(3)" aria-label="Color option 4"></button>
+            <div class="score-board">
+                <div class="score-item">
+                    <span class="score-label">Score</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Round</span>
+                    <span class="score-value"><span id="round">1</span>/10</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Streak</span>
+                    <span class="score-value" id="streak">0</span>
                 </div>
             </div>
 
-            <div class="feedback-container">
-                <div class="feedback" id="feedback" role="status" aria-live="assertive"></div>
-                <button class="next-button" id="nextButton" onclick="nextRound()" disabled>
-                    <i class="fas fa-arrow-right"></i>
-                    Next Round
-                </button>
+            <div id="game-area" class="game-area">
+                <div class="target-color-container">
+                    <div class="target-color" id="targetColor" role="img" aria-label="Target color to guess"></div>
+                    <div class="color-code" id="colorCode" role="text" aria-live="polite"></div>
+                </div>
+
+                <div class="options-container">
+                    <h3 class="options-title">Choose the matching color:</h3>
+                    <div class="options-grid" id="optionsGrid" role="group" aria-label="Color options">
+                        <button class="color-option" onclick="selectColor(0)" aria-label="Color option 1"></button>
+                        <button class="color-option" onclick="selectColor(1)" aria-label="Color option 2"></button>
+                        <button class="color-option" onclick="selectColor(2)" aria-label="Color option 3"></button>
+                        <button class="color-option" onclick="selectColor(3)" aria-label="Color option 4"></button>
+                    </div>
+                </div>
+
+                <div class="feedback-container">
+                    <div class="feedback" id="feedback" role="status" aria-live="assertive"></div>
+                    <button class="next-button" id="nextButton" onclick="nextRound()" disabled>
+                        <i class="fas fa-arrow-right"></i>
+                        Next Round
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-over" id="gameOver" role="dialog" aria-labelledby="gameOverTitle">
+                <h2 id="gameOverTitle">🎉 Game Complete!</h2>
+                <div class="final-score" id="finalScore">0/10</div>
+                <p class="performance-message" id="performanceMessage"></p>
+                <div class="game-over-buttons">
+                    <button class="restart-button" onclick="restartGame()">
+                        <i class="fas fa-redo"></i>
+                        Play Again
+                    </button>
+
+                </div>
             </div>
         </div>
 
-        <div class="game-over" id="gameOver" role="dialog" aria-labelledby="gameOverTitle">
-            <h2 id="gameOverTitle">🎉 Game Complete!</h2>
-            <div class="final-score" id="finalScore">0/10</div>
-            <p class="performance-message" id="performanceMessage"></p>
-            <div class="game-over-buttons">
-                <button class="restart-button" onclick="restartGame()">
-                    <i class="fas fa-redo"></i>
-                    Play Again
-                </button>
-
-            </div>
+        <div class="game-instructions">
+            <h3>How to Play</h3>
+            <ul>
+                <li>Look at the color and its code (hex or RGB)</li>
+                <li>Choose the matching color from the options</li>
+                <li>Use keyboard shortcuts: 1-4 for options, Enter/Space for next</li>
+                <li>Build streaks for bonus points!</li>
+            </ul>
         </div>
     </div>
-
-    <div class="game-instructions">
-        <h3>How to Play</h3>
-        <ul>
-            <li>Look at the color and its code (hex or RGB)</li>
-            <li>Choose the matching color from the options</li>
-            <li>Use keyboard shortcuts: 1-4 for options, Enter/Space for next</li>
-            <li>Build streaks for bonus points!</li>
-        </ul>
-    </div>
-</div>
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='scripts/games/colorgame.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/games/colorgame.js') }}"></script>
 {% endblock %}
